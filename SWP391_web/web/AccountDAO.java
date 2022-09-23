@@ -48,12 +48,12 @@ public class AccountDAO {
         }//het if
         return acc;
     }
-    
-        public static boolean insertAccount(String newPassword, String newRole, String newName, String newPhone, String newEmail, String newAddress, String newIntroduce, String newImage, int isStatus) throws Exception {
+        //Register
+        public static boolean insertAccount(String newPassword, String newRole, String newName, String newPhone, String newEmail, String newAddress, String newIntroduce, String newImage, int newIsStatus) throws Exception {
         Connection cn = utils.DBUtils.makeConnection();
         boolean flag = false;
         if (cn != null) {
-            String sql = "INSERT INTO DBO.Accounts(password,role,name,phone,email,address,introduce,image,status)\n"
+            String sql = "INSERT INTO DBO.Accounts(password,role,name,phone,email,address,introduce,image,isStatus)\n"
                     + "VALUES(?,?,?,?,?,?,?,?,?)";
             PreparedStatement pst = cn.prepareStatement(sql);
             pst.setString(1, newPassword);
@@ -64,7 +64,7 @@ public class AccountDAO {
             pst.setString(6, newAddress);
             pst.setString(7, newIntroduce);
             pst.setString(8, newImage);
-            pst.setString(9, newIsStatus);
+            pst.setInt(9, newIsStatus);
             
             int table = pst.executeUpdate();
             if (table == 1) {
@@ -76,4 +76,23 @@ public class AccountDAO {
         }
         return flag;
     }
+        //Set status user trong account manager cua page admin
+             public static boolean updateAccountStatus(int accId, int isStatus) throws Exception{
+         Connection cn=DBUtils.makeConnection();
+         boolean flag=false;
+         if(cn!=null){
+             String sql = "UPDATE DBO.Accounts\n"
+                     + "SET isStatus=?\n"
+                     + "WHERE accId=?";
+             PreparedStatement pst=cn.prepareStatement(sql);
+             pst.setInt(1, isStatus);
+             pst.setInt(2, accId);
+             int table = pst.executeUpdate();
+              if (table == 1) {
+                  flag=true;
+              }else flag=false;
+              cn.close();
+         }
+          return flag;
+     }
 }
