@@ -48,4 +48,32 @@ public class AccountDAO {
         }//het if
         return acc;
     }
+    
+        public static boolean insertAccount(String newPassword, String newRole, String newName, String newPhone, String newEmail, String newAddress, String newIntroduce, String newImage, int isStatus) throws Exception {
+        Connection cn = utils.DBUtils.makeConnection();
+        boolean flag = false;
+        if (cn != null) {
+            String sql = "INSERT INTO DBO.Accounts(password,role,name,phone,email,address,introduce,image,status)\n"
+                    + "VALUES(?,?,?,?,?,?,?,?,?)";
+            PreparedStatement pst = cn.prepareStatement(sql);
+            pst.setString(1, newPassword);
+            pst.setString(2, newRole);
+            pst.setString(3, newName);
+            pst.setString(4, newPhone);
+            pst.setString(5, newEmail);
+            pst.setString(6, newAddress);
+            pst.setString(7, newIntroduce);
+            pst.setString(8, newImage);
+            pst.setString(9, newIsStatus);
+            
+            int table = pst.executeUpdate();
+            if (table == 1) {
+                flag = true;
+            } else {
+                flag = false;
+            }
+            cn.close();
+        }
+        return flag;
+    }
 }
