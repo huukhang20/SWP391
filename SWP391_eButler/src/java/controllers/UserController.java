@@ -46,7 +46,7 @@ public class UserController extends HttpServlet {
 //                request.setAttribute("action", "index");
 //                request.setAttribute("message", "Error when proccessing the request");
         }
-        request.getRequestDispatcher(Config.LAYOUT).forward(request, response);
+//        request.getRequestDispatcher(Config.LAYOUT).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
