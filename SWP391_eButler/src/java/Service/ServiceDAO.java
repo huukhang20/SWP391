@@ -5,7 +5,7 @@
  */
 package Service;
 
-import Account.Account;
+import Service.Service;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
