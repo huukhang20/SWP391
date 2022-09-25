@@ -107,12 +107,12 @@ public class AccountDAO {
         ArrayList<Account> list = new ArrayList<>();
         Connection cn = DBUtils.makeConnection();
         if (cn != null) {
-            String sql = "SELECT accID,password,role,name,phone,email,address,introduce,image,isStatus from dbo.Accounts";
+            String sql = "SELECT accId,password,role,name,phone,email,address,introduce,image,isStatus from dbo.Accounts";
             Statement st = cn.createStatement();
             ResultSet table = st.executeQuery(sql);
             if (table != null) {
                 while (table.next()) {
-                    int accId = table.getInt("accID");
+                    int accId = table.getInt("accId");
                     String password = table.getString("password");
                     int role = table.getInt("role");
                     String name = table.getString("name");
