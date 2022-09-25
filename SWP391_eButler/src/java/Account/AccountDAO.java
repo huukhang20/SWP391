@@ -43,7 +43,7 @@ public class AccountDAO {
                 String image = table.getString("image");
                 int isStatus = table.getInt("isStatus");
 
-                acc = new Account(accID, password, role, name, phone, email, address, introduce, image, isStatus);
+                acc = new Account(accId, password, role, name, phone, email, address, introduce, image, isStatus);
                 list.add(acc);
             }
             cn.close();
