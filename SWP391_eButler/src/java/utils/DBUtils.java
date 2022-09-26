@@ -20,7 +20,7 @@ public class DBUtils {
         Connection conn = null;
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            conn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=", "sa", "123456");
+            conn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=eButler", "sa", "123456");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
