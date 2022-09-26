@@ -5,23 +5,25 @@ package utils;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 /**
  *
  * @author Zenny
  */
 public class DBUtils {
+
     //ham nay de tao dynamic connection
-    public static Connection makeConnection()throws Exception{
- String url = "jdbc:sqlserver://localhost;databaseName=;user=sa;password=12345";
-        //Loading a driver
-        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        //Creating a connection
-        Connection con = DriverManager.getConnection(url);
-        return con;
+    public static Connection makeConnection() throws SQLException {
+        Connection conn = null;
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            conn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=eButler", "sa", "123456");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return conn;
     }
 }

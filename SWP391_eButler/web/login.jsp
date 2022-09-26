@@ -1,3 +1,10 @@
+<%-- 
+    Document   : login
+    Created on : Sep 26, 2022, 5:53:11 PM
+    Author     : Admin
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -68,17 +75,18 @@
 <!-- partial:index.partial.html -->
 <div id="login-form-wrap">
   <h2>Login</h2>
-  <form id="login-form">
+  <form id="login-form" action="LoginController" method="POST">
     <p>
-    <input type="text" id="username" name="username" placeholder="Username" required><i class="validation"><span></span><span></span></i>
+    <input type="text" id="username" name="username" value="${username}" placeholder="Username" required><i class="validation"><span></span><span></span></i>
     </p>
     <p>
-    <input type="password" id="email" name="email" placeholder="Password" required><i class="validation"><span></span><span></span></i>
+    <input type="password" id="password" name="password" placeholder="Password" required><i class="validation"><span></span><span></span></i>
     </p>
     <p>
     <input type="submit" id="login" value="Login">
     </p>
   </form>
+  <a style="color: red">${ERRORLOGIN}</a>
   <div id="create-account-wrap">
     <p>Not a member? <a href="register.html">Create Account</a><p>
   </div><!--create-account-wrap-->
@@ -165,3 +173,4 @@
       </script> 
 </body>
 </html>
+
