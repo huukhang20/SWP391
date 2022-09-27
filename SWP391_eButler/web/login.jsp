@@ -1,3 +1,10 @@
+<%-- 
+    Document   : login
+    Created on : Sep 26, 2022, 5:53:11 PM
+    Author     : Admin
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -10,7 +17,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
   <!-- site metas -->
-  <title>Frica</title>
+  <title>Ebutler</title>
   <meta name="keywords" content="">
   <meta name="description" content="">
   <meta name="author" content="">
@@ -54,7 +61,7 @@
               <form class="form-inline ">
                  <div class="login_text">
                     <ul>
-                       <li><a href="login.jsp"><img src="images/user-icon.png"></a></li>
+                       <li><a href="login.html"><img src="images/user-icon.png"></a></li>
                        <li><a href="#"><img src="images/trolly-icon.png"></a></li>
                        <li><a href="#"><img src="images/search-icon.png"></a></li>
                        <li><a href="#"><img src="images/logout.png" width = "21" height = "20"></a></li>
@@ -67,27 +74,21 @@
      <!-- header section end -->
 <!-- partial:index.partial.html -->
 <div id="login-form-wrap">
-  <h2>Register</h2>
-  <form id="login-form">
+  <h2>Login</h2>
+  <form id="login-form" action="LoginController" method="POST">
     <p>
-    <input type="text" id="username" name="username" placeholder="Username" required><i class="validation"><span></span><span></span></i>
+    <input type="text" id="username" name="username" value="${username}" placeholder="Username" required><i class="validation"><span></span><span></span></i>
     </p>
     <p>
-    <input type="email" id="email" name="email" placeholder="Email Address" required><i class="validation"><span></span><span></span></i>
+    <input type="password" id="password" name="password" placeholder="Password" required><i class="validation"><span></span><span></span></i>
     </p>
-    <p>
-      <input type="email" id="email" name="email" placeholder="Phone Number" required><i class="validation"><span></span><span></span></i>
-      </p>
-    <p>
-      <input type="password" id="password" name="Password" placeholder="Password" required><i class="validation"><span></span><span></span></i>
-      </p>
-  
     <p>
     <input type="submit" id="login" value="Login">
     </p>
   </form>
+  <a style="color: red">${ERRORLOGIN}</a>
   <div id="create-account-wrap">
-    <p>wellcone to our website<p>
+    <p>Not a member? <a href="register.html">Create Account</a><p>
   </div><!--create-account-wrap-->
 </div><!--login-form-wrap-->
 <!-- partial -->
@@ -172,3 +173,4 @@
       </script> 
 </body>
 </html>
+
