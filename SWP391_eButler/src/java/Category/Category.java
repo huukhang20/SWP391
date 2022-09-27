@@ -18,6 +18,11 @@ public class Category {
     public Category() {
     }
 
+    public Category(int cateId, String cateName) {
+        this.cateId = cateId;
+        this.cateName = cateName;
+    }
+    
     public Category(int cateId, String cateName, String cateDescription, int cateStatus) {
         this.cateId = cateId;
         this.cateName = cateName;
