@@ -39,28 +39,31 @@ public class LoginController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = error;
+        String url = "afterLogin.jsp";
         try {
-            String username = request.getParameter("txtUsername");
-            String password = request.getParameter("txtPassword");
+            String username = request.getParameter("username");
+            String password = request.getParameter("password");
+            
             AccessDAO access = new AccessDAO();
             
             String role = access.checkLogin(username, password);
             
             if(role.equals("failed")){
+                request.setAttribute("username", username);
+                url = "login.jsp";
                 request.setAttribute("ERRORLOGIN", "Invalid username or password");
             } else {
                 HttpSession session = request.getSession();
                 session.setAttribute("USERLOGIN", username);
                 session.setAttribute("USERROLE", role);
                 if(role.equals("admin")){
-                    url = admin;
+                    //url = admin;
                 } else if (role.equals("customer")) {
-                    url = customer;
+                    //url = customer;
                 } else if (role.equals("supplier")){
-                    url = supplier;
+                    //url = supplier;
                 } else if (role.equals("cc")){
-                    url = cc;
+                    //url = cc;
                 } else {
                     request.setAttribute("ERRORLOGIN", "Role doesn't supported!");
                 }

@@ -36,16 +36,16 @@ public class AccessDAO implements Serializable{
     }
     
     public String checkLogin(String username, String password) throws Exception {
-        String role = "faield";
+        String role = "failed";
         try {
-            String sql = "Select Role From Account Where IsStatus = 'active' and username = ? and Password = ?";
+            String sql = "Select Role_Name From Role where ID = (select Role_ID from Account Where IsStatus = 'active' and username = ? and Password = ?)";
             conn = DBUtils.makeConnection();
             preStm = conn.prepareStatement(sql);
             preStm.setString(1, username);
             preStm.setString(2, password);
             rs = preStm.executeQuery();
             if(rs.next()){
-                role = rs.getString("Role");
+                role = rs.getString("Role_Name");
             }
         } finally {
             closeConnection();
