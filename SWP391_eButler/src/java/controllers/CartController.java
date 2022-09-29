@@ -34,8 +34,8 @@ public class CartController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-//    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-//            throws ServletException, IOException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 //        String action = (String) request.getAttribute("action");
 //        String controller = (String) request.getAttribute("controller");
 //        String op = request.getParameter("op");
@@ -95,7 +95,7 @@ public class CartController extends HttpServlet {
 //            }
 //        }
 //        request.getRequestDispatcher(Config.LAYOUT).forward(request, response);
-//    }
+    }
 //
 //    protected void removeFromCart(HttpServletRequest request, HttpServletResponse response)
 //            throws ServletException, IOException {

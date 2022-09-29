@@ -3,6 +3,7 @@ package Account;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import utils.DBUtils;
@@ -52,22 +53,28 @@ public class AccountDAO {
     }
     //Register
 
-    public static boolean insertAccount(String newPassword, String newRole, String newName, String newPhone, String newEmail, String newAddress, String newIntroduce, String newImage, int newIsStatus) throws Exception {
+    public static boolean insertAccount(String newUsername, String newPassword, String newName, String newPhone, String newEmail) throws Exception {
         Connection cn = utils.DBUtils.makeConnection();
         boolean flag = false;
+        int newRole_ID = 2;
+        String newAddress = null;
+        String newIntroduce = null;
+        String newIsStatus = "active";
+        String newImage = null;
         if (cn != null) {
-            String sql = "INSERT INTO DBO.Accounts(password,role,name,phone,email,address,introduce,image,isStatus)\n"
-                    + "VALUES(?,?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO Account(username,password,role_id,name,phone,email,address,introduce,image,isStatus)\n"
+                    + "VALUES(?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement pst = cn.prepareStatement(sql);
-            pst.setString(1, newPassword);
-            pst.setString(2, newRole);
-            pst.setString(3, newName);
-            pst.setString(4, newPhone);
-            pst.setString(5, newEmail);
-            pst.setString(6, newAddress);
-            pst.setString(7, newIntroduce);
-            pst.setString(8, newImage);
-            pst.setInt(9, newIsStatus);
+            pst.setString(1, newUsername);
+            pst.setString(2, newPassword);
+            pst.setInt(3, newRole_ID);
+            pst.setString(4, newName);
+            pst.setString(5, newPhone);
+            pst.setString(6, newEmail);
+            pst.setString(7, newAddress);
+            pst.setString(8, newIntroduce);
+            pst.setString(9, newImage);
+            pst.setString(10, newIsStatus);
 
             int table = pst.executeUpdate();
             if (table == 1) {
@@ -79,6 +86,22 @@ public class AccountDAO {
         }
         return flag;
     }
+    
+    //Check duplicate usetname
+     public static boolean checkDuplicateUsername(String username) throws SQLException {
+        Connection con = DBUtils.makeConnection();
+        String CHECK_DUPLICATE_USERNAME = "SELECT * FROM Account WHERE username = ?";
+        if (con != null) {
+            PreparedStatement ps = con.prepareStatement(CHECK_DUPLICATE_USERNAME);
+            ps.setString(1, username);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
     //Set status user trong account manager cua page admin
 
     public static boolean updateAccountStatus(int accId, int isStatus) throws Exception {

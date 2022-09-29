@@ -5,6 +5,9 @@
  */
 package controllers;
 
+import Account.Account;
+import Account.AccountDAO;
+import ebutler.dao.AccessDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -16,6 +19,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -36,7 +40,34 @@ public class RegisterController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String url = "error.jsp";
+        try {
+            String username = request.getParameter("username");
+            String name = request.getParameter("name");
+            String email = request.getParameter("email");
+            String phone = request.getParameter("phone");
+            String password = request.getParameter("password");
 
+            request.setAttribute("username", username);
+            request.setAttribute("name", name);
+            request.setAttribute("email", email);
+            request.setAttribute("phone", phone);
+            request.setAttribute("password", password);
+
+            if (AccountDAO.checkDuplicateUsername(username)) {
+
+                request.setAttribute("message", username + " already exist.");
+                url = "register.jsp";
+            } else {
+                AccountDAO.insertAccount(username, password, name, phone, email);
+                url = "profile.jsp";
+            }
+
+        } catch (Exception e) {
+            log("ERROR at RegisterController: " + e.getMessage());
+        } finally {
+            request.getRequestDispatcher(url).forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

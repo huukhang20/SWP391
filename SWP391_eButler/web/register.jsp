@@ -1,3 +1,10 @@
+<%-- 
+    Document   : register
+    Created on : Sep 29, 2022, 3:53:42 PM
+    Author     : Admin
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -68,22 +75,26 @@
 <!-- partial:index.partial.html -->
 <div id="login-form-wrap">
   <h2>Register</h2>
-  <form id="login-form">
+  <form id="login-form" action="RegisterController" method="POST">
     <p>
-    <input type="text" id="username" name="username" placeholder="Username" required><i class="validation"><span></span><span></span></i>
+        <input type="text" id="username" name="username" placeholder="Username" value="${username}" required><i class="validation"><span></span><span></span></i>
+        <a style="color: red">${message}</a>
     </p>
     <p>
-    <input type="email" id="email" name="email" placeholder="Email Address" required><i class="validation"><span></span><span></span></i>
+        <input type="text" id="name" name="name" placeholder="Name" value="${name}" required><i class="validation"><span></span><span></span></i>
     </p>
     <p>
-      <input type="email" id="email" name="email" placeholder="Phone Number" required><i class="validation"><span></span><span></span></i>
+        <input type="email" id="email" name="email" placeholder="Email Address" value="${email}" required><i class="validation"><span></span><span></span></i>
+    </p>
+    <p>
+      <input type="text" id="phone" name="phone" placeholder="Phone Number" value="${phone}" required><i class="validation"><span></span><span></span></i>
       </p>
     <p>
-      <input type="password" id="password" name="Password" placeholder="Password" required><i class="validation"><span></span><span></span></i>
+        <input type="password" id="password" name="password" placeholder="Password" value="${password}" required><i class="validation"><span></span><span></span></i>
       </p>
   
     <p>
-    <input type="submit" id="login" value="Login">
+    <input type="submit" id="login" value="REGISTER">
     </p>
   </form>
   <div id="create-account-wrap">
@@ -172,3 +183,4 @@
       </script> 
 </body>
 </html>
+
