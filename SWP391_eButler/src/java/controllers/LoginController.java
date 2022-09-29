@@ -21,9 +21,9 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(name = "LoginController", urlPatterns = {"/LoginController"})
 public class LoginController extends HttpServlet {
-    private static final String error = "errorLogin.jsp";
+    private static final String error = "login.jsp";
     private static final String admin = "admin.jsp";
-    private static final String customer = "customer.jsp";
+    private static final String home = "index.html";
     private static final String supplier = "supplier.jsp";
     private static final String cc = "customercare.jsp";
 
@@ -39,7 +39,7 @@ public class LoginController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "afterLogin.jsp";
+        String url = error;
         try {
             String username = request.getParameter("username");
             String password = request.getParameter("password");
@@ -50,7 +50,6 @@ public class LoginController extends HttpServlet {
             
             if(role.equals("failed")){
                 request.setAttribute("username", username);
-                url = "login.jsp";
                 request.setAttribute("ERRORLOGIN", "Invalid username or password");
             } else {
                 HttpSession session = request.getSession();
@@ -58,8 +57,9 @@ public class LoginController extends HttpServlet {
                 session.setAttribute("USERROLE", role);
                 if(role.equals("admin")){
                     //url = admin;
+                    url = "afterLogin.jsp";
                 } else if (role.equals("customer")) {
-                    //url = customer;
+                    url = home;
                 } else if (role.equals("supplier")){
                     //url = supplier;
                 } else if (role.equals("cc")){

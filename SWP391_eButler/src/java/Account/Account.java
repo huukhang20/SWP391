@@ -5,13 +5,13 @@ package Account;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Admin
  */
 public class Account {
-    private int accID;
+
+    private String accID;
     private String password;
     private int role;
     private String name;
@@ -20,12 +20,12 @@ public class Account {
     private String address;
     private String introduce;
     private String image;
-    private int isStatus;
+    private String isStatus;
 
     public Account() {
     }
 
-    public Account(int accID, String password, int role, String name, String phone, String email, String address, String introduce, String image, int isStatus) {
+    public Account(String accID, String password, int role, String name, String phone, String email, String address, String introduce, String image, String isStatus) {
         this.accID = accID;
         this.password = password;
         this.role = role;
@@ -38,85 +38,84 @@ public class Account {
         this.isStatus = isStatus;
     }
 
-    public int getAccID() {
+    public String getAccID() {
         return accID;
+    }
+
+    public void setAccID(String accID) {
+        this.accID = accID;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public int getRole() {
-        return role;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public String getIntroduce() {
-        return introduce;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public int getIsStatus() {
-        return isStatus;
-    }
-
-    public void setAccID(int accID) {
-        this.accID = accID;
-    }
-
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getRole() {
+        return role;
     }
 
     public void setRole(int role) {
         this.role = role;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPhone() {
+        return phone;
     }
 
     public void setPhone(String phone) {
         this.phone = phone;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getAddress() {
+        return address;
     }
 
     public void setAddress(String address) {
         this.address = address;
     }
 
+    public String getIntroduce() {
+        return introduce;
+    }
+
     public void setIntroduce(String introduce) {
         this.introduce = introduce;
+    }
+
+    public String getImage() {
+        return image;
     }
 
     public void setImage(String image) {
         this.image = image;
     }
 
-    public void setIsStatus(int isStatus) {
+    public String getIsStatus() {
+        return isStatus;
+    }
+
+    public void setIsStatus(String isStatus) {
         this.isStatus = isStatus;
     }
-    
-    
+
 }

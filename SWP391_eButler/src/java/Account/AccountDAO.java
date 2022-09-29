@@ -20,37 +20,37 @@ import utils.DBUtils;
 //lay account trung name va pass
 public class AccountDAO {
 
-    public static Account getAccount(String name, String password) throws Exception {
-        ArrayList<Account> list = new ArrayList<>();
-        Account acc = null;
-        Connection cn = DBUtils.makeConnection();
-        if (cn != null) {
-            String sql = "SELECT [accID],[password],[role],[name],[phone],[email],[address],[introduce],[image],[isStatus]\n"
-                    + "FROM DBO.Accounts\n"
-                    + "WHERE name=? AND password=?";
-            PreparedStatement pst = cn.prepareStatement(sql);
-            pst.setString(1, name);
-            pst.setString(2, password);
-            ResultSet table = pst.executeQuery();
-            if (table != null && table.next()) {
-                int accId = table.getInt("accID");
-                password = table.getString("password");
-                int role = table.getInt("role");
-                name = table.getString("name");
-                String phone = table.getString("phone");
-                String email = table.getString("email");
-                String address = table.getString("address");
-                String introduce = table.getString("introduce");
-                String image = table.getString("image");
-                int isStatus = table.getInt("isStatus");
-
-                acc = new Account(accId, password, role, name, phone, email, address, introduce, image, isStatus);
-                list.add(acc);
-            }
-            cn.close();
-        }
-        return acc;
-    }
+//    public static Account getAccount(String name, String password) throws Exception {
+//        ArrayList<Account> list = new ArrayList<>();
+//        Account acc = null;
+//        Connection cn = DBUtils.makeConnection();
+//        if (cn != null) {
+//            String sql = "SELECT [accID],[password],[role],[name],[phone],[email],[address],[introduce],[image],[isStatus]\n"
+//                    + "FROM DBO.Accounts\n"
+//                    + "WHERE name=? AND password=?";
+//            PreparedStatement pst = cn.prepareStatement(sql);
+//            pst.setString(1, name);
+//            pst.setString(2, password);
+//            ResultSet table = pst.executeQuery();
+//            if (table != null && table.next()) {
+//                int accId = table.getInt("accID");
+//                password = table.getString("password");
+//                int role = table.getInt("role");
+//                name = table.getString("name");
+//                String phone = table.getString("phone");
+//                String email = table.getString("email");
+//                String address = table.getString("address");
+//                String introduce = table.getString("introduce");
+//                String image = table.getString("image");
+//                int isStatus = table.getInt("isStatus");
+//
+//                acc = new Account(accId, password, role, name, phone, email, address, introduce, image, isStatus);
+//                list.add(acc);
+//            }
+//            cn.close();
+//        }
+//        return acc;
+//    }
     //Register
 
     public static boolean insertAccount(String newUsername, String newPassword, String newName, String newPhone, String newEmail) throws Exception {
@@ -86,9 +86,9 @@ public class AccountDAO {
         }
         return flag;
     }
-    
+
     //Check duplicate usetname
-     public static boolean checkDuplicateUsername(String username) throws SQLException {
+    public static boolean checkDuplicateUsername(String username) throws SQLException {
         Connection con = DBUtils.makeConnection();
         String CHECK_DUPLICATE_USERNAME = "SELECT * FROM Account WHERE username = ?";
         if (con != null) {
@@ -101,9 +101,8 @@ public class AccountDAO {
         }
         return false;
     }
-    
-    //Set status user trong account manager cua page admin
 
+    //Set status user trong account manager cua page admin
     public static boolean updateAccountStatus(int accId, int isStatus) throws Exception {
         Connection cn = DBUtils.makeConnection();
         boolean flag = false;
@@ -126,31 +125,31 @@ public class AccountDAO {
     }
 
     //lay het account neu can
-    public static ArrayList<Account> getAccounts() throws Exception {
-        ArrayList<Account> list = new ArrayList<>();
-        Connection cn = DBUtils.makeConnection();
-        if (cn != null) {
-            String sql = "SELECT accId,password,role,name,phone,email,address,introduce,image,isStatus from dbo.Accounts";
-            Statement st = cn.createStatement();
-            ResultSet table = st.executeQuery(sql);
-            if (table != null) {
-                while (table.next()) {
-                    int accId = table.getInt("accId");
-                    String password = table.getString("password");
-                    int role = table.getInt("role");
-                    String name = table.getString("name");
-                    String phone = table.getString("phone");
-                    String email = table.getString("email");
-                    String address = table.getString("address");
-                    String introduce = table.getString("introduce");
-                    String image = table.getString("image");
-                    int isStatus = table.getInt("isStatus");
-                    Account acc = new Account(accId,password,role,name,phone,email,address,introduce,image,isStatus);
-                    list.add(acc);
-                }
-            }
-            cn.close();
-        }
-        return list;
-    }
+//    public static ArrayList<Account> getAccounts() throws Exception {
+//        ArrayList<Account> list = new ArrayList<>();
+//        Connection cn = DBUtils.makeConnection();
+//        if (cn != null) {
+//            String sql = "SELECT accId,password,role,name,phone,email,address,introduce,image,isStatus from dbo.Accounts";
+//            Statement st = cn.createStatement();
+//            ResultSet table = st.executeQuery(sql);
+//            if (table != null) {
+//                while (table.next()) {
+//                    int accId = table.getInt("accId");
+//                    String password = table.getString("password");
+//                    int role = table.getInt("role");
+//                    String name = table.getString("name");
+//                    String phone = table.getString("phone");
+//                    String email = table.getString("email");
+//                    String address = table.getString("address");
+//                    String introduce = table.getString("introduce");
+//                    String image = table.getString("image");
+//                    int isStatus = table.getInt("isStatus");
+//                    Account acc = new Account(accId,password,role,name,phone,email,address,introduce,image,isStatus);
+//                    list.add(acc);
+//                }
+//            }
+//            cn.close();
+//        }
+//        return list;
+//    }
 }

@@ -7,7 +7,9 @@ package controllers;
 
 import Account.Account;
 import Account.AccountDAO;
+import ebutler.beans.AccountBean;
 import ebutler.dao.AccessDAO;
+import ebutler.dao.AccountErrorObject;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -28,6 +30,9 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "RegisterController", urlPatterns = {"/RegisterController"})
 public class RegisterController extends HttpServlet {
 
+    private static final String fail = "register.jsp";
+    private static final String success = "login.jsp";
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -40,27 +45,87 @@ public class RegisterController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "error.jsp";
+        String url = fail;
         try {
-            String username = request.getParameter("username");
-            String name = request.getParameter("name");
-            String email = request.getParameter("email");
-            String phone = request.getParameter("phone");
-            String password = request.getParameter("password");
+            String username = request.getParameter("txtUsername");
+            String name = request.getParameter("txtName");
+            String email = request.getParameter("txtEmail");
+            String phone = request.getParameter("txtPhone");
+            String password = request.getParameter("txtPassword");
+            String confirm = request.getParameter("txtConfirm");
 
-            request.setAttribute("username", username);
-            request.setAttribute("name", name);
-            request.setAttribute("email", email);
-            request.setAttribute("phone", phone);
-            request.setAttribute("password", password);
+            AccessDAO dao = new AccessDAO();
 
-            if (AccountDAO.checkDuplicateUsername(username)) {
+            AccountErrorObject errorObj = new AccountErrorObject();
+            boolean valid = true;
 
-                request.setAttribute("message", username + " already exist.");
-                url = "register.jsp";
+            if (username.length() == 0) {
+                errorObj.setUsernameError("Username can't be blank!");
+                valid = false;
+            } else if (username.length() > 20) {
+                errorObj.setUsernameError("Username must less than 20 letters!");
+                valid = false;
+            }
+
+            if (name.length() == 0) {
+                errorObj.setNameError("Name can't be blank!");
+                valid = false;
+            } else if (name.length() > 100) {
+                errorObj.setNameError("Name must less than 100 letters!");
+                valid = false;
+            }
+
+            if (email.length() == 0) {
+                errorObj.setEmailError("Email can't be blank!");
+                valid = false;
+            } else if (email.length() > 50) {
+                errorObj.setEmailError("Email must less than 50 letters!");
+                valid = false;
+            }
+
+            if (phone.length() == 0) {
+                errorObj.setPhoneError("Phone can't be blank!");
+                valid = false;
+            } else if (phone.length() > 15) {
+                errorObj.setPhoneError("Phone must less than 15 letters!");
+                valid = false;
+            }
+
+            if (password.length() == 0) {
+                errorObj.setPasswordError("Password can't be blank!");
+                valid = false;
+            } else if (password.length() > 50) {
+                errorObj.setPasswordError("Password must less than 50 letters!");
+                valid = false;
+            }
+
+            if (confirm.length() == 0) {
+                errorObj.setConfirmError("Confirm password can't be blank!");
+                valid = false;
+            } else if (!confirm.matches(password)) {
+                errorObj.setConfirmError("Confirm password must match password!");
+                valid = false;
+            }
+
+            if (valid) {
+                Account dto = new Account(username, password, 2, name, phone, email, null, null, null, "active");
+                boolean checkDup = dao.checkDuplicateUsername(username);
+
+                if (checkDup) {
+                    errorObj.setUsernameError("Username is existed!");
+                    request.setAttribute("INVALID", errorObj);
+                } else {
+                    AccountBean beans = new AccountBean();
+                    beans.setAccountDTO(dto);
+                    boolean check = beans.createUser();
+
+                    if (check == true) {
+                        url = success;
+                    }
+                }
             } else {
-                AccountDAO.insertAccount(username, password, name, phone, email);
-                url = "profile.jsp";
+                request.setAttribute("INVALID", errorObj);
+                url = fail;
             }
 
         } catch (Exception e) {
