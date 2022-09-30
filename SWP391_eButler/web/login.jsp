@@ -111,16 +111,16 @@
                     <div class="row">
                         <div class="col-lg-3 col-sm-6">
                             <h4 class="adderss_text">About</h4>
-                            <p class="ipsum_text">consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation u</p>
+                            <p class="ipsum_text"></p>
                         </div>
                         <div class="col-lg-3 col-sm-6">
                             <h4 class="adderss_text">Menu</h4>
                             <div class="footer_menu">
                                 <ul>
                                     <li><a href="index.html">Home</a></li>
-                                    <li><a href="computers.html">Computers</a></li>
-                                    <li><a href="Mans_clothes.html">Mans Clothes</a></li>
-                                    <li><a href="womans_clothes.html">Womans Clothes</a></li>
+                                    <li><a href="computers.html"></a></li>
+                                    <li><a href="Mans_clothes.html"></a></li>
+                                    <li><a href="womans_clothes.html"></a></li>
                                     <li><a href="contact.html">Contact Us</a></li>
                                 </ul>
                             </div>
