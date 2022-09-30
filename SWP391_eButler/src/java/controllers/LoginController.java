@@ -5,6 +5,8 @@
  */
 package controllers;
 
+import Account.Account;
+import Account.AccountDAO;
 import ebutler.dao.AccessDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -21,6 +23,7 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(name = "LoginController", urlPatterns = {"/LoginController"})
 public class LoginController extends HttpServlet {
+
     private static final String error = "login.jsp";
     private static final String admin = "admin.jsp";
     private static final String home = "index.html";
@@ -40,35 +43,38 @@ public class LoginController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = error;
+        HttpSession session = request.getSession();
+        Account account = new Account();
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+
         try {
-            String username = request.getParameter("username");
-            String password = request.getParameter("password");
-            
+
             AccessDAO access = new AccessDAO();
             
             String role = access.checkLogin(username, password);
-            
-            if(role.equals("failed")){
+
+            if (role.equals("failed")) {
                 request.setAttribute("username", username);
                 request.setAttribute("ERRORLOGIN", "Invalid username or password");
             } else {
-                HttpSession session = request.getSession();
+                account = AccountDAO.getAccount(username, password);
+                session.setAttribute("account", account);
                 session.setAttribute("USERLOGIN", username);
                 session.setAttribute("USERROLE", role);
-                if(role.equals("admin")){
+                if (role.equals("admin")) {
                     //url = admin;
-                    url = "afterLogin.jsp";
                 } else if (role.equals("customer")) {
                     url = home;
-                } else if (role.equals("supplier")){
+                } else if (role.equals("supplier")) {
                     //url = supplier;
-                } else if (role.equals("cc")){
+                } else if (role.equals("cc")) {
                     //url = cc;
                 } else {
                     request.setAttribute("ERRORLOGIN", "Role doesn't supported!");
                 }
             }
-            
+
         } catch (Exception e) {
             log("ERROR at LoginControler: " + e.getMessage());
         } finally {

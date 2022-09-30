@@ -45,7 +45,7 @@ public class RegisterController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = fail;
+        String url = fail;        
         try {
             String username = request.getParameter("txtUsername");
             String name = request.getParameter("txtName");
@@ -118,7 +118,7 @@ public class RegisterController extends HttpServlet {
                     AccountBean beans = new AccountBean();
                     beans.setAccountDTO(dto);
                     boolean check = beans.createUser();
-
+                    
                     if (check == true) {
                         url = success;
                     }

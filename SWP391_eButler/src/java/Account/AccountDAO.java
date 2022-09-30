@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import utils.DBUtils;
+import Account.Account;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -20,37 +21,34 @@ import utils.DBUtils;
 //lay account trung name va pass
 public class AccountDAO {
 
-//    public static Account getAccount(String name, String password) throws Exception {
-//        ArrayList<Account> list = new ArrayList<>();
-//        Account acc = null;
-//        Connection cn = DBUtils.makeConnection();
-//        if (cn != null) {
-//            String sql = "SELECT [accID],[password],[role],[name],[phone],[email],[address],[introduce],[image],[isStatus]\n"
-//                    + "FROM DBO.Accounts\n"
-//                    + "WHERE name=? AND password=?";
-//            PreparedStatement pst = cn.prepareStatement(sql);
-//            pst.setString(1, name);
-//            pst.setString(2, password);
-//            ResultSet table = pst.executeQuery();
-//            if (table != null && table.next()) {
-//                int accId = table.getInt("accID");
-//                password = table.getString("password");
-//                int role = table.getInt("role");
-//                name = table.getString("name");
-//                String phone = table.getString("phone");
-//                String email = table.getString("email");
-//                String address = table.getString("address");
-//                String introduce = table.getString("introduce");
-//                String image = table.getString("image");
-//                int isStatus = table.getInt("isStatus");
-//
-//                acc = new Account(accId, password, role, name, phone, email, address, introduce, image, isStatus);
-//                list.add(acc);
-//            }
-//            cn.close();
-//        }
-//        return acc;
-//    }
+    public static Account getAccount(String username, String password) throws Exception {
+        Account acc = new Account(username, password);
+        Connection cn = DBUtils.makeConnection();
+        if (cn != null) {
+            String sql = "SELECT [ID],[role_id],[name],[phone],[email],[address],[introduce],[image],[isStatus]\n"
+                    + "FROM Account\n"
+                    + "WHERE username=? AND password=?";
+            PreparedStatement pst = cn.prepareStatement(sql);
+            pst.setString(1, username);
+            pst.setString(2, password);
+            ResultSet table = pst.executeQuery();
+            if (table != null && table.next()) {
+                acc.setAccID(table.getString("ID"));
+                acc.setRole(table.getInt("role_id"));
+                acc.setName(table.getString("name"));
+                acc.setPhone(table.getString("phone"));
+                acc.setEmail(table.getString("email"));
+                acc.setAddress(table.getString("address"));
+                acc.setIntroduce(table.getString("introduce"));
+                acc.setImage(table.getString("image"));
+                acc.setIsStatus(table.getString("isStatus"));
+
+                acc.setUsername(username);
+            }
+            cn.close();
+        }
+        return acc;
+    }
     //Register
 
     public static boolean insertAccount(String newUsername, String newPassword, String newName, String newPhone, String newEmail) throws Exception {

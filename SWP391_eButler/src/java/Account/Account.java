@@ -12,6 +12,7 @@ package Account;
 public class Account {
 
     private String accID;
+    private String username;
     private String password;
     private int role;
     private String name;
@@ -23,6 +24,11 @@ public class Account {
     private String isStatus;
 
     public Account() {
+    }
+
+    public Account(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 
     public Account(String accID, String password, int role, String name, String phone, String email, String address, String introduce, String image, String isStatus) {
@@ -116,6 +122,14 @@ public class Account {
 
     public void setIsStatus(String isStatus) {
         this.isStatus = isStatus;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
 }
