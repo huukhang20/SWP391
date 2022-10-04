@@ -5,6 +5,11 @@
  */
 package controllers;
 
+import Account.Account;
+import Account.AccountDAO;
+import ebutler.beans.AccountBean;
+import ebutler.dao.AccessDAO;
+import ebutler.dao.AccountErrorObject;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -16,6 +21,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -23,6 +29,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "RegisterController", urlPatterns = {"/RegisterController"})
 public class RegisterController extends HttpServlet {
+
+    private static final String fail = "register.jsp";
+    private static final String success = "login.jsp";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,7 +45,94 @@ public class RegisterController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String url = fail;        
+        try {
+            String username = request.getParameter("txtUsername");
+            String name = request.getParameter("txtName");
+            String email = request.getParameter("txtEmail");
+            String phone = request.getParameter("txtPhone");
+            String password = request.getParameter("txtPassword");
+            String confirm = request.getParameter("txtConfirm");
 
+            AccessDAO dao = new AccessDAO();
+
+            AccountErrorObject errorObj = new AccountErrorObject();
+            boolean valid = true;
+
+            if (username.length() == 0) {
+                errorObj.setUsernameError("Username can't be blank!");
+                valid = false;
+            } else if (username.length() > 20) {
+                errorObj.setUsernameError("Username must less than 20 letters!");
+                valid = false;
+            }
+
+            if (name.length() == 0) {
+                errorObj.setNameError("Name can't be blank!");
+                valid = false;
+            } else if (name.length() > 100) {
+                errorObj.setNameError("Name must less than 100 letters!");
+                valid = false;
+            }
+
+            if (email.length() == 0) {
+                errorObj.setEmailError("Email can't be blank!");
+                valid = false;
+            } else if (email.length() > 50) {
+                errorObj.setEmailError("Email must less than 50 letters!");
+                valid = false;
+            }
+
+            if (phone.length() == 0) {
+                errorObj.setPhoneError("Phone can't be blank!");
+                valid = false;
+            } else if (phone.length() > 15) {
+                errorObj.setPhoneError("Phone must less than 15 letters!");
+                valid = false;
+            }
+
+            if (password.length() == 0) {
+                errorObj.setPasswordError("Password can't be blank!");
+                valid = false;
+            } else if (password.length() > 50) {
+                errorObj.setPasswordError("Password must less than 50 letters!");
+                valid = false;
+            }
+
+            if (confirm.length() == 0) {
+                errorObj.setConfirmError("Confirm password can't be blank!");
+                valid = false;
+            } else if (!confirm.matches(password)) {
+                errorObj.setConfirmError("Confirm password must match password!");
+                valid = false;
+            }
+
+            if (valid) {
+                Account dto = new Account(username, password, 2, name, phone, email, null, null, null, "active");
+                boolean checkDup = dao.checkDuplicateUsername(username);
+
+                if (checkDup) {
+                    errorObj.setUsernameError("Username is existed!");
+                    request.setAttribute("INVALID", errorObj);
+                } else {
+                    AccountBean beans = new AccountBean();
+                    beans.setAccountDTO(dto);
+                    boolean check = beans.createUser();
+                    
+                    if (check == true) {
+                        url = success;
+                    }
+                }
+            } else {
+                request.setAttribute("INVALID", errorObj);
+                url = fail;
+            }
+
+        } catch (Exception e) {
+            log("ERROR at RegisterController: " + e.getMessage());
+        } finally {
+            request.getRequestDispatcher(url).forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

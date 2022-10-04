@@ -1,6 +1,6 @@
 <%-- 
-    Document   : login
-    Created on : Sep 26, 2022, 5:53:11 PM
+    Document   : register
+    Created on : Sep 29, 2022, 3:53:42 PM
     Author     : Admin
 --%>
 
@@ -17,7 +17,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="viewport" content="initial-scale=1, maximum-scale=1">
         <!-- site metas -->
-        <title>Ebutler</title>
+        <title>Frica</title>
         <meta name="keywords" content="">
         <meta name="description" content="">
         <meta name="author" content="">
@@ -61,7 +61,7 @@
                     <form class="form-inline ">
                         <div class="login_text">
                             <ul>
-                                <li><a href="login.html"><img src="images/user-icon.png"></a></li>
+                                <li><a href="login.jsp"><img src="images/user-icon.png"></a></li>
                                 <li><a href="#"><img src="images/trolly-icon.png"></a></li>
                                 <li><a href="#"><img src="images/search-icon.png"></a></li>
                                 <li><a href="#"><img src="images/logout.png" width = "21" height = "20"></a></li>
@@ -74,21 +74,38 @@
         <!-- header section end -->
         <!-- partial:index.partial.html -->
         <div id="login-form-wrap">
-            <h2>Login</h2>
-            <form id="login-form" action="LoginController" method="POST">
+            <h2>Register</h2>
+            <form id="login-form" action="RegisterController" method="POST">
                 <p>
-                    <input type="text" id="username" name="username" value="${username}" placeholder="Username" required><i class="validation"><span></span><span></span></i>
+                    <input type="text" id="username" name="txtUsername" placeholder="Username" value="${param.txtUsername}" required><i class="validation"><span></span><span></span></i>
+                    <a style="color: red">${requestScope.INVALID.usernameError}</a>
                 </p>
                 <p>
-                    <input type="password" id="password" name="password" placeholder="Password" required><i class="validation"><span></span><span></span></i>
+                    <input type="text" id="name" name="txtName" placeholder="Name" value="${param.txtName}" required><i class="validation"><span></span><span></span></i>
+                    <a style="color: red">${requestScope.INVALID.nameError}</a>
                 </p>
                 <p>
-                    <input type="submit" id="login" value="Login">
+                    <input type="email" id="email" name="txtEmail" placeholder="Email Address" value="${param.txtEmail}" required><i class="validation"><span></span><span></span></i>
+                    <a style="color: red">${requestScope.INVALID.emailError}</a>
+                </p>
+                <p>
+                    <input type="text" id="phone" name="txtPhone" placeholder="Phone Number" value="${param.txtPhone}" required><i class="validation"><span></span><span></span></i>
+                    <a style="color: red">${requestScope.INVALID.phoneError}</a>
+                </p>
+                <p>
+                    <input type="password" id="password" name="txtPassword" placeholder="Password" required><i class="validation"><span></span><span></span></i>
+                    <a style="color: red">${requestScope.INVALID.passwordError}</a>
+                </p>
+                <p>
+                    <input type="password" id="password" name="txtConfirm" placeholder="Confirm password" required><i class="validation"><span></span><span></span></i>
+                    <a style="color: red">${requestScope.INVALID.confirmError}</a>
+                </p>
+                <p>
+                    <input type="submit" id="login" value="REGISTER">
                 </p>
             </form>
-            <a style="color: red">${ERRORLOGIN}</a>
             <div id="create-account-wrap">
-                <p>Not a member? <a href="register.jsp">Create Account</a><p>
+                <p>wellcone to our website<p>
             </div><!--create-account-wrap-->
         </div><!--login-form-wrap-->
         <!-- partial -->
