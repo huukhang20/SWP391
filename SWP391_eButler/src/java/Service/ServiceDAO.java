@@ -7,9 +7,13 @@ package Service;
 
 import Service.Service;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import utils.DBUtils;
 
 /**
@@ -47,4 +51,31 @@ public class ServiceDAO {
         }
         return list;
     }
+    
+//        public static ArrayList<Services> getServices(String cateID) {
+//        ArrayList<Services> list = new ArrayList<>();
+//        //connecting to database
+//        Connection con = DBUtil.getConnection();
+//        try {
+//            //creating and executing sql statements
+//            String sql = "select s.*, c.name as cateName "
+//                    + "from Services s join category c on s.category_id=c.category_id "
+//                    + "where s.category_id = ?";
+//            PreparedStatement stm = con.prepareStatement(sql);
+//            stm.setString(1, cateID);
+//            ResultSet rs = stm.executeQuery();
+//            //Loading data into the list
+//            while (rs.next()) {
+//                Services services = new Services();
+//                Services.setSerId(rs.getString("Serid"));
+//                Services.setSerName(rs.getString("Sername"));
+//                list.add(Services);
+//            }
+//            //closing the connection 
+//            con.close();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ServicesController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return list;
+//    }
 }

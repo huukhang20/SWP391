@@ -46,31 +46,32 @@
     </head>
     <body>
         <!-- header section start -->
-        <div class="header_section haeder_main">
-            <div class="container-fluid">
-                <nav class="navbar navbar-light bg-light justify-content-between">
-                    <div id="mySidenav" class="sidenav">
-                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                        <a href="index.html">Home</a>
-                        <a href="product_list.html">Prodcut List</a>
-                        <a href="computers.html">Computers</a>
-                        <a href="contact.html">Contact</a>
-                    </div>
-                    <span style="font-size:30px;cursor:pointer; color: #fff;" onclick="openNav()"><img src="images/toggle-icon.png"></span>
+      <div class="header_section haeder_main">
+         <div class="container-fluid">
+            <nav class="navbar navbar-light bg-light justify-content-between">
+               <div id="mySidenav" class="sidenav">
+                  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                  <a href="index.html">Home</a>
+                  <a href="product_list.html">Prodcut List</a>
+                  <a href="computers.html"></a>
 
-                    <form class="form-inline ">
-                        <div class="login_text">
-                            <ul>
-                                <li><a href="login.html"><img src="images/user-icon.png"></a></li>
-                                <li><a href="#"><img src="images/trolly-icon.png"></a></li>
-                                <li><a href="#"><img src="images/search-icon.png"></a></li>
-                                <li><a href="#"><img src="images/logout.png" width = "21" height = "20"></a></li>
-                            </ul>
-                        </div>
-                    </form>
-                </nav>
-            </div>
-        </div>
+                  <a href="contact.html">Contact</a>
+               </div>
+               <span style="font-size:30px;cursor:pointer; color: #fff;" onclick="openNav()"><img src="images/toggle-icon.png"></span>
+               <a class="navbar-brand" href="index.html">E-Butler</a></a>
+               <form class="form-inline ">
+                  <div class="login_text">
+                     <ul>
+                        <li><a href="login.jsp"><img src="images/user-icon.png"></a></li>
+                        <li><a href="#"><img src="images/trolly-icon.png"></a></li>
+                        <li><a href="#"><img src="images/search-icon.png"></a></li>
+                        <li><a href="#"><img src="images/logout.png" width = "21" height = "20"></a></li>
+                     </ul>
+                  </div>
+               </form>
+            </nav>
+         </div>
+      </div>
         <!-- header section end -->
         <!-- partial:index.partial.html -->
         <div id="login-form-wrap">
