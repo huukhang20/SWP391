@@ -23,7 +23,7 @@ import utils.DBUtils;
 //lay het service theo cateId
 public class ServiceDAO {
 
-    public static ArrayList<Shoes> getServices(String cateID) {
+    public static ArrayList<Services> getServices(String cateID) {
         ArrayList<Services> list = new ArrayList<>();
         //connecting to database
         Connection con = DBUtil.getConnection();
