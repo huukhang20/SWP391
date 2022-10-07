@@ -128,7 +128,7 @@ public class ServiceController extends HttpServlet {
         }
         request.getRequestDispatcher(config.Config.LAYOUT).forward(request, response);
     }
-}
+
    protected void list(HttpServletRequest request, HttpServletResponse response, String cateId)
             throws ServletException, IOException {
         ServicesManager sm = new ServicesManager();
@@ -140,7 +140,7 @@ public class ServiceController extends HttpServlet {
             throws ServletException, IOException {
         ServicesManager sm = new ServicesManager();
         String searchText = request.getParameter("searchText");
-        ArrayList<Shoes> list = sm.getShoesByName(searchText, categoryId);
+        ArrayList<Services> list = sm.getServiesByName(searchText, cateId);
         request.setAttribute("list", list);
         HttpSession session = request.getSession();
         session.setAttribute("searchText", searchText);
@@ -164,9 +164,9 @@ public class ServiceController extends HttpServlet {
             cart.add(services);
         } else {
             ArrayList<Services> cartList = cart.getCartList();
-            for (Shoes shoesExist : cartList) {
-                if (servicesExist.getSerId().equals(shoes.getSerId())) {
-                    if (servicesExist.getSize() == shoes.getSize()) {
+            for (Services servicesExist : cartList) {
+                if (servicesExist.getSerId().equals(services.getSerId())) {
+                    if (servicesExist.getSize() == services.getSize()) {
                         servicesExist.setAmount(services.getAmount() + servicesExist.getAmount());
                     } else {
                         cart.add(services);
