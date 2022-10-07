@@ -7,11 +7,13 @@ package controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -127,6 +129,60 @@ public class ServiceController extends HttpServlet {
         request.getRequestDispatcher(config.Config.LAYOUT).forward(request, response);
     }
 }
+   protected void list(HttpServletRequest request, HttpServletResponse response, String cateId)
+            throws ServletException, IOException {
+        ServicesManager sm = new ServicesManager();
+        ArrayList<Services> list = sm.getServices(cateId);
+        request.setAttribute("list", list);
+    }
+
+    protected void searchList(HttpServletRequest request, HttpServletResponse response, String cateId)
+            throws ServletException, IOException {
+        ServicesManager sm = new ServicesManager();
+        String searchText = request.getParameter("searchText");
+        ArrayList<Shoes> list = sm.getShoesByName(searchText, categoryId);
+        request.setAttribute("list", list);
+        HttpSession session = request.getSession();
+        session.setAttribute("searchText", searchText);
+    }
+
+    protected void addHandler(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String id = request.getParameter("id");
+
+        HttpSession session = request.getSession();
+        if (session.getAttribute("LOGIN_CUSTOMER") == null) {
+            request.setAttribute("controller", "user");
+            request.setAttribute("action", "login");
+        }
+        Cart cart = (Cart) session.getAttribute("cart");
+        //Neu trong session chua co cart thi tao cart moi
+        if (cart == null) {
+            cart = new Cart();
+            //Luu cart vo session
+            session.setAttribute("cart", cart);
+            cart.add(services);
+        } else {
+            ArrayList<Services> cartList = cart.getCartList();
+            for (Shoes shoesExist : cartList) {
+                if (servicesExist.getSerId().equals(shoes.getSerId())) {
+                    if (servicesExist.getSize() == shoes.getSize()) {
+                        servicesExist.setAmount(services.getAmount() + servicesExist.getAmount());
+                    } else {
+                        cart.add(services);
+                        break;
+                    }
+                } else {
+                    cart.add(services);
+                    break;
+                }
+            }
+            cart.setCartList(cartList);
+        }
+        //Them product vao cart
+//        cart.add(shoes);
+        session.setAttribute("cart", cart);
+    }
 
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 /**

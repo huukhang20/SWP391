@@ -20,62 +20,100 @@ import utils.DBUtils;
  *
  * @author Admin
  */
-//lay het service ra
+//lay het service theo cateId
 public class ServiceDAO {
 
-    public static ArrayList<Service> getServices() throws Exception {
-        ArrayList<Service> list = new ArrayList<>();
-        Connection cn = DBUtils.makeConnection();
-        if (cn != null) {
-            String sql = "SELECT [serId],[serName],[serDescription],[cateId],[supplierId],[quantity],[price],[workDate],[releaseDate],[serImage],[serStatus] from dbo.Services";
-            Statement st = cn.createStatement();
-            ResultSet table = st.executeQuery(sql);
-            if (table != null) {
-                while (table.next()) {
-                    int serId = table.getInt("serId");
-                    String serName = table.getString("serName");
-                    String serDescription = table.getString("serDescription");
-                    int cateId = table.getInt("cateId");
-                    int supplierId = table.getInt("supplierId");
-                    int quantity = table.getInt("quantity");
-                    int price = table.getInt("price");
-                    String workDate = table.getString("workDate");
-                    String releaseDate = table.getString("releaseDate");
-                    String serImage = table.getString("serImage");
-                    int serStatus = table.getInt("serStatus");
-                    Service ser = new Service();
-                    list.add(ser);
-                }
+    public static ArrayList<Shoes> getServices(String cateID) {
+        ArrayList<Services> list = new ArrayList<>();
+        //connecting to database
+        Connection con = DBUtil.getConnection();
+        try {
+            //creating and executing sql statements
+            String sql = "select s.*, c.name as cateName "
+                    + "from services s join category c on s.category_id=c.category_id "
+                    + "where s.category_id = ?";
+            PreparedStatement stm = con.prepareStatement(sql);
+            stm.setString(1, cateID);
+            ResultSet rs = stm.executeQuery();
+            //Loading data into the list
+            while (rs.next()) {
+                Services services = new Services();
+                services.setSerId(rs.getString("serId"));
+                services.setSerName(rs.getString("serName"));
+
+                list.add(services);
             }
-            cn.close();
+            //closing the connection 
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    //get services by name
+    public static ArrayList<Services> getSerVicesByName(String serName, String cateId) {
+        ArrayList<Services> list = new ArrayList<>();
+        //connecting to database
+        Connection con = DBUtil.getConnection();
+        try {
+            //creating and executing sql statements
+            String sql = "select s.*, c.name as cateName "
+                    + "from services s join category c on s.category_id=c.category_id "
+                    + "where s.name like ? and s.category_id = ?";
+            PreparedStatement stm = con.prepareStatement(sql);
+            stm.setString(1, "%" + name + "%");
+            stm.setString(2, cateId);
+            ResultSet rs = stm.executeQuery();
+            //Loading data into the list
+            while (rs.next()) {
+                Services services = new Services();
+                services.setSerId(rs.getString("serId"));
+                services.setSerName(rs.getString("serName"));
+
+                list.add(services);
+            }
+            //closing the connection 
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceController.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
     }
     
-//        public static ArrayList<Services> getServices(String cateID) {
-//        ArrayList<Services> list = new ArrayList<>();
-//        //connecting to database
-//        Connection con = DBUtil.getConnection();
-//        try {
-//            //creating and executing sql statements
-//            String sql = "select s.*, c.name as cateName "
-//                    + "from Services s join category c on s.category_id=c.category_id "
-//                    + "where s.category_id = ?";
-//            PreparedStatement stm = con.prepareStatement(sql);
-//            stm.setString(1, cateID);
-//            ResultSet rs = stm.executeQuery();
-//            //Loading data into the list
-//            while (rs.next()) {
-//                Services services = new Services();
-//                Services.setSerId(rs.getString("Serid"));
-//                Services.setSerName(rs.getString("Sername"));
-//                list.add(Services);
-//            }
-//            //closing the connection 
-//            con.close();
-//        } catch (SQLException ex) {
-//            Logger.getLogger(ServicesController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        return list;
-//    }
+    //get detail of services which are found
+    public Services find(String id) {
+        Services services = null;
+        Connection con = DBUtil.getConnection();
+        String sql = "select * from services where services_id = ?";
+        try {
+            PreparedStatement stm = con.prepareStatement(sql);
+            stm.setString(1, id);
+            ResultSet rs = stm.executeQuery();
+            if (rs.next()) {
+                services = new Services();
+                services.setSerId(rs.getString("serId"));
+                services.setSerName(rs.getString("serName"));
+
+            }
+            con.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return services;
+    }
+    
+    public boolean checkServices(String serId) throws SQLException {
+        Connection con = DBUtil.getConnection();
+        String sql = "select * from services where services_id = ?";
+        if (con != null) {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, serId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
