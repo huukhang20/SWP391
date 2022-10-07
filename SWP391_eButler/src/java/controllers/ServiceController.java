@@ -5,6 +5,7 @@
  */
 package controllers;
 
+import Service.ServiceDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -131,16 +132,16 @@ public class ServiceController extends HttpServlet {
 
    protected void list(HttpServletRequest request, HttpServletResponse response, String cateId)
             throws ServletException, IOException {
-        ServicesManager sm = new ServicesManager();
-        ArrayList<Services> list = sm.getServices(cateId);
+        ServiceDAO sd = new ServiceDAO();
+        ArrayList<Services> list = sd.getServices(cateId);
         request.setAttribute("list", list);
     }
 
     protected void searchList(HttpServletRequest request, HttpServletResponse response, String cateId)
             throws ServletException, IOException {
-        ServicesManager sm = new ServicesManager();
+        ServiceDAO sd = new ServiceDAO();
         String searchText = request.getParameter("searchText");
-        ArrayList<Services> list = sm.getServiesByName(searchText, cateId);
+        ArrayList<Services> list = sd.getServiesByName(searchText, cateId);
         request.setAttribute("list", list);
         HttpSession session = request.getSession();
         session.setAttribute("searchText", searchText);

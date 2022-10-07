@@ -82,13 +82,13 @@ public class ServiceDAO {
     }
     
     //get detail of services which are found
-    public Services find(String id) {
+    public Services find(String serId) {
         Services services = null;
         Connection con = DBUtil.getConnection();
         String sql = "select * from services where services_id = ?";
         try {
             PreparedStatement stm = con.prepareStatement(sql);
-            stm.setString(1, id);
+            stm.setString(1, serId);
             ResultSet rs = stm.executeQuery();
             if (rs.next()) {
                 services = new Services();
