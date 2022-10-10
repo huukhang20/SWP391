@@ -1,10 +1,3 @@
-<%-- 
-    Document   : profile
-    Created on : Sep 29, 2022, 6:27:13 PM
-    Author     : Admin
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -16,7 +9,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Contact</title>
+      <title>Req</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -39,21 +32,21 @@
       <link rel="stylesheet" href="css/owl.theme.default.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
       <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
-  
+      <link rel="stylesheet" href="./product_list.css">
    </head>
    <body>
       <!-- header section start -->
-      <div class="header_section_haeder_main">
+      <div class="header_section haeder_main">
          <div class="container-fluid">
             <nav class="navbar navbar-light bg-light justify-content-between">
                <div id="mySidenav" class="sidenav">
                   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                   <a href="index.html">Home</a>
                   <a href="product_list.html">Prodcut List</a>
-                  <a href="profile.jsp">Profile</a>
+                  <a href="computers.html">Computers</a>
                   <a href="contact.html">Contact</a>
                </div>
-               <span style="font-size:30px;cursor:pointer; color: #fff;" onclick="openNav()"><img src="images/toggle-icon.png"></span>
+               <img src="images/toggle-icon.png"></span>
                <a class="navbar-brand" href="index.html">E-Butler</a></a>
                <form class="form-inline ">
                   <div class="login_text">
@@ -61,7 +54,7 @@
                         <li><a href="login.jsp"><img src="images/user-icon.png"></a></li>
                         <li><a href="#"><img src="images/trolly-icon.png"></a></li>
                         <li><a href="#"><img src="images/search-icon.png"></a></li>
-                        <li><a href="LogOutController"><img src="images/logout.png" width = "21" height = "20"></a></li>
+                        <li><a href="#"><img src="images/logout.png" width = "21" height = "20"></a></li>
                      </ul>
                   </div>
                </form>
@@ -69,49 +62,57 @@
          </div>
       </div>
       <!-- header section end -->
-      <div class="container rounded bg-white mt-5 mb-5">
-         <div class="row">
-             <div class="col-md-3 border-right">
-                 <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com.my</span><span> </span></div>
-             </div>
-             <div class="col-md-5 border-right">
-                 <div class="p-3 py-5">
-                     <div class="d-flex justify-content-between align-items-center mb-3">
-                         <h4 class="text-right">Profile Settings</h4>
+      <!-- computers section start -->
+      <div class="container mt-5 mb-5">
+        <div class="d-flex justify-content-center row">
+            <div class="col-md-10">
+                <div class="row p-2 bg-white border rounded">
+                  <div class="item">
+                     <div class="sq_box shadow">
+                        <div class="pdis_img">      
+                           
+                           <!-- <img src="https://ucarecdn.com/05f649bf-b70b-4cf8-90f7-2588ce404a08/-/resize/680x/">  -->
+                           <img src="images/img-4.png"> 
+                           
+                        </div>
                      </div>
-                     <div class="row mt-2">
-                         <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control" placeholder="first name" value="${account.getName()}"></div>
-                         <div class="col-md-6"><label class="labels">Surname</label><input type="text" class="form-control" value="" placeholder="surname"></div>
-                     </div>
-                     <div class="row mt-3">
-                         <div class="col-md-12"><label class="labels">username</label><input type="text" class="form-control" placeholder="username" value="${account.getUsername()}"></div>
-                         <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" placeholder="enter phone number" value="${account.getPhone()}"></div>
-                         <div class="col-md-12"><label class="labels">Address Line 1</label><input type="text" class="form-control" placeholder="enter address line 1" value="${account.getAddress()}"></div>
-                  
-      
+                  </div>
+                    <div class="align-items-center align-content-center col-md-4 border-left mt-1">
+                        <div class="d-flex flex-row align-items-center">
+                           <h1 class="card-title">name</h1>
+                        </div>
+                        <a>--------</a>
+                           <h3 class="p-1">Tag</h2>
+                              
+                           <h3 class="p-1">price: 500</h3> 
+                           <h3 class="p-1">work_day: asdasdadad</h3> 
+                           <a>--------</a>
+                           <h2 class="">Create by: sup_namesssssss</h2>
+                           <div class="d-flex flex-column mt-4"><button class="btn btn-primary btn-sm" type="button">Accept</button>
+                              <button class="btn primary btn-sm mt-2 bg-danger text-white" type="button">Ignore</button></div>
+                           
+                    </div>
+                </div>
+                <div class="row p-2 bg-white border rounded">
+                  <div class="item">
+                     
+                  </div>
+                  <div class="card-body">
+                     <div class="card-body">
                         
-                         <div class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control" placeholder="enter email id" value="${account.getEmail()}"></div>
-                     </div>
-                    
-                     <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
-                 </div>
-             </div>
-             <!-- <div class="col-md-4">
-                 <div class="p-3 py-5">
-                     <div class="d-flex justify-content-between align-items-center experience"><span>Edit Experience</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Experience</span></div><br>
-                     <div class="col-md-12"><label class="labels">Experience in Designing</label><input type="text" class="form-control" placeholder="experience" value=""></div> <br>
-                     <div class="col-md-12"><label class="labels">Additional Details</label><input type="text" class="form-control" placeholder="additional details" value=""></div>
-                 </div>
-             </div> -->
-         </div>
-     </div>
-     </div>
-     </div>
+                     <h3 class="card-title">description</h3>  
+                     <p class="card-text">Some quick example text to build on the card title and make up the mple text to build on the card title and make up the mple text to build on the card title and make up the mple text to build on the card title and make up the mple text to build on the card title and make up the mple text to build on the card title and make up the bulk of the card's content.</p>
+                     
+                </div>
+               </div>
+            </div>   
+    </div>
+      <!-- computers section end -->
       <!-- footer section start -->
       <div class="footer_section layout_padding margin_top_90">
          <div class="container">
             <div class="footer_logo_main">
-               <div class="footer_logo"><a href="index.html"><img src=""></a></div>
+               <div class="footer_logo"><a href="index.html"><img src="images/footer-logo.png"></a></div>
                <div class="social_icon">
                   <ul>
                      <li><a href="#"><img src="images/fb-icon.png"></a></li>
@@ -126,16 +127,16 @@
                <div class="row">
                   <div class="col-lg-3 col-sm-6">
                      <h4 class="adderss_text">About</h4>
-                     <p class="ipsum_text"></p>
+                     <p class="ipsum_text">consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation u</p>
                   </div>
                   <div class="col-lg-3 col-sm-6">
                      <h4 class="adderss_text">Menu</h4>
                      <div class="footer_menu">
                         <ul>
                            <li><a href="index.html">Home</a></li>
-                           <li><a href="computers.html"></a></li>
-                           <li><a href="Mans_clothes.html"></a></li>
-                           <li><a href="womans_clothes.html"></a></li>
+                           <li><a href="computers.html">Computers</a></li>
+                           <li><a href="Mans_clothes.html">Mans Clothes</a></li>
+                           <li><a href="womans_clothes.html">Womans Clothes</a></li>
                            <li><a href="contact.html">Contact Us</a></li>
                         </ul>
                      </div>
@@ -166,7 +167,6 @@
       <!-- copyright section start -->
       <div class="copyright_section">
          <div class="container">
-           
          </div>
       </div>
       <!-- copyright section end -->

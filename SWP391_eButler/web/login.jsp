@@ -46,31 +46,32 @@
     </head>
     <body>
         <!-- header section start -->
-        <div class="header_section haeder_main">
-            <div class="container-fluid">
-                <nav class="navbar navbar-light bg-light justify-content-between">
-                    <div id="mySidenav" class="sidenav">
-                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                        <a href="index.html">Home</a>
-                        <a href="product_list.html">Prodcut List</a>
-                        <a href="computers.html">Computers</a>
-                        <a href="contact.html">Contact</a>
-                    </div>
-                    <span style="font-size:30px;cursor:pointer; color: #fff;" onclick="openNav()"><img src="images/toggle-icon.png"></span>
+      <div class="header_section haeder_main">
+         <div class="container-fluid">
+            <nav class="navbar navbar-light bg-light justify-content-between">
+               <div id="mySidenav" class="sidenav">
+                  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                  <a href="index.html">Home</a>
+                  <a href="product_list.html">Prodcut List</a>
+                  <a href="computers.html"></a>
 
-                    <form class="form-inline ">
-                        <div class="login_text">
-                            <ul>
-                                <li><a href="login.html"><img src="images/user-icon.png"></a></li>
-                                <li><a href="#"><img src="images/trolly-icon.png"></a></li>
-                                <li><a href="#"><img src="images/search-icon.png"></a></li>
-                                <li><a href="#"><img src="images/logout.png" width = "21" height = "20"></a></li>
-                            </ul>
-                        </div>
-                    </form>
-                </nav>
-            </div>
-        </div>
+                  <a href="contact.html">Contact</a>
+               </div>
+               <span style="font-size:30px;cursor:pointer; color: #fff;" onclick="openNav()"><img src="images/toggle-icon.png"></span>
+               <a class="navbar-brand" href="index.html">E-Butler</a></a>
+               <form class="form-inline ">
+                  <div class="login_text">
+                     <ul>
+                        <li><a href="login.jsp"><img src="images/user-icon.png"></a></li>
+                        <li><a href="#"><img src="images/trolly-icon.png"></a></li>
+                        <li><a href="#"><img src="images/search-icon.png"></a></li>
+                        <li><a href="#"><img src="images/logout.png" width = "21" height = "20"></a></li>
+                     </ul>
+                  </div>
+               </form>
+            </nav>
+         </div>
+      </div>
         <!-- header section end -->
         <!-- partial:index.partial.html -->
         <div id="login-form-wrap">
@@ -111,16 +112,16 @@
                     <div class="row">
                         <div class="col-lg-3 col-sm-6">
                             <h4 class="adderss_text">About</h4>
-                            <p class="ipsum_text">consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation u</p>
+                            <p class="ipsum_text"></p>
                         </div>
                         <div class="col-lg-3 col-sm-6">
                             <h4 class="adderss_text">Menu</h4>
                             <div class="footer_menu">
                                 <ul>
                                     <li><a href="index.html">Home</a></li>
-                                    <li><a href="computers.html">Computers</a></li>
-                                    <li><a href="Mans_clothes.html">Mans Clothes</a></li>
-                                    <li><a href="womans_clothes.html">Womans Clothes</a></li>
+                                    <li><a href="computers.html"></a></li>
+                                    <li><a href="Mans_clothes.html"></a></li>
+                                    <li><a href="womans_clothes.html"></a></li>
                                     <li><a href="contact.html">Contact Us</a></li>
                                 </ul>
                             </div>
