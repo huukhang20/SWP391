@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Contact</title>
+      <title>Product_list</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -32,22 +32,22 @@
       <link rel="stylesheet" href="css/owl.theme.default.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
       <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
-  
+      <link rel="stylesheet" href="./product_list.css">
    </head>
    <body>
       <!-- header section start -->
-      <div class="header_section_haeder_main">
+      <div class="header_section haeder_main">
          <div class="container-fluid">
             <nav class="navbar navbar-light bg-light justify-content-between">
                <div id="mySidenav" class="sidenav">
                   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                   <a href="index.html">Home</a>
-                  <a href="product_list.html">Prodcut List</a>
+                  <a href="product_list.html">Product List</a>
                   <a href="computers.html">Computers</a>
                   <a href="contact.html">Contact</a>
                </div>
                <span style="font-size:30px;cursor:pointer; color: #fff;" onclick="openNav()"><img src="images/toggle-icon.png"></span>
-               <a class="navbar-brand" href="index.html">E-Butler</a>
+               <a class="navbar-brand" href="index.html">E-Butler</a></a>
                <form class="form-inline ">
                   <div class="login_text">
                      <ul>
@@ -62,41 +62,77 @@
          </div>
       </div>
       <!-- header section end -->
-      <div class="container rounded bg-white mt-5 mb-5">
-         <div class="row">
-             <div class="col-md-3 border-right">
-                 <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com.my</span><span> </span></div>
-             </div>
-             <div class="col-md-5 border-right">
-                 <div class="p-3 py-5">
-                     <div class="d-flex justify-content-between align-items-center mb-3">
-                         <h4 class="text-right">Profile Settings</h4>
-                     </div>
-                     <div class="row mt-2">
-                         <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control" placeholder="first name" value=""></div>
-                         <div class="col-md-6"><label class="labels">Surname</label><input type="text" class="form-control" value="" placeholder="surname"></div>
-                         <div class="col-md-6"><label class="labels">username</label><input type="text" class="form-control" placeholder="username" value=""></div>
-                         <div class="col-md-6"><label class="labels">Mobile Number</label><input type="text" class="form-control" placeholder="phone number" value=""></div>
-                         <div class="col-md-6"><label class="labels">Address Line 1</label><input type="text" class="form-control" placeholder="address line 1" value=""></div>                        
-                         <div class="col-md-6"><label class="labels">Email ID</label><input type="text" class="form-control" placeholder="email id" value=""></div>
-                     </div>
-                     <div class="row mt-3">
-                         <div class="col-md-12"><label class="labels">Status</label><input type="text" class="form-control" placeholder="Status" value=""></div>
-                     </div>
-                    
-                     <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
-                 </div>
-             </div>
-             <!-- <div class="col-md-4">
-                 <div class="p-3 py-5">
-                     <div class="d-flex justify-content-between align-items-center experience"><span>Edit Experience</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Experience</span></div><br>
-                     <div class="col-md-12"><label class="labels">Experience in Designing</label><input type="text" class="form-control" placeholder="experience" value=""></div> <br>
-                     <div class="col-md-12"><label class="labels">Additional Details</label><input type="text" class="form-control" placeholder="additional details" value=""></div>
-                 </div>
-             </div> -->
-         </div>
-     </div>
+      <!-- computers section start -->
+      <div class="container mt-5 mb-5">
+        <div class="d-flex justify-content-center row">
+            <div class="col-md-10">
+                <div class="row p-2 bg-white border rounded">
+                    <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="https://i.imgur.com/QpjAiHq.jpg"></div>
+                    <div class="col-md-6 mt-1">
+                        <h4 class="card-title"><a href="product.html" title="View Product">Product title</a></h4>
+                        <div class="d-flex flex-row">
+                        </div>
+                        <div class="mt-1 mb-1 spec-1"><span>100% cotton</span><span class="dot"></span><span>Light weight</span><span class="dot"></span><span>Best finish<br></span></div>
+                        <div class="mt-1 mb-1 spec-1"><span>Unique design</span><span class="dot"></span><span>For men</span><span class="dot"></span><span>Casual<br></span></div>
+                    </div>
+                          <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+                              <div class="d-flex flex-row align-items-center">
+                                  Price<button class="btn btn-warning btn-sm mr-auto" type="button">$13.99</button>
+                              </div>
+                              <div class="d-flex flex-column mt-4"><button class="btn btn-primary btn-sm" type="button">Quantity</button>
+                                 <button class="btn primary btn-sm mt-2 bg-danger text-white" type="button">100</button></div>
+                          </div>
+                </div>
+               </div>
+            </div>   
 
+
+            <div class="d-flex justify-content-center row">
+               <div class="col-md-10">
+                   <div class="row p-2 bg-white border rounded">
+                       <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="https://i.imgur.com/QpjAiHq.jpg"></div>
+                       <div class="col-md-6 mt-1">
+                           <h4 class="card-title"><a href="product.html" title="View Product">Product title</a></h4>
+                           <div class="d-flex flex-row">
+                           </div>
+                           <div class="mt-1 mb-1 spec-1"><span>100% cotton</span><span class="dot"></span><span>Light weight</span><span class="dot"></span><span>Best finish<br></span></div>
+                           <div class="mt-1 mb-1 spec-1"><span>Unique design</span><span class="dot"></span><span>For men</span><span class="dot"></span><span>Casual<br></span></div>
+                       </div>
+                          <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+                              <div class="d-flex flex-row align-items-center">
+                                  Price<button class="btn btn-warning btn-sm mr-auto" type="button">$13.99</button>
+                              </div>
+                              <div class="d-flex flex-column mt-4"><button class="btn btn-primary btn-sm" type="button">Quantity</button>
+                                 <button class="btn primary btn-sm mt-2 bg-danger text-white" type="button">100</button></div>
+                          </div>
+                   </div>
+                  </div>
+               </div>  
+
+
+               <div class="d-flex justify-content-center row">
+                  <div class="col-md-10">
+                      <div class="row p-2 bg-white border rounded">
+                          <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="https://i.imgur.com/QpjAiHq.jpg"></div>
+                          <div class="col-md-6 mt-1">
+                              <h4 class="card-title"><a href="product.html" title="View Product">Product title</a></h4>
+                              <div class="d-flex flex-row">
+                              </div>
+                              <div class="mt-1 mb-1 spec-1"><span>100% cotton</span><span class="dot"></span><span>Light weight</span><span class="dot"></span><span>Best finish<br></span></div>
+                              <div class="mt-1 mb-1 spec-1"><span>Unique design</span><span class="dot"></span><span>For men</span><span class="dot"></span><span>Casual<br></span></div>
+                          </div>
+                          <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+                              <div class="d-flex flex-row align-items-center">
+                                  Price<button class="btn btn-warning btn-sm mr-auto" type="button">$13.99</button>
+                              </div>
+                              <div class="d-flex flex-column mt-4"><button class="btn btn-primary btn-sm" type="button">Quantity</button>
+                                 <button class="btn primary btn-sm mt-2 bg-danger text-white" type="button">100</button></div>
+                          </div>
+                      </div>
+                     </div>
+                  </div> 
+    </div>
+      <!-- computers section end -->
       <!-- footer section start -->
       <div class="footer_section layout_padding margin_top_90">
          <div class="container">
@@ -156,7 +192,6 @@
       <!-- copyright section start -->
       <div class="copyright_section">
          <div class="container">
-           
          </div>
       </div>
       <!-- copyright section end -->
