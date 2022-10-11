@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,36 +21,30 @@ import utils.DBUtils;
  */
 public class FeedbackDAO {
         //lay het feedback ra
-        public static ArrayList<Feedbacks> getFeedbacks(String feedbackId) {
-        ArrayList<Feedbacks> list = new ArrayList<>();
-        //connecting to database
-        Connection con = DBUtil.getConnection();
-        try {
-            //creating and executing sql statements
-            String sql = ""
-                    + ""
-                    + "";
-            PreparedStatement stm = con.prepareStatement(sql);
-            stm.setString(1, feedbackId);
-            ResultSet rs = stm.executeQuery();
-            //Loading data into the list
-            while (rs.next()) {
-                Feedbacks feedbacks = new Feedbacks();
-                feedbacks.setFeedbackId(rs.getInt("feedbackId"));
-                feedbacks.setTitle(rs.getString("title"));
-                feedbacks.setFeedbackDescription(rs.getString("feedbackDescription"));
-                feedbacks.setFeedbackReqTime(rs.getString("feedbackReqTime"));
-                feedbacks.setAccId(rs.getInt("accId"));
-                feedbacks.setFeedbackStatus(rs.getInt("feedbackStatus"));              
-                list.add(feedbacks);
+    public static ArrayList<Feedback> getFeedbacks() throws Exception {
+        ArrayList<Feedback> list = new ArrayList<>();
+        Connection cn = DBUtils.makeConnection();
+        if (cn != null) {
+            String sql = "SELECT feedbackId,title,feedbackDescription,feedbackReqTime,accId,feedbackStatus from dbo.Feedbacks";
+            Statement st = cn.createStatement();
+            ResultSet table = st.executeQuery(sql);
+            if (table != null) {
+                while (table.next()) {
+                    int feedbackId = table.getInt("feedbackId");
+                    String title = table.getString("title");
+                    String feedbackDescription = table.getString("feedbackDescription");
+                    String feedbackReqTime = table.getString("feedbackReqTime");
+                    int accId = table.getInt("accId");
+                    int feedbackStatus = table.getInt("feedbackStatus");
+                    Feedback fb = new Feedback(feedbackId,title,feedbackDescription,feedbackReqTime,accId,feedbackStatus);
+                    list.add(fb);
+                }
             }
-            //closing the connection 
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(FeedbackController.class.getName()).log(Level.SEVERE, null, ex);
+            cn.close();
         }
         return list;
     }
+    
         //set status cho feedback
             public static boolean updateFeedbackStatus(int feedbackId, int feedbackStatus) throws Exception {
         Connection cn = DBUtils.makeConnection();
