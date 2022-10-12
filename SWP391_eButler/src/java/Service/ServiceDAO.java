@@ -6,6 +6,7 @@
 package Service;
 
 import Service.Service;
+import controllers.ServiceController;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,10 +25,10 @@ import utils.DBUtils;
 //lay het service theo cateId
 public class ServiceDAO {
 
-    public static ArrayList<Services> getServices(String cateID) {
-        ArrayList<Services> list = new ArrayList<>();
+    public static ArrayList<Service> getServices(String cateID) throws SQLException {
+        ArrayList<Service> list = new ArrayList<>();
         //connecting to database
-        Connection con = DBUtil.getConnection();
+        Connection con = DBUtils.makeConnection();
         try {
             //creating and executing sql statements
             String sql = "select s.*, c.name as cateName "
@@ -38,8 +39,8 @@ public class ServiceDAO {
             ResultSet rs = stm.executeQuery();
             //Loading data into the list
             while (rs.next()) {
-                Services services = new Services();
-                services.setSerId(rs.getString("serId"));
+                Service services = new Service();
+                services.setSerID(rs.getInt("serId"));
                 services.setSerName(rs.getString("serName"));
 
                 list.add(services);
@@ -53,10 +54,10 @@ public class ServiceDAO {
     }
 
     //get services by name
-    public static ArrayList<Services> getSerVicesByName(String serName, String cateId) {
-        ArrayList<Services> list = new ArrayList<>();
+    public static ArrayList<Service> getSerVicesByName(String serName, String cateId) throws SQLException {
+        ArrayList<Service> list = new ArrayList<>();
         //connecting to database
-        Connection con = DBUtil.getConnection();
+        Connection con = DBUtils.makeConnection();
         try {
             //creating and executing sql statements
             String sql = "select s.*, c.name as cateName "
@@ -68,8 +69,8 @@ public class ServiceDAO {
             ResultSet rs = stm.executeQuery();
             //Loading data into the list
             while (rs.next()) {
-                Services services = new Services();
-                services.setSerId(rs.getString("serId"));
+                Service services = new Service();
+                services.setSerID(rs.getInt("serId"));
                 services.setSerName(rs.getString("serName"));
 
                 list.add(services);
@@ -83,9 +84,9 @@ public class ServiceDAO {
     }
     
     //get detail of services which are found
-    public Services find(String serId) {
-        Services services = null;
-        Connection con = DBUtil.getConnection();
+    public Service find(String serId) throws SQLException {
+        Service services = null;
+        Connection con = DBUtils.makeConnection();
         String sql = "select * from services where services_id = ?";
         try {
             PreparedStatement stm = con.prepareStatement(sql);

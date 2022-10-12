@@ -62,7 +62,7 @@ public class AccessDAO implements Serializable {
             String sql = "Insert Into Account(Username, Password, Role_ID, Name, Phone, Email, Address, Introduce, Image, IsStatus) values(?,?,?,?,?,?,?,?,?,?)";
             conn = DBUtils.makeConnection();
             preStm = conn.prepareStatement(sql);
-            preStm.setString(1, dto.getAccID());
+            preStm.setString(1, dto.getUsername());
             preStm.setString(2, dto.getPassword());
             preStm.setInt(3, dto.getRole());
             preStm.setString(4, dto.getName());

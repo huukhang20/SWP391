@@ -10,6 +10,7 @@ package Service;
  * @author Admin
  */
 public class Service {
+
     private int serID;
     private String serName;
     private String serDescription;
@@ -20,12 +21,12 @@ public class Service {
     private String workDate;
     private String releaseDate;
     private String serImage;
-    private int serStatus;
+    private String serStatus;
 
     public Service() {
     }
 
-    public Service(int serID, String serName, String serDescription, int cateId, int supplierId, int quantity, int price, String workDate, String releaseDate, String serImage, int serStatus) {
+    public Service(int serID, String serName, String serDescription, int cateId, int supplierId, int quantity, int price, String workDate, String releaseDate, String serImage, String serStatus) {
         this.serID = serID;
         this.serName = serName;
         this.serDescription = serDescription;
@@ -43,95 +44,93 @@ public class Service {
         return serID;
     }
 
-    public String getSerName() {
-        return serName;
-    }
-
-    public String getSerDescription() {
-        return serDescription;
-    }
-
-    public int getCateId() {
-        return cateId;
-    }
-
-    public int getSupplierId() {
-        return supplierId;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public String getWorkDate() {
-        return workDate;
-    }
-
-    public String getReleaseDate() {
-        return releaseDate;
-    }
-
-    public String getSerImage() {
-        return serImage;
-    }
-
-    public int getSerStatus() {
-        return serStatus;
-    }
-
     public void setSerID(int serID) {
         this.serID = serID;
+    }
+
+    public String getSerName() {
+        return serName;
     }
 
     public void setSerName(String serName) {
         this.serName = serName;
     }
 
+    public String getSerDescription() {
+        return serDescription;
+    }
+
     public void setSerDescription(String serDescription) {
         this.serDescription = serDescription;
+    }
+
+    public int getCateId() {
+        return cateId;
     }
 
     public void setCateId(int cateId) {
         this.cateId = cateId;
     }
 
+    public int getSupplierId() {
+        return supplierId;
+    }
+
     public void setSupplierId(int supplierId) {
         this.supplierId = supplierId;
+    }
+
+    public int getQuantity() {
+        return quantity;
     }
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
+    public int getPrice() {
+        return price;
+    }
+
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public String getWorkDate() {
+        return workDate;
     }
 
     public void setWorkDate(String workDate) {
         this.workDate = workDate;
     }
 
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+
     public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
+    }
+
+    public String getSerImage() {
+        return serImage;
     }
 
     public void setSerImage(String serImage) {
         this.serImage = serImage;
     }
 
-    public void setSerStatus(int serStatus) {
+    public String getSerStatus() {
+        return serStatus;
+    }
+
+    public void setSerStatus(String serStatus) {
         this.serStatus = serStatus;
     }
-    
-    // view Seivice
+
     @Override
     public String toString() {
         return "Service{" + "serID=" + serID + ", serName=" + serName + ", serDescription=" + serDescription + ", cateId=" + cateId + ", supplierId=" + supplierId + ", quantity=" + quantity + ", price=" + price + ", workDate=" + workDate + ", releaseDate=" + releaseDate + ", serImage=" + serImage + ", serStatus=" + serStatus + '}';
     }
-    
-    
+
 }

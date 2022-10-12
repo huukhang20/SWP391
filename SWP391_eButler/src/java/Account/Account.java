@@ -11,7 +11,7 @@ package Account;
  */
 public class Account {
 
-    private String accID;
+    private int accID;
     private String username;
     private String password;
     private int role;
@@ -31,8 +31,22 @@ public class Account {
         this.password = password;
     }
 
-    public Account(String accID, String password, int role, String name, String phone, String email, String address, String introduce, String image, String isStatus) {
+    public Account(int accID, String username, int role, String name, String phone, String email, String address, String introduce, String image, String isStatus) {
         this.accID = accID;
+        this.username = username;
+        this.role = role;
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.introduce = introduce;
+        this.image = image;
+        this.isStatus = isStatus;
+    }
+
+    public Account(int accID, String username, String password, int role, String name, String phone, String email, String address, String introduce, String image, String isStatus) {
+        this.accID = accID;
+        this.username = username;
         this.password = password;
         this.role = role;
         this.name = name;
@@ -44,12 +58,20 @@ public class Account {
         this.isStatus = isStatus;
     }
 
-    public String getAccID() {
+    public int getAccID() {
         return accID;
     }
 
-    public void setAccID(String accID) {
+    public void setAccID(int accID) {
         this.accID = accID;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -124,18 +146,9 @@ public class Account {
         this.isStatus = isStatus;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    //view Profile
     @Override
     public String toString() {
-        return "Account{" + "accID=" + accID + ", username=" + username + ", password=" + password + ", role=" + role + ", name=" + name + ", phone=" + phone + ", email=" + email + ", address=" + address + ", introduce=" + introduce + ", image=" + image + '}';
+        return "Account{" + "accID=" + accID + ", username=" + username + ", password=" + password + ", role=" + role + ", name=" + name + ", phone=" + phone + ", email=" + email + ", address=" + address + ", introduce=" + introduce + ", image=" + image + ", isStatus=" + isStatus + '}';
     }
 
 }
