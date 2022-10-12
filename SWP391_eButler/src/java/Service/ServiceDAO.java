@@ -117,22 +117,22 @@ public class ServiceDAO {
         }
         return false;
     }
-    
-        public static boolean createServices(String newSerName, String newSerDescription, int newQuantity, int newPrice, String newWorkDate, String newReleaseDate, String newSerImage, int newSerStatus) throws Exception {
+        //add new service
+        public static boolean createServices(String serName, String serDescription, String quantity, String price, String workDate, String releaseDate, String serImage, String serStatus) throws Exception {
         Connection cn = DBUtils.makeConnection();
         boolean flag = false;
         if (cn != null) {
             String sql = "INSERT INTO DBO.Services(serName,serDescription,quantity,price,workDate,releaseDate,serImage,serStatus)\n"
                     + "VALUES(?,?,?,?,?,?,?,?)";
             PreparedStatement pst = cn.prepareStatement(sql);
-            pst.setString(1, newSerName);
-            pst.setString(2, newSerDescription);
-            pst.setInt(3, newQuantity);
-            pst.setInt(4, newPrice);
-            pst.setString(5, newWorkDate);
-            pst.setString(6, newReleaseDate);
-            pst.setString(7, newSerImage);
-            pst.setInt(8, newSerStatus);
+            pst.setString(1, serName);
+            pst.setString(2, serDescription);
+            pst.setString(3, quantity);
+            pst.setString(4, price);
+            pst.setString(5, workDate);
+            pst.setString(6, releaseDate);
+            pst.setString(7, serImage);
+            pst.setString(8, serStatus);
             int table = pst.executeUpdate();
             if (table == 1) {
                 flag = true;
@@ -144,8 +144,8 @@ public class ServiceDAO {
         return flag;
     }
         
-            //Set status service 
-    public static boolean updateServiceStatus(int serId, String newSerName, String newSerDescription, int newQuantity, int newPrice, String newWorkDate, String newReleaseDate, String newSerImage) throws Exception {
+            //update service 
+    public static boolean updateService(String serName, String serDescription, String quantity, String price, String workDate, String releaseDate, String serImage, String serId) throws Exception {
         Connection cn = DBUtils.makeConnection();
         boolean flag = false;
         if (cn != null) {
@@ -159,14 +159,14 @@ public class ServiceDAO {
                     + "serImage=?\n"
                     + "WHERE serId=?";
             PreparedStatement pst = cn.prepareStatement(sql);
-            pst.setString(1, newSerName);
-            pst.setString(2, newSerDescription);
-            pst.setInt(3, newQuantity);
-            pst.setInt(4, newPrice);
-            pst.setString(5, newWorkDate);
-            pst.setString(6, newReleaseDate);
-            pst.setString(7, newSerImage);
-            pst.setInt(8, serId);
+            pst.setString(1, serName);
+            pst.setString(2, serDescription);
+            pst.setString(3, quantity);
+            pst.setString(4, price);
+            pst.setString(5, workDate);
+            pst.setString(6, releaseDate);
+            pst.setString(7, serImage);
+            pst.setString(8, serId);
             int table = pst.executeUpdate();
             if (table == 1) {
                 flag = true;
@@ -179,7 +179,7 @@ public class ServiceDAO {
     }
     
                 //update Services
-    public static boolean updateService(int serId, int serStatus) throws Exception {
+    public static boolean updateServiceStatus(String serStatus, String serId) throws Exception {
         Connection cn = DBUtils.makeConnection();
         boolean flag = false;
         if (cn != null) {
@@ -187,8 +187,8 @@ public class ServiceDAO {
                     + "SET serStatus=?\n"
                     + "WHERE serId=?";
             PreparedStatement pst = cn.prepareStatement(sql);
-            pst.setInt(1, serStatus);
-            pst.setInt(2, serId);
+            pst.setString(1, serStatus);
+            pst.setString(2, serId);
             int table = pst.executeUpdate();
             if (table == 1) {
                 flag = true;
@@ -200,15 +200,15 @@ public class ServiceDAO {
         return flag;
     }
     
-                    //update Services
-    public static boolean deleteService(int serId) throws Exception {
+                    //delete Services
+    public static boolean deleteService(String serId) throws Exception {
         Connection cn = DBUtils.makeConnection();
         boolean flag = false;
         if (cn != null) {
             String sql = "DELETE FROM DBO.Services\n"
                     + "WHERE serId=?";
             PreparedStatement pst = cn.prepareStatement(sql);
-            pst.setInt(1, serId);
+            pst.setString(1, serId);
             int table = pst.executeUpdate();
             if (table == 1) {
                 flag = true;
