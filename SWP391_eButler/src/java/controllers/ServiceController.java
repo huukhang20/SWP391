@@ -5,10 +5,12 @@
  */
 package controllers;
 
+import Service.Service;
 import Service.ServiceDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -184,6 +186,16 @@ public class ServiceController extends HttpServlet {
 //        cart.add(shoes);
         session.setAttribute("cart", cart);
     }
+    
+    //view Service
+     protected void viewService(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        ServiceDAO dao = new ServiceDAO();
+        List<Service> list = dao.getAllService();
+        
+        request.setAttribute("Service List", list);
+        request.getRequestDispatcher("product_list.html").forward(request, response);
+     }
 
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 /**

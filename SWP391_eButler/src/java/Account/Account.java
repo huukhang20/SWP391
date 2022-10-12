@@ -132,4 +132,10 @@ public class Account {
         this.username = username;
     }
 
+    //view Profile
+    @Override
+    public String toString() {
+        return "Account{" + "accID=" + accID + ", username=" + username + ", password=" + password + ", role=" + role + ", name=" + name + ", phone=" + phone + ", email=" + email + ", address=" + address + ", introduce=" + introduce + ", image=" + image + '}';
+    }
+
 }

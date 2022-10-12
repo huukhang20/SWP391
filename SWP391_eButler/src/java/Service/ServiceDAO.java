@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import utils.DBUtils;
@@ -217,5 +218,31 @@ public class ServiceDAO {
             cn.close();
         }
         return flag;
+    }
+    
+    // vrew Service
+    public List<Service> getAllService(){
+        List<Service> list = new ArrayList<>();
+        String query ="select * from Service";
+        try {
+            Connection cn = DBUtils.makeConnection();
+            PreparedStatement pst = cn.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()){
+                list.add(new Service(rs.getInt(1), 
+                        rs.getString(2), 
+                        rs.getString(3), 
+                        rs.getInt(4), 
+                        rs.getInt(5), 
+                        rs.getInt(6), 
+                        rs.getInt(7), 
+                        rs.getString(8), 
+                        rs.getString(9), 
+                        rs.getString(10), 
+                        rs.getInt(11)));
+            }
+        }catch (Exception e) {            
+        }
+        return list;
     }
 }

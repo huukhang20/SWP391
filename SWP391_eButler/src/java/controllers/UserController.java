@@ -5,13 +5,22 @@
  */
 package controllers;
 
+import Account.Account;
+import Account.AccountDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import utils.DBUtils;
 
 /**
  *
@@ -48,6 +57,16 @@ public class UserController extends HttpServlet {
         }
 //        request.getRequestDispatcher(Config.LAYOUT).forward(request, response);
     }
+    
+    //view Profile
+     protected void viewProfile(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, SQLException {
+        AccountDAO dao = new AccountDAO();
+        List<Account> list = dao.getProfile();
+        
+        request.setAttribute("Profile", list);
+        request.getRequestDispatcher("profile.html").forward(request, response);
+     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

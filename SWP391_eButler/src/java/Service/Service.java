@@ -127,5 +127,11 @@ public class Service {
         this.serStatus = serStatus;
     }
     
+    // view Seivice
+    @Override
+    public String toString() {
+        return "Service{" + "serID=" + serID + ", serName=" + serName + ", serDescription=" + serDescription + ", cateId=" + cateId + ", supplierId=" + supplierId + ", quantity=" + quantity + ", price=" + price + ", workDate=" + workDate + ", releaseDate=" + releaseDate + ", serImage=" + serImage + ", serStatus=" + serStatus + '}';
+    }
+    
     
 }
