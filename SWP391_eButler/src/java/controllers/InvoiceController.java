@@ -68,10 +68,10 @@ String action = (String) request.getAttribute("action");
         int orderId = (Integer) request.getAttribute("orderId");
         int serId = (Integer) request.getAttribute("serId");
         OrderDAO od = new OrderDAO();
-        OrderDetail oD = od.detail(orderId,serId);
+//        OrderDetail oD = od.detail(orderId,serId);
         request.setAttribute("controller", "invoice");
         request.setAttribute("action", "index");
-        request.setAttribute("orderDetail", oD);
+//        request.setAttribute("orderDetail", oD);
     }
 
     private void list(HttpServletRequest request, HttpServletResponse response)
@@ -90,7 +90,7 @@ String action = (String) request.getAttribute("action");
 //        ArrayList<Order> orders = (ArrayList<Order>) od.list(customer.getCustomerId());
         request.setAttribute("controller", "invoice");
         request.setAttribute("action", "index");
-        request.setAttribute("list", orders);
+        request.setAttribute("list", od);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

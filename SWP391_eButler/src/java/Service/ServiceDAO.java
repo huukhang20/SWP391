@@ -93,8 +93,8 @@ public class ServiceDAO {
             stm.setString(1, serId);
             ResultSet rs = stm.executeQuery();
             if (rs.next()) {
-                services = new Services();
-                services.setSerId(rs.getString("serId"));
+                services = new Service();
+                services.setSerID(rs.getInt("serId"));
                 services.setSerName(rs.getString("serName"));
 
             }
@@ -106,7 +106,7 @@ public class ServiceDAO {
     }
     
     public boolean checkServices(String serId) throws SQLException {
-        Connection con = DBUtil.getConnection();
+        Connection con = DBUtils.makeConnection();
         String sql = "select * from services where services_id = ?";
         if (con != null) {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -240,7 +240,7 @@ public class ServiceDAO {
                         rs.getString(8), 
                         rs.getString(9), 
                         rs.getString(10), 
-                        rs.getInt(11)));
+                        rs.getString(11)));
             }
         }catch (Exception e) {            
         }
