@@ -78,10 +78,10 @@
             <h2>Login</h2>
             <form id="login-form" action="LoginController" method="POST">
                 <p>
-                    <input type="text" id="username" name="username" value="${username}" placeholder="Username" required><i class="validation"><span></span><span></span></i>
+                    <input type="text" id="username" name="txtUsername" value="${param.txtUsername}" placeholder="Username" required><i class="validation"><span></span><span></span></i>
                 </p>
                 <p>
-                    <input type="password" id="password" name="password" placeholder="Password" required><i class="validation"><span></span><span></span></i>
+                    <input type="password" id="password" name="txtPassword" placeholder="Password" required><i class="validation"><span></span><span></span></i>
                 </p>
                 <p>
                     <input type="submit" id="login" value="Login">

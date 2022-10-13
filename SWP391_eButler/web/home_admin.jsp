@@ -1,9 +1,15 @@
+<%-- 
+    Document   : home_admin
+    Created on : Oct 13, 2022, 7:36:32 PM
+    Author     : Admin
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
-<html lang="en" dir="ltr">
+<html>
     <head>
-        <meta charset="UTF-8">
-        <title> Home Admin </title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Admin Dashboard</title>
         <link rel="stylesheet" href="style_admin.css">
         <!-- Boxicons CDN Link -->
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -17,7 +23,7 @@
             </div>
             <ul class="nav-links">
                 <li>
-                    <a href="home_admin.html" class="active">
+                    <a href="home_admin.jsp" class="active">
                         <i class='bx bx-grid-alt' ></i>
                         <span class="links_name">Dashboard</span>
                     </a>
@@ -25,29 +31,29 @@
                 <li>
                     <a href="product_list_admin.html">
                         <i class='bx bx-box' ></i>
-                        <span class="links_name">Product And Service List</span>
+                        <span class="links_name">Products And Services</span>
                     </a>
                 </li>
                 <li>
-                    <a href="req_list_admin.html">
+                    <a href="ShowRequestListController">
                         <i class='bx bx-list-ul' ></i>
-                        <span class="links_name">Req List</span>
+                        <span class="links_name">Request List</span>
                     </a>
                 </li>
                 <li>
-                    <a href="user_list_admin.html">
+                    <a href="ShowUserListController">
                         <i class='bx bx-user' ></i>
                         <span class="links_name">User List</span>
                     </a>
                 </li>
                 <li>
-                    <a href="feedback_list_admin.html">
+                    <a href="ShowFeedbackListController">
                         <i class='bx bx-message' ></i>
                         <span class="links_name">Feed Back</span>
                     </a>
                 </li>
                 <li class="log_out">
-                    <a href="#">
+                    <a href="LogoutController">
                         <i class='bx bx-log-out'></i>
                         <span class="links_name">Log out</span>
                     </a>
@@ -66,7 +72,7 @@
                 </div>
                 <div class="profile-details">
                     <img src="images/profile.jpg" alt="">
-                    <span class="admin_name">user ${sessionScope.USERLOGIN}</span>
+                    <span class="admin_name">${sessionScope.USERROLE} ${sessionScope.USERLOGIN}</span>
 
                 </div>
             </nav>
@@ -249,6 +255,5 @@
                     sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
             }
         </script>
-
     </body>
 </html>

@@ -34,7 +34,7 @@ public class AccountDAO {
             pst.setString(2, password);
             ResultSet table = pst.executeQuery();
             if (table != null && table.next()) {
-                acc.setAccID(table.getString("ID"));
+                acc.setAccID(table.getInt("ID"));
                 acc.setRole(table.getInt("role_id"));
                 acc.setName(table.getString("name"));
                 acc.setPhone(table.getString("phone"));

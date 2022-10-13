@@ -5,30 +5,25 @@
  */
 package controllers;
 
-import Account.Account;
-import Account.AccountDAO;
-import ebutler.dao.AccessDAO;
+import ebutler.dao.AdminControlDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import Service.Service;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "LoginController", urlPatterns = {"/LoginController"})
-public class LoginController extends HttpServlet {
-
-    private static final String error = "login.jsp";
-    private static final String admin = "home_admin.jsp";
-    private static final String home = "index.html";
-    private static final String supplier = "home_supp.html";
-    private static final String cc = "customercare.jsp";
+@WebServlet(name = "ShowRequestListController", urlPatterns = {"/ShowRequestListController"})
+public class ShowRequestListController extends HttpServlet {
+    private static final String reqListPage = "req_list_admin.jsp";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,40 +37,17 @@ public class LoginController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = error;
+        String url = reqListPage;
         try {
-            HttpSession session = request.getSession();
-            Account account = new Account();
-            String username = request.getParameter("txtUsername");
-            String password = request.getParameter("txtPassword");
-
-            AccessDAO access = new AccessDAO();
-
-            String role = access.checkLogin(username, password);
-
-            if (role.equals("failed")) {
-                request.setAttribute("username", username);
-                request.setAttribute("ERRORLOGIN", "Invalid username or password");
-            } else {
-                account = AccountDAO.getAccount(username, password);
-                session.setAttribute("account", account);
-                session.setAttribute("USERLOGIN", username);
-                session.setAttribute("USERROLE", role);
-                if (role.equals("admin")) {
-                    url = admin;
-                } else if (role.equals("customer")) {
-                    url = home;
-                } else if (role.equals("supplier")) {
-                    url = supplier;
-                } else if (role.equals("cc")) {
-                    url = cc;
-                } else {
-                    request.setAttribute("ERRORLOGIN", "Role doesn't supported!");
-                }
-            }
-
+            List<Service> serviceList = new ArrayList<Service>();
+            
+            AdminControlDAO dao = new AdminControlDAO();
+            
+            serviceList = dao.getListWaitingServiceForAdmin();
+            
+            request.setAttribute("SERVICEWAITINGLIST", serviceList);
         } catch (Exception e) {
-            log("ERROR at LoginControler: " + e.getMessage());
+            log("ERROR at ShowRequestListController: " + e.getMessage());
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
