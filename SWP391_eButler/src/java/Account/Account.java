@@ -58,6 +58,19 @@ public class Account {
         this.isStatus = isStatus;
     }
 
+    public Account(String username, String password, int role, String name, String phone, String email, String address, String introduce, String image, String isStatus) {
+        this.username = username;
+        this.password = password;
+        this.role = role;
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.introduce = introduce;
+        this.image = image;
+        this.isStatus = isStatus;
+    }
+
     public int getAccID() {
         return accID;
     }
