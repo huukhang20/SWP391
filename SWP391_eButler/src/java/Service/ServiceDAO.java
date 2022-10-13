@@ -64,7 +64,7 @@ public class ServiceDAO {
                     + "from services s join category c on s.category_id=c.category_id "
                     + "where s.name like ? and s.category_id = ?";
             PreparedStatement stm = con.prepareStatement(sql);
-            stm.setString(1, "%" + name + "%");
+            stm.setString(1, "%" + serName + "%");
             stm.setString(2, cateId);
             ResultSet rs = stm.executeQuery();
             //Loading data into the list
