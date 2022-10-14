@@ -25,19 +25,18 @@ public class FeedbackDAO {
         ArrayList<Feedback> list = new ArrayList<>();
         Connection cn = DBUtils.makeConnection();
         if (cn != null) {
-            String sql = "SELECT ID, Title, Service_ID, Description, Req_Time, Account_ID, Status from Feedback where Status = 1";
+            String sql = "SELECT ID, Title, Description, Req_Time, Account_ID, Status from Feedback where Status = 1";
             Statement st = cn.createStatement();
             ResultSet table = st.executeQuery(sql);
             if (table != null) {
                 while (table.next()) {
                     int ID = table.getInt("ID");
                     String title = table.getString("Title");
-                    int serviceID = table.getInt("Service_ID");
                     String description = table.getString("Description");
                     String reqTime = table.getString("Req_Time");
                     int accId = table.getInt("Account_ID");
                     int status = table.getInt("Status");
-                    Feedback feedback = new Feedback(ID, title, serviceID, description, reqTime, accId, status);
+                    Feedback feedback = new Feedback(ID, title, description, reqTime, accId, status);
                     list.add(feedback);
                 }
             }

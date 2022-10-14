@@ -12,7 +12,6 @@ package Feedback;
 public class Feedback {
     private int ID;
     private String title;
-    private int serviceID;
     private String description;
     private String reqTime;
     private int accId;
@@ -21,10 +20,9 @@ public class Feedback {
     public Feedback() {
     }
 
-    public Feedback(int ID, String title, int serviceID, String description, String reqTime, int accId, int status) {
+    public Feedback(int ID, String title, String description, String reqTime, int accId, int status) {
         this.ID = ID;
         this.title = title;
-        this.serviceID = serviceID;
         this.description = description;
         this.reqTime = reqTime;
         this.accId = accId;
@@ -45,14 +43,6 @@ public class Feedback {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public int getServiceID() {
-        return serviceID;
-    }
-
-    public void setServiceID(int serviceID) {
-        this.serviceID = serviceID;
     }
 
     public String getDescription() {
