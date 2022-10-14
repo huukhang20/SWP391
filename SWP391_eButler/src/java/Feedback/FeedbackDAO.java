@@ -47,7 +47,7 @@ public class FeedbackDAO {
     }
 
     //set status cho feedback
-    public static boolean updateFeedbackStatus(int feedbackId, int feedbackStatus) throws Exception {
+    public static boolean updateFeedbackStatus(String feedbackId, String feedbackStatus) throws Exception {
         Connection cn = DBUtils.makeConnection();
         boolean flag = false;
         if (cn != null) {
@@ -55,8 +55,8 @@ public class FeedbackDAO {
                     + "SET Status=?\n"
                     + "WHERE ID=?";
             PreparedStatement pst = cn.prepareStatement(sql);
-            pst.setInt(1, feedbackStatus);
-            pst.setInt(2, feedbackId);
+            pst.setString(1, feedbackStatus);
+            pst.setString(2, feedbackId);
             int table = pst.executeUpdate();
             if (table == 1) {
                 flag = true;

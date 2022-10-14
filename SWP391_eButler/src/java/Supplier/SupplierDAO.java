@@ -10,5 +10,5 @@ package Supplier;
  * @author Admin
  */
 public class SupplierDAO {
-    
+        
 }
