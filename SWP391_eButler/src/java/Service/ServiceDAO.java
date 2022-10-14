@@ -246,4 +246,34 @@ public class ServiceDAO {
         }
         return list;
     }
+    
+    // view Service detail
+    public Service detail(String serId) throws SQLException {
+        Service services = null;
+        Connection con = DBUtils.makeConnection();
+        String sql = "select * from services where id = ?";
+        try {
+            PreparedStatement stm = con.prepareStatement(sql);
+            stm.setString(1, serId);
+            ResultSet rs = stm.executeQuery();
+            if (rs.next()) {
+                services = new Service();
+                services.setSerID(rs.getInt("serId"));
+                services.setSerName(rs.getString("serName"));
+                services.setSerDescription(rs.getString("serDescription"));
+                services.setCateId(rs.getInt("cateId"));
+                services.setSupplierId(rs.getInt("supplierId"));
+                services.setQuantity(rs.getInt("quantity"));
+                services.setPrice(rs.getInt("price"));
+                services.setWorkDate(rs.getString("workDate"));
+                services.setReleaseDate(rs.getString("releaseDate"));
+                services.setSerImage(rs.getString("serImage"));                
+
+            }
+            con.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return services;
+    }
 }
