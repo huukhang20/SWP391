@@ -25,19 +25,19 @@ public class FeedbackDAO {
         ArrayList<Feedback> list = new ArrayList<>();
         Connection cn = DBUtils.makeConnection();
         if (cn != null) {
-            String sql = "SELECT feedbackId,title,feedbackDescription,feedbackReqTime,accId,feedbackStatus from dbo.Feedbacks";
+            String sql = "SELECT ID, Title, Description, Req_Time, Account_ID, Status from Feedback where Status = 1";
             Statement st = cn.createStatement();
             ResultSet table = st.executeQuery(sql);
             if (table != null) {
                 while (table.next()) {
-                    int feedbackId = table.getInt("feedbackId");
-                    String title = table.getString("title");
-                    String feedbackDescription = table.getString("feedbackDescription");
-                    String feedbackReqTime = table.getString("feedbackReqTime");
-                    int accId = table.getInt("accId");
-                    int feedbackStatus = table.getInt("feedbackStatus");
-                    Feedback fb = new Feedback(feedbackId,title,feedbackDescription,feedbackReqTime,accId,feedbackStatus);
-                    list.add(fb);
+                    int ID = table.getInt("ID");
+                    String title = table.getString("Title");
+                    String description = table.getString("Description");
+                    String reqTime = table.getString("Req_Time");
+                    int accId = table.getInt("Account_ID");
+                    int status = table.getInt("Status");
+                    Feedback feedback = new Feedback(ID, title, description, reqTime, accId, status);
+                    list.add(feedback);
                 }
             }
             cn.close();
@@ -50,9 +50,9 @@ public class FeedbackDAO {
         Connection cn = DBUtils.makeConnection();
         boolean flag = false;
         if (cn != null) {
-            String sql = "UPDATE DBO.Feedbacks\n"
-                    + "SET feedbackStatus=?\n"
-                    + "WHERE feedbackId=?";
+            String sql = "UPDATE Feedback\n"
+                    + "SET Status=?\n"
+                    + "WHERE ID=?";
             PreparedStatement pst = cn.prepareStatement(sql);
             pst.setInt(1, feedbackStatus);
             pst.setInt(2, feedbackId);

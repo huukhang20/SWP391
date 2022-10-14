@@ -32,7 +32,7 @@ public class ServiceDAO {
         try {
             //creating and executing sql statements
             String sql = "select s.*, c.name as cateName "
-                    + "from services s join category c on s.category_id=c.category_id "
+                    + "from service s join category c on s.category_id=c.category_id "
                     + "where s.category_id = ?";
             PreparedStatement stm = con.prepareStatement(sql);
             stm.setString(1, cateID);
@@ -87,7 +87,7 @@ public class ServiceDAO {
     public Service find(String serId) throws SQLException {
         Service services = null;
         Connection con = DBUtils.makeConnection();
-        String sql = "select * from services where services_id = ?";
+        String sql = "select * from services where id = ?";
         try {
             PreparedStatement stm = con.prepareStatement(sql);
             stm.setString(1, serId);
@@ -107,7 +107,7 @@ public class ServiceDAO {
     
     public boolean checkServices(String serId) throws SQLException {
         Connection con = DBUtils.makeConnection();
-        String sql = "select * from services where services_id = ?";
+        String sql = "select * from services where id = ?";
         if (con != null) {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, serId);
@@ -123,7 +123,7 @@ public class ServiceDAO {
         Connection cn = DBUtils.makeConnection();
         boolean flag = false;
         if (cn != null) {
-            String sql = "INSERT INTO DBO.Services(serName,serDescription,quantity,price,workDate,releaseDate,serImage,serStatus)\n"
+            String sql = "INSERT INTO DBO.Service(Name,Description,Category_ID,Supplier_ID,Working_Time,Release_Time,Image,Status)\n"
                     + "VALUES(?,?,?,?,?,?,?,?)";
             PreparedStatement pst = cn.prepareStatement(sql);
             pst.setString(1, serName);
@@ -150,15 +150,15 @@ public class ServiceDAO {
         Connection cn = DBUtils.makeConnection();
         boolean flag = false;
         if (cn != null) {
-            String sql = "UPDATE DBO.Services\n"
-                    + "SET serName=?,"
-                    + "serDescription=?,"
+            String sql = "UPDATE DBO.Service\n"
+                    + "SET Name=?,"
+                    + "Description=?,"
                     + "quantity=?,"
                     + "price=?,"
-                    + "workDate=?,"
-                    + "releaseDate=?,"
-                    + "serImage=?\n"
-                    + "WHERE serId=?";
+                    + "Working_Time=?,"
+                    + "Release_Time=?,"
+                    + "Image=?\n"
+                    + "WHERE I=?";
             PreparedStatement pst = cn.prepareStatement(sql);
             pst.setString(1, serName);
             pst.setString(2, serDescription);
@@ -184,9 +184,9 @@ public class ServiceDAO {
         Connection cn = DBUtils.makeConnection();
         boolean flag = false;
         if (cn != null) {
-            String sql = "UPDATE DBO.Services\n"
-                    + "SET serStatus=?\n"
-                    + "WHERE serId=?";
+            String sql = "UPDATE DBO.Service\n"
+                    + "SET Status=?\n"
+                    + "WHERE Id=?";
             PreparedStatement pst = cn.prepareStatement(sql);
             pst.setString(1, serStatus);
             pst.setString(2, serId);

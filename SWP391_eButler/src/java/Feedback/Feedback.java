@@ -10,72 +10,72 @@ package Feedback;
  * @author Admin
  */
 public class Feedback {
-    private int feedbackId;
+    private int ID;
     private String title;
-    private String feedbackDescription;
-    private String feedbackReqTime;
+    private String description;
+    private String reqTime;
     private int accId;
-    private int feedbackStatus;
+    private int status;
 
     public Feedback() {
     }
 
-    public Feedback(int feedbackId, String title, String feedbackDescription, String feedbackReqTime, int accId, int feedbackStatus) {
-        this.feedbackId = feedbackId;
+    public Feedback(int ID, String title, String description, String reqTime, int accId, int status) {
+        this.ID = ID;
         this.title = title;
-        this.feedbackDescription = feedbackDescription;
-        this.feedbackReqTime = feedbackReqTime;
+        this.description = description;
+        this.reqTime = reqTime;
         this.accId = accId;
-        this.feedbackStatus = feedbackStatus;
+        this.status = status;
     }
 
-    public int getFeedbackId() {
-        return feedbackId;
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public String getFeedbackDescription() {
-        return feedbackDescription;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getFeedbackReqTime() {
-        return feedbackReqTime;
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getReqTime() {
+        return reqTime;
+    }
+
+    public void setReqTime(String reqTime) {
+        this.reqTime = reqTime;
     }
 
     public int getAccId() {
         return accId;
     }
 
-    public int getFeedbackStatus() {
-        return feedbackStatus;
-    }
-
-    public void setFeedbackId(int feedbackId) {
-        this.feedbackId = feedbackId;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setFeedbackDescription(String feedbackDescription) {
-        this.feedbackDescription = feedbackDescription;
-    }
-
-    public void setFeedbackReqTime(String feedbackReqTime) {
-        this.feedbackReqTime = feedbackReqTime;
-    }
-
     public void setAccId(int accId) {
         this.accId = accId;
     }
 
-    public void setFeedbackStatus(int feedbackStatus) {
-        this.feedbackStatus = feedbackStatus;
+    public int getStatus() {
+        return status;
     }
-    
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
     
 }
