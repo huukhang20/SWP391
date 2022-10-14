@@ -20,7 +20,8 @@ import utils.DBUtils;
  * @author Admin
  */
 public class FeedbackDAO {
-        //lay het feedback ra
+    //lay het feedback ra
+
     public static ArrayList<Feedback> getFeedbacks() throws Exception {
         ArrayList<Feedback> list = new ArrayList<>();
         Connection cn = DBUtils.makeConnection();
@@ -44,9 +45,9 @@ public class FeedbackDAO {
         }
         return list;
     }
-    
-        //set status cho feedback
-            public static boolean updateFeedbackStatus(int feedbackId, int feedbackStatus) throws Exception {
+
+    //set status cho feedback
+    public static boolean updateFeedbackStatus(int feedbackId, int feedbackStatus) throws Exception {
         Connection cn = DBUtils.makeConnection();
         boolean flag = false;
         if (cn != null) {
@@ -56,6 +57,46 @@ public class FeedbackDAO {
             PreparedStatement pst = cn.prepareStatement(sql);
             pst.setInt(1, feedbackStatus);
             pst.setInt(2, feedbackId);
+            int table = pst.executeUpdate();
+            if (table == 1) {
+                flag = true;
+            } else {
+                flag = false;
+            }
+            cn.close();
+        }
+        return flag;
+    }
+    //delete feedback
+    public static boolean deleteFeedback(String feedbackId) throws Exception {
+        Connection cn = DBUtils.makeConnection();
+        boolean flag = false;
+        if (cn != null) {
+            String sql = "DELETE FROM DBO.Feedbacks\n"
+                    + "WHERE feedbackId=?";
+            PreparedStatement pst = cn.prepareStatement(sql);
+            pst.setString(1, feedbackId);
+            int table = pst.executeUpdate();
+            if (table == 1) {
+                flag = true;
+            } else {
+                flag = false;
+            }
+            cn.close();
+        }
+        return flag;
+    }
+    
+            //create feedback
+        public static boolean createFeedbacks(String feedbackTitle, String feedbackDescription) throws Exception {
+        Connection cn = DBUtils.makeConnection();
+        boolean flag = false;
+        if (cn != null) {
+            String sql = "INSERT INTO DBO.Feedbacks(title,Description)\n"
+                    + "VALUES(?,?)";
+            PreparedStatement pst = cn.prepareStatement(sql);
+            pst.setString(1, feedbackTitle);
+            pst.setString(2, feedbackDescription);
             int table = pst.executeUpdate();
             if (table == 1) {
                 flag = true;

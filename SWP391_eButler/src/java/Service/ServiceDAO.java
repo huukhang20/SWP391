@@ -158,7 +158,7 @@ public class ServiceDAO {
                     + "Working_Time=?,"
                     + "Release_Time=?,"
                     + "Image=?\n"
-                    + "WHERE I=?";
+                    + "WHERE Id=?";
             PreparedStatement pst = cn.prepareStatement(sql);
             pst.setString(1, serName);
             pst.setString(2, serDescription);
@@ -221,7 +221,7 @@ public class ServiceDAO {
         return flag;
     }
     
-    // vrew Service
+    // veew Service
     public List<Service> getAllService(){
         List<Service> list = new ArrayList<>();
         String query ="select * from Service";
