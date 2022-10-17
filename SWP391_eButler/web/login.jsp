@@ -55,7 +55,7 @@
                   <a href="product_list.html">Prodcut List</a>
                   <a href="computers.html"></a>
 
-                  <a href="contact.html">Contact</a>
+                  <a href="contact.jsp">Contact</a>
                </div>
                <span style="font-size:30px;cursor:pointer; color: #fff;" onclick="openNav()"><img src="images/toggle-icon.png"></span>
                <a class="navbar-brand" href="index.html">E-Butler</a></a>
@@ -122,7 +122,7 @@
                                     <li><a href="computers.html"></a></li>
                                     <li><a href="Mans_clothes.html"></a></li>
                                     <li><a href="womans_clothes.html"></a></li>
-                                    <li><a href="contact.html">Contact Us</a></li>
+                                    <li><a href="contact.jsp">Contact Us</a></li>
                                 </ul>
                             </div>
                         </div>

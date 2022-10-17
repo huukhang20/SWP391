@@ -36,14 +36,17 @@ public class AddFeedbackController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String title = request.getParameter("title");
-        String description = request.getParameter("description");
+        String description = request.getParameter("Massage");
+        String reqTime = request.getParameter("reqTime");
+        int accID = Integer.parseInt(request.getParameter("accID"));
         FeedbackDAO fd = new FeedbackDAO();
         try {
-            fd.createFeedbacks(title, description);
+            fd.createFeedbacks(title, description, reqTime, accID, 1);
         } catch (Exception ex) {
             Logger.getLogger(AddFeedbackController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        response.sendRedirect("");
+        
+        response.sendRedirect("index.html");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

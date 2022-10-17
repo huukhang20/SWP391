@@ -1,15 +1,16 @@
 <%-- 
-    Document   : register
-    Created on : Sep 29, 2022, 3:53:42 PM
+    Document   : contact
+    Created on : Oct 18, 2022, 12:58:18 AM
     Author     : Admin
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="en" >
+<!DOCTYPE html>
+<html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <title>HTML5 Login Form with validation Example</title>
+        <!-- basic -->
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,7 +18,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="viewport" content="initial-scale=1, maximum-scale=1">
         <!-- site metas -->
-        <title>Frica</title>
+        <title>Contact</title>
         <meta name="keywords" content="">
         <meta name="description" content="">
         <meta name="author" content="">
@@ -40,75 +41,56 @@
         <link rel="stylesheet" href="css/owl.theme.default.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
         <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-        <link rel="stylesheet" href="./style_login.css">
-
     </head>
     <body>
         <!-- header section start -->
-        <div class="header_section haeder_main">
-            <div class="container-fluid">
-                <nav class="navbar navbar-light bg-light justify-content-between">
-                    <div id="mySidenav" class="sidenav">
-                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                        <a href="index.html">Home</a>
-                        <a href="product_list.html">Prodcut List</a>
-                        <a href="computers.html">Computers</a>
-                        <a href="contact.jsp">Contact</a>
-                    </div>
-                    <span style="font-size:30px;cursor:pointer; color: #fff;" onclick="openNav()"><img src="images/toggle-icon.png"></span>
-
-                    <form class="form-inline ">
-                        <div class="login_text">
-                            <ul>
-                                <li><a href="login.jsp"><img src="images/user-icon.png"></a></li>
-                                <li><a href="#"><img src="images/trolly-icon.png"></a></li>
-                                <li><a href="#"><img src="images/search-icon.png"></a></li>
-                                <li><a href="#"><img src="images/logout.png" width = "21" height = "20"></a></li>
-                            </ul>
+        <c:if test="${empty USERLOGIN}"><jsp:forward page="login.jsp"/></c:if>
+            <div class="header_section haeder_main">
+                <div class="container-fluid">
+                    <nav class="navbar navbar-light bg-light justify-content-between">
+                        <div id="mySidenav" class="sidenav">
+                            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                            <a href="index.html">Home</a>
+                            <a href="product_list.html">Prodcut List</a>
+                            <a href="computers.html">Computers</a>
+                            <a href="contact.jsp">Contact</a>
                         </div>
-                    </form>
-                </nav>
+                        <span style="font-size:30px;cursor:pointer; color: #fff;" onclick="openNav()"><img src="images/toggle-icon.png"></span>
+                        <a class="navbar-brand" href="index.html">E-Butler</a></a>
+                        <form class="form-inline ">
+                            <div class="login_text">
+                                <ul>
+                                    <li><a href="login.jsp"><img src="images/user-icon.png"></a></li>
+                                    <li><a href="#"><img src="images/trolly-icon.png"></a></li>
+                                    <li><a href="#"><img src="images/search-icon.png"></a></li>
+                                    <li><a href="#"><img src="images/logout.png" width = "21" height = "20"></a></li>
+                                </ul>
+                            </div>
+                        </form>
+                    </nav>
+                </div>
+            </div>
+            <!-- header section end -->
+            <!-- contact section start -->
+            <div class="contact_section layout_padding">
+                <div class="container">
+                    <h1 class="contact_taital">Contact Us</h1>
+                    <div class="contact_section_2">
+                        <div class="mail_section_1">
+                            <form action="AddFeedbackController">
+                                <input type="text" class="mail_text" placeholder="Name" name="name" value="${account.getName()}" readonly="">
+                            <input type="text" class="mail_text" placeholder="Title" name="title">
+                            <input type="date" class="mail_text" placeholder="" name="reqTime">
+                            <textarea class="massage-bt" placeholder="Massage" rows="5" id="comment" name="Massage"></textarea>
+                            <input type="hidden" name="accID" value="${account.getAccID()}">
+                            <!--<div class="send_bt"><a href="#">Send</a></div>-->
+                            <input class="send_bt" type="submit" value="Submit" onclick="AlertFunc()">
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
-        <!-- header section end -->
-        <!-- partial:index.partial.html -->
-        <div id="login-form-wrap">
-            <h2>Register</h2>
-            <form id="login-form" action="RegisterController" method="POST">
-                <p>
-                    <input type="text" id="username" name="txtUsername" placeholder="Username" value="${param.txtUsername}" required><i class="validation"><span></span><span></span></i>
-                    <a style="color: red">${requestScope.INVALID.usernameError}</a>
-                </p>
-                <p>
-                    <input type="text" id="name" name="txtName" placeholder="Name" value="${param.txtName}" required><i class="validation"><span></span><span></span></i>
-                    <a style="color: red">${requestScope.INVALID.nameError}</a>
-                </p>
-                <p>
-                    <input type="email" id="email" name="txtEmail" placeholder="Email Address" value="${param.txtEmail}" required><i class="validation"><span></span><span></span></i>
-                    <a style="color: red">${requestScope.INVALID.emailError}</a>
-                </p>
-                <p>
-                    <input type="text" id="phone" name="txtPhone" placeholder="Phone Number" value="${param.txtPhone}" required><i class="validation"><span></span><span></span></i>
-                    <a style="color: red">${requestScope.INVALID.phoneError}</a>
-                </p>
-                <p>
-                    <input type="password" id="password" name="txtPassword" placeholder="Password" required><i class="validation"><span></span><span></span></i>
-                    <a style="color: red">${requestScope.INVALID.passwordError}</a>
-                </p>
-                <p>
-                    <input type="password" id="password" name="txtConfirm" placeholder="Confirm password" required><i class="validation"><span></span><span></span></i>
-                    <a style="color: red">${requestScope.INVALID.confirmError}</a>
-                </p>
-                <p>
-                    <input type="submit" id="login" value="REGISTER">
-                </p>
-            </form>
-            <div id="create-account-wrap">
-                <p>wellcone to our website<p>
-            </div><!--create-account-wrap-->
-        </div><!--login-form-wrap-->
-        <!-- partial -->
+        <!-- contact section end -->
         <!-- footer section start -->
         <div class="footer_section layout_padding margin_top_90">
             <div class="container">
@@ -128,17 +110,17 @@
                     <div class="row">
                         <div class="col-lg-3 col-sm-6">
                             <h4 class="adderss_text">About</h4>
-                            <p class="ipsum_text"></p>
+                            <p class="ipsum_text">consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation u</p>
                         </div>
                         <div class="col-lg-3 col-sm-6">
                             <h4 class="adderss_text">Menu</h4>
                             <div class="footer_menu">
                                 <ul>
                                     <li><a href="index.html">Home</a></li>
-                                    <li><a href="computers.html"></a></li>
-                                    <li><a href="Mans_clothes.html"></a></li>
-                                    <li><a href="womans_clothes.html"></a></li>
-                                    <li><a href="contact.jsp">Contact Us</a></li>
+                                    <li><a href="computers.html">Computers</a></li>
+                                    <li><a href="Mans_clothes.html">Mans Clothes</a></li>
+                                    <li><a href="womans_clothes.html">Womans Clothes</a></li>
+                                    <li><a href="contact.html">Contact Us</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -165,6 +147,12 @@
             </div>
         </div>
         <!-- footer section end -->
+        <!-- copyright section start -->
+        <div class="copyright_section">
+            <div class="container">
+
+            </div>
+        </div>
         <!-- copyright section end -->
         <!-- Javascript files-->
         <script src="js/jquery.min.js"></script>
@@ -180,14 +168,16 @@
         <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>  
         <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
         <script>
-                        function openNav() {
-                            document.getElementById("mySidenav").style.width = "100%";
-                        }
+                            function openNav() {
+                                document.getElementById("mySidenav").style.width = "100%";
+                            }
 
-                        function closeNav() {
-                            document.getElementById("mySidenav").style.width = "0";
-                        }
+                            function closeNav() {
+                                document.getElementById("mySidenav").style.width = "0";
+                            }
+                            function AlertFunc() {
+                                alert("Thanks for Contacting.");
+                            }
         </script> 
     </body>
 </html>
-

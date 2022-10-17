@@ -13,6 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import utils.DBUtils;
 
 /**
@@ -67,6 +68,7 @@ public class FeedbackDAO {
         }
         return flag;
     }
+
     //delete feedback
     public static boolean deleteFeedback(String feedbackId) throws Exception {
         Connection cn = DBUtils.makeConnection();
@@ -86,17 +88,20 @@ public class FeedbackDAO {
         }
         return flag;
     }
-    
-            //create feedback
-        public static boolean createFeedbacks(String feedbackTitle, String feedbackDescription) throws Exception {
+
+    //create feedback
+    public static boolean createFeedbacks(String feedbackTitle, String feedbackDescription, String reqTime, int accID, int status) throws Exception {
         Connection cn = DBUtils.makeConnection();
         boolean flag = false;
         if (cn != null) {
-            String sql = "INSERT INTO DBO.Feedbacks(title,Description)\n"
-                    + "VALUES(?,?)";
+            String sql = "INSERT INTO DBO.Feedback(Title,Description,Req_Time,Account_ID,Status)\n"
+                    + "VALUES(?,?,?,?,?)";
             PreparedStatement pst = cn.prepareStatement(sql);
             pst.setString(1, feedbackTitle);
             pst.setString(2, feedbackDescription);
+            pst.setString(3, reqTime);
+            pst.setInt(4, accID);
+            pst.setInt(5, status);
             int table = pst.executeUpdate();
             if (table == 1) {
                 flag = true;
