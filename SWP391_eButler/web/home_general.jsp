@@ -1,7 +1,13 @@
+<%-- 
+    Document   : home_general
+    Created on : Oct 14, 2022, 1:43:22 PM
+    Author     : Admin
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
-        <!-- basic -->
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -191,6 +197,7 @@
             </div>
         </div>
         <!-- catagary section end -->
+
         <!-- computers section start -->
         <div class="computers_section layout_padding">
             <div class="container">
