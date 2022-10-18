@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(name = "LogoutController", urlPatterns = {"/LogoutController"})
 public class LogoutController extends HttpServlet {
-    private static final String home = "";
+    private static final String home = "index.html";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,15 +36,14 @@ public class LogoutController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String url = home;
         try {
-            
+             HttpSession session = request.getSession();
+        session.invalidate();
         } catch (Exception e) {
             log("ERROR at LogoutController: " + e.getMessage());
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
-        HttpSession session = request.getSession();
-        session.invalidate();
-        request.getRequestDispatcher("index.html").forward(request, response);
+      
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
