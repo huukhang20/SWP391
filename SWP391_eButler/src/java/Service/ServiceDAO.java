@@ -230,18 +230,21 @@ public class ServiceDAO {
             Connection cn = DBUtils.makeConnection();
             PreparedStatement pst = cn.prepareStatement(query);
             ResultSet rs = pst.executeQuery();
+            int id = 0;
+            String name = "";
+            String description="";
+            int price=0;
+            String image="";
+            Service dto = null;
+            
             while(rs.next()){
-                list.add(new Service(rs.getInt(1), 
-                        rs.getString(2), 
-                        rs.getString(3), 
-                        rs.getInt(4), 
-                        rs.getInt(5), 
-                        rs.getInt(6), 
-                        rs.getInt(7), 
-                        rs.getString(8), 
-                        rs.getString(9), 
-                        rs.getString(10), 
-                        rs.getString(11)));
+                id= rs.getInt("ID");
+                name= rs.getString("Name");
+                description= rs.getString("Description");
+                price= rs.getInt("Price");
+                image= rs.getString("Image");
+                dto = new Service(id, name, description, price, image);
+                list.add(dto);
             }
         }catch (Exception e) {            
         }

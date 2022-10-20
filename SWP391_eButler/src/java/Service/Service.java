@@ -26,6 +26,14 @@ public class Service {
     public Service() {
     }
 
+    public Service(int serID, String serName, String serDescription, int price, String serImage) {
+        this.serID = serID;
+        this.serName = serName;
+        this.serDescription = serDescription;
+        this.price = price;
+        this.serImage = serImage;
+    }
+
     public Service(int serID, String serName, String serDescription, int cateId, int supplierId, int quantity, int price, String workDate, String releaseDate, String serImage, String serStatus) {
         this.serID = serID;
         this.serName = serName;
