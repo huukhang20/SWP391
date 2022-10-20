@@ -21,8 +21,7 @@ public class CategoryDAO {
         ArrayList<Category> list=new ArrayList<>();
         Connection cn=DBUtils.makeConnection();
         if(cn!=null){
-            String sql = "SELECT cateId,cateName\n"
-                    + "FROM DBO.Categories";
+            String sql = "select Category.ID, Category.Name from Category";
             PreparedStatement pst=cn.prepareStatement(sql);
             ResultSet table=pst.executeQuery();
             if (table!=null){
@@ -38,26 +37,26 @@ public class CategoryDAO {
         return list;
     }    
     
-        public static ArrayList<Category> getSearchCategories(String information) throws Exception{
-        ArrayList<Category> list=new ArrayList<>();
-        Connection cn=DBUtils.makeConnection();
-        if(cn!=null){
-            String sql = "SELECT cateID,cateName\n"
-                    + "FROM DBO.Categories\n"
-                    + "WHERE cateName LIKE ?";
-            PreparedStatement pst=cn.prepareStatement(sql);
-            pst.setString(1, "%"+information+"%");
-            ResultSet table=pst.executeQuery();
-            if (table!=null){
-                while(table.next()){
-                    int cateId = table.getInt("cateId");
-                    String cateName = table.getString("cateName");
-                    Category cate = new Category(cateId,cateName);
-                    list.add(cate);
-                }
-            }
-            cn.close();
-        }
-        return list;
-    }
+//        public static ArrayList<Category> getSearchCategories(String information) throws Exception{
+//        ArrayList<Category> list=new ArrayList<>();
+//        Connection cn=DBUtils.makeConnection();
+//        if(cn!=null){
+//            String sql = "SELECT cateID,cateName\n"
+//                    + "FROM DBO.Categories\n"
+//                    + "WHERE cateName LIKE ?";
+//            PreparedStatement pst=cn.prepareStatement(sql);
+//            pst.setString(1, "%"+information+"%");
+//            ResultSet table=pst.executeQuery();
+//            if (table!=null){
+//                while(table.next()){
+//                    int cateId = table.getInt("cateId");
+//                    String cateName = table.getString("cateName");
+//                    Category cate = new Category(cateId,cateName);
+//                    list.add(cate);
+//                }
+//            }
+//            cn.close();
+//        }
+//        return list;
+//    }
 }
