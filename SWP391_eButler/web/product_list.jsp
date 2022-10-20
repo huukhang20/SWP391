@@ -43,13 +43,11 @@
                 <nav class="navbar navbar-light bg-light justify-content-between">
                     <div id="mySidenav" class="sidenav">
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                        <a href="index.html">Home</a>
-                        <a href="product_list.html">Prodcut List</a>
-                        <a href="computers.html">Computers</a>
+                        <a href="home_general.jsp">Home</a>
                         <a href="contact.jsp">Contact</a>
                     </div>
                     <span style="font-size:30px;cursor:pointer; color: #fff;" onclick="openNav()"><img src="images/toggle-icon.png"></span>
-                    <a class="navbar-brand" href="index.html">E-Butler</a></a>
+                    <a class="navbar-brand" href="home_general.jsp">E-Butler</a></a>
                     <form class="form-inline ">
                         <div class="login_text">
                             <ul>
@@ -71,20 +69,23 @@
                     <div class="card bg-light mb-3">
                         <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Categories</div>
                         <ul class="list-group category_block">
-                            <li class="list-group-item"><a href="category.html">tag</a></li>
-                            <li class="list-group-item"><a href="category.html">tag</a></li>
-                            <li class="list-group-item"><a href="category.html">tag</a></li>
-                            <li class="list-group-item"><a href="category.html">tag</a></li>
-                            <li class="list-group-item"><a href="category.html">tag</a></li>
+                            <c:forEach items="${requestScope.listC}" var="o">
+                                <li class="list-group-item"><a href="#">${o.cateName}</a></li>
+                                </c:forEach>
                         </ul>
                     </div>
                     <div class="card bg-light mb-3">
-                        <div class="card-header bg-success text-white text-uppercase">Last product</div>
+                        <div class="card-header bg-success text-white text-uppercase">Last Service</div>
                         <div class="card-body">
-                            <img class="img-fluid" src="https://dummyimage.com/600x400/55595c/fff" />
-                            <h5 class="card-title">Product title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <p class="bloc_left_price">99.00 $</p>
+                            <c:if test="${not empty o.serImage}" var="check" scope="page">
+                                <img class="img-fluid" src="${last.serImage}" />
+                            </c:if>
+                            <c:if test="${empty o.serImage}" var="check" scope="page">
+                                <img class="img-fluid" src="https://dummyimage.com/600x400/55595c/fff" />
+                            </c:if>
+                            <h5 class="card-title">${last.serName}</h5>
+                            <p class="card-text">${last.serDescription}</p>
+                            <p class="bloc_left_price">${last.price}</p>
                         </div>
                     </div>
                 </div>

@@ -83,7 +83,7 @@ public class ServiceDAO {
         }
         return list;
     }
-    
+
     //get detail of services which are found
     public Service find(String serId) throws SQLException {
         Service services = null;
@@ -105,7 +105,7 @@ public class ServiceDAO {
         }
         return services;
     }
-    
+
     public boolean checkServices(String serId) throws SQLException {
         Connection con = DBUtils.makeConnection();
         String sql = "select * from services where id = ?";
@@ -119,8 +119,9 @@ public class ServiceDAO {
         }
         return false;
     }
-        //add new service
-        public static boolean createServices(String serName, String serDescription, String quantity, String price, String workDate, String releaseDate, String serImage, String serStatus) throws Exception {
+    //add new service
+
+    public static boolean createServices(String serName, String serDescription, String quantity, String price, String workDate, String releaseDate, String serImage, String serStatus) throws Exception {
         Connection cn = DBUtils.makeConnection();
         boolean flag = false;
         if (cn != null) {
@@ -145,8 +146,8 @@ public class ServiceDAO {
         }
         return flag;
     }
-        
-            //update service 
+
+    //update service 
     public static boolean updateService(String serName, String serDescription, String quantity, String price, String workDate, String releaseDate, String serImage, String serId) throws Exception {
         Connection cn = DBUtils.makeConnection();
         boolean flag = false;
@@ -179,8 +180,8 @@ public class ServiceDAO {
         }
         return flag;
     }
-    
-                //update Services
+
+    //update Services
     public static boolean updateServiceStatus(String serStatus, String serId) throws Exception {
         Connection cn = DBUtils.makeConnection();
         boolean flag = false;
@@ -201,8 +202,8 @@ public class ServiceDAO {
         }
         return flag;
     }
-    
-                    //delete Services
+
+    //delete Services
     public static boolean deleteService(String serId) throws Exception {
         Connection cn = DBUtils.makeConnection();
         boolean flag = false;
@@ -221,36 +222,36 @@ public class ServiceDAO {
         }
         return flag;
     }
-    
+
     // veew Service
-    public List<Service> getAllService(){
+    public List<Service> getAllService() {
         List<Service> list = new ArrayList<>();
-        String query ="select * from Service";
+        String query = "select * from Service";
         try {
             Connection cn = DBUtils.makeConnection();
             PreparedStatement pst = cn.prepareStatement(query);
             ResultSet rs = pst.executeQuery();
             int id = 0;
             String name = "";
-            String description="";
-            int price=0;
-            String image="";
+            String description = "";
+            int price = 0;
+            String image = "";
             Service dto = null;
-            
-            while(rs.next()){
-                id= rs.getInt("ID");
-                name= rs.getString("Name");
-                description= rs.getString("Description");
-                price= rs.getInt("Price");
-                image= rs.getString("Image");
+
+            while (rs.next()) {
+                id = rs.getInt("ID");
+                name = rs.getString("Name");
+                description = rs.getString("Description");
+                price = rs.getInt("Price");
+                image = rs.getString("Image");
                 dto = new Service(id, name, description, price, image);
                 list.add(dto);
             }
-        }catch (Exception e) {            
+        } catch (Exception e) {
         }
         return list;
     }
-    
+
     // view Service detail
     public Service detail(String serId) throws SQLException {
         Service services = null;
@@ -271,7 +272,7 @@ public class ServiceDAO {
                 services.setPrice(rs.getInt("price"));
                 services.setWorkDate(rs.getString("workDate"));
                 services.setReleaseDate(rs.getString("releaseDate"));
-                services.setSerImage(rs.getString("serImage"));                
+                services.setSerImage(rs.getString("serImage"));
 
             }
             con.close();
@@ -280,20 +281,55 @@ public class ServiceDAO {
         }
         return services;
     }
+
     // view Category
-    public List<Category> getAllCategory(){
+    public List<Category> getAllCategory() {
         List<Category> list = new ArrayList<>();
-        String query ="select * from Category";
+        String query = "select * from Category";
         try {
             Connection cn = DBUtils.makeConnection();
             PreparedStatement pst = cn.prepareStatement(query);
             ResultSet rs = pst.executeQuery();
-            while(rs.next()){
-                list.add(new Category(rs.getInt(1), 
-                        rs.getString(2)));
+            int id = 0;
+            String name = "";
+            Category dto = null;
+
+            while (rs.next()) {
+                id = rs.getInt("ID");
+                name = rs.getString("Name");
+                dto = new Category(id, name);
+                list.add(dto);
             }
-        }catch (Exception e) {            
+        } catch (Exception e) {
         }
         return list;
+    }
+
+    public Service getLast() {
+        String query = "select top 1 * from Service\n"
+                + "order by ID desc";
+        try{
+            Connection cn = DBUtils.makeConnection();
+            PreparedStatement pst = cn.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            int id = 0;
+            String name = "";
+            String description = "";
+            int price = 0;
+            String image = "";
+            Service dto = null;
+            
+            while(rs.next()){
+                id = rs.getInt("ID");
+                name = rs.getString("Name");
+                description = rs.getString("Description");
+                price = rs.getInt("Price");
+                image = rs.getString("Image");
+                dto = new Service(id, name, description, price, image);
+                return dto;
+            }
+        } catch (Exception e) {
+        }
+        return null;
     }
 }
