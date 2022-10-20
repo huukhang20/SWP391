@@ -308,7 +308,7 @@ public class ServiceDAO {
     public Service getLast() {
         String query = "select top 1 * from Service\n"
                 + "order by ID desc";
-        try{
+        try {
             Connection cn = DBUtils.makeConnection();
             PreparedStatement pst = cn.prepareStatement(query);
             ResultSet rs = pst.executeQuery();
@@ -318,8 +318,8 @@ public class ServiceDAO {
             int price = 0;
             String image = "";
             Service dto = null;
-            
-            while(rs.next()){
+
+            while (rs.next()) {
                 id = rs.getInt("ID");
                 name = rs.getString("Name");
                 description = rs.getString("Description");
