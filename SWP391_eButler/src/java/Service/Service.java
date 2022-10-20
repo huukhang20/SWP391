@@ -130,7 +130,7 @@ public class Service {
 
     @Override
     public String toString() {
-        return "Service{" + "serID=" + serID + ", serName=" + serName + ", serDescription=" + serDescription + ", cateId=" + cateId + ", supplierId=" + supplierId + ", quantity=" + quantity + ", price=" + price + ", workDate=" + workDate + ", releaseDate=" + releaseDate + ", serImage=" + serImage + ", serStatus=" + serStatus + '}';
+        return "Service{" + "serID=" + serID + ", serName=" + serName + ", serDescription=" + serDescription + ", price=" + price + '}';
     }
-
+    
 }

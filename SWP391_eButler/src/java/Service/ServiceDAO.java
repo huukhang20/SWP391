@@ -5,6 +5,7 @@
  */
 package Service;
 
+import Category.Category;
 import Service.Service;
 import controllers.ServiceController;
 import java.sql.Connection;
@@ -275,5 +276,21 @@ public class ServiceDAO {
             ex.printStackTrace();
         }
         return services;
+    }
+    // view Category
+    public List<Category> getAllCategory(){
+        List<Category> list = new ArrayList<>();
+        String query ="select * from Category";
+        try {
+            Connection cn = DBUtils.makeConnection();
+            PreparedStatement pst = cn.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()){
+                list.add(new Category(rs.getInt(1), 
+                        rs.getString(2)));
+            }
+        }catch (Exception e) {            
+        }
+        return list;
     }
 }

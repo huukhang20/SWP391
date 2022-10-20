@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import utils.DBUtils;
 import Account.Account;
+import Service.Service;
 import java.util.List;
 
 /*
@@ -152,26 +153,30 @@ public class AccountDAO {
 //        return list;
 //    }
     //view Profile
-    public List<Account> getProfile() throws SQLException{
-        List<Account> list = new ArrayList<>();
-        String query ="select * from Account";
+    public Account editProfile(int accID) throws SQLException{
+        Account profiles = null;
+        Connection con = DBUtils.makeConnection();
+        String sql ="insert into Account value = ?";
         try {
-            Connection cn = DBUtils.makeConnection();
-            PreparedStatement pst = cn.prepareStatement(query);
-            ResultSet rs = pst.executeQuery();
-            while(rs.next()){
-                list.add(new Account(rs.getString(1), 
-                        rs.getString(2), 
-                        rs.getInt(3), 
-                        rs.getString(4), 
-                        rs.getString(5), 
-                        rs.getString(6), 
-                        rs.getString(7), 
-                        rs.getString(8), 
-                        rs.getString(9), 
-                        rs.getString(10)));}
-        } catch (Exception e) {            
+            PreparedStatement stm = con.prepareStatement(sql);
+            stm.setInt(1, accID);
+            ResultSet rs = stm.executeQuery();
+            if (rs.next()) {
+                profiles = new Account();
+                profiles.setAccID(rs.getInt("accID"));
+                profiles.setName(rs.getString("name"));
+                profiles.setUsername(rs.getString("username"));
+                profiles.setPhone(rs.getString("phone"));
+                profiles.setAddress(rs.getString("address"));
+                profiles.setEmail(rs.getString("email"));
+                profiles.setImage(rs.getString("image"));
+            }
+            con.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
-        return list;
+        return profiles;
     }
+
+ 
 }
