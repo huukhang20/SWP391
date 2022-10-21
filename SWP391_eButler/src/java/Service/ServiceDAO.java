@@ -272,8 +272,8 @@ public class ServiceDAO {
         try {
             //creating and executing sql statements
             String sql = "select s.*, c.name as CategoryName "
-                    + "from Service s join category c on s.ID=c.ID "
-                    + "where s.ID = ?";
+                    + "from Service s join category c on c.ID=s.Category_ID "
+                    + "where c.ID = ?";
             PreparedStatement stm = con.prepareStatement(sql);
             stm.setString(1, cateID);
             ResultSet rs = stm.executeQuery();
