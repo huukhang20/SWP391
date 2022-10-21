@@ -26,6 +26,14 @@ public class Service {
     public Service() {
     }
 
+    public Service(int serID, String serName, String serDescription, int price, String serImage) {
+        this.serID = serID;
+        this.serName = serName;
+        this.serDescription = serDescription;
+        this.price = price;
+        this.serImage = serImage;
+    }
+
     public Service(int serID, String serName, String serDescription, int cateId, int supplierId, int quantity, int price, String workDate, String releaseDate, String serImage, String serStatus) {
         this.serID = serID;
         this.serName = serName;
@@ -130,7 +138,7 @@ public class Service {
 
     @Override
     public String toString() {
-        return "Service{" + "serID=" + serID + ", serName=" + serName + ", serDescription=" + serDescription + ", cateId=" + cateId + ", supplierId=" + supplierId + ", quantity=" + quantity + ", price=" + price + ", workDate=" + workDate + ", releaseDate=" + releaseDate + ", serImage=" + serImage + ", serStatus=" + serStatus + '}';
+        return "Service{" + "serID=" + serID + ", serName=" + serName + ", serDescription=" + serDescription + ", price=" + price + '}';
     }
-
+    
 }

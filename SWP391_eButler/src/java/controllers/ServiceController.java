@@ -188,15 +188,14 @@ public class ServiceController extends HttpServlet {
 //    }
 //    
 //    //view Service
-//     protected void viewService(HttpServletRequest request, HttpServletResponse response)
+//    protected void viewService(HttpServletRequest request, HttpServletResponse response)
 //            throws ServletException, IOException {
 //        ServiceDAO dao = new ServiceDAO();
 //        List<Service> list = dao.getAllService();
 //        
-//        request.setAttribute("Service List", list);
-//        request.getRequestDispatcher("product_list.html").forward(request, response);
-//     }
-//
+//        request.setAttribute("listP", list);
+//        request.getRequestDispatcher("product_list.jsp").forward(request, response);
+//    }
 //// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 ///**
 // * Handles the HTTP <code>GET</code> method.
