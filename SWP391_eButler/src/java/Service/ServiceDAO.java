@@ -110,7 +110,7 @@ public class ServiceDAO {
         Connection cn = DBUtils.makeConnection();
         boolean flag = false;
         if (cn != null) {
-            String sql = "INSERT INTO DBO.Service(Name,Description,Category_ID,Supplier_ID,Working_Time,Release_Time,Image,Status)\n"
+            String sql = "INSERT INTO Service(Name,Description,Category_ID,Supplier_ID,Working_Time,Release_Time,Image,Status)\n"
                     + "VALUES(?,?,?,?,?,?,?,?)";
             PreparedStatement pst = cn.prepareStatement(sql);
             pst.setString(1, serName);
@@ -137,7 +137,7 @@ public class ServiceDAO {
         Connection cn = DBUtils.makeConnection();
         boolean flag = false;
         if (cn != null) {
-            String sql = "UPDATE DBO.Service\n"
+            String sql = "UPDATE Service\n"
                     + "SET Name=?,"
                     + "Description=?,"
                     + "quantity=?,"
@@ -145,7 +145,7 @@ public class ServiceDAO {
                     + "Working_Time=?,"
                     + "Release_Time=?,"
                     + "Image=?\n"
-                    + "WHERE Id=?";
+                    + "WHERE ID=?";
             PreparedStatement pst = cn.prepareStatement(sql);
             pst.setString(1, serName);
             pst.setString(2, serDescription);
@@ -193,8 +193,8 @@ public class ServiceDAO {
         Connection cn = DBUtils.makeConnection();
         boolean flag = false;
         if (cn != null) {
-            String sql = "DELETE FROM DBO.Services\n"
-                    + "WHERE serId=?";
+            String sql = "DELETE FROM Service\n"
+                    + "WHERE ID=?";
             PreparedStatement pst = cn.prepareStatement(sql);
             pst.setString(1, serId);
             int table = pst.executeUpdate();
