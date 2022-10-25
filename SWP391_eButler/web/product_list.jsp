@@ -105,7 +105,7 @@
                                                 <img class="img-fluid" src="https://dummyimage.com/600x400/55595c/fff" />
                                             </c:if>
                                             <div class="card-body">
-                                                <h4 class="card-title show_txt"><a href="product.jsp" title="View Product">${o.serName}</a></h4>
+                                                <h4 class="card-title show_txt"><a href="ShowServiceDetail?serId=${o.serID}" title="View Product" >${o.serName}</a></h4>
                                                 <p class="card-text show_txt">${o.serDescription}</p>
                                                 <div class="row">
                                                     <div class="col">

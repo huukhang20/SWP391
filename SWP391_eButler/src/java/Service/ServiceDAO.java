@@ -5,6 +5,7 @@
  */
 package Service;
 
+import Category.Category;
 import Service.Service;
 import controllers.ServiceController;
 import java.sql.Connection;
@@ -61,28 +62,28 @@ public class ServiceDAO {
         return list;
     }
 
-
     //get detail of services which are found
     public Service find(String serId) throws SQLException {
         Service services = null;
         Connection con = DBUtils.makeConnection();
-        String sql = "select * from Service where Service.ID = ?";
+        String sql = "select * from Service where ID = ?";
         try {
             PreparedStatement stm = con.prepareStatement(sql);
             stm.setString(1, serId);
             ResultSet rs = stm.executeQuery();
             if (rs.next()) {
                 services = new Service();
-                services.setSerID(rs.getInt("serId"));
-                services.setSerName(rs.getString("serName"));
-                services.setSerDescription(rs.getString("serDescription"));
-                services.setCateId(rs.getInt("cateId"));
-                services.setQuantity(rs.getInt("quantity"));
-                services.setPrice(rs.getInt("price"));
-                services.setWorkDate(rs.getString("workDate"));
-                services.setReleaseDate(rs.getString("releaseDate"));
-                services.setSerImage(rs.getString("serImage"));
-                services.setSerStatus(rs.getString("serStatus"));
+                services.setSerID(rs.getInt("ID"));
+                services.setSerName(rs.getString("Name"));
+                services.setSerDescription(rs.getString("Description"));
+                services.setCateId(rs.getInt("Category_ID"));
+                services.setSupplierId(rs.getInt("Supplier_ID"));
+                services.setQuantity(rs.getInt("Quantity"));
+                services.setPrice(rs.getInt("Price"));
+                services.setWorkDate(rs.getString("Working_Time"));
+                services.setReleaseDate(rs.getString("Release_Time"));
+                services.setSerImage(rs.getString("Image"));
+                services.setSerStatus(rs.getString("Status"));
             }
             con.close();
         } catch (SQLException ex) {
@@ -238,7 +239,7 @@ public class ServiceDAO {
     public Service detail(String serId) throws SQLException {
         Service services = null;
         Connection con = DBUtils.makeConnection();
-        String sql = "select * from services where id = ?";
+        String sql = "select * from service where id = ?";
         try {
             PreparedStatement stm = con.prepareStatement(sql);
             stm.setString(1, serId);
@@ -263,9 +264,8 @@ public class ServiceDAO {
         }
         return services;
     }
-    
-    
-        public static ArrayList<Service> getServicesByCategory(String cateID) throws SQLException {
+
+    public static ArrayList<Service> getServicesByCategory(String cateID) throws SQLException {
         ArrayList<Service> list = new ArrayList<>();
         //connecting to database
         Connection con = DBUtils.makeConnection();
@@ -297,6 +297,57 @@ public class ServiceDAO {
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(ServiceController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    public Service getLast() {
+        String query = "select top 1 * from Service\n"
+                + "order by ID desc";
+        try {
+            Connection cn = DBUtils.makeConnection();
+            PreparedStatement pst = cn.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            int id = 0;
+            String name = "";
+            String description = "";
+            int price = 0;
+            String image = "";
+            Service dto = null;
+
+            while (rs.next()) {
+                id = rs.getInt("ID");
+                name = rs.getString("Name");
+                description = rs.getString("Description");
+                price = rs.getInt("Price");
+                image = rs.getString("Image");
+                dto = new Service(id, name, description, price, image);
+                return dto;
+            }
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    
+    public List<Category> getAllCategory() {
+        List<Category> list = new ArrayList<>();
+        String query ="select * from Category";
+        try {
+            Connection cn = DBUtils.makeConnection();
+            PreparedStatement pst = cn.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            int id = 0;
+            String name = "";
+            Category dto = null;
+
+            while (rs.next()) {
+                id = rs.getInt("ID");
+                name = rs.getString("Name");
+                dto = new Category(id, name);
+                list.add(dto);
+            }
+        }catch (Exception e) {            
+ 
         }
         return list;
     }

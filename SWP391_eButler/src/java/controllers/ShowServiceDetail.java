@@ -10,6 +10,8 @@ import Service.ServiceDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author SE150580 Nguyen Phuc Hau
+ * @author Admin
  */
 @WebServlet(name = "ShowServiceDetail", urlPatterns = {"/ShowServiceDetail"})
 public class ShowServiceDetail extends HttpServlet {
@@ -31,16 +33,19 @@ public class ShowServiceDetail extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
-     * @throws java.sql.SQLException
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response, String serId)
-            throws ServletException, IOException, SQLException {
-        response.setContentType("text/html;charset=UTF-8");
-        ServiceDAO dao = new ServiceDAO();
-        Service detail = dao.detail(serId);
-        
-        request.setAttribute("detailP", detail);
-        request.getRequestDispatcher("product.jsp").forward(request, response);
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+            response.setContentType("text/html;charset=UTF-8");
+            String serId = request.getParameter("serId");
+            ServiceDAO dao = new ServiceDAO();
+            Service detail = dao.find(serId);            
+            request.setAttribute("detailP", detail);
+            request.getRequestDispatcher("product.jsp").forward(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(ShowServiceDetail.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

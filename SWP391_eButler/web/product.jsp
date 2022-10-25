@@ -65,7 +65,6 @@
       <!-- computers section start -->
       <section id="services" class="services section-bg">
          <div class="container-fluid">
-          <c:foreach items="${detailP}" var="o">
             <div class="row row-sm">
                <div class="col-md-6 _boxzoom">                 
                   <div class="zoom-thumb">
@@ -78,28 +77,28 @@
                   </div>
                   <div class="_product-images">
                      <div class="picZoomer">
-                        <img class="my_img" src="${o.serImage}" alt="">
+                        <img class="my_img" src="${detailP.serImage}" alt="">
                      </div>
                   </div>
                </div>
                <div class="col-md-6">
                   <div class="_product-detail-content">
-                     <p class="_p-name"> ${o.serName} </p>
+                     <p class="_p-name"> ${detailP.serName}</p>
                      <div class="_p-price-box">
                         <div class="p-list">
                            <span> M.R.P. : <i class="fa fa-inr"></i> <del> 1399  </del>   </span>
-                           <span class="price"> ${o.price} </span>
+                           <span class="price"> ${detailP.price} </span>
                         </div>
                         <div class="_p-add-cart">
                            <div class="_p-qty">
                               <span>Add Quantity</span>
                               <div class="value-button decrease_" id="" value="Decrease Value">-</div>
-                              <input type="number" name="qty" id="number" value="${o.quantity}" />
+                              <input type="number" name="qty" id="number" value="${detailP.quantity}" />
                               <div class="value-button increase_" id="" value="Increase Value">+</div>
                            </div>
                         </div>
                         <div class="_p-features">
-                           <span> ${o.serDescription}</span>                       
+                           <span> ${detailP.serDescription}</span>                       
                         </div>
                         <form action="" method="post" accept-charset="utf-8">
                            <ul class="spe_ul"></ul>
@@ -121,7 +120,6 @@
                   </div>
                </div>              
             </div>
-           </c:foreach> 
          </div>
       </section>
       <section class="sec bg-light">
