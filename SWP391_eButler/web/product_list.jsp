@@ -105,11 +105,8 @@
                                                 <img class="img-fluid" src="https://dummyimage.com/600x400/55595c/fff" />
                                             </c:if>
                                             <div class="card-body">
-<<<<<<< HEAD
-                                                <h4 class="card-title show_txt"><a href="ShowServiceDetail?serID=${o.serID}" title="View Product">${o.serName}</a></h4>
-=======
                                                 <h4 class="card-title show_txt"><a href="ShowServiceDetail?serId=${o.serID}" title="View Product" >${o.serName}</a></h4>
->>>>>>> 1cab7e50ec2f1e00f743e09f4f5061809acd2f70
+
                                                 <p class="card-text show_txt">${o.serDescription}</p>
                                                 <div class="row">
                                                     <div class="col">

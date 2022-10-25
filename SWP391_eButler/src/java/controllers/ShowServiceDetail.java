@@ -35,7 +35,6 @@ public class ShowServiceDetail extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-<<<<<<< HEAD
     protected void processRequest(HttpServletRequest request, HttpServletResponse response, String serId)
             throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
@@ -45,20 +44,6 @@ public class ShowServiceDetail extends HttpServlet {
         
         request.setAttribute("detailP", detail);
         request.getRequestDispatcher("product.jsp").forward(request, response);
-=======
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        try {
-            response.setContentType("text/html;charset=UTF-8");
-            String serId = request.getParameter("serId");
-            ServiceDAO dao = new ServiceDAO();
-            Service detail = dao.find(serId);            
-            request.setAttribute("detailP", detail);
-            request.getRequestDispatcher("product.jsp").forward(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(ShowServiceDetail.class.getName()).log(Level.SEVERE, null, ex);
-        }
->>>>>>> 1cab7e50ec2f1e00f743e09f4f5061809acd2f70
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

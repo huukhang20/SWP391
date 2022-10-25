@@ -238,11 +238,7 @@ public class ServiceDAO {
     // view Service detail
     public Service detail(String serId) throws SQLException {
         Connection con = DBUtils.makeConnection();
-<<<<<<< HEAD
         String sql = "select * from Service where id = ?";
-=======
-        String sql = "select * from service where id = ?";
->>>>>>> 1cab7e50ec2f1e00f743e09f4f5061809acd2f70
         try {
             PreparedStatement stm = con.prepareStatement(sql);
             stm.setString(1, serId);
@@ -297,44 +293,10 @@ public class ServiceDAO {
         }
         return list;
     }
-<<<<<<< HEAD
-     public List<Category> getAllCategory() {
-        List<Category> list = new ArrayList<>();
-         String query = "select * from Category";
-=======
-
-    public Service getLast() {
-        String query = "select top 1 * from Service\n"
-                + "order by ID desc";
-        try {
-            Connection cn = DBUtils.makeConnection();
-            PreparedStatement pst = cn.prepareStatement(query);
-            ResultSet rs = pst.executeQuery();
-            int id = 0;
-            String name = "";
-            String description = "";
-            int price = 0;
-            String image = "";
-            Service dto = null;
-
-            while (rs.next()) {
-                id = rs.getInt("ID");
-                name = rs.getString("Name");
-                description = rs.getString("Description");
-                price = rs.getInt("Price");
-                image = rs.getString("Image");
-                dto = new Service(id, name, description, price, image);
-                return dto;
-            }
-        } catch (Exception e) {
-        }
-        return null;
-    }
     
     public List<Category> getAllCategory() {
         List<Category> list = new ArrayList<>();
         String query ="select * from Category";
->>>>>>> 1cab7e50ec2f1e00f743e09f4f5061809acd2f70
         try {
             Connection cn = DBUtils.makeConnection();
             PreparedStatement pst = cn.prepareStatement(query);
@@ -349,7 +311,6 @@ public class ServiceDAO {
                 dto = new Category(id, name);
                 list.add(dto);
             }
-<<<<<<< HEAD
         } catch (Exception e) {
         }
         return list;
@@ -382,11 +343,4 @@ public class ServiceDAO {
         }
         return null;
     }
-=======
-        }catch (Exception e) {            
- 
-        }
-        return list;
-    }
->>>>>>> 1cab7e50ec2f1e00f743e09f4f5061809acd2f70
 }
