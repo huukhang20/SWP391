@@ -44,6 +44,7 @@ public class ShowService extends HttpServlet {
         request.setAttribute("listP", list);
         request.setAttribute("listC", listC);
         request.setAttribute("last", last);
+        
         request.getRequestDispatcher("product_list.jsp").forward(request, response);
     }
 

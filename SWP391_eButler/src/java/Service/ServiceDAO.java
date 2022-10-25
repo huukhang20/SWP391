@@ -26,41 +26,41 @@ import utils.DBUtils;
 //lay het service theo cateId
 public class ServiceDAO {
 
-    public static ArrayList<Service> getServices(String serID) throws SQLException {
-        ArrayList<Service> list = new ArrayList<>();
-        //connecting to database
-        Connection con = DBUtils.makeConnection();
-        try {
-            //creating and executing sql statements
-            String sql = "select s.*, c.name as CategoryName "
-                    + "from Service s join category c on s.ID=c.ID "
-                    + "where s.ID = ?";
-            PreparedStatement stm = con.prepareStatement(sql);
-            stm.setString(1, serID);
-            ResultSet rs = stm.executeQuery();
-            //Loading data into the list
-            while (rs.next()) {
-                Service services = new Service();
-                services.setSerID(rs.getInt("serId"));
-                services.setSerName(rs.getString("serName"));
-                services.setSerDescription(rs.getString("serDescription"));
-                services.setCateId(rs.getInt("cateId"));
-                services.setSupplierId(rs.getInt("supplierId"));
-                services.setQuantity(rs.getInt("quantity"));
-                services.setPrice(rs.getInt("price"));
-                services.setWorkDate(rs.getString("workDate"));
-                services.setReleaseDate(rs.getString("releaseDate"));
-                services.setSerImage(rs.getString("serImage"));
-                services.setSerStatus(rs.getString("serStatus"));
-                list.add(services);
-            }
-            //closing the connection 
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(ServiceController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return list;
-    }
+//    public static ArrayList<Service> getServices(String serID) throws SQLException {
+//        ArrayList<Service> list = new ArrayList<>();
+//        //connecting to database
+//        Connection con = DBUtils.makeConnection();
+//        try {
+//            //creating and executing sql statements
+//            String sql = "select s.*, c.name as CategoryName "
+//                    + "from Service s join category c on s.ID=c.ID "
+//                    + "where s.ID = ?";
+//            PreparedStatement stm = con.prepareStatement(sql);
+//            stm.setString(1, serID);
+//            ResultSet rs = stm.executeQuery();
+//            //Loading data into the list
+//            while (rs.next()) {
+//                Service services = new Service();
+//                services.setSerID(rs.getInt("serId"));
+//                services.setSerName(rs.getString("serName"));
+//                services.setSerDescription(rs.getString("serDescription"));
+//                services.setCateId(rs.getInt("cateId"));
+//                services.setSupplierId(rs.getInt("supplierId"));
+//                services.setQuantity(rs.getInt("quantity"));
+//                services.setPrice(rs.getInt("price"));
+//                services.setWorkDate(rs.getString("workDate"));
+//                services.setReleaseDate(rs.getString("releaseDate"));
+//                services.setSerImage(rs.getString("serImage"));
+//                services.setSerStatus(rs.getString("serStatus"));
+//                list.add(services);
+//            }
+//            //closing the connection 
+//            con.close();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ServiceController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return list;
+//    }
 
     //get detail of services which are found
     public Service find(String serId) throws SQLException {

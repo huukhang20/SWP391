@@ -150,7 +150,7 @@
         <div class="footer_section layout_padding margin_top_90">
             <div class="container">
                 <div class="footer_logo_main">
-                    <div class="footer_logo"><a href="index.html"><img src="images/footer-logo.png"></a></div>
+                    <div class="footer_logo"><a href="index.html"><img src=""></a></div>
                     <div class="social_icon">
                         <ul>
                             <li><a href="#"><img src="images/fb-icon.png"></a></li>
