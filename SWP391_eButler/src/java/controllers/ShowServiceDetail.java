@@ -31,19 +31,21 @@ public class ShowServiceDetail extends HttpServlet {
      *
      * @param request servlet request
      * @param response servlet response
-     * @param serId
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response, String serId)
-            throws ServletException, IOException, SQLException {
-        response.setContentType("text/html;charset=UTF-8");
-        String ID = request.getParameter("serID");
-        ServiceDAO dao = new ServiceDAO();
-        Service detail = dao.detail(serId);
-        
-        request.setAttribute("detailP", detail);
-        request.getRequestDispatcher("product.jsp").forward(request, response);
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+            response.setContentType("text/html;charset=UTF-8");
+            String serId = request.getParameter("serId");
+            ServiceDAO dao = new ServiceDAO();
+            Service detail = dao.find(serId);            
+            request.setAttribute("detailP", detail);
+            request.getRequestDispatcher("product.jsp").forward(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(ShowServiceDetail.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

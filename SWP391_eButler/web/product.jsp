@@ -1,6 +1,12 @@
+<%-- 
+    Document   : product
+    Created on : Oct 26, 2022, 2:14:44 PM
+    Author     : Admin
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
     <head>
         <!-- basic -->
         <meta charset="utf-8">
@@ -43,10 +49,11 @@
                     <div id="mySidenav" class="sidenav">
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                         <a href="home_general.jsp">Home</a>
+                        <a href="ShowService">Product List</a>
                         <a href="contact.jsp">Contact</a>
                     </div>
                     <span style="font-size:30px;cursor:pointer; color: #fff;" onclick="openNav()"><img src="images/toggle-icon.png"></span>
-                    <a class="navbar-brand" href="home_general.jsp">E-Butler</a></a>
+                    <a class="navbar-brand" href="index.html">E-Butler</a></a>
                     <form class="form-inline ">
                         <div class="login_text">
                             <ul>
@@ -64,6 +71,7 @@
         <!-- computers section start -->
         <section id="services" class="services section-bg">
             <div class="container-fluid">
+                <c:foreach items="${detailP}" var="o">
                     <div class="row row-sm">
                         <div class="col-md-6 _boxzoom">                 
                             <div class="zoom-thumb">
@@ -76,12 +84,7 @@
                             </div>
                             <div class="_product-images">
                                 <div class="picZoomer">
-                                    <c:if test="${not empty detailP.serImage}" var="check" scope="page">
-                                        <img class="card-img-top" src="${detailP.serImage}" alt="Card image cap">
-                                    </c:if>
-                                    <c:if test="${empty detailP.serImage}" var="check" scope="page">
-                                        <img class="img-fluid" src="https://dummyimage.com/600x400/55595c/fff" />
-                                    </c:if>
+                                    <img class="my_img" src="${detailP.serImage}" alt="">
                                 </div>
                             </div>
                         </div>
@@ -91,7 +94,7 @@
                                 <div class="_p-price-box">
                                     <div class="p-list">
                                         <span> M.R.P. : <i class="fa fa-inr"></i> <del> 1399  </del>   </span>
-                                        <span class="price"> ${detailP.price} </span>
+                                        <span class="price"> ${detailP.price} VND </span>
                                     </div>
                                     <div class="_p-add-cart">
                                         <div class="_p-qty">
@@ -124,136 +127,7 @@
                             </div>
                         </div>              
                     </div>
-=======
-   <head>
-      <!-- basic -->
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <!-- mobile metas -->
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-      <!-- site metas -->
-      <title>Computers</title>
-      <meta name="keywords" content="">
-      <meta name="description" content="">
-      <meta name="author" content="">
-      <!-- bootstrap css -->
-      <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-      <!-- style css -->
-      <link rel="stylesheet" type="text/css" href="css/style.css">
-      <!-- Responsive-->
-      <link rel="stylesheet" href="css/responsive.css">
-      <!-- fevicon -->
-      <link rel="icon" href="images/fevicon.png" type="image/gif" />
-      <!-- Scrollbar Custom CSS -->
-      <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
-      <!-- Tweaks for older IEs-->
-      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-      <!-- fonts -->
-      <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
-      <!-- owl stylesheets --> 
-      <link rel="stylesheet" href="css/owl.carousel.min.css">
-      <link rel="stylesheet" href="css/owl.theme.default.min.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
-      <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
-      <link rel="stylesheet" href="./product_detail.css">
-   </head>
-   <body>
-      <!-- header section start -->
-      <div class="header_section haeder_main">
-         <div class="container-fluid">
-            <nav class="navbar navbar-light bg-light justify-content-between">
-               <div id="mySidenav" class="sidenav">
-                  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                  <a href="index.html">Home</a>
-                  <a href="product_list.html">Product List</a>
-                  <a href="computers.html">Computers</a>
-                  <a href="contact.jsp">Contact</a>
-               </div>
-               <span style="font-size:30px;cursor:pointer; color: #fff;" onclick="openNav()"><img src="images/toggle-icon.png"></span>
-               <a class="navbar-brand" href="index.html">E-Butler</a></a>
-               <form class="form-inline ">
-                  <div class="login_text">
-                     <ul>
-                        <li><a href="login.jsp"><img src="images/user-icon.png"></a></li>
-                        <li><a href="#"><img src="images/trolly-icon.png"></a></li>
-                        <li><a href="#"><img src="images/search-icon.png"></a></li>
-                        <li><a href="LogOutController"><img src="images/logout.png" width = "21" height = "20"></a></li>
-                     </ul>
-                  </div>
-               </form>
-            </nav>
-         </div>
-      </div>
-      <!-- header section end -->
-      <!-- computers section start -->
-      <section id="services" class="services section-bg">
-         <div class="container-fluid">
-            <div class="row row-sm">
-               <div class="col-md-6 _boxzoom">                 
-                  <div class="zoom-thumb">
-                     <ul class="piclist">
-                        <li><img src="https://s.fotorama.io/1.jpg" alt=""></li>
-                        <li><img src="https://s.fotorama.io/2.jpg" alt=""></li>
-                        <li><img src="https://s.fotorama.io/3.jpg" alt=""></li>
-                        <li><img src="https://ucarecdn.com/382a5139-6712-4418-b25e-cc8ba69ab07f/-/stretch/off/-/resize/760x/" alt=""></li>
-                     </ul>
-                  </div>
-                  <div class="_product-images">
-                     <div class="picZoomer">
-                        <img class="my_img" src="${detailP.serImage}" alt="">
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-6">
-                  <div class="_product-detail-content">
-                     <p class="_p-name"> ${detailP.serName}</p>
-                     <div class="_p-price-box">
-                        <div class="p-list">
-                           <span> M.R.P. : <i class="fa fa-inr"></i> <del> 1399  </del>   </span>
-                           <span class="price"> ${detailP.price} </span>
-                        </div>
-                        <div class="_p-add-cart">
-                           <div class="_p-qty">
-                              <span>Add Quantity</span>
-                              <div class="value-button decrease_" id="" value="Decrease Value">-</div>
-                              <input type="number" name="qty" id="number" value="${detailP.quantity}" />
-                              <div class="value-button increase_" id="" value="Increase Value">+</div>
-                           </div>
-                        </div>
-                        <div class="_p-features">
-                           <span> ${detailP.serDescription}</span>                       
-                        </div>
-                        <form action="" method="post" accept-charset="utf-8">
-                           <ul class="spe_ul"></ul>
-                           <div class="_p-qty-and-cart">
-                              <div class="_p-add-cart">
-                                 <button class="btn-theme btn buy-btn" tabindex="0">
-                                 <i class="fa fa-shopping-cart"></i> Buy Now
-                                 </button>
-                                 <button class="btn-theme btn btn-success" tabindex="0">
-                                 <i class="fa fa-shopping-cart"></i> Add to Cart
-                                 </button>
-                                 <input type="hidden" name="pid" value="18" />
-                                 <input type="hidden" name="price" value="850" />
-                                 <input type="hidden" name="url" value="" />    
-                              </div>
-                           </div>
-                        </form>
-                     </div>
-                  </div>
-               </div>              
-            </div>
-         </div>
-      </section>
-      <section class="sec bg-light">
-         <div class="container">
-            <div class="row">
-               <div class="col-sm-12 title_bx">
-                  <h3 class="title"> Recent Post   </h3>
-               </div>
->>>>>>> 1cab7e50ec2f1e00f743e09f4f5061809acd2f70
+                </c:foreach> 
             </div>
         </section>
         <section class="sec bg-light">
