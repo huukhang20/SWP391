@@ -258,38 +258,65 @@ public class ServiceDAO {
         return null;
     }
 
-    public static ArrayList<Service> getServicesByCategory(String cateID) throws SQLException {
-        ArrayList<Service> list = new ArrayList<>();
-        //connecting to database
-        Connection con = DBUtils.makeConnection();
-        try {
-            //creating and executing sql statements
-            String sql = "select s.*, c.name as CategoryName "
-                    + "from Service s join category c on c.ID=s.Category_ID "
-                    + "where c.ID = ?";
-            PreparedStatement stm = con.prepareStatement(sql);
-            stm.setString(1, cateID);
-            ResultSet rs = stm.executeQuery();
-            //Loading data into the list
+//    public static ArrayList<Service> getServicesByCategory(String cateID) throws SQLException {
+//        ArrayList<Service> list = new ArrayList<>();
+//        //connecting to database
+//        Connection con = DBUtils.makeConnection();
+//        try {
+//            //creating and executing sql statements
+//            String sql = "select s.*, c.name as CategoryName "
+//                    + "from Service s join category c on c.ID=s.Category_ID "
+//                    + "where c.ID = ?";
+//            PreparedStatement stm = con.prepareStatement(sql);
+//            stm.setString(1, cateID);
+//            ResultSet rs = stm.executeQuery();
+//            //Loading data into the list
+//            while (rs.next()) {
+//                Service services = new Service();
+//                services.setSerID(rs.getInt("serId"));
+//                services.setSerName(rs.getString("serName"));
+//                services.setSerDescription(rs.getString("serDescription"));
+//                services.setCateId(rs.getInt("cateId"));
+//                services.setSupplierId(rs.getInt("supplierId"));
+//                services.setQuantity(rs.getInt("quantity"));
+//                services.setPrice(rs.getInt("price"));
+//                services.setWorkDate(rs.getString("workDate"));
+//                services.setReleaseDate(rs.getString("releaseDate"));
+//                services.setSerImage(rs.getString("serImage"));
+//                services.setSerStatus(rs.getString("serStatus"));
+//                list.add(services);
+//            }
+//            //closing the connection 
+//            con.close();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ServiceController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return list;
+//    }
+    
+    public List<Service> getServicesByCategory(String cateId){
+        List<Service> list = new ArrayList<>();
+        String query = "select * from Service"
+                +"where Category_ID = ?";
+                try {
+            Connection cn = DBUtils.makeConnection();
+            PreparedStatement pst = cn.prepareStatement(query);
+            pst.setString(1, cateId);
+            ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                Service services = new Service();
-                services.setSerID(rs.getInt("serId"));
-                services.setSerName(rs.getString("serName"));
-                services.setSerDescription(rs.getString("serDescription"));
-                services.setCateId(rs.getInt("cateId"));
-                services.setSupplierId(rs.getInt("supplierId"));
-                services.setQuantity(rs.getInt("quantity"));
-                services.setPrice(rs.getInt("price"));
-                services.setWorkDate(rs.getString("workDate"));
-                services.setReleaseDate(rs.getString("releaseDate"));
-                services.setSerImage(rs.getString("serImage"));
-                services.setSerStatus(rs.getString("serStatus"));
-                list.add(services);
+                list.add(new Service(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getInt(4),
+                        rs.getInt(5),
+                        rs.getInt(6),
+                        rs.getInt(7),
+                        rs.getString(8),
+                        rs.getString(9),
+                        rs.getString(10),
+                        rs.getString(11)));
             }
-            //closing the connection 
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(ServiceController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
         }
         return list;
     }
