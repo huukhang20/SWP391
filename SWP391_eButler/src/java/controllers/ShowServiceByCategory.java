@@ -48,6 +48,7 @@ public class ShowServiceByCategory extends HttpServlet {
         request.setAttribute("listP", list);
         request.setAttribute("last", last);
         request.setAttribute("listC", listC);
+        request.setAttribute("mark", cateId);        
         request.getRequestDispatcher("product_list.jsp").forward(request, response);
     }
 

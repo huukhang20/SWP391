@@ -5,6 +5,7 @@
  */
 package Service;
 
+import Account.Account;
 import Category.Category;
 import Service.Service;
 import controllers.ServiceController;
@@ -295,30 +296,45 @@ public class ServiceDAO {
 //    }
     
     public List<Service> getServicesByCategory(String cateId){
-        List<Service> list = new ArrayList<>();
-        String query = "select * from Service"
+        List<Service> result = new ArrayList<>();
+        String query = "select * from Service "
                 +"where Category_ID = ?";
                 try {
             Connection cn = DBUtils.makeConnection();
             PreparedStatement pst = cn.prepareStatement(query);
             pst.setString(1, cateId);
             ResultSet rs = pst.executeQuery();
+            int id = 0;
+            String name = "";
+            String description = "";
+            int categoryID = 0;
+            int supplierID = 0;
+            int quantity = 0;
+            int price = 0;
+            String workTime = "";
+            String releaseTime = "";
+            String image = "";
+            String status = "";
+            Service dto = null;
+            result = new ArrayList<Service>();
             while (rs.next()) {
-                list.add(new Service(rs.getInt(1),
-                        rs.getString(2),
-                        rs.getString(3),
-                        rs.getInt(4),
-                        rs.getInt(5),
-                        rs.getInt(6),
-                        rs.getInt(7),
-                        rs.getString(8),
-                        rs.getString(9),
-                        rs.getString(10),
-                        rs.getString(11)));
+               id = rs.getInt("ID");
+                name = rs.getString("Name");
+                description = rs.getString("Description");
+                categoryID = rs.getInt("Category_ID");
+                supplierID = rs.getInt("Supplier_ID");
+                quantity = rs.getInt("Quantity");
+                price = rs.getInt("Price");
+                workTime = rs.getString("Working_Time");
+                releaseTime = rs.getString("Release_Time");
+                image = rs.getString("Image");
+                status = rs.getString("Status");
+                dto = new Service(id, name, description, categoryID, supplierID, quantity, price, workTime, releaseTime, image, status);
+                result.add(dto);
             }
         } catch (Exception e) {
         }
-        return list;
+        return result;
     }
     
     public List<Category> getAllCategory() {
