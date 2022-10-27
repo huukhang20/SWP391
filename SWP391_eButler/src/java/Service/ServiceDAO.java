@@ -64,7 +64,7 @@ public class ServiceDAO {
 //    }
 
     //get detail of services which are found
-    public Service find(String serId) throws SQLException {
+    public static Service find(String serId) throws SQLException {
         Service services = null;
         Connection con = DBUtils.makeConnection();
         String sql = "select * from Service where ID = ?";

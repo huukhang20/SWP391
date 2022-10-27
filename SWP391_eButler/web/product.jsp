@@ -96,29 +96,30 @@
                                         <span> M.R.P. : <i class="fa fa-inr"></i> <del> 1399  </del>   </span>
                                         <span class="price"> ${detailP.price} VND </span>
                                     </div>
-                                    <div class="_p-add-cart">
-                                        <div class="_p-qty">
-                                            <span>Add Quantity</span>
-                                            <div class="value-button decrease_" id="" value="Decrease Value">-</div>
-                                            <input type="number" name="qty" id="number" value="1" />
-                                            <div class="value-button increase_" id="" value="Increase Value">+</div>
+                                    <form action="CartController" method="get" accept-charset="utf-8" id="addtocart">
+                                        <div class="_p-add-cart">
+                                            <div class="_p-qty">
+                                                <span>Add Quantity</span>
+                                                <div class="value-button decrease_" id="" value="Decrease Value">-</div>
+                                                <input type="number" name="quantity" id="number" value="1" />
+                                                <div class="value-button increase_" id="" value="Increase Value">+</div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="_p-features">
-                                        <span> ${detailP.serDescription}</span>                       
-                                    </div>
-                                    <form action="" method="post" accept-charset="utf-8">
+                                        <div class="_p-features">
+                                            <span> ${detailP.serDescription}</span>                       
+                                        </div>
+
                                         <ul class="spe_ul"></ul>
                                         <div class="_p-qty-and-cart">
                                             <div class="_p-add-cart">
                                                 <button class="btn-theme btn buy-btn" tabindex="0">
                                                     <i class="fa fa-shopping-cart"></i> Buy Now
                                                 </button>
-                                                <button class="btn-theme btn btn-success" tabindex="0">
+                                                <button type="submit" id="addtocart" value="Submit" class="btn-theme btn btn-success" tabindex="0">
                                                     <i class="fa fa-shopping-cart"></i> Add to Cart
                                                 </button>
-                                                <input type="hidden" name="pid" value="18" />
-                                                <input type="hidden" name="price" value="850" />
+                                                <input type="hidden" name="op" value="add" />
+                                                <input type="hidden" name="serId" value="${detailP.serID}" />
                                                 <input type="hidden" name="url" value="" />    
                                             </div>
                                         </div>
