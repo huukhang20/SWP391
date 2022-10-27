@@ -5,33 +5,50 @@
  */
 package Cart;
 
-import Service.Service;
-import java.util.ArrayList;
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
+
 
 /**
  *
  * @author Admin
  */
-public class Cart {
-    private ArrayList<Service> cartList = null;
+public class Cart implements Serializable{
+    
+    private Map<Integer, Integer> cart;
 
-    public Cart() {
-        cartList = new ArrayList<>();
+    public Map<Integer, Integer> getCart() {
+        return cart;
+    }
+
+    public void addToCart(int serId, int quantity) {
+        // 1. Check existed cart
+        if (this.cart == null) {
+            this.cart = new HashMap<>();
+        }
+        
+        // 2. Check existed book
+        if (this.cart.containsKey(serId)) {
+            quantity = this.cart.get(serId) + quantity;
+        }
+        
+        // 3. Update cart
+        this.cart.put(serId, quantity);
     }
     
-    public void add(Service service) {
-        cartList.add(service);
-    }
-    
-    public void empty() {
-        cartList.clear();
-    }
-
-    public ArrayList<Service> getCartList() {
-        return cartList;
-    } 
-
-    public void setCartList(ArrayList<Service> cartList) {
-        this.cartList = cartList;
+    public void removeFromCart(int serId) {
+        // 1. Check existed cart
+        if (this.cart == null) {
+            return;
+        }
+        
+        // 2. Check existed book
+        if (this.cart.containsKey(serId)) {
+            this.cart.remove(serId);
+            if (this.cart.isEmpty()) {
+                this.cart = null;
+            }
+        }
     }
 }

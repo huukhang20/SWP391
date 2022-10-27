@@ -85,7 +85,7 @@
                             </c:if>
                             <h5 class="card-title">${last.serName}</h5>
                             <p class="card-text">${last.serDescription}</p>
-                            <p class="bloc_left_price">${last.price}</p>
+                            <p class="bloc_left_price">${last.price} VND</p>
                         </div>
                     </div>
                 </div>
@@ -110,10 +110,10 @@
                                                 <p class="card-text show_txt">${o.serDescription}</p>
                                                 <div class="row">
                                                     <div class="col">
-                                                        <p class="btn btn-danger ">${o.price}</p>
+                                                        <p class="btn btn-danger ">${o.price} VND</p>
                                                     </div>
                                                     <div class="col">
-                                                        <a href="#" class="btn btn-success btn-block">Add to cart</a>
+                                                        <a href="CartController?op=add&serId=${o.serID}&quantity=1&url=product_list.jsp" class="btn btn-success btn-block">Add to cart</a>
                                                     </div>
                                                 </div>
                                             </div>
