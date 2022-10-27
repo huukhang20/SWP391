@@ -140,15 +140,14 @@
                     </div>
                     <div class="catagary_right">
                         <div class="catagary_menu">
-                            <!--                     <ul>
-                                                    <li><a href="#"></a></li>
-                                                    <li><a href="#">tag</a></li>
-                                                    <li><a href="#">tag</a></li>
-                                                    <li><a href="#">tag</a></li>
-                                                    <li><a href="#">tag</a></li>
-                                                    <li><a href="#">tag</a></li>
-                                                    <li><a href="#">tag</a></li>
-                                                 </ul>-->
+                                                 <ul>
+                                                    <li><a href="ShowServiceByCategory?cateId=1">Gas</a></li>
+                                                    <li><a href="ShowServiceByCategory?cateId=2">Electric</a></li>
+                                                    <li><a href="ShowServiceByCategory?cateId=3">Rice</a></li>
+                                                    <li><a href="ShowServiceByCategory?cateId=4">Water</a></li>
+                                                    <li><a href="ShowServiceByCategory?cateId=5">Electronic Device</a></li>
+                                                    <li><a href="ShowServiceByCategory?cateId=6">Market</a></li>
+                                                 </ul>
                         </div>
                     </div>
                 </div>
