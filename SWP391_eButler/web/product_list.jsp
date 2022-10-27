@@ -70,7 +70,7 @@
                         <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Categories</div>
                         <ul class="list-group category_block">
                             <c:forEach items="${requestScope.listC}" var="o">
-                                <li class="list-group-item"><a href="ShowServiceByCategory?cateId=${o.cateId}">${o.cateName}</a></li>
+                                <li class="list-group-item ${mark == o.cateId ? "active":""}"><a href="ShowServiceByCategory?cateId=${o.cateId}">${o.cateName}</a></li>
                                 </c:forEach>
                         </ul>
                     </div>
@@ -120,7 +120,7 @@
                                         </div>
                                     </div>
                                 </c:forEach>
-                                <div class="col-12">
+<!--                                <div class="col-12">
                                     <nav aria-label="...">
                                         <ul class="pagination">
                                             <li class="page-item disabled">
@@ -136,7 +136,7 @@
                                             </li>
                                         </ul>
                                     </nav>
-                                </div>
+                                </div>-->
                             </div>   
                         </c:if>
                     </c:if>
