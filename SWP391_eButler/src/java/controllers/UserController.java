@@ -62,9 +62,9 @@ public class UserController extends HttpServlet {
      protected void viewProfile(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         AccountDAO dao = new AccountDAO();
-        List<Account> list = dao.getProfile();
+//        List<Account> list = dao.getProfile();
         
-        request.setAttribute("Profile", list);
+//        request.setAttribute("Profile", list);
         request.getRequestDispatcher("profile.html").forward(request, response);
      }
 
