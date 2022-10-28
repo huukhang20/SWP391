@@ -111,8 +111,8 @@
                                     <div class="image_1"><img src="" style="width:100%"></div>
                                 </div>
                                 <div class="col-md-4">
-                                    <h1 class="banner_taital">Big Sale Offer</h1>
-                                    <div class="buynow_bt active"><a href="#">Buy Now</a></div>
+                                    <h1 class="banner_taital">Tired of Work?</h1>
+                                    <div class="buynow_bt active"><a href="#">Check Now</a></div>
                                     <div class="contact_bt"><a href="contact.html">Contact Us</a></div>
                                 </div>
                                 <div class="col-md-4">
@@ -262,7 +262,7 @@
                     <div class="row">
                         <div class="col-lg-3 col-sm-6">
                             <h4 class="adderss_text">About</h4>
-                            <p class="ipsum_text">consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation u</p>
+                            <p class="ipsum_text">EButler is a website that helps you with butler services such as: electrical repair, rice, gas supply, ...</p>
                         </div>
                         <div class="col-lg-3 col-sm-6">
                             <h4 class="adderss_text">Menu</h4>
@@ -280,19 +280,19 @@
                             <h4 class="adderss_text">Useful Link</h4>
                             <div class="footer_menu">
                                 <ul>
-                                    <li><a href="#">Adipiscing</a></li>
-                                    <li><a href="#">Elit, sed do</a></li>
-                                    <li><a href="#">Eiusmod</a></li>
-                                    <li><a href="#">Tempor</a></li>
-                                    <li><a href="#">incididunt</a></li>
+                                    <li><a href="#">Facebook</a></li>
+                                    <li><a href="#">Instagram</a></li>
+                                    <li><a href="#">Youtube</a></li>
+                                    <li><a href="#">Twitter</a></li>
+                                    <li><a href="#">License</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-lg-3 col-sm-6">
                             <h4 class="adderss_text">Contact</h4>
-                            <div class="call_text"><img src="images/map-icon.png"><span class="paddlin_left_0"><a href="#">London 145 United Kingdom</a></span></div>
-                            <div class="call_text"><img src="images/call-icon.png"><span class="paddlin_left_0"><a href="#">+7586656566</a></span></div>
-                            <div class="call_text"><img src="images/mail-icon.png"><span class="paddlin_left_0"><a href="#">volim@gmail.com</a></span></div>
+                            <div class="call_text"><img src="images/map-icon.png"><span class="paddlin_left_0"><a href="#">FPT University, TP.HCM</a></span></div>
+                            <div class="call_text"><img src="images/call-icon.png"><span class="paddlin_left_0"><a href="#">+099887766</a></span></div>
+                            <div class="call_text"><img src="images/mail-icon.png"><span class="paddlin_left_0"><a href="#">ebutler@gmail.com</a></span></div>
                         </div>
                     </div>
                 </div>
