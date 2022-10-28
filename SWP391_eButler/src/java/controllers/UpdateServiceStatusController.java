@@ -43,7 +43,7 @@ public class UpdateServiceStatusController extends HttpServlet {
         } catch (Exception ex) {
             Logger.getLogger(UpdateServiceStatusController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        response.sendRedirect("");
+        response.sendRedirect("product_list_admin.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
