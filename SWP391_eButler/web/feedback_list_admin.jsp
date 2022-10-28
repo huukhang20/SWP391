@@ -51,7 +51,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="product_list_admin.html">
+                    <a href="ShowServiceAdminController">
                         <i class='bx bx-box' ></i>
                         <span class="links_name">Product And Service List</span>
                     </a>
@@ -69,7 +69,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="ShowFeedbackListController">
+                    <a href="feedback_list_admin.jsp">
                         <i class='bx bx-message' ></i>
                         <span class="links_name">Feed Back</span>
                     </a>

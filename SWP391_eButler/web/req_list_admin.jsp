@@ -49,7 +49,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="product_list_admin.html">
+                    <a href="ShowServiceAdminController">
                         <i class='bx bx-box' ></i>
                         <span class="links_name">Products And Services</span>
                     </a>
@@ -80,7 +80,7 @@
                 </li>
             </ul>
         </div>
-
+        <!-- body -->
         <section class="home-section">
             <nav>
                 <div class="sidebar-button">
@@ -127,10 +127,10 @@
                                                 <h4 class="card-title" onclick="document.location.href = 'ShowServiceDetailController?txtID=${dto.serID}'">${dto.serName}</h4>
                                                 <div class="d-flex flex-row">
                                                 </div>
-                                                <div class="mt-1 mb-1 spec-1"><span>Category</span><span class="dot"></span><span> ${dto.cateId}</span><span class="dot"></span><span><br></span></div>
-                                                <div class="mt-1 mb-1 spec-1"><span>Supplier</span><span class="dot"></span><span> ${dto.supplierId}</span><span class="dot"></span><span><br></span></div>
-                                                <div class="mt-1 mb-1 spec-1"><span>Work Time:</span><span class="dot"></span><span> ${dto.workDate}</span><span class="dot"></span><span><br></span></div>
-                                                <div class="mt-1 mb-1 spec-1"><span>Description: </span><span class="dot"></span><span>${dto.serDescription}</span><span class="dot"></span><span>Casual<br></span></div>
+                                                <div class="mt-1 mb-1 spec-1"><span style="font-weight: bold">Category:</span><span class="dot"></span><span> ${dto.categoryName}</span><span class="dot"></span><span><br></span></div>
+                                                <div class="mt-1 mb-1 spec-1"><span style="font-weight: bold">Supplier:</span><span class="dot"></span><span> ${dto.supplierName}</span><span class="dot"></span><span><br></span></div>
+                                                <div class="mt-1 mb-1 spec-1"><span style="font-weight: bold">Work Time:</span><span class="dot"></span><span> ${dto.workDate}</span><span class="dot"></span><span><br></span></div>
+                                                <div class="mt-1 mb-1 spec-1"><span style="font-weight: bold">Description: </span><span class="dot"></span><span> ${dto.serDescription}</span><span class="dot"></span></span></div>
                                             </div>
                                             <div class="align-items-center align-content-center col-md-3 border-left mt-1">
                                                 <div class="d-flex flex-row align-items-center">
@@ -149,6 +149,9 @@
                     <c:if test="${empty requestScope.SERVICEWAITINGLIST}">
                         <h2 style="color: black">No service is waiting for you to managed!</h2>
                     </c:if>
+                </c:if>
+                <c:if test="${requestScope.SERVICEWAITINGLIST == null}">
+                    <h2 style="color: black">No service is waiting for you to managed!</h2>
                 </c:if>
             </div>
 
