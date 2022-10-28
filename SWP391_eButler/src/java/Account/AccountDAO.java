@@ -178,5 +178,78 @@ public class AccountDAO {
         return profiles;
     }
 
- 
+    public static Account getAccountByEmail(String email) throws Exception {
+        Account acc = new Account(email);
+        Connection cn = DBUtils.makeConnection();
+        if (cn != null) {
+            String sql = "SELECT [ID],[role_id],[name],[phone],[email],[address],[introduce],[image],[isStatus]\n"
+                    + "FROM Account\n"
+                    + "WHERE email=?";
+            PreparedStatement pst = cn.prepareStatement(sql);
+            pst.setString(1, email);
+            ResultSet table = pst.executeQuery();
+            if (table != null && table.next()) {
+                acc.setAccID(table.getInt("ID"));
+                acc.setRole(table.getInt("role_id"));
+                acc.setName(table.getString("name"));
+                acc.setPhone(table.getString("phone"));
+                acc.setEmail(table.getString("email"));
+                acc.setAddress(table.getString("address"));
+                acc.setIntroduce(table.getString("introduce"));
+                acc.setImage(table.getString("image"));
+                acc.setIsStatus(table.getString("isStatus"));
+
+                acc.setUsername(email);
+            }
+            cn.close();
+        }
+        return acc;
+    }
+    
+    public static boolean checkEmail(String email) throws SQLException {
+        Connection con = DBUtils.makeConnection();
+        String CHECK_EMAIl = "SELECT * FROM Account WHERE email = ?";
+        if (con != null) {
+            PreparedStatement ps = con.prepareStatement(CHECK_EMAIl);
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public static boolean insertAccount(String newUsername, String newPassword, String newName, String newPhone, String newEmail, String newAddress) throws Exception {
+        Connection cn = utils.DBUtils.makeConnection();
+        boolean flag = false;
+        int newRole_ID = 2;
+        String newIntroduce = null;
+        String newIsStatus = "active";
+        String newImage = null;
+        if (cn != null) {
+            String sql = "INSERT INTO Account(username,password,role_id,name,phone,email,address,introduce,image,isStatus)\n"
+                    + "VALUES(?,?,?,?,?,?,?,?,?,?)";
+            PreparedStatement pst = cn.prepareStatement(sql);
+            pst.setString(1, newUsername);
+            pst.setString(2, newPassword);
+            pst.setInt(3, newRole_ID);
+            pst.setString(4, newName);
+            pst.setString(5, newPhone);
+            pst.setString(6, newEmail);
+            pst.setString(7, newAddress);
+            pst.setString(8, newIntroduce);
+            pst.setString(9, newImage);
+            pst.setString(10, newIsStatus);
+
+            int table = pst.executeUpdate();
+            if (table == 1) {
+                flag = true;
+            } else {
+                flag = false;
+            }
+            cn.close();
+        }
+        return flag;
+    }
 }
