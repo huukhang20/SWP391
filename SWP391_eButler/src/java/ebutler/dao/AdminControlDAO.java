@@ -123,4 +123,42 @@ public class AdminControlDAO implements Serializable {
         }
         return result;
     }
+
+    public Service getServiceByID(String id) throws Exception {
+        Service dto = null;
+        int serID = Integer.parseInt(id);
+        try {
+            String sql = "Select * From Service Where ID = ?";
+            conn = DBUtils.makeConnection();
+            preStm = conn.prepareStatement(sql);
+            preStm.setInt(1, serID);
+            rs = preStm.executeQuery();
+            String name = "";
+            String des = "";
+            int price = 0;
+            int sup = 0;
+            int cate = 0;
+            int quantity = 0;
+            String wt = "";
+            String rt = "";
+            String image = "";
+            String status = "";
+            if (rs.next()) {
+                name = rs.getString("Name");
+                des = rs.getString("Description");
+                cate = rs.getInt("Category_ID");
+                sup = rs.getInt("Supplier_ID");
+                quantity = rs.getInt("Quantity");
+                price = rs.getInt("Price");
+                wt = rs.getString("Working_Time");
+                rt = rs.getString("Release_Time");
+                image = rs.getString("Image");
+                status = rs.getString("Status");
+                dto = new Service(serID, name, des, cate, sup, quantity, price, wt, rt, image, status);
+            }
+        } finally {
+            closeConnection();
+        }
+        return dto;
+    }
 }
