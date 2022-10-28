@@ -52,6 +52,18 @@
                         <span class="links_name">Feed Back</span>
                     </a>
                 </li>
+                <li>
+                    <a href="order_list_admin.html">
+                      <i class='bx bx-coin-stack' ></i>
+                      <span class="links_name">Oder List</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="order_list_admin.html">
+                      <i class='bx bx-coin-stack' ></i>
+                      <span class="links_name">Oder List</span>
+                    </a>
+                  </li>
                 <li class="log_out">
                     <a href="LogoutController">
                         <i class='bx bx-log-out'></i>
