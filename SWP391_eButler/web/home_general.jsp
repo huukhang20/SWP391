@@ -179,10 +179,10 @@
                                     </div>
                                 </c:if>
                                 <div class="cart_main">
-                                    <!--<div class="cart_bt"><a href="#">Add To Cart</a></div>-->
                                     <h4 class="samsung_text">${dto.serName}</h4>
                                     <h6 class="rate_text">${dto.price} $</h6>
                                     <h6 class="rate_text_1"></h6>
+                                    <div class="cart_bt"><a href="#">Detail</a></div>
                                 </div>
                             </div>
                         </div>
