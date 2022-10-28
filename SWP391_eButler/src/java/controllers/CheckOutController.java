@@ -5,23 +5,25 @@
  */
 package controllers;
 
-import Service.ServiceDAO;
+import Account.Account;
+import Account.AccountDAO;
+import Cart.Cart;
+import Order.OrderDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "UpdateServiceStatusController", urlPatterns = {"/UpdateServiceStatusController"})
-public class UpdateServiceStatusController extends HttpServlet {
+@WebServlet(name = "CheckOutController", urlPatterns = {"/CheckOutController"})
+public class CheckOutController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,16 +36,47 @@ public class UpdateServiceStatusController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        String serStatus = request.getParameter("serStatus");
-        String serId = request.getParameter("serId");
-        ServiceDAO sd = new ServiceDAO();
+        String fullName = request.getParameter("fullName");
+        String phone = request.getParameter("phone");
+        String email = request.getParameter("email");
+        String address = request.getParameter("address");
+        Account account;
+        String url;
+        HttpSession session = request.getSession();
+
         try {
-            sd.updateServiceStatus(serStatus,serId);
-        } catch (Exception ex) {
-            Logger.getLogger(UpdateServiceStatusController.class.getName()).log(Level.SEVERE, null, ex);
+            if (session.getAttribute("USERLOGIN") == null) {
+                if (AccountDAO.checkEmail(email)) {
+                    account = AccountDAO.getAccountByEmail(email);
+                } else {
+                    String username = email;
+                    String password = "1";
+                    AccountDAO.insertAccount(username, password, "", phone, email, address);
+                }
+            }
+            if (session != null) {
+                Cart cart = (Cart) session.getAttribute("CART");
+                if (cart != null) {
+                    Map<Integer, Integer> cartList = cart.getCart();
+                    if (cartList != null) {
+                        OrderDAO dao = new OrderDAO();
+                        //boolean result = dao.createOrder(name, address, cart);
+                        if (true) {
+                            // Order successfully
+                            url = "ShowService";
+                            session.removeAttribute("CART");
+                        } else {
+
+                        }
+                    }
+                }
+            }
+
+        } catch (Exception e) {
         }
-        response.sendRedirect("product_list_admin.jsp");
+
+        session.removeAttribute("cart");
+        response.sendRedirect("ShowService");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

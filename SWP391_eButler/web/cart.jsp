@@ -150,8 +150,9 @@
                                                             value="${orderTotal}" 
                                                             minIntegerDigits="0" />
                                             ${strOrderTotal}
+                                    
                                         </span>VND</h1>
-                                    <a class="btn">Checkout</a>
+                                    <a class="btn" href="check_out.jsp">Checkout</a>
                                 </div>
 
                             </div>
