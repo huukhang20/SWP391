@@ -179,11 +179,15 @@
                                     </div>
                                 </c:if>
                                 <div class="cart_main">
-                                    <!--<div class="cart_bt"><a href="#">Add To Cart</a></div>-->
+                                    
                                     <h4 class="samsung_text">${dto.serName}</h4>
                                     <h6 class="rate_text">${dto.price} $</h6>
                                     <h6 class="rate_text_1"></h6>
                                 </div>
+                                    <div class="row">
+                                    <div class="cart_bt_1 "><a href="#">Add To Cart</a></div>
+                                    </div>
+                             
                             </div>
                         </div>
                     </c:forEach>
@@ -227,7 +231,7 @@
                                     <h6 class="price_text mt-auto">${dto.price} $</h6>
                                     <h6 class="price_text_1"><a href="#"></a></h6>
                                 </div>
-                                <!--<div class="cart_bt_1"><a href="#">Add To Cart</a></div>-->
+                                <div class="cart_bt_1"><a href="#">Add To Cart</a></div>
                             </div>
                         </c:forEach>
                     </div>
