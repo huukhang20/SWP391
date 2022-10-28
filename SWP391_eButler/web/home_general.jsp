@@ -47,12 +47,12 @@
                 <nav class="navbar navbar-light bg-light justify-content-between">
                     <div id="mySidenav" class="sidenav">
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                        <a href="home_general.jsp">Home</a>
+                        <a href="ShowHomeGeneralController">Home</a>
                         <a href="ShowService">Services List</a>
                         <a href="contact.jsp">Contact</a>
                     </div>
                     <span style="font-size:30px;cursor:pointer; color: #fff;" onclick="openNav()"><img src="images/toggle-icon.png"></span>
-                    <a class="navbar-brand" href="home_general.jsp">E-Butler</a></a>
+                    <a class="navbar-brand" href="ShowHomeGeneralController">E-Butler</a></a>
                     <form class="form-inline ">
                         <div class="login_text">
                             <ul>
@@ -179,10 +179,10 @@
                                     </div>
                                 </c:if>
                                 <div class="cart_main">
-                                    <h4 class="samsung_text">${dto.serName}</h4>
+                                    <h4 class="samsung_text"><a href="ShowServiceDetail?serId=${dto.serID}">${dto.serName}</a></h4>
                                     <h6 class="rate_text">${dto.price} $</h6>
                                     <h6 class="rate_text_1"></h6>
-                                    <div class="cart_bt"><a href="#">Detail</a></div>
+                                    <!--<div class="cart_bt col"><a href="#">Detail</a></div>-->
                                 </div>
                             </div>
                         </div>
@@ -261,7 +261,7 @@
                             <h4 class="adderss_text">Menu</h4>
                             <div class="footer_menu">
                                 <ul>
-                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="ShowHomeGeneralController">Home</a></li>
                                     <li><a href="computers.html"></a></li>
                                     <li><a href="Mans_clothes.html"></a></li>
                                     <li><a href="womans_clothes.html"></a></li>

@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(name = "LogoutController", urlPatterns = {"/LogoutController"})
 public class LogoutController extends HttpServlet {
-    private static final String home = "index.html";
+    private static final String home = "ShowHomeGeneralController";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
