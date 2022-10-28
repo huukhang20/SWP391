@@ -5,25 +5,23 @@
  */
 package controllers;
 
-import Service.Service;
-import Service.ServiceDAO;
+import ebutler.dao.AdminControlDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import Service.Service;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "ShowServiceDetail", urlPatterns = {"/ShowServiceDetail"})
-public class ShowServiceDetail extends HttpServlet {
+@WebServlet(name = "ShowServiceDetailController", urlPatterns = {"/ShowServiceDetailController"})
+public class ShowServiceDetailController extends HttpServlet {
+    private static final String showDetail = "req_detail_admin.jsp";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,15 +34,20 @@ public class ShowServiceDetail extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        String url = showDetail;
         try {
-            response.setContentType("text/html;charset=UTF-8");
-            String serId = request.getParameter("serId");
-            ServiceDAO dao = new ServiceDAO();
-            Service detail = dao.find(serId);            
-            request.setAttribute("detailP", detail);
-            request.getRequestDispatcher("product.jsp").forward(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(ShowServiceDetail.class.getName()).log(Level.SEVERE, null, ex);
+            String id = request.getParameter("txtID");
+            
+            AdminControlDAO dao = new AdminControlDAO();
+            Service dto = dao.getServiceByID(id);
+            
+            request.setAttribute("SERVICEDTO", dto);
+            
+        } catch (Exception e) {
+            log("Error at ShowSingleServiceDetail: " + e.getMessage());
+        } finally {
+            request.getRequestDispatcher(url).forward(request, response);
         }
     }
 

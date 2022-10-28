@@ -124,7 +124,7 @@
                                                 </div>
                                             </c:if>
                                             <div class="col-md-6 mt-1">
-                                                <h4 class="card-title"><a href="req_detail_admin.html" title="View Product">${dto.serName}</a></h4>
+                                                <h4 class="card-title" onclick="document.location.href = 'ShowServiceDetailController?txtID=${dto.serID}'">${dto.serName}</h4>
                                                 <div class="d-flex flex-row">
                                                 </div>
                                                 <div class="mt-1 mb-1 spec-1"><span>Category</span><span class="dot"></span><span> ${dto.cateId}</span><span class="dot"></span><span><br></span></div>
