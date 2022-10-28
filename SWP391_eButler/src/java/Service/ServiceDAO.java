@@ -62,7 +62,6 @@ public class ServiceDAO {
 //        }
 //        return list;
 //    }
-
     //get detail of services which are found
     public static Service find(String serId) throws SQLException {
         Service services = null;
@@ -244,12 +243,12 @@ public class ServiceDAO {
             PreparedStatement stm = con.prepareStatement(sql);
             stm.setString(1, serId);
             ResultSet rs = stm.executeQuery();
-            
+
             if (rs.next()) {
-                return new Service(rs.getInt(1), 
-                        rs.getString(2), 
-                        rs.getString(3), 
-                        rs.getInt(4), 
+                return new Service(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getInt(4),
                         rs.getString(5));
             }
             con.close();
@@ -294,12 +293,11 @@ public class ServiceDAO {
 //        }
 //        return list;
 //    }
-    
-    public List<Service> getServicesByCategory(String cateId){
+    public List<Service> getServicesByCategory(String cateId) {
         List<Service> result = new ArrayList<>();
         String query = "select * from Service "
-                +"where Category_ID = ?";
-                try {
+                + "where Category_ID = ?";
+        try {
             Connection cn = DBUtils.makeConnection();
             PreparedStatement pst = cn.prepareStatement(query);
             pst.setString(1, cateId);
@@ -318,7 +316,7 @@ public class ServiceDAO {
             Service dto = null;
             result = new ArrayList<Service>();
             while (rs.next()) {
-               id = rs.getInt("ID");
+                id = rs.getInt("ID");
                 name = rs.getString("Name");
                 description = rs.getString("Description");
                 categoryID = rs.getInt("Category_ID");
@@ -336,10 +334,10 @@ public class ServiceDAO {
         }
         return result;
     }
-    
+
     public List<Category> getAllCategory() {
         List<Category> list = new ArrayList<>();
-        String query ="select * from Category";
+        String query = "select * from Category";
         try {
             Connection cn = DBUtils.makeConnection();
             PreparedStatement pst = cn.prepareStatement(query);
@@ -362,7 +360,7 @@ public class ServiceDAO {
     public Service getLast() {
         String query = "select top 1 * from Service\n"
                 + "order by ID desc";
-        try{
+        try {
             Connection cn = DBUtils.makeConnection();
             PreparedStatement pst = cn.prepareStatement(query);
             ResultSet rs = pst.executeQuery();
@@ -372,8 +370,8 @@ public class ServiceDAO {
             int price = 0;
             String image = "";
             Service dto = null;
-            
-            while(rs.next()){
+
+            while (rs.next()) {
                 id = rs.getInt("ID");
                 name = rs.getString("Name");
                 description = rs.getString("Description");
@@ -385,5 +383,33 @@ public class ServiceDAO {
         } catch (Exception e) {
         }
         return null;
+    }
+
+    //lay 3 service random
+    public List<Service> getRandomService() {
+        List<Service> list = new ArrayList<>();
+        String query = "Select top 3 *\n"
+                + "From Service\n"
+                + "Order by NEWID()";
+        try {
+            Connection cn = DBUtils.makeConnection();
+            PreparedStatement pst = cn.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                list.add(new Service(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getInt(4),
+                        rs.getInt(5),
+                        rs.getInt(6),
+                        rs.getInt(7),
+                        rs.getString(8),
+                        rs.getString(9),
+                        rs.getString(10),
+                        rs.getString(11)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
     }
 }
