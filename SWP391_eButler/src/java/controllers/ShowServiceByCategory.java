@@ -5,11 +5,13 @@
  */
 package controllers;
 
+import Category.Category;
 import Service.Service;
 import Service.ServiceDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -22,8 +24,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-@WebServlet(name = "ShowServiceDetail", urlPatterns = {"/ShowServiceDetail"})
-public class ShowServiceDetail extends HttpServlet {
+@WebServlet(name = "ShowServiceByCategory", urlPatterns = {"/ShowServiceByCategory"})
+public class ShowServiceByCategory extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,17 +37,19 @@ public class ShowServiceDetail extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        try {
-            response.setContentType("text/html;charset=UTF-8");
-            String serId = request.getParameter("serId");
-            ServiceDAO dao = new ServiceDAO();
-            Service detail = dao.find(serId);            
-            request.setAttribute("detailP", detail);
-            request.getRequestDispatcher("product.jsp").forward(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(ShowServiceDetail.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            throws ServletException, IOException, SQLException {
+        response.setContentType("text/html;charset=UTF-8");
+        String cateId = request.getParameter("cateId");
+        ServiceDAO dao = new ServiceDAO();
+        List<Service> list = dao.getServicesByCategory(cateId);       
+        List<Category> listC = dao.getAllCategory();
+        Service last = dao.getLast();
+
+        request.setAttribute("listP", list);
+        request.setAttribute("last", last);
+        request.setAttribute("listC", listC);
+        request.setAttribute("mark", cateId);        
+        request.getRequestDispatcher("product_list.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -60,7 +64,11 @@ public class ShowServiceDetail extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(ShowServiceByCategory.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -74,7 +82,11 @@ public class ShowServiceDetail extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(ShowServiceByCategory.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

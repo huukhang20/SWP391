@@ -1,3 +1,11 @@
+<%-- 
+    Document   : cart
+    Created on : Oct 27, 2022, 1:39:49 PM
+    Author     : Admin
+--%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="f"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en" >
     <head>
@@ -35,6 +43,7 @@
         <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
         <link rel="stylesheet" href="./cart.css">
+        <link rel="stylesheet" href="./product_detail.css">
 
     </head>
     <body>
@@ -44,9 +53,9 @@
                 <nav class="navbar navbar-light bg-light justify-content-between">
                     <div id="mySidenav" class="sidenav">
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                        <a href="index.html">Home</a>
-                        <a href="product_list.html">Prodcut List</a>
-                        <a href="computers.html">Computers</a>
+                        <a href="home_general.jsp">Home</a>
+                        <a href="ShowService">Product List</a>
+<!--                        <a href="computers.html">Computers</a>-->
                         <a href="contact.jsp">Contact</a>
                     </div>
                     <span style="font-size:30px;cursor:pointer; color: #fff;" onclick="openNav()"><img src="images/toggle-icon.png"></span>
@@ -71,122 +80,77 @@
                 <h1>Shopping cart <span>
                         </header>
 
-                        <div class="container">
+                        <div class="container">    
+                            <c:set var="orderTotal" value="${0}" />
+                            <form action="CartController">
+                                <section id="cart"> 
+                                    <c:forEach items="${cart.cart}" var="cartItem">
+                                        <c:set var="serId" value="${cartItem.key}" />
+                                        <c:set var="quantity" value="${cartItem.value}" />
+                                        <jsp:useBean id="serviceDAO" scope="page" 
+                                                     class="Service.ServiceDAO" 
+                                                     type="Service.ServiceDAO" />
+                                        <c:set var="ser" value="${serviceDAO.find(serId)}" />
+                                        <article class="product">
+                                            <header>
+                                                <a class="remove" href="CartController?op=remove&isRemove=${ser.serID}">
+                                                    <img src="" alt="Error Image">
 
-                            <section id="cart"> 
-                                <article class="product">
-                                    <header>
-                                        <a class="remove">
-                                            <img src="http://www.astudio.si/preview/blockedwp/wp-content/uploads/2012/08/1.jpg" alt="">
+                                                    <h3>Remove product</h3>
+                                                </a>
+                                            </header>
 
-                                            <h3>Remove product</h3>
-                                        </a>
-                                    </header>
+                                            <div class="content">
 
-                                    <div class="content">
+                                                <h1>${ser.serName}</h1>
 
-                                        <h1>Lorem ipsum</h1>
+                                                ${ser.serDescription}
+                                            </div>
 
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, numquam quis perspiciatis ea ad omnis provident laborum dolore in atque.
-                                    </div>
+                                            <footer class="content">
+                                                <span class="qt">Quantity:</span>
+                                                <span class="qt">${quantity}</span>
+                                                <h2 class="full-price">
+                                                    <f:formatNumber var="itemTotal" 
+                                                                    value="${ser.price * quantity}" 
+                                                                    minIntegerDigits="0" />
+                                                    <c:set var="orderTotal" 
+                                                           value="${orderTotal + ser.price * quantity}" />
+                                                    ${itemTotal} VND
+                                                </h2>
 
-                                    <footer class="content">
-                                        <span class="qt-minus">-</span>
-                                        <span class="qt">2</span>
-                                        <span class="qt-plus">+</span>
-
-                                        <h2 class="full-price">
-                                            29.98VND
-                                        </h2>
-
-                                        <h2 class="price">
-                                            14.99VND
-                                        </h2>
-                                    </footer>
-                                </article>
-
-                                <article class="product">
-                                    <header>
-                                        <a class="remove">
-                                            <img src="http://www.astudio.si/preview/blockedwp/wp-content/uploads/2012/08/3.jpg" alt="">
-
-                                            <h3>Remove product</h3>
-                                        </a>
-                                    </header>
-
-                                    <div class="content">
-
-                                        <h1>Lorem ipsum dolor</h1>
-
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, numquam quis perspiciatis ea ad omnis provident laborum dolore in atque.
-
-
-                                    </div>
-
-                                    <footer class="content">
-
-                                        <span class="qt-minus">-</span>
-                                        <span class="qt">1</span>
-                                        <span class="qt-plus">+</span>
-
-                                        <h2 class="full-price">
-                                            79.99VND
-                                        </h2>
-
-                                        <h2 class="price">
-                                            79.99VND
-                                        </h2>
-                                    </footer>
-                                </article>
-
-                                <article class="product">
-                                    <header>
-                                        <a class="remove">
-                                            <img src="http://www.astudio.si/preview/blockedwp/wp-content/uploads/2012/08/5.jpg" alt="">
-
-                                            <h3>Remove product</h3>
-                                        </a>
-                                    </header>
-
-                                    <div class="content">
-
-                                        <h1>Lorem ipsum dolor ipsdu</h1>
-
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, numquam quis perspiciatis ea ad omnis provident laborum dolore in atque.
+                                                <h2 class="price">
+                                                    <f:formatNumber var="price" 
+                                                                    value="${ser.price}" 
+                                                                    minIntegerDigits="0" />
+                                                    ${price} VND
+                                                </h2>
 
 
 
-                                    </div>
 
-                                    <footer class="content">
+                                            </footer>
+                                        </article>
+                                    </c:forEach>
 
-                                        <span class="qt-minus">-</span>
-                                        <span class="qt">3</span>
-                                        <span class="qt-plus">+</span>
-
-                                        <h2 class="full-price">
-                                            53.99VND
-                                        </h2>
-
-                                        <h2 class="price">
-                                            17.99VND
-                                        </h2>
-                                    </footer>
-                                </article>
-
-                            </section>
-
+                                </section>
+                            </form>
                         </div>
 
                         <footer id="site-footer">
                             <div class="container clearfix">
 
-                                <div class="left">
-                                    <h2 class="subtotal">Subtotal: <span>163.96</span>VND</h2>
-                                </div>
+                                <!--                                <div class="left">
+                                                                    <h2 class="subtotal">Subtotal: <span>163.96</span>VND</h2>
+                                                                </div>-->
 
                                 <div class="right">
-                                    <h1 class="total">Total: <span>177.16</span>VND</h1>
+                                    <h1 class="total">Total: <span>
+                                            <f:formatNumber var="strOrderTotal" 
+                                                            value="${orderTotal}" 
+                                                            minIntegerDigits="0" />
+                                            ${strOrderTotal}
+                                        </span>VND</h1>
                                     <a class="btn">Checkout</a>
                                 </div>
 
@@ -197,7 +161,7 @@
                         <div class="footer_section layout_padding margin_top_90">
                             <div class="container">
                                 <div class="footer_logo_main">
-                                    <div class="footer_logo"><a href="index.html"><img src="images/footer-logo.png"></a></div>
+<!--                                    <div class="footer_logo"><a href="index.html"><img src="images/footer-logo.png"></a></div>-->
                                     <div class="social_icon">
                                         <ul>
                                             <li><a href="#"><img src="images/fb-icon.png"></a></li>

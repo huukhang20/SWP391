@@ -40,10 +40,11 @@ public class ShowService extends HttpServlet {
         List<Service> list = dao.getAllService();
         List<Category> listC = dao.getAllCategory();
         Service last = dao.getLast();
-        
+
         request.setAttribute("listP", list);
-        request.setAttribute("listC", listC);
         request.setAttribute("last", last);
+        request.setAttribute("listC", listC);
+
         request.getRequestDispatcher("product_list.jsp").forward(request, response);
     }
 

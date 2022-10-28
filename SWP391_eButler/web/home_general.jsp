@@ -82,7 +82,7 @@
                                     <div class="contact_bt"><a href="contact.html">Contact Us</a></div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="image_2"><img src="" style="width:100%"></div>
+                                    <div class="image_2"><img src="images/gao.png" style="width:100%"></div>
                                 </div>
                             </div>
                         </div>
@@ -94,12 +94,12 @@
                                     <div class="image_1"><img src="" style="width:100%"></div>
                                 </div>
                                 <div class="col-md-4">
-                                    <h1 class="banner_taital">Big Sale Offer</h1>
-                                    <div class="buynow_bt active"><a href="#">Buy Now</a></div>
+                                    <h1 class="banner_taital">Electricity Problem?</h1>
+                                    <div class="buynow_bt active"><a href="#">Check Now</a></div>
                                     <div class="contact_bt"><a href="contact.html">Contact Us</a></div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="image_2"><img src="" style="width:100%"></div>
+                                    <div class="image_2"><img src="images/repair.png" style="width:80%"></div>
                                 </div>
                             </div>
                         </div>
@@ -140,15 +140,14 @@
                     </div>
                     <div class="catagary_right">
                         <div class="catagary_menu">
-                            <!--                     <ul>
-                                                    <li><a href="#"></a></li>
-                                                    <li><a href="#">tag</a></li>
-                                                    <li><a href="#">tag</a></li>
-                                                    <li><a href="#">tag</a></li>
-                                                    <li><a href="#">tag</a></li>
-                                                    <li><a href="#">tag</a></li>
-                                                    <li><a href="#">tag</a></li>
-                                                 </ul>-->
+                                                 <ul>
+                                                    <li><a href="ShowServiceByCategory?cateId=1">Gas</a></li>
+                                                    <li><a href="ShowServiceByCategory?cateId=2">Electric</a></li>
+                                                    <li><a href="ShowServiceByCategory?cateId=3">Rice</a></li>
+                                                    <li><a href="ShowServiceByCategory?cateId=4">Water</a></li>
+                                                    <li><a href="ShowServiceByCategory?cateId=5">Electronic Device</a></li>
+                                                    <li><a href="ShowServiceByCategory?cateId=6">Market</a></li>
+                                                 </ul>
                         </div>
                     </div>
                 </div>

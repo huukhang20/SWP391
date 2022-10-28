@@ -5,58 +5,69 @@
  */
 package Order;
 
+import Service.Service;
+import java.util.List;
+
 /**
  *
  * @author Admin
  */
 public class OrderDetail {
-    private int orderDetailId;
-    private int orderId;
-    private int serId;
+    private Order order;
+    private List<Service> service;
     private int price;
     private int quantity;
 
     public OrderDetail() {
     }
 
-    public OrderDetail(int orderId, int serId, int price, int quantity) {
-        this.orderId = orderId;
-        this.serId = serId;
-        this.price = price;
-        this.quantity = quantity;
+    public OrderDetail(Order order, List<Service> service) {
+        this.order = order;
+        this.service = service;
     }
 
-    public int getOrderId() {
-        return orderId;
+    public Order getOrder() {
+        return order;
     }
 
-    public int getSerId() {
-        return serId;
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public List<Service> getService() {
+        return service;
+    }
+
+    public void setService(List<Service> service) {
+        this.service = service;
     }
 
     public int getPrice() {
         return price;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
-    }
-
-    public void setSerId(int serId) {
-        this.serId = serId;
-    }
-
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public int getQuantity() {
+        return quantity;
     }
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
+    public OrderDetail(Order order, List<Service> service, int price, int quantity) {
+        this.order = order;
+        this.service = service;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
+    
+
+
     
     
 }
