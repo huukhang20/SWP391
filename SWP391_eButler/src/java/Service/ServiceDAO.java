@@ -386,7 +386,7 @@ public class ServiceDAO {
     }
 
     //lay 3 service random
-    public List<Service> getRandomService() {
+    public List<Service> getRandom3Service(){
         List<Service> list = new ArrayList<>();
         String query = "Select top 3 *\n"
                 + "From Service\n"
@@ -395,18 +395,38 @@ public class ServiceDAO {
             Connection cn = DBUtils.makeConnection();
             PreparedStatement pst = cn.prepareStatement(query);
             ResultSet rs = pst.executeQuery();
+            int id = 0;
+            String name = "";
+            String description = "";
+            int cateID = 0;
+            int supID = 0;
+//            String categoryName = "";
+//            String supplierName = "";
+            int quantity = 0;
+            int price = 0;
+            String workTime = "";
+            String releaseTime = "";
+            String image = "";
+            String status = "";
+            Service dto = null;
+            list = new ArrayList<Service>();
+            
             while (rs.next()) {
-                list.add(new Service(rs.getInt(1),
-                        rs.getString(2),
-                        rs.getString(3),
-                        rs.getInt(4),
-                        rs.getInt(5),
-                        rs.getInt(6),
-                        rs.getInt(7),
-                        rs.getString(8),
-                        rs.getString(9),
-                        rs.getString(10),
-                        rs.getString(11)));
+                id = rs.getInt("ID");
+                name = rs.getString("Name");
+                description = rs.getString("Description");
+                cateID = rs.getInt("Category_ID");
+                supID = rs.getInt("Supplier_ID");
+//                categoryName = rs.getString("CategoryName");
+//                supplierName = rs.getString("SupplierName");
+                quantity = rs.getInt("Quantity");
+                price = rs.getInt("Price");
+                workTime = rs.getString("Working_Time");
+                releaseTime = rs.getString("Release_Time");
+                image = rs.getString("Image");
+                status = rs.getString("Status");
+                dto = new Service(id, name, description, cateID, supID, quantity, price, workTime, releaseTime, image, status);
+                list.add(dto);
             }
         } catch (Exception e) {
         }

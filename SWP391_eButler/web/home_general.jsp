@@ -4,6 +4,7 @@
     Author     : Admin
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -140,14 +141,14 @@
                     </div>
                     <div class="catagary_right">
                         <div class="catagary_menu">
-                                                 <ul>
-                                                    <li><a href="ShowServiceByCategory?cateId=1">Gas</a></li>
-                                                    <li><a href="ShowServiceByCategory?cateId=2">Electric</a></li>
-                                                    <li><a href="ShowServiceByCategory?cateId=3">Rice</a></li>
-                                                    <li><a href="ShowServiceByCategory?cateId=4">Water</a></li>
-                                                    <li><a href="ShowServiceByCategory?cateId=5">Electronic Device</a></li>
-                                                    <li><a href="ShowServiceByCategory?cateId=6">Market</a></li>
-                                                 </ul>
+                            <ul>
+                                <li><a href="ShowServiceByCategory?cateId=1">Gas</a></li>
+                                <li><a href="ShowServiceByCategory?cateId=2">Electric</a></li>
+                                <li><a href="ShowServiceByCategory?cateId=3">Rice</a></li>
+                                <li><a href="ShowServiceByCategory?cateId=4">Water</a></li>
+                                <li><a href="ShowServiceByCategory?cateId=5">Electronic Device</a></li>
+                                <li><a href="ShowServiceByCategory?cateId=6">Market</a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -156,42 +157,36 @@
         <div class="catagary_section_2">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="box_man">
-                            <h3 class="mobile_text"></h3>
-                            <div class="mobile_img"><img src=""></div>
-                            <div class="cart_main">
-                                <div class="cart_bt"><a href="#">Add To Cart</a></div>
-                                <h4 class="samsung_text"></h4>
-                                <h6 class="rate_text"><a href="#"></a></h6>
-                                <h6 class="rate_text_1"></h6>
+                    <c:forEach items="${requestScope.RANDOMLIST}" var="dto" varStatus="counter">
+                        <div class="col-md-4">
+                            <div class="box_man">
+                                <h3 class="mobile_text"></h3>
+                                <c:if test="${dto.serImage != null}">
+                                    <c:if test="${not empty dto.serImage}">
+                                        <div class="mobile_img">
+                                            <img src="${dto.serImage}">
+                                        </div>
+                                    </c:if>
+                                    <c:if test="${empty dto.serImage}">
+                                        <div class="computer_img">
+                                            <img src="https://i.imgur.com/QpjAiHq.jpg"/>
+                                        </div>
+                                    </c:if>
+                                </c:if>
+                                <c:if test="${dto.serImage == null}">
+                                    <div class="computer_img">
+                                        <img src="https://i.imgur.com/QpjAiHq.jpg"/>
+                                    </div>
+                                </c:if>
+                                <div class="cart_main">
+                                    <!--<div class="cart_bt"><a href="#">Add To Cart</a></div>-->
+                                    <h4 class="samsung_text">${dto.serName}</h4>
+                                    <h6 class="rate_text">${dto.price} $</h6>
+                                    <h6 class="rate_text_1"></h6>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="box_man">
-                            <h3 class="mobile_text"></h3>
-                            <div class="watch_img"><img src=""></div>
-                            <div class="cart_main">
-                                <div class="cart_bt"><a href="#">Add To Cart</a></div>
-                                <h4 class="samsung_text"></h4>
-                                <h6 class="rate_text"><a href="#"></a></h6>
-                                <h6 class="rate_text_1"></h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="box_man">
-                            <h3 class="mobile_text"></h3>
-                            <div class="camera_img"><img src=""></div>
-                            <div class="cart_main">
-                                <div class="cart_bt"><a href="#">Add To Cart</a></div>
-                                <h4 class="samsung_text"></h4>
-                                <h6 class="rate_text"><a href="#"></a></h6>
-                                <h6 class="rate_text_1"></h6>
-                            </div>
-                        </div>
-                    </div>
+                    </c:forEach>
                 </div>
             </div>
         </div>
@@ -207,36 +202,34 @@
             <div class="container-fluid">
                 <div class="computer_main">
                     <div class="row">
-                        <div class="col-md-4">
-                            <div class="computer_img"><img src=""></div>
-                            <h4 class="computer_text"></h4>
-                            <div class="computer_text_main">
-                                <h4 class="dell_text"></h4>
-                                <h6 class="price_text"><a href="#"></a></h6>
-                                <h6 class="price_text_1"><a href="#"></a></h6>
+                        <c:forEach items="${requestScope.RANDOMLIST2}" var="dto" varStatus="counter">
+                            <div class="col-md-4">
+                                <c:if test="${dto.serImage != null}">
+                                    <c:if test="${not empty dto.serImage}">
+                                        <div class="computer_img">
+                                            <img src="${dto.serImage}"/>
+                                        </div>
+                                    </c:if>
+                                    <c:if test="${empty dto.serImage}">
+                                        <div class="computer_img">
+                                            <img src="https://i.imgur.com/QpjAiHq.jpg"/>
+                                        </div>
+                                    </c:if>
+                                </c:if>
+                                <c:if test="${dto.serImage == null}">
+                                    <div class="computer_img">
+                                        <img src="https://i.imgur.com/QpjAiHq.jpg"/>
+                                    </div>
+                                </c:if>
+                                <h4 class="computer_text">${dto.serName}</h4>
+                                <div class="computer_text_main">
+                                    <h4 class="dell_text"></h4>
+                                    <h6 class="price_text mt-auto">${dto.price} $</h6>
+                                    <h6 class="price_text_1"><a href="#"></a></h6>
+                                </div>
+                                <!--<div class="cart_bt_1"><a href="#">Add To Cart</a></div>-->
                             </div>
-                            <div class="cart_bt_1"><a href="#">Add To Cart</a></div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="computer_img"><img src=""></div>
-                            <h4 class="computer_text"></h4>
-                            <div class="computer_text_main">
-                                <h4 class="dell_text"></h4>
-                                <h6 class="price_text"><a href="#"></a></h6>
-                                <h6 class="price_text_1"><a href="#"></a></h6>
-                            </div>
-                            <div class="cart_bt_1"><a href="#">Add To Cart</a></div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="computer_img"><img src=""></div>
-                            <h4 class="computer_text"></h4>
-                            <div class="computer_text_main">
-                                <h4 class="dell_text"></h4>
-                                <h6 class="price_text"><a href="#"></a></h6>
-                                <h6 class="price_text_1"><a href="#"></a></h6>
-                            </div>
-                            <div class="cart_bt_1"><a href="#">Add To Cart</a></div>
-                        </div>
+                        </c:forEach>
                     </div>
                 </div>
             </div>
