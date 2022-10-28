@@ -1,6 +1,6 @@
 <%-- 
-    Document   : user_list_admin
-    Created on : Oct 13, 2022, 8:44:44 PM
+    Document   : product_list_admin
+    Created on : Oct 28, 2022, 10:01:49 AM
     Author     : Admin
 --%>
 
@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Manage Users</title>
+        <title>Product And Service </title>
         <link rel="stylesheet" href="style_admin.css">
         <!-- Boxicons CDN Link -->
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -49,7 +49,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="ShowServiceAdminController">
+                    <a href="ShowServiceAdminController" class="active">
                         <i class='bx bx-box' ></i>
                         <span class="links_name">Products And Services</span>
                     </a>
@@ -61,7 +61,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="ShowUserListController" class="active">
+                    <a href="ShowUserListController">
                         <i class='bx bx-user' ></i>
                         <span class="links_name">User List</span>
                     </a>
@@ -72,12 +72,6 @@
                         <span class="links_name">Feed Back</span>
                     </a>
                 </li>
-                <li>
-                    <a href="order_list_admin.html">
-                      <i class='bx bx-coin-stack' ></i>
-                      <span class="links_name">Oder List</span>
-                    </a>
-                  </li>
                 <li class="log_out">
                     <a href="LogoutController">
                         <i class='bx bx-log-out'></i>
@@ -105,54 +99,63 @@
             </nav>
 
             <div class="home-content">
-                <div class="container">
-                    <c:if test="${requestScope.ACCOUNTLIST != null}">
-                        <c:if test="${not empty requestScope.ACCOUNTLIST}" var="check" scope="page">
-                            <div class="row">
-                                <div class="container mt-5 mb-5 border">
-                                    <c:forEach items="${requestScope.ACCOUNTLIST}" var="dto" varStatus="counter">
-                                        <div class="row">
-                                            <c:if test="${dto.image != null}">
-                                                <c:if test="${not empty dto.image}" var="check" scope="page">
-                                                    <div class="col-md-2 col-sm-2">
-                                                        <img src="${dto.image}" alt="user" class="profile-photo-lg"/>
+                <div class="container mt-5 mb-5">
+                    <c:if test="${requestScope.SERVICELIST != null}">
+                        <c:if test="${not empty requestScope.SERVICELIST}" var="check" scope="page">
+                            <div class="d-flex justify-content-center row">
+                                <c:forEach items="${requestScope.SERVICELIST}" var="dto" varStatus="counter">
+                                    <div class="col-md-10">
+                                        <div class="row p-2 bg-white border rounded">
+                                            <c:if test="${dto.serImage != null}">
+                                                <c:if test="${not empty dto.serImage}">
+                                                    <div class="col-md-3 mt-1">
+                                                        <img class="img-fluid img-responsive rounded product-image" src="${dto.serImage}"/>
                                                     </div>
                                                 </c:if>
-                                                <c:if test="${empty dto.image}" var="check" scope="page">
-                                                    <div class="col-md-2 col-sm-2">
-                                                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="user" class="profile-photo-lg"/>
+                                                <c:if test="${empty dto.serImage}">
+                                                    <div class="col-md-3 mt-1">
+                                                        <img class="img-fluid img-responsive rounded product-image" src="https://i.imgur.com/QpjAiHq.jpg"/>
                                                     </div>
                                                 </c:if>
                                             </c:if>
-                                            <c:if test="${dto.image == null}">
-                                                <div class="col-md-2 col-sm-2">
-                                                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="user" class="profile-photo-lg"/>
+                                            <c:if test="${dto.serImage == null}">
+                                                <div class="col-md-3 mt-1">
+                                                    <img class="img-fluid img-responsive rounded product-image" src="https://i.imgur.com/QpjAiHq.jpg"/>
                                                 </div>
                                             </c:if>
-                                            <div class="col-md-7 col-sm-7">
-                                                <h5><a href="#" class="profile-link">${dto.name}</a></h5>
-                                                <p>Phone: ${dto.phone}</p>
-                                                <p>Email: ${dto.email}</p>
-                                                <p>Status: ${dto.isStatus}</p>
-
+                                            <div class="col-md-6 mt-1">
+                                                <h4 class="card-title" onclick="document.location.href = 'ShowServiceDetailController?txtID=${dto.serID}'">${dto.serName}</h4>
+                                                <div class="d-flex flex-row">
+                                                </div>
+                                                <div class="mt-1 mb-1 spec-1"><span style="font-weight: bold">Category:</span><span class="dot"></span><span> ${dto.categoryName}</span><span class="dot"></span><span><br></span></div>
+                                                <div class="mt-1 mb-1 spec-1"><span style="font-weight: bold">Supplier:</span><span class="dot"></span><span> ${dto.supplierName}</span><span class="dot"></span><span><br></span></div>
+                                                <div class="mt-1 mb-1 spec-1"><span style="font-weight: bold">Work Time:</span><span class="dot"></span><span> ${dto.workDate}</span><span class="dot"></span><span><br></span></div>
+                                                <div class="mt-1 mb-1 spec-1"><span style="font-weight: bold">Description: </span><span class="dot"></span><span> ${dto.serDescription}</span><span class="dot"></span></span></div>
                                             </div>
-                                            <div class="col-md-3 col-sm-3">
-                                                <button class="btn btn-primary bg-danger mr-4">Ban</button>
+                                            <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+                                                <div class="d-flex flex-row align-items-center">
+                                                    <h4 class="mr-1">$13.99</h4>
+                                                    <button class="btn btn-success btn-sm mr-auto" type="button">activate</button>
+                                                </div>
+                                                <div class="d-flex flex-column mt-4"><button class="btn btn-primary btn-sm" type="button">change status</button>
+
+                                                </div>
                                             </div>
                                         </div>
-                                    </c:forEach>
-                                </div>
+                                    </div>
+                                </c:forEach>
                             </div>
                         </c:if>
-                        <c:if test="${empty requestScope.ACCOUNTLIST}">
-                            <h2 style="color: black">No account is waiting for you to managed!</h2>
+                        <c:if test="${empty requestScope.SERVICELIST}">
+                            <h2 style="color: black">No service is waiting for you to managed!</h2>
                         </c:if>
                     </c:if>
-                    <c:if test="${requestScope.ACCOUNTLIST == null}">
-                        <h2 style="color: black">No account is waiting for you to managed!</h2>
+                    <c:if test="${requestScope.SERVICELIST == null}">
+                        <h2 style="color: black">No service is waiting for you to managed!</h2>
                     </c:if>
                 </div>
             </div>
+
 
             <script>
                 let sidebar = document.querySelector(".sidebar");

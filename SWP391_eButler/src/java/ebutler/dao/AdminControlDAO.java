@@ -84,16 +84,21 @@ public class AdminControlDAO implements Serializable {
     public List<Service> getListWaitingServiceForAdmin() throws Exception {
         List<Service> result = null;
         try {
-            String sql = "Select ID, Name, Description, Category_ID, Supplier_ID, Quantity, Price, Working_Time, Release_Time, Image, Status From Service Where Status = 'Waiting'";
+//            String sql = "Select ID, Name, Description, Category_ID, Supplier_ID, Quantity, Price, Working_Time, Release_Time, Image, Status From Service Where Status = 'Waiting'";
+            String sql2 = "Select Service.ID, Service.Name, Service.Description, Category.Name as CategoryName, Supplier.Supplier_Name as SupplierName, Service.Quantity, Service.Price, Service.Working_Time, Service.Release_Time, Service.Image, Service.Status\n"
+                    + "from Service, Category, Supplier\n"
+                    + "where ( Service.Category_ID = Category.ID and Service.Supplier_ID = Supplier.ID and Service.Status like 'Waiting')";
             conn = DBUtils.makeConnection();
-            preStm = conn.prepareStatement(sql);
+            preStm = conn.prepareStatement(sql2);
             rs = preStm.executeQuery();
 
             int id = 0;
             String name = "";
             String description = "";
-            int categoryID = 0;
-            int supplierID = 0;
+//            int categoryID = 0;
+//            int supplierID = 0;
+            String categoryName = "";
+            String supplierName = "";
             int quantity = 0;
             int price = 0;
             String workTime = "";
@@ -107,15 +112,63 @@ public class AdminControlDAO implements Serializable {
                 id = rs.getInt("ID");
                 name = rs.getString("Name");
                 description = rs.getString("Description");
-                categoryID = rs.getInt("Category_ID");
-                supplierID = rs.getInt("Supplier_ID");
+//                categoryID = rs.getInt("Category_ID");
+//                supplierID = rs.getInt("Supplier_ID");
+                categoryName = rs.getString("CategoryName");
+                supplierName = rs.getString("SupplierName");
                 quantity = rs.getInt("Quantity");
                 price = rs.getInt("Price");
                 workTime = rs.getString("Working_Time");
                 releaseTime = rs.getString("Release_Time");
                 image = rs.getString("Image");
                 status = rs.getString("Status");
-                dto = new Service(id, name, description, categoryID, supplierID, quantity, price, workTime, releaseTime, image, status);
+//                dto = new Service(id, name, description, categoryID, supplierID, quantity, price, workTime, releaseTime, image, status);
+                dto = new Service(id, name, description, categoryName, supplierName, quantity, price, workTime, releaseTime, image, status);
+                result.add(dto);
+            }
+        } finally {
+            closeConnection();
+        }
+        return result;
+    }
+    
+    public List<Service> getListServiceForAdmin() throws Exception {
+        List<Service> result = null;
+        try {
+            String sql = "Select Service.ID, Service.Name, Service.Description, Category.Name as CategoryName, Supplier.Supplier_Name as SupplierName, Service.Quantity, Service.Price, Service.Working_Time, Service.Release_Time, Service.Image, Service.Status\n"
+                    + "from Service, Category, Supplier\n"
+                    + "where ( Service.Category_ID = Category.ID and Service.Supplier_ID = Supplier.ID)";
+            conn = DBUtils.makeConnection();
+            preStm = conn.prepareStatement(sql);
+            rs = preStm.executeQuery();
+
+            int id = 0;
+            String name = "";
+            String description = "";
+            String categoryName = "";
+            String supplierName = "";
+            int quantity = 0;
+            int price = 0;
+            String workTime = "";
+            String releaseTime = "";
+            String image = "";
+            String status = "";
+            Service dto = null;
+            result = new ArrayList<Service>();
+
+            while (rs.next()) {
+                id = rs.getInt("ID");
+                name = rs.getString("Name");
+                description = rs.getString("Description");
+                categoryName = rs.getString("CategoryName");
+                supplierName = rs.getString("SupplierName");
+                quantity = rs.getInt("Quantity");
+                price = rs.getInt("Price");
+                workTime = rs.getString("Working_Time");
+                releaseTime = rs.getString("Release_Time");
+                image = rs.getString("Image");
+                status = rs.getString("Status");
+                dto = new Service(id, name, description, categoryName, supplierName, quantity, price, workTime, releaseTime, image, status);
                 result.add(dto);
             }
         } finally {

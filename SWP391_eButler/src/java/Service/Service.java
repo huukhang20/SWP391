@@ -16,6 +16,8 @@ public class Service {
     private String serDescription;
     private int cateId;
     private int supplierId;
+    private String categoryName;
+    private String supplierName;
     private int quantity;
     private int price;
     private String workDate;
@@ -24,6 +26,20 @@ public class Service {
     private String serStatus;
 
     public Service() {
+    }
+
+    public Service(int serID, String serName, String serDescription, String categoryName, String supplierName, int quantity, int price, String workDate, String releaseDate, String serImage, String serStatus) {
+        this.serID = serID;
+        this.serName = serName;
+        this.serDescription = serDescription;
+        this.categoryName = categoryName;
+        this.supplierName = supplierName;
+        this.quantity = quantity;
+        this.price = price;
+        this.workDate = workDate;
+        this.releaseDate = releaseDate;
+        this.serImage = serImage;
+        this.serStatus = serStatus;
     }
 
     public Service(int serID, String serName, String serDescription, int price, String serImage) {
@@ -57,6 +73,22 @@ public class Service {
         this.releaseDate = releaseDate;
         this.serImage = serImage;
         this.serStatus = serStatus;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    public String getSupplierName() {
+        return supplierName;
+    }
+
+    public void setSupplierName(String supplierName) {
+        this.supplierName = supplierName;
     }
 
     public int getSerID() {

@@ -49,7 +49,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="product_list_admin.jsp">
+                    <a href="ShowServiceAdminController">
                         <i class='bx bx-box' ></i>
                         <span class="links_name">Products And Services</span>
                     </a>
