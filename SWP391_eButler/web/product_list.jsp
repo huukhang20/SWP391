@@ -81,7 +81,7 @@
                                 <img class="img-fluid" src="${last.serImage}" />
                             </c:if>
                             <c:if test="${empty o.serImage}" var="check" scope="page">
-                                <img class="img-fluid" src="https://dummyimage.com/600x400/55595c/fff" width = "600" height = "400"/>
+                                <img class="img-fluid" src="${last.serImage}" width = "600" height = "400"/>
                             </c:if>
                             <h5 class="card-title">${last.serName}</h5>
                             <p class="card-text">${last.serDescription}</p>
