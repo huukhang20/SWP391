@@ -53,7 +53,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="order_list_admin.html">
+                    <a href="order_list_admin.jsp">
                       <i class='bx bx-coin-stack' ></i>
                       <span class="links_name">Oder List</span>
                     </a>
