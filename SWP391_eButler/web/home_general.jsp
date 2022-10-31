@@ -181,18 +181,18 @@
                                 <c:if test="${dto.serImage != null}">
                                     <c:if test="${not empty dto.serImage}">
                                         <div class="mobile_img">
-                                            <img src="${dto.serImage}">
+                                            <img src="${dto.serImage}" width = "450" height = "650">
                                         </div>
                                     </c:if>
                                     <c:if test="${empty dto.serImage}">
                                         <div class="computer_img">
-                                            <img src="https://i.imgur.com/QpjAiHq.jpg"/>
+                                            <img src="https://i.imgur.com/QpjAiHq.jpg" width = "450" height = "650"/>
                                         </div>
                                     </c:if>
                                 </c:if>
                                 <c:if test="${dto.serImage == null}">
                                     <div class="computer_img">
-                                        <img src="https://i.imgur.com/QpjAiHq.jpg"/>
+                                        <img src="https://i.imgur.com/QpjAiHq.jpg" width = "450" height = "650"/>
                                     </div>
                                 </c:if>
                                 <div class="cart_main">
@@ -228,18 +228,18 @@
                                 <c:if test="${dto.serImage != null}">
                                     <c:if test="${not empty dto.serImage}">
                                         <div class="computer_img">
-                                            <img src="${dto.serImage}"/>
+                                            <img src="${dto.serImage}" width = "450" height = "650"/>
                                         </div>
                                     </c:if>
                                     <c:if test="${empty dto.serImage}">
                                         <div class="computer_img">
-                                            <img src="https://i.imgur.com/QpjAiHq.jpg"/>
+                                            <img src="https://i.imgur.com/QpjAiHq.jpg" width = "450" height = "650"/>
                                         </div>
                                     </c:if>
                                 </c:if>
                                 <c:if test="${dto.serImage == null}">
                                     <div class="computer_img">
-                                        <img src="https://i.imgur.com/QpjAiHq.jpg"/>
+                                        <img src="https://i.imgur.com/QpjAiHq.jpg" width = "450" height = "650"/>
                                     </div>
                                 </c:if>
                                 <h4 class="computer_text">${dto.serName}</h4>

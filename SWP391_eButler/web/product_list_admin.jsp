@@ -109,18 +109,18 @@
                                             <c:if test="${dto.serImage != null}">
                                                 <c:if test="${not empty dto.serImage}">
                                                     <div class="col-md-3 mt-1">
-                                                        <img class="img-fluid img-responsive rounded product-image" src="${dto.serImage}"/>
+                                                        <img class="img-fluid img-responsive rounded product-image" src="${dto.serImage}" width = "450" height = "800"/>
                                                     </div>
                                                 </c:if>
                                                 <c:if test="${empty dto.serImage}">
                                                     <div class="col-md-3 mt-1">
-                                                        <img class="img-fluid img-responsive rounded product-image" src="https://i.imgur.com/QpjAiHq.jpg"/>
+                                                        <img class="img-fluid img-responsive rounded product-image" src="https://i.imgur.com/QpjAiHq.jpg" width = "450" height = "800"/>
                                                     </div>
                                                 </c:if>
                                             </c:if>
                                             <c:if test="${dto.serImage == null}">
                                                 <div class="col-md-3 mt-1">
-                                                    <img class="img-fluid img-responsive rounded product-image" src="https://i.imgur.com/QpjAiHq.jpg"/>
+                                                    <img class="img-fluid img-responsive rounded product-image" src="https://i.imgur.com/QpjAiHq.jpg" width = "450" height = "800"/>
                                                 </div>
                                             </c:if>
                                             <div class="col-md-6 mt-1">
