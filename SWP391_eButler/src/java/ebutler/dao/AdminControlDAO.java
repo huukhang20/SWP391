@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import Account.Account;
 import Service.Service;
+import Order.Order;
 import java.util.ArrayList;
 import java.util.List;
 import utils.DBUtils;
@@ -131,7 +132,7 @@ public class AdminControlDAO implements Serializable {
         }
         return result;
     }
-    
+
     public List<Service> getListServiceForAdmin() throws Exception {
         List<Service> result = null;
         try {
@@ -213,5 +214,43 @@ public class AdminControlDAO implements Serializable {
             closeConnection();
         }
         return dto;
+    }
+
+    public List<Order> getListOrderForAdmin() throws Exception {
+        List<Order> result = null;
+        try {
+            String sql = "Select Orders.ID, Account.Name as AccountName, Orders.Order_Address,"
+                    + " Orders.Order_Email, Orders.Order_TIme, Orders.Order_Status,"
+                    + " Orders.Total_Price from Orders, Account where ( Orders.Account_ID = Account.ID)";
+            conn = DBUtils.makeConnection();
+            preStm = conn.prepareStatement(sql);
+            rs = preStm.executeQuery();
+
+            int id = 0;
+//            int accID;
+            String accName = "";
+            String orderAddress = "";
+            String orderEmail = "";
+            String orderTime = "";
+            String orderStatus = "";
+            int totalPrice = 0;
+            Order dto = null;
+            result = new ArrayList<Order>();
+
+            while (rs.next()) {
+                id = rs.getInt("ID");
+                accName = rs.getString("AccountName");
+                orderAddress = rs.getString("Order_Address");
+                orderEmail = rs.getString("Order_Email");
+                orderTime = rs.getString("Order_Time");
+                orderStatus = rs.getString("Order_Status");
+                totalPrice = rs.getInt("Total_Price");
+                dto = new Order(id, accName, orderAddress, orderEmail, orderTime, orderStatus, totalPrice);
+                result.add(dto);
+            }
+        } finally {
+            closeConnection();
+        }
+        return result;
     }
 }

@@ -53,7 +53,7 @@
                 <li>
                     <a href="ShowServiceAdminController">
                         <i class='bx bx-box' ></i>
-                        <span class="links_name">Product And Service List</span>
+                        <span class="links_name">Products And Services</span>
                     </a>
                 </li>
                 <li>

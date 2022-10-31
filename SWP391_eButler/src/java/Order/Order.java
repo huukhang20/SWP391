@@ -10,20 +10,32 @@ package Order;
  * @author Admin
  */
 public class Order {
+
     private int orderId;
     private int accID;
+    private String accName;
     private String orderAddress;
     private String orderEmail;
     private String orderTime;
-    private int orderStatus;
+    private String orderStatus;
     private int totalPrice;
 
     public Order() {
     }
 
-    public Order(int orderId, int accID, String orderAddress, String orderEmail, String orderTime, int orderStatus, int totalPrice) {
+    public Order(int orderId, int accID, String orderAddress, String orderEmail, String orderTime, String orderStatus, int totalPrice) {
         this.orderId = orderId;
         this.accID = accID;
+        this.orderAddress = orderAddress;
+        this.orderEmail = orderEmail;
+        this.orderTime = orderTime;
+        this.orderStatus = orderStatus;
+        this.totalPrice = totalPrice;
+    }
+
+    public Order(int orderId, String accName, String orderAddress, String orderEmail, String orderTime, String orderStatus, int totalPrice) {
+        this.orderId = orderId;
+        this.accName = accName;
         this.orderAddress = orderAddress;
         this.orderEmail = orderEmail;
         this.orderTime = orderTime;
@@ -45,6 +57,14 @@ public class Order {
 
     public void setAccID(int accID) {
         this.accID = accID;
+    }
+
+    public String getAccName() {
+        return accName;
+    }
+
+    public void setAccName(String accName) {
+        this.accName = accName;
     }
 
     public String getOrderAddress() {
@@ -71,11 +91,11 @@ public class Order {
         this.orderTime = orderTime;
     }
 
-    public int getOrderStatus() {
+    public String getOrderStatus() {
         return orderStatus;
     }
 
-    public void setOrderStatus(int orderStatus) {
+    public void setOrderStatus(String orderStatus) {
         this.orderStatus = orderStatus;
     }
 
@@ -87,7 +107,4 @@ public class Order {
         this.totalPrice = totalPrice;
     }
 
-
-    
-    
 }
