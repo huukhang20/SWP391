@@ -98,7 +98,7 @@
                                     <div class="col-12 col-md-6 col-lg-4">
                                         <div class="card">
                                             <c:if test="${not empty o.serImage}" var="check" scope="page">
-                                                <img class="card-img-top" src="${o.serImage}" alt="Card image cap">
+                                                <a href="ShowServiceDetail?serId=${o.serID}"><img class="card-img-top" src="${o.serImage}" alt="Card image cap"></a>
                                             </c:if>
                                             <c:if test="${empty o.serImage}" var="check" scope="page">
                                                 <img class="img-fluid" src="https://dummyimage.com/600x400/55595c/fff" />

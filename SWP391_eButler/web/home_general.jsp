@@ -181,7 +181,7 @@
                                 <c:if test="${dto.serImage != null}">
                                     <c:if test="${not empty dto.serImage}">
                                         <div class="mobile_img">
-                                            <img src="${dto.serImage}" style="height: 450px; width: 450px;">
+                                            <a href="ShowServiceDetail?serId=${dto.serID}"><img src="${dto.serImage}" style="height: 450px; width: 450px;"></a>
                                         </div>
                                     </c:if>
                                     <c:if test="${empty dto.serImage}">
@@ -197,7 +197,7 @@
                                 </c:if>
                                 <div class="cart_main">
                                     
-                                    <h4 class="samsung_text">${dto.serName}</h4>
+                                    <a href="ShowServiceDetail?serId=${dto.serID}"><h4 class="samsung_text">${dto.serName}</h4></a>
                                     <h6 class="rate_text">${dto.price} $</h6>
                                     <h6 class="rate_text_1"></h6>
                                 </div>
@@ -228,7 +228,7 @@
                                 <c:if test="${dto.serImage != null}">
                                     <c:if test="${not empty dto.serImage}">
                                         <div class="computer_img">
-                                            <img src="${dto.serImage}" style="height: 450px; width: 450px;"/>
+                                            <a href="ShowServiceDetail?serId=${dto.serID}"><img src="${dto.serImage}" style="height: 450px; width: 450px;"/></a>
                                         </div>
                                     </c:if>
                                     <c:if test="${empty dto.serImage}">
@@ -242,7 +242,7 @@
                                         <img src="https://i.imgur.com/QpjAiHq.jpg" width = "450" height = "650"/>
                                     </div>
                                 </c:if>
-                                <h4 class="computer_text">${dto.serName}</h4>
+                                <a href="ShowServiceDetail?serId=${dto.serID}"><h4 class="computer_text">${dto.serName}</h4></a>
                                 <div class="computer_text_main">
                                     <h4 class="dell_text"></h4>
                                     <h6 class="price_text mt-auto">${dto.price} $</h6>
