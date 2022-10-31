@@ -27,7 +27,7 @@ public class FeedbackDAO {
         ArrayList<Feedback> list = new ArrayList<>();
         Connection cn = DBUtils.makeConnection();
         if (cn != null) {
-            String sql = "SELECT ID, Title, Description, Req_Time, Account_ID, Status from Feedback where Status = 1";
+            String sql = "SELECT ID, Title, Description, Req_Time, Account_ID, Status from Feedback where Status = 0";
             Statement st = cn.createStatement();
             ResultSet table = st.executeQuery(sql);
             if (table != null) {

@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="UTF-8">
         <title>Manage Users</title>
         <link rel="stylesheet" href="style_admin.css">
         <!-- Boxicons CDN Link -->
@@ -74,10 +74,10 @@
                 </li>
                 <li>
                     <a href="order_list_admin.jsp">
-                      <i class='bx bx-coin-stack' ></i>
-                      <span class="links_name">Oder List</span>
+                        <i class='bx bx-coin-stack' ></i>
+                        <span class="links_name">Oder List</span>
                     </a>
-                  </li>
+                </li>
                 <li class="log_out">
                     <a href="LogoutController">
                         <i class='bx bx-log-out'></i>
@@ -105,44 +105,73 @@
             </nav>
 
             <div class="home-content">
-                <div class="container">
+                <div class="table-responsive">
                     <c:if test="${requestScope.ACCOUNTLIST != null}">
                         <c:if test="${not empty requestScope.ACCOUNTLIST}" var="check" scope="page">
-                            <div class="row">
-                                <div class="container mt-5 mb-5 border">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">avatar</th>
+                                        <th scope="col">info</th>
+                                        <th scope="col">action</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
                                     <c:forEach items="${requestScope.ACCOUNTLIST}" var="dto" varStatus="counter">
-                                        <div class="row">
+                                        <tr class="inner-box">
+                                            <th scope="row">
+                                                <span>${counter.count}</span>
+                                            </th>
                                             <c:if test="${dto.image != null}">
                                                 <c:if test="${not empty dto.image}" var="check" scope="page">
-                                                    <div class="col-md-2 col-sm-2">
-                                                        <img src="${dto.image}" alt="user" class="profile-photo-lg"/>
-                                                    </div>
+                                                    <td>
+                                                        <div class="event-img">
+                                                            <img src="${dto.image}" alt=""  height="250" width="200"/>
+                                                        </div>
+                                                    </td>
                                                 </c:if>
                                                 <c:if test="${empty dto.image}" var="check" scope="page">
-                                                    <div class="col-md-2 col-sm-2">
-                                                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="user" class="profile-photo-lg"/>
-                                                    </div>
+                                                    <td>
+                                                        <div class="event-img">
+                                                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt=""  height="250" width="200"/>
+                                                        </div>
+                                                    </td>
                                                 </c:if>
                                             </c:if>
                                             <c:if test="${dto.image == null}">
-                                                <div class="col-md-2 col-sm-2">
-                                                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="user" class="profile-photo-lg"/>
-                                                </div>
+                                                <td>
+                                                    <div class="event-img">
+                                                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt=""  height="250" width="200"/>
+                                                    </div>
+                                                </td>
                                             </c:if>
-                                            <div class="col-md-7 col-sm-7">
-                                                <h5><a href="#" class="profile-link">${dto.name}</a></h5>
-                                                <p>Phone: ${dto.phone}</p>
-                                                <p>Email: ${dto.email}</p>
-                                                <p>Status: ${dto.isStatus}</p>
-
-                                            </div>
-                                            <div class="col-md-3 col-sm-3">
-                                                <button class="btn btn-primary bg-danger mr-4">Ban</button>
-                                            </div>
-                                        </div>
+                                            <td>
+                                                <div class="event-wrap">
+                                                    <h3><a href="#">${dto.name}</a></h3>
+                                                    <div class="meta">
+                                                        <div class="organizers">
+                                                            <a href="#">Phone: ${dto.phone}</a>
+                                                        </div>
+                                                        <div class="categories">
+                                                            <a href="#">Email: ${dto.email}</a>
+                                                        </div>
+                                                        <div class="time">
+                                                            <span>Status: ${dto.isStatus}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="primary-btn">
+                                                    <a class="btn btn-primary" href="#">action</a>
+                                                </div>
+                                            </td>
+                                        </tr>
                                     </c:forEach>
-                                </div>
-                            </div>
+                                </tbody>
+                            </table>
                         </c:if>
                         <c:if test="${empty requestScope.ACCOUNTLIST}">
                             <h2 style="color: black">No account is waiting for you to managed!</h2>

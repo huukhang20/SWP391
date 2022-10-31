@@ -47,7 +47,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="feedback_list_admin.jsp">
+                    <a href="ShowFeedbackListController">
                         <i class='bx bx-message' ></i>
                         <span class="links_name">Feed Back</span>
                     </a>

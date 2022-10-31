@@ -181,12 +181,12 @@
                                 <c:if test="${dto.serImage != null}">
                                     <c:if test="${not empty dto.serImage}">
                                         <div class="mobile_img">
-                                            <img src="${dto.serImage}" width = "450" height = "650">
+                                            <img src="${dto.serImage}" style="height: 450px; width: 450px;">
                                         </div>
                                     </c:if>
                                     <c:if test="${empty dto.serImage}">
                                         <div class="computer_img">
-                                            <img src="https://i.imgur.com/QpjAiHq.jpg" width = "450" height = "650"/>
+                                            <img src="https://i.imgur.com/QpjAiHq.jpg" style="height: 650px; width: 450px;"/>
                                         </div>
                                     </c:if>
                                 </c:if>
@@ -228,7 +228,7 @@
                                 <c:if test="${dto.serImage != null}">
                                     <c:if test="${not empty dto.serImage}">
                                         <div class="computer_img">
-                                            <img src="${dto.serImage}" width = "450" height = "650"/>
+                                            <img src="${dto.serImage}" style="height: 450px; width: 450px;"/>
                                         </div>
                                     </c:if>
                                     <c:if test="${empty dto.serImage}">
@@ -282,7 +282,7 @@
                             <h4 class="adderss_text">Menu</h4>
                             <div class="footer_menu">
                                 <ul>
-                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="ShowHomeGeneralController">Home</a></li>
                                     <li><a href="computers.html"></a></li>
                                     <li><a href="Mans_clothes.html"></a></li>
                                     <li><a href="womans_clothes.html"></a></li>
