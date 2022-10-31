@@ -43,11 +43,11 @@
                 <nav class="navbar navbar-light bg-light justify-content-between">
                     <div id="mySidenav" class="sidenav">
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                        <a href="home_general.jsp">Home</a>
+                        <a href="ShowHomeGeneralController">Home</a>
                         <a href="contact.jsp">Contact</a>
                     </div>
                     <span style="font-size:30px;cursor:pointer; color: #fff;" onclick="openNav()"><img src="images/toggle-icon.png"></span>
-                    <a class="navbar-brand" href="home_general.jsp">E-Butler</a></a>
+                    <a class="navbar-brand" href="ShowHomeGeneralController">E-Butler</a></a>
                     <form class="form-inline ">
                         <div class="login_text">
                             <ul>
@@ -81,7 +81,7 @@
                                 <img class="img-fluid" src="${last.serImage}" />
                             </c:if>
                             <c:if test="${empty o.serImage}" var="check" scope="page">
-                                <img class="img-fluid" src="https://dummyimage.com/600x400/55595c/fff" width = "600" height = "400"/>
+                                <img class="img-fluid" src="${last.serImage}" width = "600" height = "400"/>
                             </c:if>
                             <h5 class="card-title">${last.serName}</h5>
                             <p class="card-text">${last.serDescription}</p>

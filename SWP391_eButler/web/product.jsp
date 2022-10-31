@@ -76,10 +76,10 @@
                         <div class="col-md-6 _boxzoom">                 
                             <div class="zoom-thumb">
                                 <ul class="piclist">
-                                    <li><img src="https://s.fotorama.io/1.jpg" alt=""></li>
+<!--                                    <li><img src="https://s.fotorama.io/1.jpg" alt=""></li>
                                     <li><img src="https://s.fotorama.io/2.jpg" alt=""></li>
                                     <li><img src="https://s.fotorama.io/3.jpg" alt=""></li>
-                                    <li><img src="https://ucarecdn.com/382a5139-6712-4418-b25e-cc8ba69ab07f/-/stretch/off/-/resize/760x/" alt=""></li>
+                                    <li><img src="https://ucarecdn.com/382a5139-6712-4418-b25e-cc8ba69ab07f/-/stretch/off/-/resize/760x/" alt=""></li>-->
                                 </ul>
                             </div>
                             <div class="_product-images">
@@ -93,7 +93,7 @@
                                 <p class="_p-name"> ${detailP.serName} </p>
                                 <div class="_p-price-box">
                                     <div class="p-list">
-                                        <span> M.R.P. : <i class="fa fa-inr"></i> <del> 1399  </del>   </span>
+                                        <span> Price :  </span>
                                         <span class="price"> ${detailP.price} VND </span>
                                     </div>
                                     <form action="CartController" method="get" accept-charset="utf-8" id="addtocart">

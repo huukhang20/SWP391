@@ -50,13 +50,13 @@
                     <nav class="navbar navbar-light bg-light justify-content-between">
                         <div id="mySidenav" class="sidenav">
                             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                            <a href="home_general.jsp">Home</a>
+                            <a href="ShowHomeGeneralController">Home</a>
                             <a href="ShowService">Product List</a>
 <!--                            <a href="computers.html">Computers</a>-->
                             <a href="contact.jsp">Contact</a>
                         </div>
                         <span style="font-size:30px;cursor:pointer; color: #fff;" onclick="openNav()"><img src="images/toggle-icon.png"></span>
-                        <a class="navbar-brand" href="index.html">E-Butler</a></a>
+                        <a class="navbar-brand" href="ShowHomeGeneralController">E-Butler</a></a>
                         <form class="form-inline ">
                             <div class="login_text">
                                 <ul>

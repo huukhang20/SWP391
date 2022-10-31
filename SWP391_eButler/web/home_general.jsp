@@ -196,11 +196,15 @@
                                     </div>
                                 </c:if>
                                 <div class="cart_main">
-                                    <h4 class="samsung_text"><a href="ShowServiceDetail?serId=${dto.serID}">${dto.serName}</a></h4>
+                                    
+                                    <h4 class="samsung_text">${dto.serName}</h4>
                                     <h6 class="rate_text">${dto.price} $</h6>
                                     <h6 class="rate_text_1"></h6>
-                                    <!--<div class="cart_bt col"><a href="#">Detail</a></div>-->
                                 </div>
+                                    <div class="row">
+                                    <div class="cart_bt_1 "><a href="#">Add To Cart</a></div>
+                                    </div>
+                             
                             </div>
                         </div>
                     </c:forEach>
@@ -244,7 +248,7 @@
                                     <h6 class="price_text mt-auto">${dto.price} $</h6>
                                     <h6 class="price_text_1"><a href="#"></a></h6>
                                 </div>
-                                <!--<div class="cart_bt_1"><a href="#">Add To Cart</a></div>-->
+                                <div class="cart_bt_1"><a href="#">Add To Cart</a></div>
                             </div>
                         </c:forEach>
                     </div>
@@ -278,7 +282,7 @@
                             <h4 class="adderss_text">Menu</h4>
                             <div class="footer_menu">
                                 <ul>
-                                    <li><a href="ShowHomeGeneralController">Home</a></li>
+                                    <li><a href="index.html">Home</a></li>
                                     <li><a href="computers.html"></a></li>
                                     <li><a href="Mans_clothes.html"></a></li>
                                     <li><a href="womans_clothes.html"></a></li>

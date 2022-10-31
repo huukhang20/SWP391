@@ -46,7 +46,7 @@ public class AddFeedbackController extends HttpServlet {
             Logger.getLogger(AddFeedbackController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        response.sendRedirect("index.html");
+        response.sendRedirect("ShowHomeGeneralController");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
