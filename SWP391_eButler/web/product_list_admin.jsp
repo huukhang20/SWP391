@@ -134,10 +134,10 @@
                                             </div>
                                             <div class="align-items-center align-content-center col-md-3 border-left mt-1">
                                                 <div class="d-flex flex-row align-items-center">
-                                                    <h4 class="mr-1">$13.99</h4>
-                                                    <button class="btn btn-success btn-sm mr-auto" type="button">activate</button>
+                                                    <h4 class="mr-1">${dto.price}</h4>
+                                                    <button class="btn btn-success btn-sm mr-auto" type="button">${dto.serStatus}</button>
                                                 </div>
-                                                <div class="d-flex flex-column mt-4"><button class="btn btn-primary btn-sm" type="button">change status</button>
+                                                <div class="d-flex flex-column mt-4"><button class="btn btn-primary btn-sm" type="button" onclick="document.location.href = 'UpdateServiceStatusController?serId=${dto.serID}'">change status</button>
 
                                                 </div>
                                             </div>
