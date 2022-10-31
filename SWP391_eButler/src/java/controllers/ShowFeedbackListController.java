@@ -40,6 +40,7 @@ public class ShowFeedbackListController extends HttpServlet {
             List<Feedback> list = FeedbackDAO.getFeedbacks();
             request.setAttribute("list", list);
         } catch (Exception e) {
+            log("ERROR at ShowFeedbackListController: " + e.getMessage());
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
@@ -47,7 +48,7 @@ public class ShowFeedbackListController extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP <code>GET</code> method.
+     * Handles the HTTP <code>GET</code> method.d
      *
      * @param request servlet request
      * @param response servlet response

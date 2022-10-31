@@ -56,10 +56,27 @@
                     <form class="form-inline ">
                         <div class="login_text">
                             <ul>
-                                <li><a href="login.jsp"><img src="images/user-icon.png"></a></li>
+                                <c:if test="${sessionScope.USERLOGIN != null}">
+                                    <c:if test="${not empty sessionScope.USERLOGIN}" var="check" scope="page">
+                                        <li>
+                                            <a href="#"><img src="images/user-icon.png"></a>
+                                        </li>
+                                    </c:if>
+                                </c:if>
+                                <c:if test="${sessionScope.USERLOGIN == null}">
+                                    <li>
+                                        <a href="login.jsp"><img src="images/user-icon.png"></a>
+                                    </li>
+                                </c:if>
                                 <li><a href="#"><img src="images/trolly-icon.png"></a></li>
                                 <li><a href="#"><img src="images/search-icon.png"></a></li>
-                                <li><a href="#"><img src="images/logout.png" width = "21" height = "20"></a></li>
+                                        <c:if test="${sessionScope.USERLOGIN != null}">
+                                            <c:if test="${not empty sessionScope.USERLOGIN}" var="check" scope="page">
+                                        <li>
+                                            <a href="LogoutController"><img src="images/logout.png" width = "21" height = "20"></a>
+                                        </li>
+                                    </c:if>
+                                </c:if>
                             </ul>
                         </div>
                     </form>

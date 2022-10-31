@@ -45,7 +45,7 @@
             </div>
             <ul class="nav-links">
                 <li>
-                    <a href="home_admin.html" class="active">
+                    <a href="home_admin.jsp">
                         <i class='bx bx-grid-alt' ></i>
                         <span class="links_name">Dashboard</span>
                     </a>
@@ -69,7 +69,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="feedback_list_admin.jsp">
+                    <a href="ShowFeedbackListController" class="active">
                         <i class='bx bx-message' ></i>
                         <span class="links_name">Feed Back</span>
                     </a>
