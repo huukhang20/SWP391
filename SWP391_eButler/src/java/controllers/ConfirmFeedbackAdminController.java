@@ -5,11 +5,9 @@
  */
 package controllers;
 
-import Service.ServiceDAO;
+import ebutler.dao.AdminControlDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,8 +18,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-@WebServlet(name = "UpdateServiceStatusController", urlPatterns = {"/UpdateServiceStatusController"})
-public class UpdateServiceStatusController extends HttpServlet {
+@WebServlet(name = "ConfirmFeedbackAdminController", urlPatterns = {"/ConfirmFeedbackAdminController"})
+public class ConfirmFeedbackAdminController extends HttpServlet {
+    private static final String feedbackPage = "ShowFeedbackListController";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,16 +34,25 @@ public class UpdateServiceStatusController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+        String url = feedbackPage;
         try {
-            String serStatus = request.getParameter("serStatus");
-            String serId = request.getParameter("serId");
-            ServiceDAO sd = new ServiceDAO();
-            sd.updateServiceStatus(serStatus, serId);
-        } catch (Exception ex) {
-            Logger.getLogger(UpdateServiceStatusController.class.getName()).log(Level.SEVERE, null, ex);
+            String id = request.getParameter("txtID");
+            int idCode = Integer.parseInt(id);
+            
+            AdminControlDAO dao = new AdminControlDAO();
+            boolean check = dao.completeFeedback(idCode);
+            
+            if(check){
+                request.setAttribute("SUCCESS", "Feedback has been complete!");
+            } else {
+                request.setAttribute("FAIL", "Feedback can't be complete!");
+            }
+            
+        } catch (Exception e) {
+            log("ERROR at ConfirmFeedbackAdminController: " + e.getMessage());
+        } finally {
+            request.getRequestDispatcher(url).forward(request, response);
         }
-        response.sendRedirect("ShowServiceAdminController");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

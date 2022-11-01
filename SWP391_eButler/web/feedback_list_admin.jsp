@@ -35,6 +35,7 @@
         <link rel="stylesheet" href="css/owl.theme.default.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
         <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="./product_list.css">
     </head>
     <body>
@@ -76,10 +77,10 @@
                 </li>
                 <li>
                     <a href="order_list_admin.jsp">
-                      <i class='bx bx-coin-stack' ></i>
-                      <span class="links_name">Oder List</span>
+                        <i class='bx bx-coin-stack' ></i>
+                        <span class="links_name">Oder List</span>
                     </a>
-                  </li>
+                </li>
                 <li class="log_out">
                     <a href="LogoutController">
                         <i class='bx bx-log-out'></i>
@@ -101,7 +102,7 @@
                 </div>
                 <div class="profile-details">
                     <img src="images/profile.jpg" alt="">
-                    <span class="admin_name">user ?</span>
+                    <span class="admin_name">${sessionScope.USERROLE} ${sessionScope.USERLOGIN}</span>
 
                 </div>
             </nav>
@@ -123,11 +124,33 @@
                                     </div>
                                     <div class="align-items-center align-content-center col-md-3 border-left mt-1">
                                         <div class="d-flex flex-row align-items-center">
-
                                         </div>
-                                        <div class="d-flex flex-column mt-4"><button class="btn btn-primary btn-sm" type="button">done</button>
-
-                                        </div>
+                                        <c:if test="${item.status == 0}">
+                                            <div class="d-flex flex-column mt-4">
+                                                <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#confirmDoneModal">Done</button>
+                                            </div>
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="confirmDoneModal" tabindex="-1" aria-labelledby="confirmDoneModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="confirmDoneModalLabel">Complete this feedback?</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Are you sure about that ?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-primary" onclick="document.location.href = 'ConfirmFeedbackAdminController?txtID=${item.ID}'">Complete</button>
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </c:if>
+                                        <c:if test="${item.status == 1}">
+                                            <div class="d-flex flex-column mt-4">Solved</div>
+                                        </c:if>
                                     </div>
                                 </div>
 

@@ -253,4 +253,19 @@ public class AdminControlDAO implements Serializable {
         }
         return result;
     }
+    
+    public boolean completeFeedback(int id) throws Exception {
+        boolean check = false;
+        try {
+            String sql = "Update Feedback Set Status = ? Where ID = ?";
+            conn = DBUtils.makeConnection();
+            preStm = conn.prepareStatement(sql);
+            preStm.setString(1, "True");
+            preStm.setInt(2, id);
+            check = preStm.executeUpdate() > 0;
+        } finally {
+            closeConnection();
+        }
+        return check;
+    }
 }
