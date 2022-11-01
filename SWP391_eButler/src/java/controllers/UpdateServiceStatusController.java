@@ -35,11 +35,12 @@ public class UpdateServiceStatusController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String serStatus = request.getParameter("serStatus");
-        String serId = request.getParameter("serId");
-        ServiceDAO sd = new ServiceDAO();
+
         try {
-            sd.updateServiceStatus(serStatus,serId);
+            String serStatus = request.getParameter("serStatus");
+            String serId = request.getParameter("serId");
+            ServiceDAO sd = new ServiceDAO();
+            sd.updateServiceStatus(serStatus, serId);
         } catch (Exception ex) {
             Logger.getLogger(UpdateServiceStatusController.class.getName()).log(Level.SEVERE, null, ex);
         }
