@@ -76,10 +76,10 @@
                 </li>
                 <li>
                     <a href="order_list_admin.jsp">
-                      <i class='bx bx-coin-stack' ></i>
-                      <span class="links_name">Oder List</span>
+                        <i class='bx bx-coin-stack' ></i>
+                        <span class="links_name">Oder List</span>
                     </a>
-                  </li>
+                </li>
                 <li class="log_out">
                     <a href="LogoutController">
                         <i class='bx bx-log-out'></i>
@@ -101,7 +101,7 @@
                 </div>
                 <div class="profile-details">
                     <img src="images/profile.jpg" alt="">
-                    <span class="admin_name">user ?</span>
+                    <span class="admin_name">${sessionScope.USERROLE} ${sessionScope.USERLOGIN}</span>
 
                 </div>
             </nav>
@@ -123,11 +123,15 @@
                                     </div>
                                     <div class="align-items-center align-content-center col-md-3 border-left mt-1">
                                         <div class="d-flex flex-row align-items-center">
-
                                         </div>
-                                        <div class="d-flex flex-column mt-4"><button class="btn btn-primary btn-sm" type="button">done</button>
-
-                                        </div>
+                                        <c:if test="${item.status == 0}">
+                                            <div class="d-flex flex-column mt-4">
+                                                <button class="btn btn-primary btn-sm" type="button">Done</button>
+                                            </div>
+                                        </c:if>
+                                        <c:if test="${item.status == 1}">
+                                            <div class="d-flex flex-column mt-4">Solved</div>
+                                        </c:if>
                                     </div>
                                 </div>
 
