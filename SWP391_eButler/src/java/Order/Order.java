@@ -5,6 +5,8 @@
  */
 package Order;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Admin
@@ -107,4 +109,16 @@ public class Order {
         this.totalPrice = totalPrice;
     }
 
+    private ArrayList<OrderDetail> odtList;
+
+    public ArrayList<OrderDetail> getOdtList() {
+        return odtList;
+    }
+
+    public void setOdtList(ArrayList<OrderDetail> odtList) {
+        this.odtList = odtList;
+    }
+    
+    
+    
 }

@@ -5,7 +5,9 @@
  */
 package Cart;
 
+import Service.ServiceDAO;
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -50,5 +52,14 @@ public class Cart implements Serializable{
                 this.cart = null;
             }
         }
+    }
+    
+    public int orderTotal() throws SQLException{
+        int total = 0;
+        for (Map.Entry<Integer, Integer> e : cart.entrySet()){
+            int price = ServiceDAO.find(e.getKey().toString()).getPrice();
+            total = total + price * e.getValue();
+        }            
+        return total;
     }
 }

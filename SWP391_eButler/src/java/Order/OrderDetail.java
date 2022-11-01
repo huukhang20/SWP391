@@ -13,61 +13,71 @@ import java.util.List;
  * @author Admin
  */
 public class OrderDetail {
-    private Order order;
-    private List<Service> service;
-    private int price;
-    private int quantity;
+    private int ID;
+    private int Order_ID;
+    private int Service_ID;
+    private int Price;
+    private int Quantity;
+    private String serName;
 
     public OrderDetail() {
     }
 
-    public OrderDetail(Order order, List<Service> service) {
-        this.order = order;
-        this.service = service;
+    public OrderDetail(int ID, int Order_ID, int Service_ID, int Price, int Quantity) {
+        this.ID = ID;
+        this.Order_ID = Order_ID;
+        this.Service_ID = Service_ID;
+        this.Price = Price;
+        this.Quantity = Quantity;
     }
 
-    public Order getOrder() {
-        return order;
+    public int getID() {
+        return ID;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
-    public List<Service> getService() {
-        return service;
+    public int getOrder_ID() {
+        return Order_ID;
     }
 
-    public void setService(List<Service> service) {
-        this.service = service;
+    public void setOrder_ID(int Order_ID) {
+        this.Order_ID = Order_ID;
+    }
+
+    public int getService_ID() {
+        return Service_ID;
+    }
+
+    public void setService_ID(int Service_ID) {
+        this.Service_ID = Service_ID;
     }
 
     public int getPrice() {
-        return price;
+        return Price;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
+    public void setPrice(int Price) {
+        this.Price = Price;
     }
 
     public int getQuantity() {
-        return quantity;
+        return Quantity;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setQuantity(int Quantity) {
+        this.Quantity = Quantity;
     }
 
-    public OrderDetail(Order order, List<Service> service, int price, int quantity) {
-        this.order = order;
-        this.service = service;
-        this.price = price;
-        this.quantity = quantity;
+    public String getSerName() {
+        return serName;
     }
 
-    
-
-
+    public void setSerName(String serName) {
+        this.serName = serName;
+    }
     
     
 }

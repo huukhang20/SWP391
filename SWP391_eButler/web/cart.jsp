@@ -55,7 +55,7 @@
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                         <a href="ShowHomeGeneralController">Home</a>
                         <a href="ShowService">Product List</a>
-<!--                        <a href="computers.html">Computers</a>-->
+                        <!--                        <a href="computers.html">Computers</a>-->
                         <a href="contact.jsp">Contact</a>
                     </div>
                     <span style="font-size:30px;cursor:pointer; color: #fff;" onclick="openNav()"><img src="images/toggle-icon.png"></span>
@@ -140,9 +140,9 @@
                         <footer id="site-footer">
                             <div class="container clearfix">
 
-                                <!--                                <div class="left">
-                                                                    <h2 class="subtotal">Subtotal: <span>163.96</span>VND</h2>
-                                                                </div>-->
+                                <div class="left">
+                                    <h2 id="date"></h2>
+                                </div>
 
                                 <div class="right">
                                     <h1 class="total">Total: <span>
@@ -150,7 +150,7 @@
                                                             value="${orderTotal}" 
                                                             minIntegerDigits="0" />
                                             ${strOrderTotal}
-                                    
+
                                         </span>VND</h1>
                                     <a class="btn" href="check_out.jsp">Checkout</a>
                                 </div>
@@ -162,7 +162,7 @@
                         <div class="footer_section layout_padding margin_top_90">
                             <div class="container">
                                 <div class="footer_logo_main">
-<!--                                    <div class="footer_logo"><a href="index.html"><img src="images/footer-logo.png"></a></div>-->
+                                    <!--                                    <div class="footer_logo"><a href="index.html"><img src="images/footer-logo.png"></a></div>-->
                                     <div class="social_icon">
                                         <ul>
                                             <li><a href="#"><img src="images/fb-icon.png"></a></li>
@@ -270,6 +270,9 @@
                             $(".total span").html(fullPrice);
                         }
 
+                        var date = new Date();
+                        var current_date = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+                        document.getElementById("date").innerHTML = current_date;
                         // $(document).ready(function(){
 
                         //   $(".remove").click(function(){

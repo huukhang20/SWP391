@@ -143,9 +143,8 @@
                         </div>
 
                         <hr class="mb-4">
-
                     </form>
-                    <button class="btn btn-primary btn-lg btn-block" type="submit" form="check_out" value="submit">Done!?</button>
+                    <button class="btn btn-primary btn-lg btn-block" type="submit" form="check_out" value="submit" onclick="AlertFunc()">Done!?</button>
                 </div>
             </div>
 
@@ -254,6 +253,9 @@
                                 alert("Address can't be blank");
                                 return false;
                             }
+                        }
+                        function AlertFunc() {
+                            alert("Thanks for using our service.");
                         }
         </script> 
     </body>

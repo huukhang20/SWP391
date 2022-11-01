@@ -6,13 +6,13 @@
 package controllers;
 
 import Account.Account;
-import Account.AccountDAO;
-import Cart.Cart;
 import Order.Order;
 import Order.OrderDAO;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
-import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,8 +24,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Admin
  */
-@WebServlet(name = "CheckOutController", urlPatterns = {"/CheckOutController"})
-public class CheckOutController extends HttpServlet {
+@WebServlet(name = "OrderController", urlPatterns = {"/OrderController"})
+public class OrderController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,33 +38,16 @@ public class CheckOutController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String email = request.getParameter("email");
-        String address = request.getParameter("address");
-        String url = "error.jsp";
-        HttpSession session = request.getSession();
-
         try {
-            if (session != null) {
-                Cart cart = (Cart) session.getAttribute("cart");
-                if (cart != null) {
-                    Map<Integer, Integer> cartList = cart.getCart();
-                    if (cartList != null) {
-                        OrderDAO dao = new OrderDAO();
-                        boolean result = dao.createOrder(email, address, cart);
-                        if (result) {
-                            // Order successfully
-                            url = "OrderController";
-                            session.removeAttribute("cart");
-                        } else {
-
-                        }
-                    }
-                }
-            }
-
-        } catch (Exception e) {
+            HttpSession session = request.getSession();
+            Account account = (Account) session.getAttribute("account");
+            OrderDAO odao = new OrderDAO();
+            List<Order> olist = odao.getOrderList(account);
+            session.setAttribute("olist", olist);
+            request.getRequestDispatcher("order_list.jsp").forward(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(OrderController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        request.getRequestDispatcher(url).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
