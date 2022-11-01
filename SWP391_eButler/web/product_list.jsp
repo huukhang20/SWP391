@@ -78,7 +78,7 @@
                         <div class="card-header bg-success text-white text-uppercase">Last Service</div>
                         <div class="card-body">
                             <c:if test="${not empty o.serImage}" var="check" scope="page">
-                                <img class="img-fluid" src="${last.serImage}" />
+                                <img class="img-fluid" src="${last.serImage}" width = "600" height = "400"/>
                             </c:if>
                             <c:if test="${empty o.serImage}" var="check" scope="page">
                                 <img class="img-fluid" src="${last.serImage}" width = "600" height = "400"/>
@@ -98,10 +98,10 @@
                                     <div class="col-12 col-md-6 col-lg-4">
                                         <div class="card">
                                             <c:if test="${not empty o.serImage}" var="check" scope="page">
-                                                <a href="ShowServiceDetail?serId=${o.serID}"><img class="card-img-top" src="${o.serImage}" alt="Card image cap"></a>
+                                                <a href="ShowServiceDetail?serId=${o.serID}"><img class="card-img-top" src="${o.serImage}" alt="Card image cap" width = "600" height = "400"></a>
                                             </c:if>
                                             <c:if test="${empty o.serImage}" var="check" scope="page">
-                                                <img class="img-fluid" src="https://dummyimage.com/600x400/55595c/fff" />
+                                                <img class="img-fluid" src="https://dummyimage.com/600x400/55595c/fff" width = "600" height = "400" />
                                             </c:if>
                                             <div class="card-body">
                                                 <h4 class="card-title show_txt"><a href="ShowServiceDetail?serId=${o.serID}" title="View Product" >${o.serName}</a></h4>
