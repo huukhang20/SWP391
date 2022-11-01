@@ -137,10 +137,10 @@
                                                 <div class="mt-1 mb-1 spec-1"><span style="font-weight: bold">Supplier:</span><span class="dot"></span><span> ${dto.supplierName}</span><span class="dot"></span><span><br></span></div>
                                                 <div class="mt-1 mb-1 spec-1"><span style="font-weight: bold">Work Time:</span><span class="dot"></span><span> ${dto.workDate}</span><span class="dot"></span><span><br></span></div>
                                                 <div class="mt-1 mb-1 spec-1"><span style="font-weight: bold">Description: </span><span class="dot"></span><span> ${dto.serDescription}</span><span class="dot"></span></span></div>
+                                                <div class="mt-1 mb-1 spec-1"><span style="font-weight: bold">Price: </span><span class="dot"></span><span> ${dto.price}</span><span class="dot"></span></span></div>
                                             </div>
                                             <div class="align-items-center align-content-center col-md-3 border-left mt-1">
                                                 <div class="d-flex flex-row align-items-center">
-                                                    <h4 class="mr-1">${dto.price}</h4>
                                                     <button class="btn btn-success btn-sm mr-auto" type="button">${dto.serStatus}</button>
                                                 </div>
                                                 <div class="d-flex flex-column mt-4"><button class="btn btn-primary btn-sm" type="button" onclick="document.location.href = 'UpdateServiceStatusController?serId=${dto.serID}'">change status</button>
