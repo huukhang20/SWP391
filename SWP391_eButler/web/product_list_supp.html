@@ -27,7 +27,8 @@
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
      <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
      <link rel="stylesheet" href="./product_list.css">
-   </head>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </head>
 <body>
   <div class="sidebar">
     <div class="logo-details">
@@ -66,9 +67,9 @@
           </a>
         </li>
         <li>
-          <a href="manage product_supp.html">
+          <a href="manage order_supp.html">
             <i class='bx bx-book-alt' ></i>
-            <span class="links_name">Manage Product</span>
+            <span class="links_name">Manage Order</span>
           </a>
         </li>
         <li class="log_out">
@@ -98,90 +99,87 @@
   </nav>
 
   <div class="home-content">
-    <div class="container mt-5 mb-5">
-      <div class="d-flex justify-content-center row">
-          <div class="col-md-10">
-              <div class="row p-2 bg-white border rounded">
-                  <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="https://i.imgur.com/QpjAiHq.jpg" width = "450" height = "800"></div>
-                  <div class="col-md-6 mt-1">
-                      <h4 class="card-title"><a href="product.html" title="View Product">Product title</a></h4>
-                      <div class="d-flex flex-row">
+    <div class="table-responsive">
+      <table class="table">
+          <thead>
+              <tr>
+                  <th class="text-center" scope="col">ID</th>
+                  <th scope="col">name</th>
+                  <th scope="col">info</th>
+                  <th scope="col">price</th>
+                  <th scope="col">quantity</th>
+                  <th scope="col">action</th>
+     
+              </tr>
+          </thead>
+          <tbody>
+              <tr class="inner-box">
+                  <th scope="row">
+                      <div class="event-date">
+                          <span>16</span>
+                        
                       </div>
-                      <div class="mt-1 mb-1 spec-1"><span>100% cotton</span><span class="dot"></span><span>Light weight</span><span class="dot"></span><span>Best finish<br></span></div>
-                      <div class="mt-1 mb-1 spec-1"><span>Unique design</span><span class="dot"></span><span>For men</span><span class="dot"></span><span>Casual<br></span></div>
-                  </div>
-                        <div class="align-items-center align-content-center col-md-3 border-left mt-1">
-                            <div class="d-flex flex-row align-items-center">
-                                Price<button class="btn btn-warning btn-sm mr-auto" type="button">$13.99</button>
-                            </div>
-                            <div class="d-flex flex-column mt-4"><button class="btn btn-primary btn-sm" type="button">Quantity</button>
-                              <div class="col-md-auto">
-                                <hr class="mb-4">
-                                <input type="text"  placeholder="" value="" required="">
-                            </div>                       
-                        </div>
-              </div>
-             </div>
-          </div>   
-        </div>     
-        
-        <div class="d-flex justify-content-center row">
-          <div class="col-md-10">
-              <div class="row p-2 bg-white border rounded">
-                  <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="https://i.imgur.com/QpjAiHq.jpg" width = "450" height = "800"></div>
-                  <div class="col-md-6 mt-1">
-                      <h4 class="card-title"><a href="product.html" title="View Product">Product title</a></h4>
-                      <div class="d-flex flex-row">
+                  </th>
+                  <td>
+                    <span>adadadsa</span>
+                  </td>
+                  <td>
+                      <div class="event-wrap">
+                          
+                          <div class="meta">
+                              <div class="organizers">
+                                  <a href="#">Aslan Lingker</a>
+                              </div>
+                              <div class="categories">
+                                  <a href="#">Inspire</a>
+                              </div>
+                              <div class="time">
+                                  <span>05:35 AM - 08:00 AM 2h 25'</span>
+                              </div>
+                          </div>
                       </div>
-                      <div class="mt-1 mb-1 spec-1"><span>100% cotton</span><span class="dot"></span><span>Light weight</span><span class="dot"></span><span>Best finish<br></span></div>
-                      <div class="mt-1 mb-1 spec-1"><span>Unique design</span><span class="dot"></span><span>For men</span><span class="dot"></span><span>Casual<br></span></div>
-                  </div>
-                        <div class="align-items-center align-content-center col-md-3 border-left mt-1">
-                            <div class="d-flex flex-row align-items-center">
-                                Price<button class="btn btn-warning btn-sm mr-auto" type="button">$13.99</button>
-                            </div>
-                            <div class="d-flex flex-column mt-4"><button class="btn btn-primary btn-sm" type="button">Quantity</button>
-                              <div class="col-md-auto">
-                                <hr class="mb-4">
-                                <input type="text"  placeholder="" value="" required="">
-                            </div>                       
-                        </div>
-              </div>
-             </div>
-          </div>   
+                  </td>
+                 
+           <td>
+            <input type="text">
+           </td>
+           <td>
+            <input type="text">
+           </td>
+                  <td>
+                         <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  info
+  </button>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ban this User ?</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-
-        <div class="d-flex justify-content-center row">
-          <div class="col-md-10">
-              <div class="row p-2 bg-white border rounded">
-                  <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="https://i.imgur.com/QpjAiHq.jpg" width = "450" height = "800"></div>
-                  <div class="col-md-6 mt-1">
-                      <h4 class="card-title"><a href="product.html" title="View Product">Product title</a></h4>
-                      <div class="d-flex flex-row">
-                      </div>
-                      <div class="mt-1 mb-1 spec-1"><span>100% cotton</span><span class="dot"></span><span>Light weight</span><span class="dot"></span><span>Best finish<br></span></div>
-                      <div class="mt-1 mb-1 spec-1"><span>Unique design</span><span class="dot"></span><span>For men</span><span class="dot"></span><span>Casual<br></span></div>
-                  </div>
-                        <div class="align-items-center align-content-center col-md-3 border-left mt-1">
-                            <div class="d-flex flex-row align-items-center">
-                                Price<button class="btn btn-warning btn-sm mr-auto" type="button">$13.99</button>
-                            </div>
-                            <div class="d-flex flex-column mt-4"><button class="btn btn-primary btn-sm" type="button">Quantity</button>
-                              <div class="col-md-auto">
-                                <hr class="mb-4">
-                                <input type="text"  placeholder="" value="" required="">
-                            </div>                       
-                        </div>
-              </div>
-             </div>
-          </div>   
+        <div class="modal-body">
+          are you sure about that ?
         </div>
-        <hr class="mb-4">
-        <div class="col-3 ml-auto p-2">
-          <button class="btn btn-primary btn-lg btn-block" type="submit">Done!?</button>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary">OK!?</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          
         </div>
+      </div>
+    </div>
   </div>
-  
+  </div>              
+              </tr>   
+              
+          </tbody>
+        
+      </table>
+    
+      </div>
+        
+       
 </div>
 
 
@@ -196,6 +194,7 @@ sidebarBtn.onclick = function() {
   sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
 }
  </script>
+
 
 </body>
 </html>
