@@ -40,7 +40,10 @@ public class UpdateServiceStatusController extends HttpServlet {
             String serStatus = request.getParameter("serStatus");
             String serId = request.getParameter("serId");
             ServiceDAO sd = new ServiceDAO();
-            sd.updateServiceStatus(serStatus, serId);
+                        if(serStatus.equals("available")) //active
+                ServiceDAO.updateServiceStatus("unavailable", serId);
+            else
+                ServiceDAO.updateServiceStatus("available", serId);
         } catch (Exception ex) {
             Logger.getLogger(UpdateServiceStatusController.class.getName()).log(Level.SEVERE, null, ex);
         }

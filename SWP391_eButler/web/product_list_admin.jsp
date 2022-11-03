@@ -143,8 +143,8 @@
                                                 <div class="d-flex flex-row align-items-center">
                                                     <button class="btn btn-success btn-sm mr-auto" type="button">${dto.serStatus}</button>
                                                 </div>
-                                                <div class="d-flex flex-column mt-4"><button class="btn btn-primary btn-sm" type="button" onclick="document.location.href = 'UpdateServiceStatusController?serId=${dto.serID}'">change status</button>
-
+                                                <div class="d-flex flex-column mt-4"><a class="btn btn-primary btn-sm" type="button" href="UpdateServiceStatusController?serStatus=${dto.serStatus}&serId=${dto.serID}">change status</a>
+<!--                                                    <a href="UpdateServiceStatusController?serStatus=${dto.serStatus}&serId=${dto.serID}">change status</a>-->
                                                 </div>
                                             </div>
                                         </div>

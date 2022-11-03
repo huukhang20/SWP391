@@ -172,9 +172,9 @@ public class ServiceDAO {
         Connection cn = DBUtils.makeConnection();
         boolean flag = false;
         if (cn != null) {
-            String sql = "UPDATE DBO.Service\n"
-                    + "SET Status=?\n"
-                    + "WHERE Id=?";
+            String sql = "UPDATE DBO.Service \n"
+                    + "SET Status=? \n"
+                    + "WHERE ID=?";
             PreparedStatement pst = cn.prepareStatement(sql);
             pst.setString(1, serStatus);
             pst.setString(2, serId);
