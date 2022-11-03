@@ -95,7 +95,7 @@
                         <c:if test="${not empty requestScope.listP}" var="check" scope="page">
                             <div class="row">
                                 <c:forEach items="${requestScope.listP}" var="o">
-                                    <div class="col-12 col-md-6 col-lg-4">
+                                    <div class="col-12 col-md-6 col-lg-4 ">
                                         <div class="card">
                                             <c:if test="${not empty o.serImage}" var="check" scope="page">
                                                 <a href="ShowServiceDetail?serId=${o.serID}"><img class="card-img-top" src="${o.serImage}" alt="Card image cap" width = "600" height = "400"></a>
@@ -115,7 +115,7 @@
                                                         <a href="CartController?op=add&serId=${o.serID}&quantity=1&url=product_list.jsp" class="btn btn-success btn-block">Add to cart</a>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> 
                                         </div>
                                     </div>
                                 </c:forEach>

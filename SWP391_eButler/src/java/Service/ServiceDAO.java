@@ -293,6 +293,8 @@ public class ServiceDAO {
 //        }
 //        return list;
 //    }
+    
+    
     public List<Service> getServicesByCategory(String cateId) {
         List<Service> result = new ArrayList<>();
         String query = "select * from Service "

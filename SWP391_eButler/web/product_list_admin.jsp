@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Product And Service </title>
+        <title>Ebutler Service </title>
         <link rel="stylesheet" href="style_admin.css">
         <!-- Boxicons CDN Link -->
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -38,8 +38,8 @@
     <body>
         <div class="sidebar">
             <div class="logo-details">
-                <i class='bx bxl-c-plus-plus'></i>
-                <span class="logo_name">E-butlter</span>
+                
+                <a href="ShowHomeGeneralController" class="logo_name">E-butlter</a>
             </div>
             <ul class="nav-links">
                 <li>
@@ -51,19 +51,19 @@
                 <li>
                     <a href="ShowServiceAdminController" class="active">
                         <i class='bx bx-box' ></i>
-                        <span class="links_name">Products And Services</span>
+                        <span class="links_name">Service Management</span>
                     </a>
                 </li>
                 <li>
                     <a href="ShowRequestListController">
                         <i class='bx bx-list-ul' ></i>
-                        <span class="links_name">Request List</span>
+                        <span class="links_name">Request Management</span>
                     </a>
                 </li>
                 <li>
                     <a href="ShowUserListController">
                         <i class='bx bx-user' ></i>
-                        <span class="links_name">User List</span>
+                        <span class="links_name">User Management</span>
                     </a>
                 </li>
                 <li>
@@ -75,7 +75,7 @@
                 <li>
                     <a href="ShowOrderListAdminController">
                         <i class='bx bx-coin-stack' ></i>
-                        <span class="links_name">Oder List</span>
+                        <span class="links_name">Oder Management</span>
                     </a>
                 </li>
                 <li class="log_out">
