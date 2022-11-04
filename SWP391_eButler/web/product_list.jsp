@@ -78,12 +78,12 @@
                         <div class="card-header bg-success text-white text-uppercase">Last Service</div>
                         <div class="card-body">
                             <c:if test="${not empty o.serImage}" var="check" scope="page">
-                                <img class="img-fluid" src="${last.serImage}" width = "600" height = "400"/>
+                               <img class="img-fluid" src="${last.serImage}" width = "600" height = "400"/>
                             </c:if>
                             <c:if test="${empty o.serImage}" var="check" scope="page">
-                                <img class="img-fluid" src="${last.serImage}" width = "600" height = "400"/>
+                                 <a href="ShowServiceDetail?serId=${last.serID}"><img class="img-fluid" src="${last.serImage}" width = "600" height = "400"/></a>
                             </c:if>
-                            <h5 class="card-title">${last.serName}</h5>
+                                 <a href="ShowServiceDetail?serId=${last.serID}"><h5 class="card-title">${last.serName}</h5></a>
                             <p class="card-text">${last.serDescription}</p>
                             <p class="bloc_left_price">${last.price} VND</p>
                         </div>

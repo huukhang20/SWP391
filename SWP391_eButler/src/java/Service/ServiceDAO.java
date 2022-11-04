@@ -212,7 +212,8 @@ public class ServiceDAO {
     // veew Service
     public List<Service> getAllService() {
         List<Service> list = new ArrayList<>();
-        String query = "select * from Service";
+        String query = "select * from Service "
+                + "where Status like 'available'";
         try {
             Connection cn = DBUtils.makeConnection();
             PreparedStatement pst = cn.prepareStatement(query);
