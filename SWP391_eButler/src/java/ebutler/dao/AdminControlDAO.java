@@ -268,4 +268,19 @@ public class AdminControlDAO implements Serializable {
         }
         return check;
     }
+    
+    public boolean banAccount(int id) throws Exception {
+        boolean check = false;
+        try {
+            String sql = "Update Account Set IsStatus = ? Where Username = ?";
+            conn = DBUtils.makeConnection();
+            preStm = conn.prepareStatement(sql);
+            preStm.setString(1, "Banned");
+            preStm.setInt(2, id);
+            check = preStm.executeUpdate() > 0;
+        } finally {
+            closeConnection();
+        }
+        return check;
+    }
 }

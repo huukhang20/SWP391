@@ -161,29 +161,31 @@
                                                         <div class="time">
                                                             <span>Status: ${dto.isStatus}</span>
                                                         </div>
+                                                        <div class="time">
+                                                            <span>Status: ${dto.username}</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
                                                 <!-- Button trigger modal -->
-                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                    Ban
+                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#banAccountModal${counter.count}">
+                                                    Ban Account
                                                 </button>
                                                 <!-- Modal -->
-                                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal fade" id="banAccountModal${counter.count}" tabindex="-1" aria-labelledby="banAccountModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Ban this User ?</h5>
+                                                                <h5 class="modal-title" id="banAccountModalLabel">Ban a User?</h5>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                Are you sure about that ?
+                                                                Do you want to ban user ${dto.username}?
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" class="btn btn-danger">Ban</button>
+                                                                <button type="button" class="btn btn-danger" onclick="document.location.href = 'BanAccountController?txtID=${dto.accID}'">Ban</button>
                                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-
                                                             </div>
                                                         </div>
                                                     </div>

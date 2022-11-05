@@ -52,25 +52,34 @@ public class LoginController extends HttpServlet {
             AccessDAO access = new AccessDAO();
 
             String role = access.checkLogin(username, password);
+            String stt = access.checkLoginStatus(username, password);
 
             if (role.equals("failed")) {
                 request.setAttribute("username", username);
-                request.setAttribute("ERRORLOGIN", "Invalid username or password");
+                request.setAttribute("ERRORLOGIN", "Invalid username or password!!");
             } else {
-                account = AccountDAO.getAccount(username, password);
-                session.setAttribute("account", account);
-                session.setAttribute("USERLOGIN", username);
-                session.setAttribute("USERROLE", role);
-                if (role.equals("admin")) {
-                    url = admin;
-                } else if (role.equals("customer")) {
-                    url = home;
-                } else if (role.equals("supplier")) {
-                    url = supplier;
-                } else if (role.equals("cc")) {
-                    url = cc;
+                if (stt.equals("inactive")) {
+                    request.setAttribute("ERRORLOGIN", "Account is disabled!\nPlease contract admin for help!!");
+                } else if (stt.equals("Banned")) {
+                    request.setAttribute("ERRORLOGIN", "Account has been banned!\nPlease contract admin for help!!");
+                } else if (stt.equals("active")) {
+                    account = AccountDAO.getAccount(username, password);
+                    session.setAttribute("account", account);
+                    session.setAttribute("USERLOGIN", username);
+                    session.setAttribute("USERROLE", role);
+                    if (role.equals("admin")) {
+                        url = admin;
+                    } else if (role.equals("customer")) {
+                        url = home;
+                    } else if (role.equals("supplier")) {
+                        url = supplier;
+                    } else if (role.equals("cc")) {
+                        url = cc;
+                    } else {
+                        request.setAttribute("ERRORLOGIN", "Role doesn't supported!");
+                    }
                 } else {
-                    request.setAttribute("ERRORLOGIN", "Role doesn't supported!");
+                    request.setAttribute("ERRORLOGIN", "Undefined status account!!\nPlease contract admin for help!!");
                 }
             }
 
