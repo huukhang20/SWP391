@@ -1,16 +1,9 @@
-<%-- 
-    Document   : product_list_admin
-    Created on : Oct 28, 2022, 10:01:49 AM
-    Author     : Admin
---%>
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Ebutler Service </title>
+        <meta charset="UTF-8">
+        <title>Procduct And Service</title>
         <link rel="stylesheet" href="style_admin.css">
         <!-- Boxicons CDN Link -->
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -34,48 +27,49 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
         <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="./product_list.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     </head>
     <body>
         <div class="sidebar">
             <div class="logo-details">
-                
-                <a href="ShowHomeGeneralController" class="logo_name">E-butlter</a>
+                <i class='bx bxl-c-plus-plus'></i>
+                <span class="logo_name">E-butlter</span>
             </div>
             <ul class="nav-links">
                 <li>
-                    <a href="home_admin.jsp">
+                    <a href="home_supp.jsp" class="active">
                         <i class='bx bx-grid-alt' ></i>
                         <span class="links_name">Dashboard</span>
                     </a>
                 </li>
                 <li>
-                    <a href="ShowServiceAdminController" class="active">
+                    <a href="product_list_supp.jsp">
                         <i class='bx bx-box' ></i>
-                        <span class="links_name">Service Management</span>
+                        <span class="links_name">Product And Service List</span>
                     </a>
                 </li>
                 <li>
-                    <a href="ShowRequestListController">
+                    <a href="req_list_supp.jsp">
                         <i class='bx bx-list-ul' ></i>
-                        <span class="links_name">Request Management</span>
+                        <span class="links_name">Req List</span>
                     </a>
                 </li>
                 <li>
-                    <a href="ShowUserListController">
-                        <i class='bx bx-user' ></i>
-                        <span class="links_name">User Management</span>
+                    <a href="create_req_supp.jsp">
+                        <i class='bx bx-list-ul' ></i>
+                        <span class="links_name">Create New Req</span>
                     </a>
                 </li>
                 <li>
-                    <a href="ShowFeedbackListController">
-                        <i class='bx bx-message' ></i>
-                        <span class="links_name">Feed Back</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="ShowOrderListAdminController">
+                    <a href="order_list_supp.jsp">
                         <i class='bx bx-coin-stack' ></i>
-                        <span class="links_name">Oder Management</span>
+                        <span class="links_name">Oder List</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="manage order_supp.jsp">
+                        <i class='bx bx-book-alt' ></i>
+                        <span class="links_name">Manage Order</span>
                     </a>
                 </li>
                 <li class="log_out">
@@ -103,30 +97,30 @@
 
                 </div>
             </nav>
-
+            <!-- conntent -->
             <div class="home-content">
-                <div class="container mt-5 mb-5">
-                    <c:if test="${requestScope.SERVICELIST != null}">
-                        <c:if test="${not empty requestScope.SERVICELIST}" var="check" scope="page">
-                            <div class="d-flex justify-content-center row">
-                                <c:forEach items="${requestScope.SERVICELIST}" var="dto" varStatus="counter">
+                <c:if test="${requestScope.SERVICEWAITINGLIST != null}">
+                    <c:if test="${not empty requestScope.SERVICEWAITINGLIST}" var="check" scope="page">
+                        <div class="container mt-5 mb-5">
+                            <c:forEach items="${requestScope.SERVICEWAITINGLIST}" var="dto" varStatus="counter">
+                                <div class="d-flex justify-content-center row">
                                     <div class="col-md-10">
                                         <div class="row p-2 bg-white border rounded">
                                             <c:if test="${dto.serImage != null}">
                                                 <c:if test="${not empty dto.serImage}">
                                                     <div class="col-md-3 mt-1">
-                                                        <img class="img-fluid img-responsive rounded product-image" src="${dto.serImage}" width = "450" height = "800"/>
+                                                        <img class="img-fluid img-responsive rounded product-image" src="${dto.serImage}"/>
                                                     </div>
                                                 </c:if>
                                                 <c:if test="${empty dto.serImage}">
                                                     <div class="col-md-3 mt-1">
-                                                        <img class="img-fluid img-responsive rounded product-image" src="https://i.imgur.com/QpjAiHq.jpg" width = "450" height = "800"/>
+                                                        <img class="img-fluid img-responsive rounded product-image" src="https://i.imgur.com/QpjAiHq.jpg"/>
                                                     </div>
                                                 </c:if>
                                             </c:if>
                                             <c:if test="${dto.serImage == null}">
                                                 <div class="col-md-3 mt-1">
-                                                    <img class="img-fluid img-responsive rounded product-image" src="https://i.imgur.com/QpjAiHq.jpg" width = "450" height = "800"/>
+                                                    <img class="img-fluid img-responsive rounded product-image" src="https://i.imgur.com/QpjAiHq.jpg"/>
                                                 </div>
                                             </c:if>
                                             <div class="col-md-6 mt-1">
@@ -137,29 +131,26 @@
                                                 <div class="mt-1 mb-1 spec-1"><span style="font-weight: bold">Supplier:</span><span class="dot"></span><span> ${dto.supplierName}</span><span class="dot"></span><span><br></span></div>
                                                 <div class="mt-1 mb-1 spec-1"><span style="font-weight: bold">Work Time:</span><span class="dot"></span><span> ${dto.workDate}</span><span class="dot"></span><span><br></span></div>
                                                 <div class="mt-1 mb-1 spec-1"><span style="font-weight: bold">Description: </span><span class="dot"></span><span> ${dto.serDescription}</span><span class="dot"></span></span></div>
-                                                <div class="mt-1 mb-1 spec-1"><span style="font-weight: bold">Price: </span><span class="dot"></span><span> ${dto.price}</span><span class="dot"></span></span></div>
+                                                <div class="mt-1 mb-1 spec-1"><span style="font-weight: bold">Price </span><span class="dot"></span><span> ${dto.price}</span><span class="dot"></span></span></div>
                                             </div>
                                             <div class="align-items-center align-content-center col-md-3 border-left mt-1">
                                                 <div class="d-flex flex-row align-items-center">
-                                                    <button class="btn btn-success btn-sm mr-auto" type="button">${dto.serStatus}</button>
-                                                </div>
-                                                <div class="d-flex flex-column mt-4"><a class="btn btn-primary btn-sm" type="button" href="UpdateServiceStatusController?serStatus=${dto.serStatus}&serId=${dto.serID}">change status</a>
-<!--                                                    <a href="UpdateServiceStatusController?serStatus=${dto.serStatus}&serId=${dto.serID}">change status</a>-->
-                                                </div>
+                                                    <button class="btn btn-warning btn-sm mr-auto" type="button">${dto.serStatus}</button>
+                                                </div>      
                                             </div>
                                         </div>
                                     </div>
-                                </c:forEach>
-                            </div>
-                        </c:if>
-                        <c:if test="${empty requestScope.SERVICELIST}">
-                            <h2 style="color: black">No service is waiting for you to managed!</h2>
-                        </c:if>
+                                </div>
+                            </c:forEach>
+                        </div>
                     </c:if>
-                    <c:if test="${requestScope.SERVICELIST == null}">
+                    <c:if test="${empty requestScope.SERVICEWAITINGLIST}">
                         <h2 style="color: black">No service is waiting for you to managed!</h2>
                     </c:if>
-                </div>
+                </c:if>
+                <c:if test="${requestScope.SERVICEWAITINGLIST == null}">
+                    <h2 style="color: black">No service is waiting for you to managed!</h2>
+                </c:if>
             </div>
 
 

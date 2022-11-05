@@ -36,6 +36,7 @@ public class ShowService extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String serStatus = request.getParameter("serStatus");
         ServiceDAO dao = new ServiceDAO();
         List<Service> list = dao.getAllService();
         List<Category> listC = dao.getAllCategory();
@@ -44,7 +45,7 @@ public class ShowService extends HttpServlet {
         request.setAttribute("listP", list);
         request.setAttribute("last", last);
         request.setAttribute("listC", listC);
-
+        request.setAttribute("mark", serStatus);
         request.getRequestDispatcher("product_list.jsp").forward(request, response);
     }
 

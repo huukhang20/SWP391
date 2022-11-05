@@ -172,9 +172,9 @@ public class ServiceDAO {
         Connection cn = DBUtils.makeConnection();
         boolean flag = false;
         if (cn != null) {
-            String sql = "UPDATE DBO.Service\n"
-                    + "SET Status=?\n"
-                    + "WHERE Id=?";
+            String sql = "UPDATE DBO.Service \n"
+                    + "SET Status=? \n"
+                    + "WHERE ID=?";
             PreparedStatement pst = cn.prepareStatement(sql);
             pst.setString(1, serStatus);
             pst.setString(2, serId);
@@ -212,7 +212,8 @@ public class ServiceDAO {
     // veew Service
     public List<Service> getAllService() {
         List<Service> list = new ArrayList<>();
-        String query = "select * from Service";
+        String query = "select * from Service "
+                + "where Status like 'available'";
         try {
             Connection cn = DBUtils.makeConnection();
             PreparedStatement pst = cn.prepareStatement(query);
@@ -293,6 +294,8 @@ public class ServiceDAO {
 //        }
 //        return list;
 //    }
+    
+    
     public List<Service> getServicesByCategory(String cateId) {
         List<Service> result = new ArrayList<>();
         String query = "select * from Service "

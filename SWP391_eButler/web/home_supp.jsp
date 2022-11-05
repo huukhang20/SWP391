@@ -17,43 +17,43 @@
     </div>
       <ul class="nav-links">
         <li>
-          <a href="home_supp.html" class="active">
+          <a href="home_supp.jsp" class="active">
             <i class='bx bx-grid-alt' ></i>
             <span class="links_name">Dashboard</span>
           </a>
         </li>
         <li>
-          <a href="product_list_supp.html">
+          <a href="product_list_supp.jsp">
             <i class='bx bx-box' ></i>
             <span class="links_name">Product And Service List</span>
           </a>
         </li>
         <li>
-          <a href="req_list_supp.html">
+          <a href="req_list_supp.jsp">
             <i class='bx bx-list-ul' ></i>
-            <span class="links_name">Req List</span>
+            <span class="links_name">Request List</span>
           </a>
         </li>
         <li>
-          <a href="create_req_supp.html">
+          <a href="create_req_supp.jsp">
             <i class='bx bx-list-ul' ></i>
-            <span class="links_name">Create New Req</span>
+            <span class="links_name">Create New Request</span>
           </a>
         </li>
         <li>
-          <a href="order_list_supp.html">
+          <a href="order_list_supp.jsp">
             <i class='bx bx-coin-stack' ></i>
             <span class="links_name">Oder List</span>
           </a>
         </li>
         <li>
-          <a href="manage order_supp.html">
+          <a href="manage order_supp.jsp">
             <i class='bx bx-book-alt' ></i>
             <span class="links_name">Manage Order</span>
           </a>
         </li>
         <li class="log_out">
-          <a href="#">
+          <a href="LogoutController">
             <i class='bx bx-log-out'></i>
             <span class="links_name">Log out</span>
           </a>

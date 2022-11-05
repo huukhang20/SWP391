@@ -5,11 +5,13 @@
  */
 package controllers;
 
-import Service.ServiceDAO;
+import Service.Service;
+import Supplier.SupplierDAO;
+import ebutler.dao.AdminControlDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,10 +20,12 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Admin
+ * @author SE150580 Nguyen Phuc Hau
  */
-@WebServlet(name = "UpdateServiceStatusController", urlPatterns = {"/UpdateServiceStatusController"})
-public class UpdateServiceStatusController extends HttpServlet {
+@WebServlet(name = "ShowServiceSuppController", urlPatterns = {"/ShowServiceSuppController"})
+public class ShowServiceSuppController extends HttpServlet {
+
+    private static final String serviceListSupp = "product_list_supp.jsp";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,32 +39,34 @@ public class UpdateServiceStatusController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+        String url = serviceListSupp;
         try {
-            String serStatus = request.getParameter("serStatus");
-            String serId = request.getParameter("serId");
-            ServiceDAO sd = new ServiceDAO();
-                        if(serStatus.equals("available")) //active
-                ServiceDAO.updateServiceStatus("unavailable", serId);
-            else
-                ServiceDAO.updateServiceStatus("available", serId);
-        } catch (Exception ex) {
-            Logger.getLogger(UpdateServiceStatusController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        response.sendRedirect("ShowServiceAdminController");
-    }
+            List<Service> serviceList = new ArrayList<Service>();
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            SupplierDAO dao = new SupplierDAO();
+
+            serviceList = dao.getListServiceForSupp();
+
+            request.setAttribute("SERVICELIST", serviceList);
+        } catch (Exception e) {
+            log("ERROR at ShowServiceSuppController: " + e.getMessage());
+        } finally {
+            request.getRequestDispatcher(url).forward(request, response);
+        }
+    }
+}
+
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+/**
+ * Handles the HTTP <code>GET</code> method.
+ *
+ * @param request servlet request
+ * @param response servlet response
+ * @throws ServletException if a servlet-specific error occurs
+ * @throws IOException if an I/O error occurs
+ */
+@Override
+        protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -74,7 +80,7 @@ public class UpdateServiceStatusController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+        protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -85,7 +91,7 @@ public class UpdateServiceStatusController extends HttpServlet {
      * @return a String containing servlet description
      */
     @Override
-    public String getServletInfo() {
+        public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 

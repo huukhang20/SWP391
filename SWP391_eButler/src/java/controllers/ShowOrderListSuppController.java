@@ -5,11 +5,11 @@
  */
 package controllers;
 
-import Service.ServiceDAO;
+import Order.Order;
+import Supplier.SupplierDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,11 +18,11 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Admin
+ * @author SE150580 Nguyen Phuc Hau
  */
-@WebServlet(name = "UpdateServiceStatusController", urlPatterns = {"/UpdateServiceStatusController"})
-public class UpdateServiceStatusController extends HttpServlet {
-
+@WebServlet(name = "ShowOrderListSuppController", urlPatterns = {"/ShowOrderListSuppController"})
+public class ShowOrderListSuppController extends HttpServlet {
+private static final String orderASuppPage = "order_list_supp.jsp";
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -35,19 +35,20 @@ public class UpdateServiceStatusController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+        String url = orderASuppPage;
         try {
-            String serStatus = request.getParameter("serStatus");
-            String serId = request.getParameter("serId");
-            ServiceDAO sd = new ServiceDAO();
-                        if(serStatus.equals("available")) //active
-                ServiceDAO.updateServiceStatus("unavailable", serId);
-            else
-                ServiceDAO.updateServiceStatus("available", serId);
-        } catch (Exception ex) {
-            Logger.getLogger(UpdateServiceStatusController.class.getName()).log(Level.SEVERE, null, ex);
+            List<Order> orderList = new ArrayList<Order>();
+            
+            SupplierDAO dao = new SupplierDAO();
+            
+            orderList = dao.getListOrderForSupp();
+            
+            request.setAttribute("ORDERLIST", orderList);
+        } catch (Exception e) {
+            log("ERROR at ShowOrderListSuppController: " + e.getMessage());
+        } finally {
+            request.getRequestDispatcher(url).forward(request, response);
         }
-        response.sendRedirect("ShowServiceAdminController");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
