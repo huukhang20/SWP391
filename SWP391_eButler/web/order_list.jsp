@@ -49,13 +49,13 @@
                 <nav class="navbar navbar-light bg-light justify-content-between">
                     <div id="mySidenav" class="sidenav">
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                        <a href="index.html">Home</a>
-                        <a href="product_list.html">Prodcut List</a>
+                        <a href="ShowHomeGeneralController">Home</a>
+                        <a href="ShowService">Product List</a>
 
                         <a href="contact.jsp">Contact</a>
                     </div>
                     <span style="font-size:30px;cursor:pointer; color: #fff;" onclick="openNav()"><img src="images/toggle-icon.png"></span>
-                    <a class="navbar-brand" href="index.html">E-Butler</a></a>
+                    <a class="navbar-brand" href="ShowHomeGeneralController">E-Butler</a></a>
                     <form class="form-inline ">
                         <div class="login_text">
                             <ul>
@@ -148,7 +148,7 @@
     <div class="footer_section layout_padding margin_top_90">
         <div class="container">
             <div class="footer_logo_main">
-                <div class="footer_logo"><a href="index.html"><img src="images/footer-logo.png"></a></div>
+<!--                <div class="footer_logo"><a href="index.html"><img src="images/footer-logo.png"></a></div>-->
                 <div class="social_icon">
                     <ul>
                         <li><a href="#"><img src="images/fb-icon.png"></a></li>
@@ -163,16 +163,16 @@
                 <div class="row">
                     <div class="col-lg-3 col-sm-6">
                         <h4 class="adderss_text">About</h4>
-                        <p class="ipsum_text">consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation u</p>
+                        <p class="ipsum_text">EButler is a website that helps you with butler services such as: electrical repair, rice, gas supply, ...</p>
                     </div>
                     <div class="col-lg-3 col-sm-6">
                         <h4 class="adderss_text">Menu</h4>
                         <div class="footer_menu">
                             <ul>
                                 <li><a href="index.html">Home</a></li>
-                                <li><a href="computers.html">Computers</a></li>
+<!--                                <li><a href="computers.html">Computers</a></li>
                                 <li><a href="Mans_clothes.html">Mans Clothes</a></li>
-                                <li><a href="womans_clothes.html">Womans Clothes</a></li>
+                                <li><a href="womans_clothes.html">Womans Clothes</a></li>-->
                                 <li><a href="contact.jsp">Contact Us</a></li>
                             </ul>
                         </div>
@@ -181,19 +181,19 @@
                         <h4 class="adderss_text">Useful Link</h4>
                         <div class="footer_menu">
                             <ul>
-                                <li><a href="#">Adipiscing</a></li>
-                                <li><a href="#">Elit, sed do</a></li>
-                                <li><a href="#">Eiusmod</a></li>
-                                <li><a href="#">Tempor</a></li>
-                                <li><a href="#">incididunt</a></li>
+                                <li><a href="#">Facebook</a></li>
+                                <li><a href="#">Instagram</a></li>
+                                <li><a href="#">Youtube</a></li>
+                                <li><a href="#">Twitter</a></li>
+                                <li><a href="#">License</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6">
                         <h4 class="adderss_text">Contact</h4>
-                        <div class="call_text"><img src="images/map-icon.png"><span class="paddlin_left_0"><a href="#">London 145 United Kingdom</a></span></div>
-                        <div class="call_text"><img src="images/call-icon.png"><span class="paddlin_left_0"><a href="#">+7586656566</a></span></div>
-                        <div class="call_text"><img src="images/mail-icon.png"><span class="paddlin_left_0"><a href="#">volim@gmail.com</a></span></div>
+                        <div class="call_text"><img src="images/map-icon.png"><span class="paddlin_left_0"><a href="#">FPT University, TP.HCM</a></span></div>
+                        <div class="call_text"><img src="images/call-icon.png"><span class="paddlin_left_0"><a href="#">+09887766</a></span></div>
+                        <div class="call_text"><img src="images/mail-icon.png"><span class="paddlin_left_0"><a href="#">ebutler@gmail.com</a></span></div>
                     </div>
                 </div>
             </div>
