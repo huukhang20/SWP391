@@ -53,13 +53,8 @@ public class ShowRequestListForSuppController extends HttpServlet {
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
-<<<<<<< HEAD
     }
     
-=======
-
-    }
->>>>>>> e23970ec9cacff5f4a16fc3fcf6d21d933f9a6c6
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
