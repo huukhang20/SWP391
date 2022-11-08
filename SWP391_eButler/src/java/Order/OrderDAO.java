@@ -106,9 +106,9 @@ public class OrderDAO {
         int accID = account.getAccID();
         Connection cn = DBUtils.makeConnection();
         if (cn != null) {
-            String sql = "SELECT [Orders].*\n"
-                    + "FROM [Orders]\n"
-                    + "WHERE Account_ID = ?";
+            String sql = "SELECT [Orders].* \n"
+                    + "FROM [Orders] \n"
+                    + "WHERE Account_ID = ? and (Order_Status like 'Dang xu ly' or Order_Status like 'Done')";
             PreparedStatement pst = cn.prepareStatement(sql);
             pst.setInt(1, accID);
             ResultSet table = pst.executeQuery();
@@ -155,4 +155,22 @@ public class OrderDAO {
         }
         return list;
     }
+    
+    public boolean cancelOrder(String orderId) throws Exception{
+         Connection cn=DBUtils.makeConnection();
+         boolean flag=false;
+         if(cn!=null){
+             String sql = "UPDATE Orders \n"
+                     + "SET Order_Status= 'Cancelled' \n"
+                     + "WHERE ID=?";
+             PreparedStatement pst=cn.prepareStatement(sql);
+             pst.setString(1, orderId);
+             int table = pst.executeUpdate();
+              if (table == 1) {
+                  flag=true;
+              }else flag=false;
+              cn.close();
+         }
+          return flag;
+     }
 }

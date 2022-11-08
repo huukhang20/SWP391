@@ -5,13 +5,11 @@
  */
 package controllers;
 
-import Service.Service;
-import Supplier.SupplierDAO;
-import ebutler.dao.AdminControlDAO;
+import Order.OrderDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,11 +18,11 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author SE150580 Nguyen Phuc Hau
+ * @author Admin
  */
-@WebServlet(name = "ShowRequestListForSuppController", urlPatterns = {"/ShowRequestListForSuppController"})
-public class ShowRequestListForSuppController extends HttpServlet {
-private static final String reqListPage = "req_list_supp.jsp";
+@WebServlet(name = "CancelOrderController", urlPatterns = {"/CancelOrderController"})
+public class CancelOrderController extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -37,22 +35,16 @@ private static final String reqListPage = "req_list_supp.jsp";
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = reqListPage;
+
         try {
-            List<Service> serviceList = new ArrayList<Service>();
-            
-            SupplierDAO dao = new SupplierDAO();
-            
-            serviceList = dao.getListWaitingServiceForSupp();
-            
-            request.setAttribute("SERVICEWAITINGLIST", serviceList);
-        } catch (Exception e) {
-            log("ERROR at ShowRequestListController: " + e.getMessage());
-        } finally {
-            request.getRequestDispatcher(url).forward(request, response);
+            String orderId = request.getParameter("orderId");
+            OrderDAO od = new OrderDAO();
+            od.cancelOrder(orderId);
+        } catch (Exception ex) {
+            Logger.getLogger(CancelOrderController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        response.sendRedirect("OrderController");
     }
-    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

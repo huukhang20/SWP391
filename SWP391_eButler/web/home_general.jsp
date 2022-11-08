@@ -59,7 +59,7 @@
                                 <c:if test="${sessionScope.USERLOGIN != null}">
                                     <c:if test="${not empty sessionScope.USERLOGIN}" var="check" scope="page">
                                         <li>
-                                            <a href="#"><img src="images/user-icon.png"></a>
+                                            <a href="profile.jsp"><img src="images/user-icon.png"></a>
                                         </li>
                                     </c:if>
                                 </c:if>

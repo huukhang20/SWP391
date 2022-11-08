@@ -130,9 +130,7 @@
                                 </div>
                         </td>
                         <td>
-                            <div>
-                                <div class="d-flex  "><button class="btn btn-danger btn-sm" type="button">X</button>
-                                </div>
+                                <div class="d-flex"><a type="button" class="btn btn-danger btn-sm" href="CancelOrderController?orderId=${item.orderId}">x</a></div>
                         </td>
 
                     </tr>
