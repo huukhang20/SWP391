@@ -81,7 +81,7 @@
                             <th scope="col">Date</th>
                             <th scope="col">Price</th>
                             <th scope="col">Status</th>
-                            <th scope="col">Action</th>
+                            <th scope="col">Detail</th>
                             <th scope="col">Cancel</th>
 
                         </tr>
@@ -95,7 +95,7 @@
                         </th>
                         <td>${item.totalPrice}</td>
                         <td>
-                            <ul class="list-unstyled mb-0 col-12 col-md-4 text-dark-l1 text-90 text-left my-4 my-md-0">
+                            <ul class="list-unstyled mb-0 col-12 col-md-10 text-dark-l1 text-90 text-left my-4 my-md-0">
                                 <li>
                                     <span>
                                         <span class="text-110">${item.orderStatus}</span>
@@ -106,28 +106,13 @@
                         </td>
                         <td>
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                info
-                            </button>
+                         
                             <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
+                          
                                             <c:forEach items="${item.odtList}" var="odtItems">
                                                 <p>Service: ${odtItems.serName} --  Price: ${odtItems.getPrice()} -- Quantity: ${odtItems.getQuantity()} </p>
                                             </c:forEach>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                            
                         </td>
                         <td>
                                 <div class="d-flex"><a type="button" class="btn btn-danger btn-sm" href="CancelOrderController?orderId=${item.orderId}">x</a></div>
