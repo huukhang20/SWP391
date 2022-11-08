@@ -48,13 +48,13 @@
             <nav class="navbar navbar-light bg-light justify-content-between">
                <div id="mySidenav" class="sidenav">
                   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                  <a href="home_general.jsp">Home</a>
+                  <a href="ShowHomeGeneralController">Home</a>
                   <a href="ShowService">Product List</a>
                   <a href="profile.jsp">Profile</a>
                   <a href="contact.jsp">Contact</a>
                </div>
                <span style="font-size:30px;cursor:pointer; color: #fff;" onclick="openNav()"><img src="images/toggle-icon.png"></span>
-               <a class="navbar-brand" href="index.html">E-Butler</a></a>
+               <a class="navbar-brand" href="ShowHomeGeneralController">E-Butler</a></a>
                <form class="form-inline ">
                   <div class="login_text">
                      <ul>
@@ -74,7 +74,7 @@
              <div class="col-md-3 border-right">
                  <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com.my</span><span> </span></div>
                  <div class="mt-5 text-center">
-                 <a href="order_list.html" class="btn btn-info" role="button">Link Button</a>
+                 <a href="order_list.jsp" class="btn btn-info" role="button">YOUR ORDER LIST</a>
                  </div>
              </div>
              <div class="col-md-5 border-right">
