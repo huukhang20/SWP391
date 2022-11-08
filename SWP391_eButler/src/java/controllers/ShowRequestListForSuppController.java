@@ -24,7 +24,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "ShowRequestListForSuppController", urlPatterns = {"/ShowRequestListForSuppController"})
 public class ShowRequestListForSuppController extends HttpServlet {
-private static final String reqListPage = "req_list_supp.jsp";
+
+    private static final String reqListPage = "req_list_supp.jsp";
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -40,18 +42,18 @@ private static final String reqListPage = "req_list_supp.jsp";
         String url = reqListPage;
         try {
             List<Service> serviceList = new ArrayList<Service>();
-            
+
             SupplierDAO dao = new SupplierDAO();
-            
+
             serviceList = dao.getListWaitingServiceForSupp();
-            
+
             request.setAttribute("SERVICEWAITINGLIST", serviceList);
         } catch (Exception e) {
-            log("ERROR at ShowRequestListController: " + e.getMessage());
+            log("ERROR at ShowRequestListForSuppController: " + e.getMessage());
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
-    }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
