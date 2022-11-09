@@ -27,7 +27,7 @@ public class FeedbackDAO {
         ArrayList<Feedback> list = new ArrayList<>();
         Connection cn = DBUtils.makeConnection();
         if (cn != null) {
-            String sql = "SELECT ID, Title, Description, Req_Time, Account_ID, Status from Feedback";
+            String sql = "SELECT ID, Title, Description, Req_Time, Account_ID, Type, Status from Feedback Where Type = 'Feedback'";
             Statement st = cn.createStatement();
             ResultSet table = st.executeQuery(sql);
             if (table != null) {
@@ -37,8 +37,9 @@ public class FeedbackDAO {
                     String description = table.getString("Description");
                     String reqTime = table.getString("Req_Time");
                     int accId = table.getInt("Account_ID");
+                    String type = table.getString("Type");
                     int status = table.getInt("Status");
-                    Feedback feedback = new Feedback(ID, title, description, reqTime, accId, status);
+                    Feedback feedback = new Feedback(ID, title, description, reqTime, accId, type, status);
                     list.add(feedback);
                 }
             }

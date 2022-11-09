@@ -6,22 +6,15 @@
 package controllers;
 
 import Account.Account;
-import Account.AccountDAO;
 import ebutler.beans.AccountBean;
 import ebutler.dao.AccessDAO;
 import ebutler.dao.AccountErrorObject;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -45,7 +38,7 @@ public class RegisterController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = fail;        
+        String url = fail;
         try {
             String username = request.getParameter("txtUsername");
             String name = request.getParameter("txtName");
@@ -118,7 +111,7 @@ public class RegisterController extends HttpServlet {
                     AccountBean beans = new AccountBean();
                     beans.setAccountDTO(dto);
                     boolean check = beans.createUser();
-                    
+
                     if (check == true) {
                         url = success;
                     }

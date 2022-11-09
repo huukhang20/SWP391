@@ -5,27 +5,44 @@
  */
 package Feedback;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Admin
  */
-public class Feedback {
+public class Feedback implements Serializable {
+
     private int ID;
     private String title;
     private String description;
     private String reqTime;
     private int accId;
+    private int orderId;
+    private String type;
     private int status;
 
     public Feedback() {
     }
 
-    public Feedback(int ID, String title, String description, String reqTime, int accId, int status) {
+    public Feedback(int ID, String title, String description, String reqTime, int accId, String type, int status) {
         this.ID = ID;
         this.title = title;
         this.description = description;
         this.reqTime = reqTime;
         this.accId = accId;
+        this.type = type;
+        this.status = status;
+    }
+
+    public Feedback(int ID, String title, String description, String reqTime, int accId, int orderId, String type, int status) {
+        this.ID = ID;
+        this.title = title;
+        this.description = description;
+        this.reqTime = reqTime;
+        this.accId = accId;
+        this.orderId = orderId;
+        this.type = type;
         this.status = status;
     }
 
@@ -69,6 +86,22 @@ public class Feedback {
         this.accId = accId;
     }
 
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public int getStatus() {
         return status;
     }
@@ -77,5 +110,4 @@ public class Feedback {
         this.status = status;
     }
 
-    
 }
