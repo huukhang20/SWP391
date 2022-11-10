@@ -18,6 +18,7 @@ public class Feedback implements Serializable {
     private String description;
     private String reqTime;
     private int accId;
+    private String accName;
     private int orderId;
     private String type;
     private int status;
@@ -41,6 +42,18 @@ public class Feedback implements Serializable {
         this.description = description;
         this.reqTime = reqTime;
         this.accId = accId;
+        this.orderId = orderId;
+        this.type = type;
+        this.status = status;
+    }
+
+    public Feedback(int ID, String title, String description, String reqTime, int accId, String accName, int orderId, String type, int status) {
+        this.ID = ID;
+        this.title = title;
+        this.description = description;
+        this.reqTime = reqTime;
+        this.accId = accId;
+        this.accName = accName;
         this.orderId = orderId;
         this.type = type;
         this.status = status;
@@ -108,6 +121,14 @@ public class Feedback implements Serializable {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public String getAccName() {
+        return accName;
+    }
+
+    public void setAccName(String accName) {
+        this.accName = accName;
     }
 
 }
