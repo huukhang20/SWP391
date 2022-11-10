@@ -166,7 +166,7 @@ public class SupplierDAO {
         List<Order> result = null;
         try {
             String sql = "Select Orders.ID, Account.Name as AccountName, Orders.Order_Address,"
-                    + " Orders.Order_Email, Orders.Order_TIme, Orders.Order_Status,"
+                    + " Orders.Order_Email, Orders.Order_Time, Orders.Order_Status,"
                     + " Orders.Total_Price from Orders, Account where ( Orders.Account_ID = Account.ID and Service.Status like 'Done' or 'reject')";
             conn = DBUtils.makeConnection();
             preStm = conn.prepareStatement(sql);
@@ -203,8 +203,8 @@ public class SupplierDAO {
         List<Order> result = null;
         try {
             String sql = "Select Orders.ID, Account.Name as AccountName, Orders.Order_Address,"
-                    + " Orders.Order_Email, Orders.Order_TIme, Orders.Order_Status,"
-                    + " Orders.Total_Price from Orders, Account where ( Orders.Account_ID = Account.ID and Service.Status like 'waiting' or 'Processing')";
+                    + " Orders.Order_Email, Orders.Order_Time, Orders.Order_Status,"
+                    + " Orders.Total_Price from Orders, Account where ( Orders.Account_ID = Account.ID and Service.Status like 'Waiting' or 'Processing')";
             conn = DBUtils.makeConnection();
             preStm = conn.prepareStatement(sql);
             rs = preStm.executeQuery();
