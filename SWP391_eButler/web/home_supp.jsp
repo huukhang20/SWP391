@@ -28,7 +28,7 @@
           </a>
         </li>
         <li>
-          <a href="req_list_supp.jsp">
+          <a href="ShowRequestListForSuppController">
             <i class='bx bx-list-ul' ></i>
             <span class="links_name">Request Management</span>
           </a>

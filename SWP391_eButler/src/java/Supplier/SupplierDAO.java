@@ -36,14 +36,15 @@ public class SupplierDAO {
         }
     }
 
-    public List<Service> getListWaitingServiceForSupp() throws Exception {
+    public List<Service> getListWaitingServiceForSupp(int accID) throws Exception {
         List<Service> result = null;
         try {
-            String sql2 = "Select Service.ID, Service.Name, Service.Description, Category.Name as CategoryName, Supplier.Supplier_Name as SupplierName, Service.Quantity, Service.Price, Service.Working_Time, Service.Release_Time, Service.Image, Service.Status\n"
-                    + "from Service, Category, Supplier\n"
-                    + "where ( Service.Category_ID = Category.ID and Service.Supplier_ID = Supplier.ID and Service.Status like 'Waiting')";
+            String sql2 = "select Service.ID, Service.Name, Service.Description, Category.Name as CategoryName, Supplier.Supplier_Name as SupplierName, Service.Quantity, Service.Price, Service.Working_Time, Service.Release_Time, Service.Image, Service.Status\n"
+                    + "from Service, Supplier, Account, Category\n"
+                    + "where (Service.Supplier_ID = Supplier.ID and Supplier.Account_ID = Account.ID and Service.Category_ID = Category.ID and Service.Status like 'Waiting' and Account.ID = ?)";
             conn = DBUtils.makeConnection();
             preStm = conn.prepareStatement(sql2);
+            preStm.setInt(1, accID);
             rs = preStm.executeQuery();
 
             int id = 0;
@@ -119,12 +120,15 @@ public class SupplierDAO {
         return dto;
     }
 
-    public List<Service> getListServiceForSupp() throws Exception {
+    public List<Service> getListServiceForSupp(int accID) throws Exception {
         List<Service> result = null;
         try {
-            String sql = "Select * From Service Where Supplier_ID = ?";
+            String sql = "select Service.ID, Service.Name, Service.Description, Category.Name as CategoryName, Supplier.Supplier_Name as SupplierName, Service.Quantity, Service.Price, Service.Working_Time, Service.Release_Time, Service.Image, Service.Status\n"
+                    + "                     from Service, Supplier, Account, Category\n"
+                    + "                    where (Service.Supplier_ID = Supplier.ID and Supplier.Account_ID = Account.ID and Account.ID = ? and Service.Category_ID = Category.ID)";
             conn = DBUtils.makeConnection();
             preStm = conn.prepareStatement(sql);
+            preStm.setInt(1, accID);
             rs = preStm.executeQuery();
 
             int id = 0;
@@ -142,7 +146,7 @@ public class SupplierDAO {
             result = new ArrayList<Service>();
 
             while (rs.next()) {
-                id = rs.getInt("Supplier_ID");
+                id = rs.getInt("ID");
                 name = rs.getString("Name");
                 description = rs.getString("Description");
                 categoryName = rs.getString("CategoryName");
@@ -198,7 +202,7 @@ public class SupplierDAO {
         }
         return result;
     }
-    
+
     public List<Order> getListOrderForManage() throws Exception {
         List<Order> result = null;
         try {
