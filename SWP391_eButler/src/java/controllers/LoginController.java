@@ -27,7 +27,7 @@ public class LoginController extends HttpServlet {
     private static final String error = "login.jsp";
     private static final String admin = "home_admin.jsp";
     private static final String home = "ShowHomeGeneralController";
-    private static final String supplier = "home_supp.html";
+    private static final String supplier = "home_supp.jsp";
     private static final String cc = "home_cc.jsp";
 
     /**
