@@ -113,8 +113,6 @@ public class AdminControlDAO implements Serializable {
                 id = rs.getInt("ID");
                 name = rs.getString("Name");
                 description = rs.getString("Description");
-//                categoryID = rs.getInt("Category_ID");
-//                supplierID = rs.getInt("Supplier_ID");
                 categoryName = rs.getString("CategoryName");
                 supplierName = rs.getString("SupplierName");
                 quantity = rs.getInt("Quantity");
@@ -123,7 +121,6 @@ public class AdminControlDAO implements Serializable {
                 releaseTime = rs.getString("Release_Time");
                 image = rs.getString("Image");
                 status = rs.getString("Status");
-//                dto = new Service(id, name, description, categoryID, supplierID, quantity, price, workTime, releaseTime, image, status);
                 dto = new Service(id, name, description, categoryName, supplierName, quantity, price, workTime, releaseTime, image, status);
                 result.add(dto);
             }
@@ -253,7 +250,7 @@ public class AdminControlDAO implements Serializable {
         }
         return result;
     }
-    
+
     public boolean completeFeedback(int id) throws Exception {
         boolean check = false;
         try {
@@ -268,7 +265,7 @@ public class AdminControlDAO implements Serializable {
         }
         return check;
     }
-    
+
     public boolean banAccount(int id) throws Exception {
         boolean check = false;
         try {
