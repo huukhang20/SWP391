@@ -46,39 +46,39 @@
     </head>
     <body>
         <!-- header section start -->
-      <div class="header_section haeder_main">
-         <div class="container-fluid">
-            <nav class="navbar navbar-light bg-light justify-content-between">
-               <div id="mySidenav" class="sidenav">
-                  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                  <a href="ShowHomeGeneralController">Home</a>
-                  <a href="ShowService">Product List</a>
-<!--                  <a href="computers.html"></a>-->
+        <div class="header_section haeder_main">
+            <div class="container-fluid">
+                <nav class="navbar navbar-light bg-light justify-content-between">
+                    <div id="mySidenav" class="sidenav">
+                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                        <a href="ShowHomeGeneralController">Home</a>
+                        <a href="ShowService">Product List</a>
+                        <!--                  <a href="computers.html"></a>-->
 
-                  <a href="contact.jsp">Contact</a>
-               </div>
-               <span style="font-size:30px;cursor:pointer; color: #fff;" onclick="openNav()"><img src="images/toggle-icon.png"></span>
-               <a class="navbar-brand" href="ShowHomeGeneralController">E-Butler</a></a>
-               <form class="form-inline ">
-                  <div class="login_text">
-                     <ul>
-                        <li><a href="login.jsp"><img src="images/user-icon.png"></a></li>
-                        <li><a href="#"><img src="images/trolly-icon.png"></a></li>
-                        <li><a href="#"><img src="images/search-icon.png"></a></li>
-                        <li><a href="#"><img src="images/logout.png" width = "21" height = "20"></a></li>
-                     </ul>
-                  </div>
-               </form>
-            </nav>
-         </div>
-      </div>
+                        <a href="contact.jsp">Contact</a>
+                    </div>
+                    <span style="font-size:30px;cursor:pointer; color: #fff;" onclick="openNav()"><img src="images/toggle-icon.png"></span>
+                    <a class="navbar-brand" href="ShowHomeGeneralController">E-Butler</a></a>
+                    <form class="form-inline ">
+                        <div class="login_text">
+                            <ul>
+                                <li><a href="login.jsp"><img src="images/user-icon.png"></a></li>
+                                <li><a href="#"><img src="images/trolly-icon.png"></a></li>
+                                <li><a href="#"><img src="images/search-icon.png"></a></li>
+                                <li><a href="#"><img src="images/logout.png" width = "21" height = "20"></a></li>
+                            </ul>
+                        </div>
+                    </form>
+                </nav>
+            </div>
+        </div>
         <!-- header section end -->
         <!-- partial:index.partial.html -->
         <div id="login-form-wrap">
             <h2>Login</h2>
             <form id="login-form" action="LoginController" method="POST">
                 <p>
-                    <input type="text" id="username" name="txtUsername" value="${param.txtUsername}" placeholder="Username" required><i class="validation"><span></span><span></span></i>
+                    <input type="text" id="username" name="txtUsername" value="${param.txtUsername}" placeholder="Username" required="true" autofocus="true"><i class="validation"><span></span><span></span></i>
                 </p>
                 <p>
                     <input type="password" id="password" name="txtPassword" placeholder="Password" required><i class="validation"><span></span><span></span></i>
@@ -97,7 +97,7 @@
         <div class="footer_section layout_padding margin_top_90">
             <div class="container">
                 <div class="footer_logo_main">
-<!--                    <div class="footer_logo"><a href="index.html"><img src="images/footer-logo.png"></a></div>-->
+                    <!--                    <div class="footer_logo"><a href="index.html"><img src="images/footer-logo.png"></a></div>-->
                     <div class="social_icon">
                         <ul>
                             <li><a href="#"><img src="images/fb-icon.png"></a></li>
@@ -164,13 +164,13 @@
         <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>  
         <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
         <script>
-                        function openNav() {
-                            document.getElementById("mySidenav").style.width = "100%";
-                        }
+                   function openNav() {
+                       document.getElementById("mySidenav").style.width = "100%";
+                   }
 
-                        function closeNav() {
-                            document.getElementById("mySidenav").style.width = "0";
-                        }
+                   function closeNav() {
+                       document.getElementById("mySidenav").style.width = "0";
+                   }
         </script> 
     </body>
 </html>

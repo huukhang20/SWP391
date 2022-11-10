@@ -58,7 +58,7 @@
                             <ul>
                                 <c:if test="${sessionScope.USERROLE == 'admin'}">
                                     <li>
-                                        <a href="home_admin.jsp"><img src="images/user-icon.png"></a>
+                                        <a href="ShowHomeAdminController"><img src="images/user-icon.png"></a>
                                     </li>
                                 </c:if>
                                 <c:if test="${sessionScope.USERROLE == 'supplier'}">

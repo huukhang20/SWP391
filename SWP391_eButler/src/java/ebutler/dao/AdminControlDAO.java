@@ -280,4 +280,52 @@ public class AdminControlDAO implements Serializable {
         }
         return check;
     }
+    
+    public int countOrder() throws Exception {
+        int count = 0;
+        try {
+            String sql = "Select COUNT(ID) as Counting From Orders";
+            conn = DBUtils.makeConnection();
+            preStm = conn.prepareStatement(sql);
+            rs = preStm.executeQuery();
+            if(rs.next()){
+                count = rs.getInt("Counting");
+            }
+        } finally {
+            closeConnection();
+        }
+        return count;
+    }
+    
+    public int countOrderDone() throws Exception {
+        int count = 0;
+        try {
+            String sql = "Select COUNT(ID) as Counting From Orders Where Order_Status = 'Done'";
+            conn = DBUtils.makeConnection();
+            preStm = conn.prepareStatement(sql);
+            rs = preStm.executeQuery();
+            if(rs.next()){
+                count = rs.getInt("Counting");
+            }
+        } finally {
+            closeConnection();
+        }
+        return count;
+    }
+        
+    public int countProfit() throws Exception {
+        int count = 0;
+        try {
+            String sql = "Select SUM(Total_Price) as Counting From Orders";
+            conn = DBUtils.makeConnection();
+            preStm = conn.prepareStatement(sql);
+            rs = preStm.executeQuery();
+            if(rs.next()){
+                count = rs.getInt("Counting");
+            }
+        } finally {
+            closeConnection();
+        }
+        return count;
+    }
 }
