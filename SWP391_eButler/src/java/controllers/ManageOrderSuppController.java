@@ -23,7 +23,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "ManageOrderSuppController", urlPatterns = {"/ManageOrderSuppController"})
 public class ManageOrderSuppController extends HttpServlet {
-private static final String ManageOrderSuppPage = "manage_order_supp.jsp";
+
+    private static final String ManageOrderSuppPage = "manage_order_supp.jsp";
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -39,18 +41,17 @@ private static final String ManageOrderSuppPage = "manage_order_supp.jsp";
         String url = ManageOrderSuppPage;
         try {
             List<Order> orderList = new ArrayList<Order>();
-            
+
             SupplierDAO dao = new SupplierDAO();
-            
+
             orderList = dao.getListOrderForManage();
-            
+
             request.setAttribute("ORDERLIST", orderList);
         } catch (Exception e) {
             log("ERROR at ShowOrderListSuppController: " + e.getMessage());
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
-    }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
