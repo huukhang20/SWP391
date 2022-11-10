@@ -99,7 +99,7 @@
                 </div>
                 <div class="profile-details">
                     <img src="images/profile.jpg" alt="">
-                    <span class="admin_name">${sessionScope.USERROLE} ${sessionScope.USERLOGIN}</span>
+                    <span class="admin_name">Welcome Admin ${sessionScope.account.name}</span>
 
                 </div>
             </nav>

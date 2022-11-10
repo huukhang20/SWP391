@@ -236,4 +236,67 @@ public class SupplierDAO {
         return result;
     }
 
+    public int countFB() throws Exception {
+        int count = 0;
+        try {
+            String sql = "Select COUNT(Type) as countFB From Feedback Where Type = 'Feedback'";
+            conn = DBUtils.makeConnection();
+            preStm = conn.prepareStatement(sql);
+            rs = preStm.executeQuery();
+            if(rs.next()){
+                count = rs.getInt("countFB");
+            }
+        } finally {
+            closeConnection();
+        }
+        return count;
+    }
+    
+    public int countFBWaiting() throws Exception {
+        int count = 0;
+        try {
+            String sql = "Select COUNT(Type) as countFB From Feedback Where Type = 'Feedback' and Status = 'False'";
+            conn = DBUtils.makeConnection();
+            preStm = conn.prepareStatement(sql);
+            rs = preStm.executeQuery();
+            if(rs.next()){
+                count = rs.getInt("countFB");
+            }
+        } finally {
+            closeConnection();
+        }
+        return count;
+    }
+    
+    public int countComp() throws Exception {
+        int count = 0;
+        try {
+            String sql = "Select COUNT(Type) as countFB From Feedback Where Type = 'Complaint'";
+            conn = DBUtils.makeConnection();
+            preStm = conn.prepareStatement(sql);
+            rs = preStm.executeQuery();
+            if(rs.next()){
+                count = rs.getInt("countFB");
+            }
+        } finally {
+            closeConnection();
+        }
+        return count;
+    }
+    
+    public int countCompWaiting() throws Exception {
+        int count = 0;
+        try {
+            String sql = "Select COUNT(Type) as countFB From Feedback Where Type = 'Complaint' and Status = 'False'";
+            conn = DBUtils.makeConnection();
+            preStm = conn.prepareStatement(sql);
+            rs = preStm.executeQuery();
+            if(rs.next()){
+                count = rs.getInt("countFB");
+            }
+        } finally {
+            closeConnection();
+        }
+        return count;
+    }
 }

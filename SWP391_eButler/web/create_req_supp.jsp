@@ -91,7 +91,7 @@
     </div>
     <div class="profile-details">
       <img src="images/profile.jpg" alt="">
-      <span class="admin_name">user ?</span>
+      <span class="admin_name">Welcome Supplier ${sessionScope.account.name}</span>
       
     </div>
   </nav>
