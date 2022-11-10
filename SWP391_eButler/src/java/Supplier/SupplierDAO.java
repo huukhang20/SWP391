@@ -122,9 +122,7 @@ public class SupplierDAO {
     public List<Service> getListServiceForSupp() throws Exception {
         List<Service> result = null;
         try {
-            String sql = "Select Service.ID, Service.Name, Service.Description, Category.Name as CategoryName, Supplier.Supplier_Name as SupplierName, Service.Quantity, Service.Price, Service.Working_Time, Service.Release_Time, Service.Image, Service.Status\n"
-                    + "from Service, Category, Supplier\n"
-                    + "where ( Service.Category_ID = Category.ID and Service.Supplier_ID = Supplier.ID)";
+            String sql = "Select * From Service Where Supplier_ID = ?";
             conn = DBUtils.makeConnection();
             preStm = conn.prepareStatement(sql);
             rs = preStm.executeQuery();
@@ -144,7 +142,7 @@ public class SupplierDAO {
             result = new ArrayList<Service>();
 
             while (rs.next()) {
-                id = rs.getInt("ID");
+                id = rs.getInt("Supplier_ID");
                 name = rs.getString("Name");
                 description = rs.getString("Description");
                 categoryName = rs.getString("CategoryName");

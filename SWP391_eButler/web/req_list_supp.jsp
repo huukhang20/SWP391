@@ -3,7 +3,7 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="UTF-8">
-        <title>Procduct And Service</title>
+        <title>Request Management</title>
         <link rel="stylesheet" href="style_admin.css">
         <!-- Boxicons CDN Link -->
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -32,8 +32,7 @@
     <body>
         <div class="sidebar">
             <div class="logo-details">
-                <i class='bx bxl-c-plus-plus'></i>
-                <span class="logo_name">E-butlter</span>
+                <a href="ShowHomeGeneralController" class="logo_name">E-butlter</a>
             </div>
             <ul class="nav-links">
                 <li>
@@ -45,29 +44,29 @@
                 <li>
                     <a href="product_list_supp.jsp">
                         <i class='bx bx-box' ></i>
-                        <span class="links_name">Product And Service List</span>
+                        <span class="links_name">Service Management</span>
                     </a>
                 </li>
                 <li>
                     <a href="req_list_supp.jsp">
                         <i class='bx bx-list-ul' ></i>
-                        <span class="links_name">Req List</span>
+                        <span class="links_name">Request Management</span>
                     </a>
                 </li>
                 <li>
                     <a href="create_req_supp.jsp">
                         <i class='bx bx-list-ul' ></i>
-                        <span class="links_name">Create New Req</span>
+                        <span class="links_name">Create New Request</span>
                     </a>
                 </li>
                 <li>
                     <a href="order_list_supp.jsp">
                         <i class='bx bx-coin-stack' ></i>
-                        <span class="links_name">Oder List</span>
+                        <span class="links_name">Order History</span>
                     </a>
                 </li>
                 <li>
-                    <a href="manage order_supp.jsp">
+                    <a href="manage_order_supp.jsp">
                         <i class='bx bx-book-alt' ></i>
                         <span class="links_name">Manage Order</span>
                     </a>

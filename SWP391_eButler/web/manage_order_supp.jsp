@@ -104,57 +104,70 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th class="text-center" scope="col">ID</th>
-                                        <th scope="col">user</th>
-                                        <th scope="col">info</th>
-                                        <th scope="col">price</th>
-                                        <th scope="col">status</th>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">User Name</th>
+                                        <th scope="col">Info</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Action</th>
 
                                     </tr>
                                 </thead>
+
                                 <tbody>
                                     <tr class="inner-box">
-                                        <th scope="row">
-                                            <div class="event-date">
-                                                <span>${counter.count}</span>
-
-                                            </div>
+                                        <th scope="row">    
+                                            <span>${counter.count}</span>
                                         </th>
                                         <td>
-                                            <span>${dto.accName}</span>
+                                            <h1>${dto.accName}</h1>  
                                         </td>
                                         <td>
-                                            <div class="event-wrap">
-                                                <div class="meta">
-                                                    <div class="organizers">
-                                                        <a href="#">Address: ${dto.orderAddress}</a>
-                                                    </div>
-                                                    <div class="categories">
-                                                        <a href="#">Email: ${dto.orderEmail}</a>
-                                                    </div>
-                                                    <div class="time">
-                                                        <span>Buy Date: ${dto.orderTime}</span>
+                                            <span>${dto.serName} x ${dto.quantity}</span>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <div class="d-flex  "><button class="btn btn-warning btn-sm" type="button">${dto.orderStatus}</button>
+                                                </div>
+                                        </td>
+
+                                        <td>
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Action
+                                            </button>
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Select the status of the order</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="input-group">
+                                                                <form action="">
+                                                                    <!-- <label for="cars">Choose a category:</label> -->
+                                                                    <select name="type" id="status">
+                                                                        <option value="volvo">confirm</option>
+                                                                        <option value="saab">Processing</option>
+                                                                        <option value="opel">reject</option>
+                                                                        <option value="opel">Done</option>
+                                                                    </select>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-primary">OK</button>
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </td>
-                                        <td>
-                                            <span>${dto.totalPrice}$</span>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex  "><button class="btn btn-danger btn-sm" type="button">${dto.orderStatus}</button>
-                                        </td>
-                                    </tr>                                    
+                                    </tr>
                                 </tbody>
                             </table>
                         </c:if>
-                        <c:if test="${empty requestScope.ORDERLIST}">
-                            <h2 style="color: black">No account is waiting for you to managed!</h2>
-                        </c:if>
-                    </c:if>
-                    <c:if test="${requestScope.ORDERLIST == null}">
-                        <h2 style="color: black">No account is waiting for you to managed!</h2>
-                    </c:if>
                 </div>
             </div>
 
