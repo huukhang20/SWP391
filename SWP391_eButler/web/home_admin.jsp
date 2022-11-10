@@ -110,7 +110,7 @@
                     <div class="box">
                         <div class="right-side">
                             <div class="box-topic">Total Income</div>
-                            <div class="number">$ ${requestScope.T}</div>
+                            <div class="number">$ ${requestScope.T} VND</div>
                             <div class="indicator">
                                 <i class='bx bx-up-arrow-alt'></i>
                                 <!--<span class="text">Up from yesterday</span>-->
@@ -121,7 +121,7 @@
                     <div class="box">
                         <div class="right-side">
                             <div class="box-topic">Total Profit</div>
-                            <div class="number">$ ${requestScope.P}</div>
+                            <div class="number">${requestScope.P} VND</div>
                             <div class="indicator">
                                 <i class='bx bx-down-arrow-alt down'></i>
                                 <!--<span class="text">Down From Today</span>-->
