@@ -19,6 +19,24 @@ public class OrderDetail {
     private int Price;
     private int Quantity;
     private String serName;
+    private String accName;
+    private String status;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getAccName() {
+        return accName;
+    }
+
+    public void setAccName(String accName) {
+        this.accName = accName;
+    }
 
     public OrderDetail() {
     }

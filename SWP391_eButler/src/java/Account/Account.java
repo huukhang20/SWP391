@@ -26,6 +26,10 @@ public class Account {
     public Account() {
     }
 
+    public Account(int accID) {
+        this.accID = accID;
+    }
+
     public Account(String email) {
         this.email = email;
     }

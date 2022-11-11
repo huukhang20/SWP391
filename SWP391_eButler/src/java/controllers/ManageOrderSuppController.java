@@ -5,7 +5,10 @@
  */
 package controllers;
 
+import Account.Account;
 import Order.Order;
+import Order.OrderDetail;
+import Service.ServiceDAO;
 import Supplier.SupplierDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,6 +19,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -40,11 +44,16 @@ public class ManageOrderSuppController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String url = ManageOrderSuppPage;
         try {
-            List<Order> orderList = new ArrayList<Order>();
-
+            HttpSession session = request.getSession();
+            Account account = (Account)session.getAttribute("account");
+            
+            int supID = ServiceDAO.getSuppID(account.getAccID());
+            
+            List<OrderDetail> orderList = new ArrayList<OrderDetail>();
+                
             SupplierDAO dao = new SupplierDAO();
 
-            orderList = dao.getListOrderForManage();
+            orderList = dao.getListOrderForManage(supID);
 
             request.setAttribute("ORDERLIST", orderList);
         } catch (Exception e) {

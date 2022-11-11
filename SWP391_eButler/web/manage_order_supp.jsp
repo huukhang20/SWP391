@@ -1,3 +1,7 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="f"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
 <html lang="en" dir="ltr">
@@ -99,75 +103,77 @@
 
             <div class="home-content">
                 <div class="table-responsive">
-                    <c:if test="${requestScope.ORDERLIST != null}">
-                        <c:if test="${not empty requestScope.ORDERLIST}" var="check" scope="page">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">ID</th>
-                                        <th scope="col">User Name</th>
-                                        <th scope="col">Info</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Action</th>
 
-                                    </tr>
-                                </thead>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">User Name</th>
+                                <th scope="col">Info</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Action</th>
 
-                                <tbody>
-                                    <tr class="inner-box">
-                                        <th scope="row">    
-                                            <span>${counter.count}</span>
-                                        </th>
-                                        <td>
-                                            <h1>${dto.accName}</h1>  
-                                        </td>
-                                        <td>
-                                            <span>${dto.serName} x ${dto.quantity}</span>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <div class="d-flex  "><button class="btn btn-warning btn-sm" type="button">${dto.orderStatus}</button>
-                                                </div>
-                                        </td>
+                            </tr>
+                        </thead>
 
-                                        <td>
-                                            <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                Action
-                                            </button>
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Select the status of the order</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <tbody>
+                            <c:forEach items="${requestScope.ORDERLIST}" var="dto" varStatus="counter">
+
+                                <tr class="inner-box">
+                                    <th scope="row">    
+                                        <span>${counter.count}</span>
+                                    </th>
+                                    <td>
+                                        <h2>${dto.accName}</h2>  
+                                    </td>
+                                    <td>
+                                        <span>${dto.serName} x ${dto.getQuantity()}</span>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <div class="d-flex  "><button class="btn btn-warning btn-sm" type="button">${dto.status}</button>
+                                            </div>
+                                    </td>
+
+                                    <td>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            Action
+                                        </button>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Select the status of the order</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="input-group">
+                                                            <form action="" id="form">
+                                                                <!-- <label for="cars">Choose a category:</label> -->
+                                                                <select name="type" id="status" name="status">
+                                                                    <option value="volvo">confirm</option>
+                                                                    <option value="saab">Processing</option>
+                                                                    <option value="opel">reject</option>
+                                                                    <option value="opel">Done</option>
+                                                                </select>
+                                                            </form>
                                                         </div>
-                                                        <div class="modal-body">
-                                                            <div class="input-group">
-                                                                <form action="">
-                                                                    <!-- <label for="cars">Choose a category:</label> -->
-                                                                    <select name="type" id="status">
-                                                                        <option value="volvo">confirm</option>
-                                                                        <option value="saab">Processing</option>
-                                                                        <option value="opel">reject</option>
-                                                                        <option value="opel">Done</option>
-                                                                    </select>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-primary">OK</button>
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" form="form" class="btn btn-primary">OK</button>
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </c:if>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+
                 </div>
             </div>
 
