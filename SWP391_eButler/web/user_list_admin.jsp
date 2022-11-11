@@ -98,7 +98,7 @@
                     <i class='bx bx-search' ></i>
                 </div>
                 <div class="profile-details">
-                    <img src="images/profile.jpg" alt="">
+                    <img src="${sessionScope.account.image}" alt="">
                     <span class="admin_name">Welcome Admin ${sessionScope.account.name}</span>
 
                 </div>
