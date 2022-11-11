@@ -13,6 +13,7 @@ import java.util.List;
  * @author Admin
  */
 public class OrderDetail {
+
     private int ID;
     private int Order_ID;
     private int Service_ID;
@@ -21,6 +22,33 @@ public class OrderDetail {
     private String serName;
     private String accName;
     private String status;
+    private String orderAddress;
+    private String orderEmail;
+    private String orderTime;
+
+    public String getOrderAddress() {
+        return orderAddress;
+    }
+
+    public void setOrderAddress(String orderAddress) {
+        this.orderAddress = orderAddress;
+    }
+
+    public String getOrderEmail() {
+        return orderEmail;
+    }
+
+    public void setOrderEmail(String orderEmail) {
+        this.orderEmail = orderEmail;
+    }
+
+    public String getOrderTime() {
+        return orderTime;
+    }
+
+    public void setOrderTime(String orderTime) {
+        this.orderTime = orderTime;
+    }
 
     public String getStatus() {
         return status;
@@ -96,6 +124,5 @@ public class OrderDetail {
     public void setSerName(String serName) {
         this.serName = serName;
     }
-    
-    
+
 }

@@ -64,13 +64,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="order_list_supp.jsp">
+                    <a href="ShowOrderListSuppController">
                         <i class='bx bx-coin-stack' ></i>
                         <span class="links_name">Order History</span>
                     </a>
                 </li>
                 <li>
-                    <a href="manage_order_supp.jsp">
+                    <a href="ManageOrderSuppController">
                         <i class='bx bx-book-alt' ></i>
                         <span class="links_name">Manage Order</span>
                     </a>

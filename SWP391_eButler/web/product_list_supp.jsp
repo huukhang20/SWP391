@@ -47,13 +47,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="product_list_supp.jsp">
+                    <a href="ShowServiceSuppController">
                         <i class='bx bx-box' ></i>
                         <span class="links_name">Service Management</span>
                     </a>
                 </li>
                 <li>
-                    <a href="req_list_supp.jsp">
+                    <a href="ShowRequestListForSuppController">
                         <i class='bx bx-list-ul' ></i>
                         <span class="links_name">Request Management</span>
                     </a>
@@ -65,13 +65,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="order_list_supp.jsp">
+                    <a href="ShowOrderListSuppController">
                         <i class='bx bx-coin-stack' ></i>
                         <span class="links_name">Order History</span>
                     </a>
                 </li>
                 <li>
-                    <a href="manage_order_supp.jsp">
+                    <a href="ManageOrderSuppController">
                         <i class='bx bx-book-alt' ></i>
                         <span class="links_name">Manage Order</span>
                     </a>
@@ -104,83 +104,83 @@
 
             <div class="home-content">
                 <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th class="text-center" scope="col">ID</th>
-                                        <th scope="col">name</th>
-                                        <th scope="col">info</th>
-                                        <th scope="col">price</th>
-                                        <th scope="col">quantity</th>
-                                        <th scope="col">action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <c:forEach items="${requestScope.SERVICELIST}" var="dto" varStatus="counter">
-                                        
-                                        <tr class="inner-box">
-                                            <th scope="row">
-                                                <span>${counter.count}</span>
-                                            </th>
-                                            <td>
-                                                <span>${dto.serName}</span>
-                                            </td>
-                                            <td>
-                                                <div class="event-wrap">
-                                                    ${dto.serDescription}
-                                                </div>
-                                            </td>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="text-center" scope="col">ID</th>
+                                <th scope="col">name</th>
+                                <th scope="col">info</th>
+                                <th scope="col">price</th>
+                                <th scope="col">quantity</th>
+                                <th scope="col">action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach items="${requestScope.SERVICELIST}" var="dto" varStatus="counter">
 
-                                            <td>
-                                                <input type="text" value="${dto.price}">
-                                            </td>
-                                            <td>
-                                                <input type="text" value="${dto.quantity}">
-                                            </td>
-                                            <td>
-                                                <!-- Button trigger modal -->
-                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                    Change
-                                                </button>
-                                                <!-- Modal -->
-                                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Change this Service ?</h5>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                Are you sure about that ?
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-primary">OK</button>
-                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <tr class="inner-box">
+                                    <th scope="row">
+                                        <span>${counter.count}</span>
+                                    </th>
+                                    <td>
+                                        <span>${dto.serName}</span>
+                                    </td>
+                                    <td>
+                                        <div class="event-wrap">
+                                            ${dto.serDescription}
+                                        </div>
+                                    </td>
 
-                                                            </div>
-                                                        </div>
+                                    <td>
+                                        <input type="text" value="${dto.price}">
+                                    </td>
+                                    <td>
+                                        <input type="text" value="${dto.quantity}">
+                                    </td>
+                                    <td>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            Change
+                                        </button>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Change this Service ?</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
-                                                </div>                                                     
-                                        </tr>  
-                                    </c:forEach>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                                                    <div class="modal-body">
+                                                        Are you sure about that ?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-primary">OK</button>
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>                                                     
+                                </tr>  
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
 
-                    <script>
-                        let sidebar = document.querySelector(".sidebar");
-                        let sidebarBtn = document.querySelector(".sidebarBtn");
-                        sidebarBtn.onclick = function () {
-                            sidebar.classList.toggle("active");
-                            if (sidebar.classList.contains("active")) {
-                                sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
-                            } else
-                                sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
-                        }
-                    </script>
+            <script>
+                let sidebar = document.querySelector(".sidebar");
+                let sidebarBtn = document.querySelector(".sidebarBtn");
+                sidebarBtn.onclick = function () {
+                    sidebar.classList.toggle("active");
+                    if (sidebar.classList.contains("active")) {
+                        sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+                    } else
+                        sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+                }
+            </script>
 
 
-            </body>
-        </html>
+    </body>
+</html>

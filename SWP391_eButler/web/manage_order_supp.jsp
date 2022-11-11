@@ -64,7 +64,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="order_list_supp.jsp">
+                    <a href="ShowOrderListSuppController">
                         <i class='bx bx-coin-stack' ></i>
                         <span class="links_name">Order History</span>
                     </a>

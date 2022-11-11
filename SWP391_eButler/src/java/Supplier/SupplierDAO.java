@@ -169,41 +169,74 @@ public class SupplierDAO {
         return result;
     }
 
-    public List<Order> getListOrderForSupp() throws Exception {
-        List<Order> result = null;
-        try {
-            String sql = "Select Orders.ID, Account.Name as AccountName, Orders.Order_Address,"
-                    + " Orders.Order_Email, Orders.Order_Time, Orders.Order_Status,"
-                    + " Orders.Total_Price from Orders, Account where ( Orders.Account_ID = Account.ID and Service.Status like 'Done' or 'reject')";
-            conn = DBUtils.makeConnection();
-            preStm = conn.prepareStatement(sql);
-            rs = preStm.executeQuery();
+    public List<OrderDetail> getListOrderForSupp(int supID) throws Exception {
 
-            int id = 0;
-            String accName = "";
-            String orderAddress = "";
-            String orderEmail = "";
-            String orderTime = "";
-            String orderStatus = "";
-            int totalPrice = 0;
-            Order dto = null;
-            result = new ArrayList<Order>();
-
-            while (rs.next()) {
-                id = rs.getInt("ID");
-                accName = rs.getString("AccountName");
-                orderAddress = rs.getString("Order_Address");
-                orderEmail = rs.getString("Order_Email");
-                orderTime = rs.getString("Order_Time");
-                orderStatus = rs.getString("Order_Status");
-                totalPrice = rs.getInt("Total_Price");
-                dto = new Order(id, accName, orderAddress, orderEmail, orderTime, orderStatus, totalPrice);
-                result.add(dto);
+        ArrayList<OrderDetail> list = new ArrayList<>();
+        Connection cn = DBUtils.makeConnection();
+        if (cn != null) {
+            String sql = "Select OrderDetail.*, Account.Name, Orders.Order_Address, Orders.Order_Email, Order_Time, Order_Status\n"
+                    + "from Orders, Service, OrderDetail, Supplier, Account \n"
+                    + "where ((Orders.Order_Status not like 'Processing') \n"
+                    + "and OrderDetail.Order_ID = Orders.ID and Supplier.ID = ? and Supplier.ID = Service.Supplier_ID \n"
+                    + "and OrderDetail.Service_ID = Service.ID and Orders.Account_ID = Account.ID)";
+            PreparedStatement pst = cn.prepareStatement(sql);
+            pst.setInt(1, supID);
+            ResultSet table = pst.executeQuery();
+            while (table.next()) {
+                OrderDetail od = new OrderDetail();
+                od.setID(table.getInt("ID"));
+                od.setOrder_ID(table.getInt("Order_ID"));
+                od.setService_ID(table.getInt("Service_ID"));
+                od.setPrice(table.getInt("Price"));
+                od.setQuantity(table.getInt("Quantity"));
+                od.setAccName(table.getString("Name"));
+                od.setOrderAddress(table.getString("Order_Address"));
+                od.setOrderEmail(table.getString("Order_Email"));
+                od.setOrderTime(table.getString("Order_Time"));
+                od.setStatus(table.getString("Order_Status"));
+                String serID = Integer.toString(od.getService_ID());
+                od.setSerName(ServiceDAO.find(serID).getSerName());
+                list.add(od);
             }
-        } finally {
-            closeConnection();
+
+            cn.close();
         }
-        return result;
+        return list;
+
+//        List<Order> result = null;
+//        try {
+//            String sql = "Select Orders.ID, Account.Name as AccountName, Orders.Order_Address,"
+//                    + " Orders.Order_Email, Orders.Order_Time, Orders.Order_Status,"
+//                    + " Orders.Total_Price from Orders, Account where ( Orders.Account_ID = Account.ID and Service.Status like 'Done' or 'reject')";
+//            conn = DBUtils.makeConnection();
+//            preStm = conn.prepareStatement(sql);
+//            rs = preStm.executeQuery();
+//
+//            int id = 0;
+//            String accName = "";
+//            String orderAddress = "";
+//            String orderEmail = "";
+//            String orderTime = "";
+//            String orderStatus = "";
+//            int totalPrice = 0;
+//            Order dto = null;
+//            result = new ArrayList<Order>();
+//
+//            while (rs.next()) {
+//                id = rs.getInt("ID");
+//                accName = rs.getString("AccountName");
+//                orderAddress = rs.getString("Order_Address");
+//                orderEmail = rs.getString("Order_Email");
+//                orderTime = rs.getString("Order_Time");
+//                orderStatus = rs.getString("Order_Status");
+//                totalPrice = rs.getInt("Total_Price");
+//                dto = new Order(id, accName, orderAddress, orderEmail, orderTime, orderStatus, totalPrice);
+//                result.add(dto);
+//            }
+//        } finally {
+//            closeConnection();
+//        }
+//        return result;
     }
 
     public List<OrderDetail> getListOrderForManage(int supID) throws Exception {
