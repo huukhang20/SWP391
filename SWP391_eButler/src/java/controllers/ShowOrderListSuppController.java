@@ -5,7 +5,11 @@
  */
 package controllers;
 
+import Account.Account;
 import Order.Order;
+import Order.OrderDAO;
+import Order.OrderDetail;
+import Service.ServiceDAO;
 import Supplier.SupplierDAO;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,6 +19,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -37,11 +42,16 @@ private static final String orderASuppPage = "order_list_supp.jsp";
         response.setContentType("text/html;charset=UTF-8");
         String url = orderASuppPage;
         try {
-            List<Order> orderList = new ArrayList<Order>();
+            HttpSession session = request.getSession();
+            Account account = (Account)session.getAttribute("account");
+            
+            int supID = ServiceDAO.getSuppID(account.getAccID());
+            
+            List<OrderDetail> orderList = new ArrayList<OrderDetail>();
             
             SupplierDAO dao = new SupplierDAO();
             
-            orderList = dao.getListOrderForSupp();
+            orderList = dao.getListOrderForSupp(supID);
             
             request.setAttribute("ORDERLIST", orderList);
         } catch (Exception e) {

@@ -5,11 +5,9 @@
  */
 package controllers;
 
-import Service.ServiceDAO;
+import ebutler.dao.AdminControlDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,8 +18,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-@WebServlet(name = "UpdateServiceController", urlPatterns = {"/UpdateServiceController"})
-public class UpdateServiceController extends HttpServlet {
+@WebServlet(name = "ShowHomeAdminController", urlPatterns = {"/ShowHomeAdminController"})
+public class ShowHomeAdminController extends HttpServlet {
+    private static final String home_admin = "home_admin.jsp";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,21 +34,29 @@ public class UpdateServiceController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String serName = request.getParameter("serName");
-        String serDescription = request.getParameter("serDescription");
-        String quantity = request.getParameter("quantity");
-        String price = request.getParameter("price");
-        String workDate = request.getParameter("workDate");
-        String releaseDate = request.getParameter("releaseDate");
-        String serImage = request.getParameter("serImage");
-        String serId = request.getParameter("serId");
-        ServiceDAO sd = new ServiceDAO();
+        String url = home_admin;
         try {
-            sd.updateService(serName, serDescription, quantity, price, workDate, releaseDate, serImage, serId);
-        } catch (Exception ex) {
-            Logger.getLogger(UpdateServiceController.class.getName()).log(Level.SEVERE, null, ex);
+            AdminControlDAO dao = new AdminControlDAO();
+            int cO = 0;
+            int cOD = 0;
+            int cT = 0;
+            int cP = 0;
+            
+            cO = dao.countOrder();
+            cOD = dao.countOrderDone();
+            cT = dao.countProfit();
+            cP = cT * 5 / 100;
+            
+            request.setAttribute("O", cO);
+            request.setAttribute("OD", cOD);
+            request.setAttribute("T", cT);
+            request.setAttribute("P", cP);
+            
+        } catch (Exception e) {
+            log("ERROR at ShowHomeCCController: " + e.getMessage());
+        } finally {
+            request.getRequestDispatcher(url).forward(request, response);
         }
-        response.sendRedirect("ShowServiceSuppController");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

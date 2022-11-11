@@ -10,10 +10,12 @@ import Category.Category;
 import Service.Service;
 import controllers.ServiceController;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -294,8 +296,6 @@ public class ServiceDAO {
 //        }
 //        return list;
 //    }
-    
-    
     public List<Service> getServicesByCategory(String cateId) {
         List<Service> result = new ArrayList<>();
         String query = "select * from Service "
@@ -389,7 +389,7 @@ public class ServiceDAO {
     }
 
     //lay 3 service random
-    public List<Service> getRandom3Service(){
+    public List<Service> getRandom3Service() {
         List<Service> list = new ArrayList<>();
         String query = "Select top 3 *\n"
                 + "From Service\n"
@@ -413,7 +413,7 @@ public class ServiceDAO {
             String status = "";
             Service dto = null;
             list = new ArrayList<Service>();
-            
+
             while (rs.next()) {
                 id = rs.getInt("ID");
                 name = rs.getString("Name");
@@ -434,5 +434,56 @@ public class ServiceDAO {
         } catch (Exception e) {
         }
         return list;
+    }
+
+    public static boolean reqService(int accID, String serName, int quantity, int price, String releaseDate, int categoryID, String description) throws Exception {
+        Connection cn = utils.DBUtils.makeConnection();
+        boolean flag = false;
+        int suppID = getSuppID(accID);
+
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
+        Date date = new Date(System.currentTimeMillis());
+
+        if (cn != null) {
+            String sql = "INSERT INTO Service(Name,Description,Category_ID,Supplier_ID,Quantity,Price,Working_Time,Release_Time,Status)\n"
+                    + "VALUES(?,?,?,?,?,?,?,?,?)";
+            PreparedStatement pst = cn.prepareStatement(sql);
+            pst.setString(1, serName);
+            pst.setString(2, description);
+            pst.setInt(3, categoryID);
+            pst.setInt(4, suppID);
+            pst.setInt(5, quantity);
+            pst.setInt(6, price);
+            pst.setString(7, "8h00 - 22h00");
+            pst.setDate(8, date);
+            pst.setString(9, "Waiting");
+
+            int table = pst.executeUpdate();
+            if (table == 1) {
+                flag = true;
+            } else {
+                flag = false;
+            }
+            cn.close();
+        }
+        return flag;
+    }
+
+    public static int getSuppID(int accID) {
+        String query = "select Supplier.ID\n"
+                + "from Supplier, Account\n"
+                + "where (Account.ID = Supplier.Account_ID and Account.ID = ?)";
+        int SuppID = 0;
+        try {
+            Connection cn = DBUtils.makeConnection();
+            PreparedStatement pst = cn.prepareStatement(query);
+            pst.setInt(1, accID);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                SuppID = rs.getInt("ID");
+            }
+        } catch (Exception e) {
+        }
+        return SuppID;
     }
 }

@@ -22,13 +22,13 @@
           </a>
         </li>
         <li>
-          <a href="product_list_supp.jsp">
+          <a href="ShowServiceSuppController">
             <i class='bx bx-box' ></i>
             <span class="links_name">Service Management</span>
           </a>
         </li>
         <li>
-          <a href="req_list_supp.jsp">
+          <a href="ShowRequestListForSuppController">
             <i class='bx bx-list-ul' ></i>
             <span class="links_name">Request Management</span>
           </a>
@@ -40,13 +40,13 @@
           </a>
         </li>
         <li>
-          <a href="order_list_supp.jsp">
+          <a href="ShowOrderListSuppController">
             <i class='bx bx-coin-stack' ></i>
             <span class="links_name">Order History</span>
           </a>
         </li>
         <li>
-          <a href="manage_order_supp.jsp">
+          <a href="ManageOrderSuppController">
             <i class='bx bx-book-alt' ></i>
             <span class="links_name">Manage Order</span>
           </a>
@@ -70,8 +70,8 @@
         <i class='bx bx-search' ></i>
       </div>
       <div class="profile-details">
-        <img src="images/profile.jpg" alt="">
-        <span class="admin_name">user ?</span>
+        <img src="${sessionScope.account.image}" alt="">
+        <span class="admin_name">Welcome Supplier ${sessionScope.account.name}</span>
      
       </div>
     </nav>

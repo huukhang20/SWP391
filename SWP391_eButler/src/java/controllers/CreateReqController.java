@@ -5,23 +5,23 @@
  */
 package controllers;
 
+import Account.Account;
 import Service.ServiceDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "UpdateServiceController", urlPatterns = {"/UpdateServiceController"})
-public class UpdateServiceController extends HttpServlet {
+@WebServlet(name = "CreateReqController", urlPatterns = {"/CreateReqController"})
+public class CreateReqController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,22 +34,43 @@ public class UpdateServiceController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        String serName = request.getParameter("serName");
-        String serDescription = request.getParameter("serDescription");
-        String quantity = request.getParameter("quantity");
-        String price = request.getParameter("price");
-        String workDate = request.getParameter("workDate");
-        String releaseDate = request.getParameter("releaseDate");
-        String serImage = request.getParameter("serImage");
-        String serId = request.getParameter("serId");
-        ServiceDAO sd = new ServiceDAO();
         try {
-            sd.updateService(serName, serDescription, quantity, price, workDate, releaseDate, serImage, serId);
-        } catch (Exception ex) {
-            Logger.getLogger(UpdateServiceController.class.getName()).log(Level.SEVERE, null, ex);
+            HttpSession session = request.getSession();
+            Account account = (Account)session.getAttribute("account");
+            
+            String serName = request.getParameter("serName");
+            int quantity = Integer.parseInt(request.getParameter("quantity"));
+            int price = Integer.parseInt(request.getParameter("price"));
+            String releaseDate = request.getParameter("releaseDate");
+            String category = request.getParameter("category");
+            String description = request.getParameter("description");
+            
+            int category_id = 0;
+            switch (category){
+                case "Gas":
+                    category_id = 1;
+                    break;
+                case "Electric":
+                    category_id = 2;
+                    break;
+                case "Rice":
+                    category_id = 3;
+                    break;
+                case "Water":
+                    category_id = 4;
+                    break;
+                case "Electric Device":
+                    category_id = 5;
+                    break;
+                case "Market":
+                    category_id = 6;
+                    break;
+            }
+            ServiceDAO.reqService(account.getAccID(), serName, quantity, price, releaseDate, category_id, description);
+        } catch (Exception e) {
+        } finally {
+            request.getRequestDispatcher("create_req_supp.jsp").forward(request, response);
         }
-        response.sendRedirect("ShowServiceSuppController");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

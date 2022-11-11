@@ -43,7 +43,7 @@
             </div>
             <ul class="nav-links">
                 <li>
-                    <a href="home_admin.jsp">
+                    <a href="ShowHomeAdminController">
                         <i class='bx bx-grid-alt' ></i>
                         <span class="links_name">Dashboard</span>
                     </a>
@@ -99,7 +99,7 @@
                 </div>
                 <div class="profile-details">
                     <img src="images/profile.jpg" alt="">
-                    <span class="admin_name">${sessionScope.USERROLE} ${sessionScope.USERLOGIN}</span>
+                    <span class="admin_name">Welcome Admin ${sessionScope.account.name}</span>
 
                 </div>
             </nav>

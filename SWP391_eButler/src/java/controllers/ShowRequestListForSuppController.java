@@ -5,6 +5,7 @@
  */
 package controllers;
 
+import Account.Account;
 import Service.Service;
 import Supplier.SupplierDAO;
 import ebutler.dao.AdminControlDAO;
@@ -17,6 +18,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -41,12 +43,14 @@ public class ShowRequestListForSuppController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String url = reqListPage;
         try {
+            HttpSession session = request.getSession();
+            Account account = (Account)session.getAttribute("account");
             List<Service> serviceList = new ArrayList<Service>();
 
             SupplierDAO dao = new SupplierDAO();
 
-            serviceList = dao.getListWaitingServiceForSupp();
-
+            serviceList = dao.getListWaitingServiceForSupp(account.getAccID());
+          
             request.setAttribute("SERVICEWAITINGLIST", serviceList);
         } catch (Exception e) {
             log("ERROR at ShowRequestListForSuppController: " + e.getMessage());

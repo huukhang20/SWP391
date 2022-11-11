@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="f"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
 <html lang="en" dir="ltr">
@@ -42,13 +45,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="product_list_supp.jsp">
+                    <a href="ShowServiceSuppController">
                         <i class='bx bx-box' ></i>
                         <span class="links_name">Service Management</span>
                     </a>
                 </li>
                 <li>
-                    <a href="req_list_supp.jsp">
+                    <a href="ShowRequestListForSuppController">
                         <i class='bx bx-list-ul' ></i>
                         <span class="links_name">Request Management</span>
                     </a>
@@ -60,13 +63,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="order_list_supp.jsp">
+                    <a href="ShowOrderListSuppController">
                         <i class='bx bx-coin-stack' ></i>
                         <span class="links_name">Order History</span>
                     </a>
                 </li>
                 <li>
-                    <a href="manage_order_supp.jsp">
+                    <a href="ManageOrderSuppController">
                         <i class='bx bx-book-alt' ></i>
                         <span class="links_name">Manage Order</span>
                     </a>
@@ -91,70 +94,63 @@
                     <i class='bx bx-search' ></i>
                 </div>
                 <div class="profile-details">
-                    <img src="images/profile.jpg" alt="">
-                    <span class="admin_name">user ?</span>
+                    <img src="${sessionScope.account.image}" alt="">
+                    <span class="admin_name">Welcome Supplier ${sessionScope.account.name}</span>
 
                 </div>
             </nav>
 
             <div class="home-content">
                 <div class="table-responsive">
-                    <c:if test="${requestScope.ORDERLIST != null}">
-                        <c:if test="${not empty requestScope.ORDERLIST}" var="check" scope="page">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th class="text-center" scope="col">ID</th>
-                                        <th scope="col">user</th>
-                                        <th scope="col">info</th>
-                                        <th scope="col">price</th>
-                                        <th scope="col">status</th>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="text-center" scope="col">ID</th>
+                                <th scope="col">user</th>
+                                <th scope="col">info</th>
+                                <th scope="col">price</th>
+                                <th scope="col">status</th>
 
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="inner-box">
-                                        <th scope="row">
-                                            <div class="event-date">
-                                                <span>${counter.count}</span>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach items="${requestScope.ORDERLIST}" var="dto" varStatus="counter">
+                                <tr class="inner-box">
+                                    <th scope="row">
+                                        <div class="event-date">
+                                            <span>${counter.count}</span>
 
-                                            </div>
-                                        </th>
-                                        <td>
-                                            <span>${dto.accName}</span>
-                                        </td>
-                                        <td>
-                                            <div class="event-wrap">
-                                                <div class="meta">
-                                                    <div class="organizers">
-                                                        <a href="#">Address: ${dto.orderAddress}</a>
-                                                    </div>
-                                                    <div class="categories">
-                                                        <a href="#">Email: ${dto.orderEmail}</a>
-                                                    </div>
-                                                    <div class="time">
-                                                        <span>Buy Date: ${dto.orderTime}</span>
-                                                    </div>
+                                        </div>
+                                    </th>
+                                    <td>
+                                        <span>${dto.accName}</span>
+                                    </td>
+                                    <td>
+                                        <div class="event-wrap">
+                                            <div class="meta">
+                                                <div class="organizers">
+                                                    <a href="#">Address: ${dto.orderAddress}</a>
+                                                </div>
+                                                <div class="categories">
+                                                    <a href="#">Email: ${dto.orderEmail}</a>
+                                                </div>
+                                                <div class="time">
+                                                    <span>Buy Date: ${dto.orderTime}</span>
                                                 </div>
                                             </div>
-                                        </td>
-                                        <td>
-                                            <span>${dto.totalPrice}$</span>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex  "><button class="btn btn-danger btn-sm" type="button">${dto.orderStatus}</button>
-                                        </td>
-                                    </tr>                                    
-                                </tbody>
-                            </table>
-                        </c:if>
-                        <c:if test="${empty requestScope.ORDERLIST}">
-                            <h2 style="color: black">No account is waiting for you to managed!</h2>
-                        </c:if>
-                    </c:if>
-                    <c:if test="${requestScope.ORDERLIST == null}">
-                        <h2 style="color: black">No account is waiting for you to managed!</h2>
-                    </c:if>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span>${dto.price}$</span>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex  "><button class="btn btn-danger btn-sm" type="button">${dto.status}</button>
+                                    </td>
+                                </tr>  
+                            </c:forEach>
+                        </tbody>
+                    </table>
+
                 </div>
             </div>
 

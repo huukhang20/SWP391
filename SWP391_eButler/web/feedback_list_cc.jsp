@@ -43,7 +43,7 @@
             </div>
             <ul class="nav-links">
                 <li>
-                    <a href="home_cc.jsp" >
+                    <a href="ShowHomeCCController" >
                         <i class='bx bx-grid-alt' ></i>
                         <span class="links_name">Dashboard</span>
                     </a>
@@ -80,7 +80,7 @@
                 </div>
                 <div class="profile-details">
                     <img src="images/profile.jpg" alt="">
-                    <span class="admin_name">user ${sessionScope.USERLOGIN}</span>
+                    <span class="admin_name">Welcome CC ${sessionScope.account.name}</span>
                 </div>
             </nav>
             <!-- body -->

@@ -22,7 +22,7 @@
             </div>
             <ul class="nav-links">
                 <li>
-                    <a href="home_admin.jsp" class="active">
+                    <a href="ShowHomeAdminController" class="active">
                         <i class='bx bx-grid-alt' ></i>
                         <span class="links_name">Dashboard</span>
                     </a>
@@ -77,8 +77,8 @@
                     <i class='bx bx-search' ></i>
                 </div>
                 <div class="profile-details">
-                    <img src="images/profile.jpg" alt="">
-                    <span class="admin_name">${sessionScope.USERROLE} ${sessionScope.USERLOGIN}</span>
+                    <img src="${sessionScope.account.image}" alt="">
+                    <span class="admin_name">Welcome Admin ${sessionScope.account.name}</span>
 
                 </div>
             </nav>
@@ -88,43 +88,43 @@
                     <div class="box">
                         <div class="right-side">
                             <div class="box-topic">Total Order</div>
-                            <div class="number">40,876</div>
+                            <div class="number">${requestScope.O}</div>
                             <div class="indicator">
                                 <i class='bx bx-up-arrow-alt'></i>
-                                <span class="text">Up from yesterday</span>
+                                <!--<span class="text">Up from yesterday</span>-->
                             </div>
                         </div>
                         <i class='bx bx-cart-alt cart'></i>
                     </div>
                     <div class="box">
                         <div class="right-side">
-                            <div class="box-topic">Total Sales</div>
-                            <div class="number">38,876</div>
+                            <div class="box-topic">Finished Order</div>
+                            <div class="number">${requestScope.OD}</div>
                             <div class="indicator">
                                 <i class='bx bx-up-arrow-alt'></i>
-                                <span class="text">Up from yesterday</span>
+                                <!--<span class="text">Up from yesterday</span>-->
                             </div>
                         </div>
                         <i class='bx bxs-cart-add cart two' ></i>
                     </div>
                     <div class="box">
                         <div class="right-side">
-                            <div class="box-topic">Total Profit</div>
-                            <div class="number">$12,876</div>
+                            <div class="box-topic">Total Income</div>
+                            <div class="number">$ ${requestScope.T} VND</div>
                             <div class="indicator">
                                 <i class='bx bx-up-arrow-alt'></i>
-                                <span class="text">Up from yesterday</span>
+                                <!--<span class="text">Up from yesterday</span>-->
                             </div>
                         </div>
                         <i class='bx bx-cart cart three' ></i>
                     </div>
                     <div class="box">
                         <div class="right-side">
-                            <div class="box-topic">Total Return</div>
-                            <div class="number">11,086</div>
+                            <div class="box-topic">Total Profit</div>
+                            <div class="number">${requestScope.P} VND</div>
                             <div class="indicator">
                                 <i class='bx bx-down-arrow-alt down'></i>
-                                <span class="text">Down From Today</span>
+                                <!--<span class="text">Down From Today</span>-->
                             </div>
                         </div>
                         <i class='bx bxs-cart-download cart four' ></i>

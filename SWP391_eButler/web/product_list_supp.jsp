@@ -1,3 +1,8 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="f"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+
 <!DOCTYPE html>
 <!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
 <html lang="en" dir="ltr">
@@ -42,13 +47,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="product_list_supp.jsp">
+                    <a href="ShowServiceSuppController">
                         <i class='bx bx-box' ></i>
                         <span class="links_name">Service Management</span>
                     </a>
                 </li>
                 <li>
-                    <a href="req_list_supp.jsp">
+                    <a href="ShowRequestListForSuppController">
                         <i class='bx bx-list-ul' ></i>
                         <span class="links_name">Request Management</span>
                     </a>
@@ -60,13 +65,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="order_list_supp.jsp">
+                    <a href="ShowOrderListSuppController">
                         <i class='bx bx-coin-stack' ></i>
                         <span class="links_name">Order History</span>
                     </a>
                 </li>
                 <li>
-                    <a href="manage_order_supp.jsp">
+                    <a href="ManageOrderSuppController">
                         <i class='bx bx-book-alt' ></i>
                         <span class="links_name">Manage Order</span>
                     </a>
@@ -91,91 +96,90 @@
                     <i class='bx bx-search' ></i>
                 </div>
                 <div class="profile-details">
-                    <img src="images/profile.jpg" alt="">
-                    <span class="admin_name">user ?</span>
+                    <img src="${sessionScope.account.image}" alt="">
+                    <span class="admin_name">Welcome Supplier ${sessionScope.account.name}</span>
 
                 </div>
             </nav>
 
             <div class="home-content">
                 <div class="table-responsive">
-                    <c:if test="${requestScope.SERVICELIST != null}">
-                        <c:if test="${not empty requestScope.SERVICELIST}" var="check" scope="page">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th class="text-center" scope="col">ID</th>
-                                        <th scope="col">name</th>
-                                        <th scope="col">info</th>
-                                        <th scope="col">price</th>
-                                        <th scope="col">quantity</th>
-                                        <th scope="col">action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                   <c:forEach items="${requestScope.SERVICELIST}" var="dto" varStatus="counter">
-                                        <tr class="inner-box">
-                                            <th scope="row">
-                                                <span>${counter.count}</span>
-                                            </th>
-                                        <td>
-                                            <span>${counter.serName}</span>
-                                        </td>
-                                        <td>
-                                            <div class="event-wrap">
-                                                 ${counter.serDescription}
-                                            </div>
-                                        </td>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="text-center" scope="col">ID</th>
+                                <th scope="col">name</th>
+                                <th scope="col">info</th>
+                                <th scope="col">price</th>
+                                <th scope="col">quantity</th>
+                                <th scope="col">action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach items="${requestScope.SERVICELIST}" var="dto" varStatus="counter">
 
-                                        <td>
-                                            <input type="text" value="${counter.price}">
-                                        </td>
-                                        <td>
-                                            <input type="text" value="${counter.quantity}">
-                                        </td>
-                                        <td>
-                                            <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                Change
-                                            </button>
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Change this Service ?</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            Are you sure about that ?
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-primary">OK</button>
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <tr class="inner-box">
+                                    <th scope="row">
+                                        <span>${counter.count}</span>
+                                    </th>
+                                    <td>
+                                        <span>${dto.serName}</span>
+                                    </td>
+                                    <td>
+                                        <div class="event-wrap">
+                                            ${dto.serDescription}
+                                        </div>
+                                    </td>
 
-                                                        </div>
+                                    <td>
+                                        <input type="text" placeholder="${dto.price}" value="${param.price}">
+                                    </td>
+                                    <td>
+                                        <input type="text" placeholder="${dto.quantity}" value="${param.quantity}">
+                                    </td>
+                                    <td>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            Change
+                                        </button>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Change this Service ?</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Are you sure about that ?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-primary" href="UpdateServiceController?price=${dto.price}&quantity=${dto.quantity}&serId=${dto.serID}">OK</button>
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                                     </div>
                                                 </div>
-                                            </div>                                                     
-                                    </tr>   
-                                </tbody>
-                            </table>
-                            </div>
-                            </div>
+                                            </div>
+                                        </div>                                                     
+                                </tr>  
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
 
-                            <script>
-                                let sidebar = document.querySelector(".sidebar");
-                                let sidebarBtn = document.querySelector(".sidebarBtn");
-                                sidebarBtn.onclick = function () {
-                                    sidebar.classList.toggle("active");
-                                    if (sidebar.classList.contains("active")) {
-                                        sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
-                                    } else
-                                        sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
-                                }
-                            </script>
+            <script>
+                let sidebar = document.querySelector(".sidebar");
+                let sidebarBtn = document.querySelector(".sidebarBtn");
+                sidebarBtn.onclick = function () {
+                    sidebar.classList.toggle("active");
+                    if (sidebar.classList.contains("active")) {
+                        sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+                    } else
+                        sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+                }
+            </script>
 
 
-                            </body>
-                            </html>
+    </body>
+</html>

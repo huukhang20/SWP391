@@ -56,7 +56,22 @@
                     <form class="form-inline ">
                         <div class="login_text">
                             <ul>
-                                <c:if test="${sessionScope.USERLOGIN != null}">
+                                <c:if test="${sessionScope.USERROLE == 'admin'}">
+                                    <li>
+                                        <a href="ShowHomeAdminController"><img src="images/user-icon.png"></a>
+                                    </li>
+                                </c:if>
+                                <c:if test="${sessionScope.USERROLE == 'supplier'}">
+                                    <li>
+                                        <a href="home_supp.jsp"><img src="images/user-icon.png"></a>
+                                    </li>
+                                </c:if>
+                                <c:if test="${sessionScope.USERROLE == 'cc'}">
+                                    <li>
+                                        <a href="ShowHomeCCController"><img src="images/user-icon.png"></a>
+                                    </li>
+                                </c:if>
+                                <c:if test="${sessionScope.USERROLE == 'customer'}">
                                     <c:if test="${not empty sessionScope.USERLOGIN}" var="check" scope="page">
                                         <li>
                                             <a href="profile.jsp"><img src="images/user-icon.png"></a>
@@ -196,15 +211,15 @@
                                     </div>
                                 </c:if>
                                 <div class="cart_main">
-                                    
+
                                     <a href="ShowServiceDetail?serId=${dto.serID}"><h4 class="samsung_text">${dto.serName}</h4></a>
                                     <h6 class="rate_text">${dto.price} $</h6>
                                     <h6 class="rate_text_1"></h6>
                                 </div>
-                                    <div class="row">
+                                <div class="row">
                                     <div class="cart_bt_1 "><a href="#">Add To Cart</a></div>
-                                    </div>
-                             
+                                </div>
+
                             </div>
                         </div>
                     </c:forEach>

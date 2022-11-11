@@ -57,7 +57,7 @@ public class OrderDAO {
                 stmtOrder.setString(2, address);
                 stmtOrder.setString(3, email);
                 stmtOrder.setDate(4, date);
-                stmtOrder.setString(5, "Dang xu ly");
+                stmtOrder.setString(5, "Processing");
                 stmtOrder.setInt(6, cart.orderTotal());
 
                 rs = stmtOrder.executeQuery();

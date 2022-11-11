@@ -5,23 +5,22 @@
  */
 package controllers;
 
-import Service.ServiceDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import Supplier.SupplierDAO;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "UpdateServiceController", urlPatterns = {"/UpdateServiceController"})
-public class UpdateServiceController extends HttpServlet {
+@WebServlet(name = "ShowHomeCCController", urlPatterns = {"/ShowHomeCCController"})
+public class ShowHomeCCController extends HttpServlet {
+    private static final String home_cc = "home_cc.jsp";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,21 +34,29 @@ public class UpdateServiceController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String serName = request.getParameter("serName");
-        String serDescription = request.getParameter("serDescription");
-        String quantity = request.getParameter("quantity");
-        String price = request.getParameter("price");
-        String workDate = request.getParameter("workDate");
-        String releaseDate = request.getParameter("releaseDate");
-        String serImage = request.getParameter("serImage");
-        String serId = request.getParameter("serId");
-        ServiceDAO sd = new ServiceDAO();
+        String url = home_cc;
         try {
-            sd.updateService(serName, serDescription, quantity, price, workDate, releaseDate, serImage, serId);
-        } catch (Exception ex) {
-            Logger.getLogger(UpdateServiceController.class.getName()).log(Level.SEVERE, null, ex);
+            SupplierDAO dao = new SupplierDAO();
+            int cFB = 0;
+            int cFBW = 0;
+            int cComp = 0;
+            int cCompW = 0;
+            
+            cFB = dao.countFB();
+            cFBW = dao.countFBWaiting();
+            cComp = dao.countComp();
+            cCompW = dao.countCompWaiting();
+            
+            request.setAttribute("FB", cFB);
+            request.setAttribute("FBW", cFBW);
+            request.setAttribute("Comp", cComp);
+            request.setAttribute("CompW", cCompW);
+            
+        } catch (Exception e) {
+            log("ERROR at ShowHomeCCController: " + e.getMessage());
+        } finally {
+            request.getRequestDispatcher(url).forward(request, response);
         }
-        response.sendRedirect("ShowServiceSuppController");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

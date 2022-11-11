@@ -206,6 +206,32 @@ public class AccountDAO {
         return acc;
     }
     
+    public static Account getAccountByID(int accID) throws Exception {
+        Account acc = new Account(accID);
+        Connection cn = DBUtils.makeConnection();
+        if (cn != null) {
+            String sql = "SELECT [ID],[role_id],[name],[phone],[email],[address],[introduce],[image],[isStatus]\n"
+                    + "FROM Account\n"
+                    + "WHERE ID=?";
+            PreparedStatement pst = cn.prepareStatement(sql);
+            pst.setInt(1, accID);
+            ResultSet table = pst.executeQuery();
+            if (table != null && table.next()) {
+                acc.setAccID(table.getInt("ID"));
+                acc.setRole(table.getInt("role_id"));
+                acc.setName(table.getString("name"));
+                acc.setPhone(table.getString("phone"));
+                acc.setEmail(table.getString("email"));
+                acc.setAddress(table.getString("address"));
+                acc.setIntroduce(table.getString("introduce"));
+                acc.setImage(table.getString("image"));
+                acc.setIsStatus(table.getString("isStatus"));
+            }
+            cn.close();
+        }
+        return acc;
+    }
+    
     public static boolean checkEmail(String email) throws SQLException {
         Connection con = DBUtils.makeConnection();
         String CHECK_EMAIl = "SELECT * FROM Account WHERE email = ?";
