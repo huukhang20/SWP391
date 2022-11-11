@@ -154,7 +154,7 @@
                                                         Are you sure about that ?
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-primary">OK</button>
+                                                        <button type="button" class="btn btn-primary" href="UpdateServiceController?price=${dto.price}&quantity=${dto.quantity}&serId=${dto.serID}">OK</button>
                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
                                                     </div>
