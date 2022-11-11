@@ -244,9 +244,9 @@ public class SupplierDAO {
         ArrayList<OrderDetail> list = new ArrayList<>();
         Connection cn = DBUtils.makeConnection();
         if (cn != null) {
-            String sql = "Select OrderDetail.*, Account.Name, Orders.Order_Status\n"
+            String sql = "Select OrderDetail.*, Account.Name, OrderDetail.Status\n"
                     + "from Orders, Service, OrderDetail, Supplier, Account \n"
-                    + "where ((Orders.Order_Status like 'Processing') \n"
+                    + "where ((Orders.Order_Status not like 'Done') \n"
                     + "and OrderDetail.Order_ID = Orders.ID and Supplier.ID = ? and Supplier.ID = Service.Supplier_ID \n"
                     + "and OrderDetail.Service_ID = Service.ID and Orders.Account_ID = Account.ID)";
             PreparedStatement pst = cn.prepareStatement(sql);
@@ -260,7 +260,7 @@ public class SupplierDAO {
                 od.setPrice(table.getInt("Price"));
                 od.setQuantity(table.getInt("Quantity"));
                 od.setAccName(table.getString("Name"));
-                od.setStatus(table.getString("Order_Status"));
+                od.setStatus(table.getString("Status"));
                 String serID = Integer.toString(od.getService_ID());
                 od.setSerName(ServiceDAO.find(serID).getSerName());
                 list.add(od);

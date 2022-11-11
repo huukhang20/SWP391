@@ -186,7 +186,7 @@ public class OrderDAO {
         boolean check = false;
         Connection conn = DBUtils.makeConnection();
         String sql = "Update OrderDetail "
-                + "SET Order_Status = ?"
+                + "SET Status = ?"
                 + " Where ID = ?";
 
         PreparedStatement preStm = conn.prepareStatement(sql);

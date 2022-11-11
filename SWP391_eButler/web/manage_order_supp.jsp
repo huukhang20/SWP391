@@ -150,13 +150,14 @@
                                                     </div>
                                                     <div class="modal-body">
                                                         <div class="input-group">
-                                                            <form action="" id="form">
+                                                            <form action="ChangeStatusOrderDetail" id="form">
+                                                                <input type="hidden" name="id" value="${dto.ID}"/>
                                                                 <!-- <label for="cars">Choose a category:</label> -->
-                                                                <select name="type" id="status" name="status">
-                                                                    <option value="volvo">confirm</option>
-                                                                    <option value="saab">Processing</option>
-                                                                    <option value="opel">reject</option>
-                                                                    <option value="opel">Done</option>
+                                                                <select id="status" name="status">
+                                                                    <option value="Confirm">Confirm</option>
+                                                                    <option value="Processing">Processing</option>
+                                                                    <option value="Reject">Reject</option>
+                                                                    <option value="Done">Done</option>
                                                                 </select>
                                                             </form>
                                                         </div>
