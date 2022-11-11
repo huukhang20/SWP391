@@ -89,8 +89,14 @@
             </form>
             <a style="color: red">${ERRORLOGIN}</a>
             <div id="create-account-wrap">
-                <p>Not a member? <a href="register.jsp">Create Account</a><p>
-            </div><!--create-account-wrap-->
+                <p>Not a member? <a href="register.jsp">Create Account</a>
+                    <a> / Forgot your password <a href="forgot_password.html">Click here</a></a>
+                    <p>
+                    
+                    
+            </div>
+            
+            <!--create-account-wrap-->
         </div><!--login-form-wrap-->
         <!-- partial -->
         <!-- footer section start -->
