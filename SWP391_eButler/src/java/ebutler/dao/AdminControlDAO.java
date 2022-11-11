@@ -328,4 +328,19 @@ public class AdminControlDAO implements Serializable {
         }
         return count;
     }
+    
+    public boolean updateRequestService(int id, String stt) throws Exception {
+        boolean check = true;
+        try {
+            String sql = "Update Service Set Status = ? Where ID = ?";
+            conn = DBUtils.makeConnection();
+            preStm = conn.prepareStatement(sql);
+            preStm.setString(1, stt);
+            preStm.setInt(2, id);
+            check = preStm.executeUpdate() > 0;
+        } finally {
+            closeConnection();
+        }
+        return check;
+    }
 }

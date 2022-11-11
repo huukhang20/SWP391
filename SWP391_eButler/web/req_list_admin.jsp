@@ -142,8 +142,9 @@
                                                     <h4 class="mr-1">${dto.price} $</h4>
                                                     <button class="btn btn-warning btn-sm mr-auto" type="button">${dto.serStatus}</button>
                                                 </div>
-                                                <div class="d-flex flex-column mt-4"><button class="btn btn-primary btn-sm" type="button">Accept</button>
-                                                    <button class="btn primary btn-sm mt-2 bg-danger text-white" type="button">Deny</button></div>
+                                                <div class="d-flex flex-column mt-4">
+                                                    <button class="btn btn-primary btn-sm" type="button" onclick="document.location.href = 'UpdateRequestServiceStatusController?txtStatus=Available&txtID=${dto.serID}'">Accept</button>
+                                                    <button class="btn primary btn-sm mt-2 bg-danger text-white" type="button" onclick="document.location.href = 'UpdateRequestServiceStatusController?txtStatus=Denied&txtID=${dto.serID}'">Deny</button></div>
                                             </div>
                                         </div>
                                     </div>
