@@ -132,10 +132,10 @@
                                     </td>
 
                                     <td>
-                                        <input type="text" value="${dto.price}">
+                                        <input type="text" placeholder="${dto.price}" value="${param.price}">
                                     </td>
                                     <td>
-                                        <input type="text" value="${dto.quantity}">
+                                        <input type="text" placeholder="${dto.quantity}" value="${param.quantity}">
                                     </td>
                                     <td>
                                         <!-- Button trigger modal -->
@@ -156,7 +156,6 @@
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-primary" href="UpdateServiceController?price=${dto.price}&quantity=${dto.quantity}&serId=${dto.serID}">OK</button>
                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-
                                                     </div>
                                                 </div>
                                             </div>
