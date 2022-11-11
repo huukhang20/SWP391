@@ -22,7 +22,7 @@
           </a>
         </li>
         <li>
-          <a href="product_list_supp.jsp">
+          <a href="ShowServiceSuppController">
             <i class='bx bx-box' ></i>
             <span class="links_name">Service Management</span>
           </a>
@@ -46,7 +46,7 @@
           </a>
         </li>
         <li>
-          <a href="manage_order_supp.jsp">
+          <a href="ManageOrderSuppController">
             <i class='bx bx-book-alt' ></i>
             <span class="links_name">Manage Order</span>
           </a>
