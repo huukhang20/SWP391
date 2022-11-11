@@ -84,7 +84,7 @@
                                  <a href="ShowServiceDetail?serId=${last.serID}"><img class="img-fluid" src="${last.serImage}" width = "600" height = "400"/></a>
                             </c:if>
                                  <a href="ShowServiceDetail?serId=${last.serID}"><h5 class="card-title">${last.serName}</h5></a>
-                            <p class="card-text">${last.serDescription}</p>
+<!--                            <p class="card-text">${last.serDescription}</p>-->
                             <p class="bloc_left_price">${last.price} VND</p>
                         </div>
                     </div>
@@ -106,7 +106,7 @@
                                             <div class="card-body">
                                                 <h4 class="card-title show_txt"><a href="ShowServiceDetail?serId=${o.serID}" title="View Product" >${o.serName}</a></h4>
 
-                                                <p class="card-text show_txt">${o.serDescription}</p>
+<!--                                                <p class="card-text show_txt">${o.serDescription}</p>-->
                                                 <div class="row">
                                                     <div class="col">
                                                         <p class="btn btn-danger ">${o.price} VND</p>
