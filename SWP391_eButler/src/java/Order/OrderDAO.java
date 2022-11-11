@@ -43,8 +43,8 @@ public class OrderDAO {
                         + "OUTPUT INSERTED.id "
                         + "VALUES (?, ?, ?, ?, ?, ?)";
 
-                String orderDetails = "INSERT INTO [OrderDetail] "
-                        + "VALUES (?, ?, ?, ?)";
+                String orderDetails = "INSERT INTO [OrderDetail](Order_ID, Service_ID, Price, Quantity, Status) "
+                        + "VALUES (?, ?, ?, ?, ?)";
 
                 stmtOrder = con.prepareStatement(orderInfo);
                 stmtOrderDetails = con.prepareStatement(orderDetails);
@@ -53,12 +53,13 @@ public class OrderDAO {
 
                 // Add Order Info
                 int accID = AccountDAO.getAccountByEmail(email).getAccID();
+                int t = cart.orderTotal();
                 stmtOrder.setInt(1, accID);
                 stmtOrder.setString(2, address);
                 stmtOrder.setString(3, email);
                 stmtOrder.setDate(4, date);
                 stmtOrder.setString(5, "Processing");
-                stmtOrder.setInt(6, cart.orderTotal());
+                stmtOrder.setInt(6, t);
 
                 rs = stmtOrder.executeQuery();
                 if (rs.next()) {
@@ -68,11 +69,16 @@ public class OrderDAO {
                     stmtOrderDetails.setInt(1, orderId);
                     Map<Integer, Integer> cartList = cart.getCart();
                     Set<Integer> idSey = cartList.keySet();
-
+                    int price = 0;
+                    int ida = 0;
+                    
                     for (Integer id : idSey) {
+                        price = ServiceDAO.find(id.toString()).getPrice();
+                        ida = cartList.get(id);
                         stmtOrderDetails.setInt(2, id);
-                        stmtOrderDetails.setInt(3, ServiceDAO.find(id.toString()).getPrice());
-                        stmtOrderDetails.setInt(4, cartList.get(id));
+                        stmtOrderDetails.setInt(3, price);
+                        stmtOrderDetails.setInt(4, ida);
+                        stmtOrderDetails.setString(5, "Waiting");
                         stmtOrderDetails.executeUpdate();
                     }
                 }
@@ -108,7 +114,7 @@ public class OrderDAO {
         if (cn != null) {
             String sql = "SELECT [Orders].* \n"
                     + "FROM [Orders] \n"
-                    + "WHERE Account_ID = ? and (Order_Status like 'Dang xu ly' or Order_Status like 'Done')";
+                    + "WHERE Account_ID = ? and (Order_Status like 'Processing' or Order_Status like 'Done')";
             PreparedStatement pst = cn.prepareStatement(sql);
             pst.setInt(1, accID);
             ResultSet table = pst.executeQuery();
@@ -155,22 +161,39 @@ public class OrderDAO {
         }
         return list;
     }
-    
-    public boolean cancelOrder(String orderId) throws Exception{
-         Connection cn=DBUtils.makeConnection();
-         boolean flag=false;
-         if(cn!=null){
-             String sql = "UPDATE Orders \n"
-                     + "SET Order_Status= 'Cancelled' \n"
-                     + "WHERE ID=?";
-             PreparedStatement pst=cn.prepareStatement(sql);
-             pst.setString(1, orderId);
-             int table = pst.executeUpdate();
-              if (table == 1) {
-                  flag=true;
-              }else flag=false;
-              cn.close();
-         }
-          return flag;
-     }
+
+    public boolean cancelOrder(String orderId) throws Exception {
+        Connection cn = DBUtils.makeConnection();
+        boolean flag = false;
+        if (cn != null) {
+            String sql = "UPDATE Orders \n"
+                    + "SET Order_Status= 'Cancelled' \n"
+                    + "WHERE ID=?";
+            PreparedStatement pst = cn.prepareStatement(sql);
+            pst.setString(1, orderId);
+            int table = pst.executeUpdate();
+            if (table == 1) {
+                flag = true;
+            } else {
+                flag = false;
+            }
+            cn.close();
+        }
+        return flag;
+    }
+
+    public static boolean updateStatusOrderDetail(int id, String status) throws Exception {
+        boolean check = false;
+        Connection conn = DBUtils.makeConnection();
+        String sql = "Update OrderDetail "
+                + "SET Order_Status = ?"
+                + " Where ID = ?";
+
+        PreparedStatement preStm = conn.prepareStatement(sql);
+        preStm.setString(1, status);
+        preStm.setInt(2, id);
+        check = preStm.executeUpdate() > 0;
+
+        return check;
+    }
 }
