@@ -48,7 +48,7 @@
                     <div id="mySidenav" class="sidenav">
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                         <a href="ShowHomeGeneralController">Home</a>
-                        <a href="ShowService">Services List</a>
+                        <a href="SearchController?index=1">Services List</a>
                         <a href="contact.jsp">Contact</a>
                     </div>
                     <span style="font-size:30px;cursor:pointer; color: #fff;" onclick="openNav()"><img src="images/toggle-icon.png"></span>
@@ -111,7 +111,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <h1 class="banner_taital">Big Sale Offer</h1>
-                                    <div class="buynow_bt active"><a href="ShowService">Buy Now</a></div>
+                                    <div class="buynow_bt active"><a href="SearchController?index=1">Buy Now</a></div>
                                     <div class="contact_bt"><a href="contact.jsp">Contact Us</a></div>
                                 </div>
                                 <div class="col-md-4">
@@ -289,6 +289,7 @@
                 </div>
                 <div class="footer_section_2">
                     <div class="row">
+                        
                         <div class="col-lg-3 col-sm-6">
                             <h4 class="adderss_text">About</h4>
                             <p class="ipsum_text">EButler is a website that helps you with butler services such as: electrical repair, rice, gas supply, ...</p>

@@ -51,6 +51,7 @@
                     <form class="form-inline ">
                         <div class="login_text">
                             <ul>
+                                <li><a href="SortServiceAscByPrice?index=1"><img src="images/user-icon.png"></a></li>
                                 <li><a href="login.jsp"><img src="images/user-icon.png"></a></li>
                                 <li><a href="#"><img src="images/trolly-icon.png"></a></li>
                                 <li><a href="#"><img src="images/search-icon.png"></a></li>
@@ -126,6 +127,7 @@
                                                                                             <a class="page-link" href="#" tabindex="-1">Previous</a>
                                                                                         </li>-->
                                             <li class="page-item ${markPage == 1 ? "active":""}"><a class="page-link" href="SearchController?index=1">1</a></li>
+                                            
                                             <li class="page-item ${markPage == 2 ? "active":""}"><a class="page-link" href="SearchController?index=2">2</a></li>
                                             <li class="page-item ${markPage == 3 ? "active":""}"><a class="page-link" href="SearchController?index=3">3</a></li>
                                             <!--                                            <li class="page-item">
