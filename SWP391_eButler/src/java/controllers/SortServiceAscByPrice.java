@@ -10,6 +10,7 @@ import Service.Service;
 import Service.ServiceDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Comparator;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -39,7 +40,14 @@ public class SortServiceAscByPrice extends HttpServlet {
         ServiceDAO dao = new ServiceDAO();
         String serStatus = request.getParameter("serStatus");
         String index = request.getParameter("index");
-        List<Service> list = dao.sortServiceAscByPrice(index);
+        List<Service> list = null;
+//        list = dao.sortServiceAscByPrice(index);
+
+        //Sort by Price
+        list = dao.getAllService();
+        list.sort(Comparator.comparing(Service::getPrice));
+//        list.sort(Comparator.comparing(Service::getPrice).reversed()); hàm này để sort ngược
+        
         List<Category> listC = dao.getAllCategory();
         Service last = dao.getLast();
 

@@ -13,6 +13,8 @@ import Account.Account;
 import Service.Service;
 import Order.Order;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import utils.DBUtils;
 
@@ -280,7 +282,7 @@ public class AdminControlDAO implements Serializable {
         }
         return check;
     }
-    
+
     public int countOrder() throws Exception {
         int count = 0;
         try {
@@ -288,7 +290,7 @@ public class AdminControlDAO implements Serializable {
             conn = DBUtils.makeConnection();
             preStm = conn.prepareStatement(sql);
             rs = preStm.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 count = rs.getInt("Counting");
             }
         } finally {
@@ -296,7 +298,7 @@ public class AdminControlDAO implements Serializable {
         }
         return count;
     }
-    
+
     public int countOrderDone() throws Exception {
         int count = 0;
         try {
@@ -304,7 +306,7 @@ public class AdminControlDAO implements Serializable {
             conn = DBUtils.makeConnection();
             preStm = conn.prepareStatement(sql);
             rs = preStm.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 count = rs.getInt("Counting");
             }
         } finally {
@@ -312,7 +314,7 @@ public class AdminControlDAO implements Serializable {
         }
         return count;
     }
-        
+
     public int countProfit() throws Exception {
         int count = 0;
         try {
@@ -320,7 +322,7 @@ public class AdminControlDAO implements Serializable {
             conn = DBUtils.makeConnection();
             preStm = conn.prepareStatement(sql);
             rs = preStm.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 count = rs.getInt("Counting");
             }
         } finally {
@@ -328,7 +330,7 @@ public class AdminControlDAO implements Serializable {
         }
         return count;
     }
-    
+
     public boolean updateRequestService(int id, String stt) throws Exception {
         boolean check = true;
         try {
@@ -342,5 +344,11 @@ public class AdminControlDAO implements Serializable {
             closeConnection();
         }
         return check;
+    }
+
+    public List<Service> sortByPrice(List<Service> list) throws Exception {
+        list.sort(Comparator.comparing(Service::getPrice));
+
+        return list;
     }
 }
