@@ -51,16 +51,18 @@
                     <form class="form-inline ">
                         <div class="login_text">
                             <ul>
-                                <li><a style="color: #000" href="SearchController?index=1">Normal</a></li>
+<!--                                <li><a style="color: #000" href="SearchController?index=1">Normal</a></li>
                                 <li><a style="color: #000" href="SortServiceBySupp?index=1">Supp</a></li>
-                                <li><a style="color: #000" href="SortServiceAscByPrice?index=1">Price</a></li>
+                                <li><a style="color: #000" href="SortServiceAscByPrice?index=1">Price</a></li>-->
                                 <li><a href="login.jsp"><img src="images/user-icon.png"></a></li>
                                 <li><a href="#"><img src="images/trolly-icon.png"></a></li>
                                 <li><a href="#"><img src="images/search-icon.png"></a></li>
                                 <li><a href="#"><img src="images/logout.png" width = "21" height = "20"></a></li>
+                                
                             </ul>
                         </div>
                     </form>
+                
                 </nav>
             </div>
         </div>
@@ -77,6 +79,17 @@
                                     </c:forEach>
                         </ul>
                     </div>
+                    
+                     <div class="card bg-light mb-3">
+                        <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Sort by</div>
+                        <ul class="list-group category_block">
+                         <li class="list-group-item"><a href="SearchController?index=1">Normal</a></li>
+                         <li class="list-group-item"><a href="SortServiceBySupp?index=1">Supp</a></li>
+                         <li class="list-group-item"><a href="SortServiceAscByPrice?index=1">Price</a></li>
+                        </ul>
+                    </div>
+                    
+                    
                     <div class="card bg-light mb-3">
                         <div class="card-header bg-success text-white text-uppercase">Last Service</div>
                         <div class="card-body">
@@ -91,8 +104,11 @@
                             <p class="bloc_left_price">${last.price} VND</p>
                         </div>
                     </div>
+                        
                 </div>
 
+                        
+                        
                 <div class="col">
                     <c:if test="${requestScope.listP != null}">
                         <c:if test="${not empty requestScope.listP}" var="check" scope="page">
@@ -122,6 +138,8 @@
                                         </div>
                                     </div>
                                 </c:forEach>
+                                
+                                
                                 <div class="col-12">
                                     <nav aria-label="...">
                                         <ul class="pagination">
@@ -146,6 +164,9 @@
                     </c:if>
                 </div>            
             </div>
+                        
+                        
+                       
         </div>
         <!-- computers section end -->
         <!-- footer section start -->
