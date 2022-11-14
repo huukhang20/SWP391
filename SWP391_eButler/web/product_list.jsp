@@ -70,20 +70,20 @@
                         <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Categories</div>
                         <ul class="list-group category_block">
                             <c:forEach items="${requestScope.listC}" var="o">
-                                <li class="list-group-item ${mark == o.cateId ? "active":""}"><a href="ShowServiceByCategory?cateId=${o.cateId}">${o.cateName}</a></li>
-                                </c:forEach>
+                                <a href="ShowServiceByCategory?cateId=${o.cateId}"><li class="list-group-item ${mark == o.cateId ? "active":""}">${o.cateName}</li></a>
+                                    </c:forEach>
                         </ul>
                     </div>
                     <div class="card bg-light mb-3">
                         <div class="card-header bg-success text-white text-uppercase">Last Service</div>
                         <div class="card-body">
                             <c:if test="${not empty o.serImage}" var="check" scope="page">
-                               <img class="img-fluid" src="${last.serImage}" width = "600" height = "400"/>
+                                <img class="img-fluid" src="${last.serImage}" width = "600" height = "400"/>
                             </c:if>
                             <c:if test="${empty o.serImage}" var="check" scope="page">
-                                 <a href="ShowServiceDetail?serId=${last.serID}"><img class="img-fluid" src="${last.serImage}" width = "600" height = "400"/></a>
-                            </c:if>
-                                 <a href="ShowServiceDetail?serId=${last.serID}"><h5 class="card-title">${last.serName}</h5></a>
+                                <a href="ShowServiceDetail?serId=${last.serID}"><img class="img-fluid" src="${last.serImage}" width = "600" height = "400"/></a>
+                                </c:if>
+                            <a href="ShowServiceDetail?serId=${last.serID}"><h5 class="card-title">${last.serName}</h5></a>
 <!--                            <p class="card-text">${last.serDescription}</p>-->
                             <p class="bloc_left_price">${last.price} VND</p>
                         </div>
@@ -99,8 +99,8 @@
                                         <div class="card">
                                             <c:if test="${not empty o.serImage}" var="check" scope="page">
                                                 <a href="ShowServiceDetail?serId=${o.serID}"><img class="card-img-top" src="${o.serImage}" alt="Card image cap" width = "600" height = "400"></a>
-                                            </c:if>
-                                            <c:if test="${empty o.serImage}" var="check" scope="page">
+                                                </c:if>
+                                                <c:if test="${empty o.serImage}" var="check" scope="page">
                                                 <img class="img-fluid" src="https://dummyimage.com/600x400/55595c/fff" width = "600" height = "400" />
                                             </c:if>
                                             <div class="card-body">
@@ -122,17 +122,15 @@
                                 <div class="col-12">
                                     <nav aria-label="...">
                                         <ul class="pagination">
-                                            <li class="page-item disabled">
-                                                <a class="page-link" href="#" tabindex="-1">Previous</a>
-                                            </li>
-                                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                            <li class="page-item active">
-                                                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                                            </li>
-                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                            <li class="page-item">
-                                                <a class="page-link" href="#">Next</a>
-                                            </li>
+                                            <!--                                            <li class="page-item disabled">
+                                                                                            <a class="page-link" href="#" tabindex="-1">Previous</a>
+                                                                                        </li>-->
+                                            <li class="page-item ${markPage == 1 ? "active":""}"><a class="page-link" href="SearchController?index=1">1</a></li>
+                                            <li class="page-item ${markPage == 2 ? "active":""}"><a class="page-link" href="SearchController?index=2">2</a></li>
+                                            <li class="page-item ${markPage == 3 ? "active":""}"><a class="page-link" href="SearchController?index=3">3</a></li>
+                                            <!--                                            <li class="page-item">
+                                                                                            <a class="page-link" href="#">Next</a>
+                                                                                        </li>-->
                                         </ul>
                                     </nav>
                                 </div>
@@ -172,9 +170,9 @@
                             <div class="footer_menu">
                                 <ul>
                                     <li><a href="index.html">Home</a></li>
-<!--                                    <li><a href="computers.html">Computers</a></li>
-                                    <li><a href="Mans_clothes.html">Mans Clothes</a></li>
-                                    <li><a href="womans_clothes.html">Womans Clothes</a></li>-->
+                                    <!--                                    <li><a href="computers.html">Computers</a></li>
+                                                                        <li><a href="Mans_clothes.html">Mans Clothes</a></li>
+                                                                        <li><a href="womans_clothes.html">Womans Clothes</a></li>-->
                                     <li><a href="contact.jsp">Contact Us</a></li>
                                 </ul>
                             </div>

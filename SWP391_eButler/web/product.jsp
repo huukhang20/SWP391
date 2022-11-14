@@ -76,10 +76,10 @@
                         <div class="col-md-6 _boxzoom">                 
                             <div class="zoom-thumb">
                                 <ul class="piclist">
-<!--                                    <li><img src="https://s.fotorama.io/1.jpg" alt=""></li>
-                                    <li><img src="https://s.fotorama.io/2.jpg" alt=""></li>
-                                    <li><img src="https://s.fotorama.io/3.jpg" alt=""></li>
-                                    <li><img src="https://ucarecdn.com/382a5139-6712-4418-b25e-cc8ba69ab07f/-/stretch/off/-/resize/760x/" alt=""></li>-->
+                                    <!--                                    <li><img src="https://s.fotorama.io/1.jpg" alt=""></li>
+                                                                        <li><img src="https://s.fotorama.io/2.jpg" alt=""></li>
+                                                                        <li><img src="https://s.fotorama.io/3.jpg" alt=""></li>
+                                                                        <li><img src="https://ucarecdn.com/382a5139-6712-4418-b25e-cc8ba69ab07f/-/stretch/off/-/resize/760x/" alt=""></li>-->
                                 </ul>
                             </div>
                             <div class="_product-images">
@@ -135,163 +135,52 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12 title_bx">
-                        <h3 class="title"> Recent Post   </h3>
+                        <h3 class="title"> Other Services You May Like   </h3>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12 list-slider mt-4">
-                        <div class="owl-carousel common_wd  owl-theme" id="recent_post">
-                            <div class="item">
-                                <div class="sq_box shadow">
-                                    <div class="pdis_img"> 
-                                        <span class="wishlist">
-                                            <a alt="Add to Wish List" title="Add to Wish List" href="javascript:void(0);"> <i class="fa fa-heart"></i></a>
-                                        </span>
-                                        <a href="#">
-                                            <img src="https://ucarecdn.com/05f649bf-b70b-4cf8-90f7-2588ce404a08/-/resize/680x/"> 
-                                        </a>
+        <div class="computers_section_2">
+            <div class="container-fluid">
+                <div class="computer_main">
+                    <div class="row">
+                        <c:forEach items="${requestScope.RANDOMLIST}" var="dto" varStatus="counter">
+                            <div class="col-md-4">
+                                <c:if test="${dto.serImage != null}">
+                                    <c:if test="${not empty dto.serImage}">
+                                        <div class="computer_img">
+                                            <a href="ShowServiceDetail?serId=${dto.serID}"><img src="${dto.serImage}" style="height: 450px; width: 450px;"/></a>
+                                        </div>
+                                    </c:if>
+                                    <c:if test="${empty dto.serImage}">
+                                        <div class="computer_img">
+                                            <img src="https://i.imgur.com/QpjAiHq.jpg" width = "450" height = "650"/>
+                                        </div>
+                                    </c:if>
+                                </c:if>
+                                <c:if test="${dto.serImage == null}">
+                                    <div class="computer_img">
+                                        <img src="https://i.imgur.com/QpjAiHq.jpg" width = "450" height = "650"/>
                                     </div>
-                                    <h4 class="mb-1"> <a href="details.php"> Milton Bottle </a> </h4>
-                                    <div class="price-box mb-2">
-                                        <span class="price"> Price <i class="fa fa-inr"></i> 200 </span>
-                                        <span class="offer-price"> Offer Price <i class="fa fa-inr"></i> 120 </span>
-                                    </div>
-                                    <div class="btn-box text-center">
-                                        <a class="btn btn-sm" href="javascript:void(0);"> <i class="fa fa-shopping-cart"></i> Add to Cart </a>
-                                    </div>
+                                </c:if>
+                                <a href="ShowServiceDetail?serId=${dto.serID}"><h4 class="computer_text">${dto.serName}</h4></a>
+                                <div class="computer_text_main">
+                                    <h4 class="dell_text"></h4>
+                                    <h6 class="price_text mt-auto">${dto.price} $</h6>
+                                    <h6 class="price_text_1"><a href="#"></a></h6>
                                 </div>
+                                <div class="cart_bt_1"><a href="#">Add To Cart</a></div>
                             </div>
-                            <div class="item">
-                                <div class="sq_box shadow">
-                                    <div class="pdis_img"> 
-                                        <span class="wishlist">
-                                            <a alt="Add to Wish List" title="Add to Wish List" href="javascript:void(0);"> <i class="fa fa-heart"></i></a>
-                                        </span>
-                                        <a href="#">
-                                            <img src="https://ucarecdn.com/05f649bf-b70b-4cf8-90f7-2588ce404a08/-/resize/680x/"> 
-                                        </a>
-                                    </div>
-                                    <h4 class="mb-1"> <a href="details.php"> Milton Bottle </a> </h4>
-                                    <div class="price-box mb-2">
-                                        <span class="price"> Price <i class="fa fa-inr"></i> 200 </span>
-                                        <span class="offer-price"> Offer Price <i class="fa fa-inr"></i> 120 </span>
-                                    </div>
-                                    <div class="btn-box text-center">
-                                        <a class="btn btn-sm" href="javascript:void(0);"> <i class="fa fa-shopping-cart"></i> Add to Cart </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="sq_box shadow">
-                                    <div class="pdis_img"> 
-                                        <span class="wishlist">
-                                            <a alt="Add to Wish List" title="Add to Wish List" href="javascript:void(0);"> <i class="fa fa-heart"></i></a>
-                                        </span>
-                                        <a href="#">
-                                            <img src="https://ucarecdn.com/05f649bf-b70b-4cf8-90f7-2588ce404a08/-/resize/680x/"> 
-                                        </a>
-                                    </div>
-                                    <h4 class="mb-1"> <a href="#"> Milton Bottle </a> </h4>
-                                    <div class="price-box mb-2">
-                                        <span class="price"> Price <i class="fa fa-inr"></i> 200 </span>
-                                        <span class="offer-price"> Offer Price <i class="fa fa-inr"></i> 120 </span>
-                                    </div>
-                                    <div class="btn-box text-center">
-                                        <a class="btn btn-sm" href="javascript:void(0);"> <i class="fa fa-shopping-cart"></i> Add to Cart </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="sq_box shadow">
-                                    <div class="pdis_img"> 
-                                        <span class="wishlist">
-                                            <a alt="Add to Wish List" title="Add to Wish List" href="javascript:void(0);"> <i class="fa fa-heart"></i></a>
-                                        </span>
-                                        <a href="#">
-                                            <img src="https://ucarecdn.com/05f649bf-b70b-4cf8-90f7-2588ce404a08/-/resize/680x/"> 
-                                        </a>
-                                    </div>
-                                    <h4 class="mb-1"> <a href="#"> Milton Bottle </a> </h4>
-                                    <div class="price-box mb-2">
-                                        <span class="price"> Price <i class="fa fa-inr"></i> 200 </span>
-                                        <span class="offer-price"> Offer Price <i class="fa fa-inr"></i> 120 </span>
-                                    </div>
-                                    <div class="btn-box text-center">
-                                        <a class="btn btn-sm" href="javascript:void(0);"> <i class="fa fa-shopping-cart"></i> Add to Cart </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="sq_box shadow">
-                                    <div class="pdis_img"> 
-                                        <span class="wishlist">
-                                            <a alt="Add to Wish List" title="Add to Wish List" href="javascript:void(0);"> <i class="fa fa-heart"></i></a>
-                                        </span>
-                                        <a href="#">
-                                            <img src="https://ucarecdn.com/05f649bf-b70b-4cf8-90f7-2588ce404a08/-/resize/680x/"> 
-                                        </a>
-                                    </div>
-                                    <h4 class="mb-1"> <a href="details.php"> Milton Bottle </a> </h4>
-                                    <div class="price-box mb-2">
-                                        <span class="price"> Price <i class="fa fa-inr"></i> 200 </span>
-                                        <span class="offer-price"> Offer Price <i class="fa fa-inr"></i> 120 </span>
-                                    </div>
-                                    <div class="btn-box text-center">
-                                        <a class="btn btn-sm" href="javascript:void(0);"> <i class="fa fa-shopping-cart"></i> Add to Cart </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="sq_box shadow">
-                                    <div class="pdis_img"> 
-                                        <span class="wishlist">
-                                            <a alt="Add to Wish List" title="Add to Wish List" href="javascript:void(0);"> <i class="fa fa-heart"></i></a>
-                                        </span>
-                                        <a href="#">
-                                            <img src="https://ucarecdn.com/05f649bf-b70b-4cf8-90f7-2588ce404a08/-/resize/680x/"> 
-                                        </a>
-                                    </div>
-                                    <h4 class="mb-1"> <a href="details.php"> Milton Bottle </a> </h4>
-                                    <div class="price-box mb-2">
-                                        <span class="price"> Price <i class="fa fa-inr"></i> 200 </span>
-                                        <span class="offer-price"> Offer Price <i class="fa fa-inr"></i> 120 </span>
-                                    </div>
-                                    <div class="btn-box text-center">
-                                        <a class="btn btn-sm" href="javascript:void(0);"> <i class="fa fa-shopping-cart"></i> Add to Cart </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="sq_box shadow">
-                                    <div class="pdis_img"> 
-                                        <span class="wishlist">
-                                            <a alt="Add to Wish List" title="Add to Wish List" href="javascript:void(0);"> <i class="fa fa-heart"></i></a>
-                                        </span>
-                                        <a href="#">
-                                            <img src="https://ucarecdn.com/05f649bf-b70b-4cf8-90f7-2588ce404a08/-/resize/680x/"> 
-                                        </a>
-                                    </div>
-                                    <h4 class="mb-1"> <a href="details.php"> Milton Bottle </a> </h4>
-                                    <div class="price-box mb-2">
-                                        <span class="price"> Price <i class="fa fa-inr"></i> 200 </span>
-                                        <span class="offer-price"> Offer Price <i class="fa fa-inr"></i> 120 </span>
-                                    </div>
-                                    <div class="btn-box text-center">
-                                        <a class="btn btn-sm" href="javascript:void(0);"> <i class="fa fa-shopping-cart"></i> Add to Cart </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        </c:forEach>
                     </div>
                 </div>
             </div>
+        </div>
         </section>
         <!-- computers section end -->
         <!-- footer section start -->
         <div class="footer_section layout_padding margin_top_90">
             <div class="container">
                 <div class="footer_logo_main">
-<!--                    <div class="footer_logo"><a href="index.html"><img src="images/footer-logo.png"></a></div>-->
+                    <!--                    <div class="footer_logo"><a href="index.html"><img src="images/footer-logo.png"></a></div>-->
                     <div class="social_icon">
                         <ul>
                             <li><a href="#"><img src="images/fb-icon.png"></a></li>
@@ -313,9 +202,9 @@
                             <div class="footer_menu">
                                 <ul>
                                     <li><a href="index.html">Home</a></li>
-<!--                                    <li><a href="computers.html">Computers</a></li>
-                                    <li><a href="Mans_clothes.html">Mans Clothes</a></li>
-                                    <li><a href="womans_clothes.html">Womans Clothes</a></li>-->
+                                    <!--                                    <li><a href="computers.html">Computers</a></li>
+                                                                        <li><a href="Mans_clothes.html">Mans Clothes</a></li>
+                                                                        <li><a href="womans_clothes.html">Womans Clothes</a></li>-->
                                     <li><a href="contact.jsp">Contact Us</a></li>
                                 </ul>
                             </div>

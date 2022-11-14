@@ -10,6 +10,8 @@ import Service.ServiceDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -40,7 +42,9 @@ public class ShowServiceDetail extends HttpServlet {
             response.setContentType("text/html;charset=UTF-8");
             String serId = request.getParameter("serId");
             ServiceDAO dao = new ServiceDAO();
-            Service detail = dao.find(serId);            
+            Service detail = dao.find(serId);
+            List<Service> serviceList = new ArrayList<Service>();
+            request.setAttribute("RANDOMLIST", serviceList);
             request.setAttribute("detailP", detail);
             request.getRequestDispatcher("product.jsp").forward(request, response);
         } catch (SQLException ex) {
