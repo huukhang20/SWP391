@@ -76,6 +76,9 @@
                  <div class="mt-5 text-center">
                  <a href="OrderController" class="btn btn-info" role="button">YOUR ORDER LIST</a>
                  </div>
+                 <div class="mt-5 text-center">
+                  <a href="change_password.html" class="btn btn-info" role="button">Change Password</a>
+                  </div>
              </div>
              <div class="col-md-5 border-right">
                  <div class="p-3 py-5">
