@@ -73,7 +73,7 @@
                         <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Categories</div>
                         <ul class="list-group category_block">
                             <c:forEach items="${requestScope.listC}" var="o">
-                                <a href="ShowServiceByCategory?cateId=${o.cateId}"><li class="list-group-item ${mark == o.cateId ? "active":""}">${o.cateName}</li></a>
+                                <a href="SortServiceBySuppAndCate?cateId=${o.cateId}&index=1"><li class="list-group-item ${mark == o.cateId ? "active":""}">${o.cateName}</li></a>
                                     </c:forEach>
                         </ul>
                     </div>
@@ -128,10 +128,10 @@
                                             <!--                                            <li class="page-item disabled">
                                                                                             <a class="page-link" href="#" tabindex="-1">Previous</a>
                                                                                         </li>-->
-                                            <li class="page-item ${markPage == 1 ? "active":""}"><a class="page-link" href="SearchController?index=1">1</a></li>
-                                            
-                                            <li class="page-item ${markPage == 2 ? "active":""}"><a class="page-link" href="SearchController?index=2">2</a></li>
-                                            <li class="page-item ${markPage == 3 ? "active":""}"><a class="page-link" href="SearchController?index=3">3</a></li>
+                                            <li class="page-item ${markPage == 1 ? "active":""}"><a class="page-link" href="SortServiceBySupp?index=1">1</a></li>
+
+                                            <li class="page-item ${markPage == 2 ? "active":""}"><a class="page-link" href="SortServiceBySupp?index=2">2</a></li>
+                                            <li class="page-item ${markPage == 3 ? "active":""}"><a class="page-link" href="SortServiceBySupp?index=3">3</a></li>
                                             <!--                                            <li class="page-item">
                                                                                             <a class="page-link" href="#">Next</a>
                                                                                         </li>-->

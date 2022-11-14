@@ -10,7 +10,6 @@ import Service.Service;
 import Service.ServiceDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Comparator;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,8 +21,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-@WebServlet(name = "SortServiceAscByPrice", urlPatterns = {"/SortServiceAscByPrice"})
-public class SortServiceAscByPrice extends HttpServlet {
+@WebServlet(name = "SortServiceAscByPriceAndCate", urlPatterns = {"/SortServiceAscByPriceAndCate"})
+public class SortServiceAscByPriceAndCate extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,14 +39,8 @@ public class SortServiceAscByPrice extends HttpServlet {
         ServiceDAO dao = new ServiceDAO();
         String serStatus = request.getParameter("serStatus");
         String index = request.getParameter("index");
-        List<Service> list = dao.sortServiceAscByPrice(index);  
-
-        //Sort by Price
-//        list = dao.getAllService();
-//        list.sort(Comparator.comparing(Service::getPrice));
-
-//        list.sort(Comparator.comparing(Service::getPrice).reversed()); hàm này để sort ngược
-        
+        String cateId = request.getParameter("cateId");
+        List<Service> list = dao.sortServiceAscByPriceAndCate(cateId, index);  
         List<Category> listC = dao.getAllCategory();
         Service last = dao.getLast();
 
@@ -55,21 +48,21 @@ public class SortServiceAscByPrice extends HttpServlet {
         request.setAttribute("last", last);
         request.setAttribute("listC", listC);
         request.setAttribute("markPage", index);
+        request.setAttribute("mark", cateId);
         request.getRequestDispatcher("product_list_price.jsp").forward(request, response);
     }
 
-
-// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-/**
- * Handles the HTTP <code>GET</code> method.
- *
- * @param request servlet request
- * @param response servlet response
- * @throws ServletException if a servlet-specific error occurs
- * @throws IOException if an I/O error occurs
- */
-@Override
-        protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -83,7 +76,7 @@ public class SortServiceAscByPrice extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-        protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -94,7 +87,7 @@ public class SortServiceAscByPrice extends HttpServlet {
      * @return a String containing servlet description
      */
     @Override
-        public String getServletInfo() {
+    public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 
