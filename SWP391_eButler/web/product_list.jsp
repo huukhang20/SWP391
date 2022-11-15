@@ -83,9 +83,9 @@
                      <div class="card bg-light mb-3">
                         <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Sort by</div>
                         <ul class="list-group category_block">
-                         <li class="list-group-item"><a href="SearchController?index=1">Normal</a></li>
-                         <li class="list-group-item"><a href="SortServiceBySupp?index=1">Supp</a></li>
-                         <li class="list-group-item"><a href="SortServiceAscByPrice?index=1">Price</a></li>
+                         <a href="SearchController?index=1"><li class="list-group-item">Normal</li></a>
+                         <a href="SortServiceBySupp?index=1"><li class="list-group-item">Supplier</li></a>
+                         <a href="SortServiceAscByPrice?index=1"><li class="list-group-item">Price</li></a>
                         </ul>
                     </div>
                     

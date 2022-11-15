@@ -51,9 +51,9 @@
                     <form class="form-inline ">
                         <div class="login_text">
                             <ul>
-                                <li><a style="color: #000" href="SearchController?index=1">Normal</a></li>
-                                <li><a style="color: #000" href="SortServiceBySupp?index=1">Supp</a></li>
-                                <li><a style="color: #000" href="SortServiceAscByPrice?index=1">Price</a></li>
+                                <!--                                <li><a style="color: #000" href="SearchController?index=1">Normal</a></li>
+                                                                <li><a style="color: #000" href="SortServiceBySupp?index=1">Supp</a></li>
+                                                                <li><a style="color: #000" href="SortServiceAscByPrice?index=1">Price</a></li>-->
                                 <li><a href="login.jsp"><img src="images/user-icon.png"></a></li>
                                 <li><a href="#"><img src="images/trolly-icon.png"></a></li>
                                 <li><a href="#"><img src="images/search-icon.png"></a></li>
@@ -77,6 +77,16 @@
                                     </c:forEach>
                         </ul>
                     </div>
+
+                    <div class="card bg-light mb-3">
+                        <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Sort by</div>
+                        <ul class="list-group category_block">
+                         <a href="SearchController?index=1"><li class="list-group-item">Normal</li></a>
+                         <a href="SortServiceBySupp?index=1"><li class="list-group-item">Supplier</li></a>
+                         <a href="SortServiceAscByPrice?index=1"><li class="list-group-item">Price</li></a>
+                        </ul>
+                    </div>
+
                     <div class="card bg-light mb-3">
                         <div class="card-header bg-success text-white text-uppercase">Last Service</div>
                         <div class="card-body">
