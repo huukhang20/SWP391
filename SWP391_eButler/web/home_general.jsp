@@ -99,6 +99,7 @@
             </div>
         </div>
         <!-- header section end -->
+        
         <!-- banner section start -->
         <div class="banner_section layout_padding">
             <div id="my_slider" class="carousel slide" data-ride="carousel">
@@ -164,6 +165,87 @@
             </div>
         </div>
         <!-- banner section end -->
+        <div class="bc-banner text-center">
+   <div class="bc-banner-header">
+       <h1>
+              Who Would You Have A Housework services, With?</h1>
+       
+
+   </div>
+   <div class="bc-banner-body">
+       <h1><div>Sale off end in <span id="time">20:00</span> minutes!</div></h1>
+      
+      <h2>Welcome to our website, this is a website that summarizes housework services, essential services.</h2>
+   </div>
+      
+<img src="https://www.hubspot.com/hs-fs/hubfs/lead-capture-3-1.jpg?width=1800&name=lead-capture-3-1.jpg"  class="bc-banner-cover img-responsive">
+      
+      
+      </a>
+</div>
+
+<style>
+   .bc-banner {
+      position:relative;
+      border:1px solid #ccc;
+      overflow:hidden;
+      background-color:#ff7a59;
+   }
+   .bc-banner a {
+      text-decoration:none;
+      color:#fff;
+   }
+   .bc-banner a:hover {
+      opacity:0.8;
+   }
+   .bc-banner-header {
+      background-color:#fff;
+      position:relative;
+      z-index:2;
+      padding:1rem;
+   }
+   
+   .bc-banner-body {
+      position:relative;
+      z-index:2;
+      padding:2rem;
+   }
+   .bc-banner .bc-banner-cover {
+      position:absolute;
+      opacity: 0.3;
+      filter: alpha(opacity=30); /* For IE8 and earlier */
+      object-fit: cover;
+      top:0;
+      z-index:1;
+      height: 100%;
+      width: 100%;
+   }
+   
+</style>
+<script>
+    function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10)
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
+}
+
+window.onload = function () {
+    var fiveMinutes = 60 * 20,
+        display = document.querySelector('#time');
+    startTimer(fiveMinutes, display);
+};
+</script>
         <!-- catagary section start -->
         <div class="catagary_section layout_padding">
             <div class="container">
