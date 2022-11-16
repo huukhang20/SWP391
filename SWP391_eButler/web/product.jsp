@@ -4,6 +4,7 @@
     Author     : Admin
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -71,109 +72,117 @@
         <!-- computers section start -->
         <section id="services" class="services section-bg">
             <div class="container-fluid">
-                <c:foreach items="${detailP}" var="o">
-                    <div class="row row-sm">
-                        <div class="col-md-6 _boxzoom">                 
-                            <div class="zoom-thumb">
-                                <ul class="piclist">
-                                    <!--                                    <li><img src="https://s.fotorama.io/1.jpg" alt=""></li>
-                                                                        <li><img src="https://s.fotorama.io/2.jpg" alt=""></li>
-                                                                        <li><img src="https://s.fotorama.io/3.jpg" alt=""></li>
-                                                                        <li><img src="https://ucarecdn.com/382a5139-6712-4418-b25e-cc8ba69ab07f/-/stretch/off/-/resize/760x/" alt=""></li>-->
-                                </ul>
-                            </div>
-                            <div class="_product-images">
-                                <div class="picZoomer">
-                                    <img class="my_img" src="${detailP.serImage}" alt="">
-                                </div>
+                <div class="row row-sm">
+                    <div class="col-md-6 _boxzoom">                 
+                        <div class="zoom-thumb">
+                            <ul class="piclist">
+                                <!--                                    <li><img src="https://s.fotorama.io/1.jpg" alt=""></li>
+                                                                    <li><img src="https://s.fotorama.io/2.jpg" alt=""></li>
+                                                                    <li><img src="https://s.fotorama.io/3.jpg" alt=""></li>
+                                                                    <li><img src="https://ucarecdn.com/382a5139-6712-4418-b25e-cc8ba69ab07f/-/stretch/off/-/resize/760x/" alt=""></li>-->
+                            </ul>
+                        </div>
+                        <div class="_product-images">
+                            <div class="picZoomer">
+                                <img class="my_img" src="${detailP.serImage}" alt="">
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="_product-detail-content">
-                                <p class="_p-name"> ${detailP.serName} </p>
-                                <div class="_p-price-box">
-                                    <div class="p-list">
-                                        <span> Price :  </span>
-                                        <span class="price"> ${detailP.price} VND </span>
-                                    </div>
-                                    <form action="CartController" method="get" accept-charset="utf-8" id="addtocart">
-                                        <div class="_p-add-cart">
-                                            <div class="_p-qty">
-                                                <span>Add Quantity</span>
-                                                <div class="value-button decrease_" id="" value="Decrease Value">-</div>
-                                                <input type="number" name="quantity" id="number" value="1" />
-                                                <div class="value-button increase_" id="" value="Increase Value">+</div>
-                                            </div>
-                                        </div>
-                                        <div class="_p-features">
-                                            <span> ${detailP.serDescription}</span>                       
-                                        </div>
-
-                                        <ul class="spe_ul"></ul>
-                                        <div class="_p-qty-and-cart">
-                                            <div class="_p-add-cart">
-                                                <button class="btn-theme btn buy-btn" tabindex="0">
-                                                    <i class="fa fa-shopping-cart"></i> Buy Now
-                                                </button>
-                                                <button type="submit" id="addtocart" value="Submit" class="btn-theme btn btn-success" tabindex="0">
-                                                    <i class="fa fa-shopping-cart"></i> Add to Cart
-                                                </button>
-                                                <input type="hidden" name="op" value="add" />
-                                                <input type="hidden" name="serId" value="${detailP.serID}" />
-                                                <input type="hidden" name="url" value="" />    
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>              
                     </div>
-                </c:foreach> 
+                    <div class="col-md-6">
+                        <div class="_product-detail-content">
+                            <p class="_p-name"> ${detailP.serName} </p>
+                            <div class="_p-price-box">
+                                <div class="p-list">
+                                    <span> Price :  </span>
+                                    <span class="price"> ${detailP.price} VND </span>
+                                </div>
+                                <form action="CartController" method="get" accept-charset="utf-8" id="addtocart">
+                                    <div class="_p-add-cart">
+                                        <div class="_p-qty">
+                                            <span>Add Quantity</span>
+                                            <div class="value-button decrease_" id="" value="Decrease Value">-</div>
+                                            <input type="number" name="quantity" id="number" value="1" />
+                                            <div class="value-button increase_" id="" value="Increase Value">+</div>
+                                        </div>
+                                    </div>
+                                    <div class="_p-features">
+                                        <span> ${detailP.serDescription}</span>                       
+                                    </div>
+
+                                    <ul class="spe_ul"></ul>
+                                    <div class="_p-qty-and-cart">
+                                        <div class="_p-add-cart">
+                                            <button class="btn-theme btn buy-btn" tabindex="0">
+                                                <i class="fa fa-shopping-cart"></i> Buy Now
+                                            </button>
+                                            <button type="submit" id="addtocart" value="Submit" class="btn-theme btn btn-success" tabindex="0">
+                                                <i class="fa fa-shopping-cart"></i> Add to Cart
+                                            </button>
+                                            <input type="hidden" name="op" value="add" />
+                                            <input type="hidden" name="serId" value="${detailP.serID}" />
+                                            <input type="hidden" name="url" value="" />    
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>              
+                </div>
             </div>
         </section>
         <section class="sec bg-light">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12 title_bx">
-                        <h3 class="title"> Other Services You May Like   </h3>
+                        <h3 class="title">Other Services You May Like</h3>
                     </div>
                 </div>
-        <div class="computers_section_2">
-            <div class="container-fluid">
-                <div class="computer_main">
-                    <div class="row">
-                        <c:forEach items="${requestScope.RANDOMLIST}" var="dto" varStatus="counter">
-                            <div class="col-md-4">
-                                <c:if test="${dto.serImage != null}">
-                                    <c:if test="${not empty dto.serImage}">
-                                        <div class="computer_img">
-                                            <a href="ShowServiceDetail?serId=${dto.serID}"><img src="${dto.serImage}" style="height: 450px; width: 450px;"/></a>
-                                        </div>
-                                    </c:if>
-                                    <c:if test="${empty dto.serImage}">
-                                        <div class="computer_img">
-                                            <img src="https://i.imgur.com/QpjAiHq.jpg" width = "450" height = "650"/>
-                                        </div>
-                                    </c:if>
-                                </c:if>
-                                <c:if test="${dto.serImage == null}">
-                                    <div class="computer_img">
-                                        <img src="https://i.imgur.com/QpjAiHq.jpg" width = "450" height = "650"/>
+                <c:if test="${requestScope.RANDOMLIST != null}">
+                    <c:if test="${not empty requestScope.RANDOMLIST}" var="check" scope="page">
+                        <div class="computers_section_2">
+                            <div class="container-fluid">
+                                <div class="computer_main">
+                                    <div class="row">
+                                        <c:forEach items="${requestScope.RANDOMLIST}" var="dto" varStatus="counter">
+                                            <div class="col-md-4">
+                                                <c:if test="${dto.serImage != null}">
+                                                    <c:if test="${not empty dto.serImage}">
+                                                        <div class="computer_img">
+                                                            <a href="ShowServiceDetail?serId=${dto.serID}"><img src="${dto.serImage}" style="height: 450px; width: 450px;"/></a>
+                                                        </div>
+                                                    </c:if>
+                                                    <c:if test="${empty dto.serImage}">
+                                                        <div class="computer_img">
+                                                            <img src="https://dummyimage.com/600x400/55595c/fff" width = "450" height = "650"/>
+                                                        </div>
+                                                    </c:if>
+                                                </c:if>
+                                                <c:if test="${dto.serImage == null}">
+                                                    <div class="computer_img">
+                                                        <img src="https://dummyimage.com/600x400/55595c/fff" width = "450" height = "650"/>
+                                                    </div>
+                                                </c:if>
+                                                <a href="ShowServiceDetail?serId=${dto.serID}"><h4 class="computer_text">${dto.serName}</h4></a>
+                                                <div class="computer_text_main">
+                                                    <h4 class="dell_text"></h4>
+                                                    <h6 class="price_text mt-auto">${dto.price} $</h6>
+                                                    <h6 class="price_text_1"><a href="#"></a></h6>
+                                                </div>
+                                                <div class="cart_bt_1"><a href="#">Add To Cart</a></div>
+                                            </div>
+                                        </c:forEach>
                                     </div>
-                                </c:if>
-                                <a href="ShowServiceDetail?serId=${dto.serID}"><h4 class="computer_text">${dto.serName}</h4></a>
-                                <div class="computer_text_main">
-                                    <h4 class="dell_text"></h4>
-                                    <h6 class="price_text mt-auto">${dto.price} $</h6>
-                                    <h6 class="price_text_1"><a href="#"></a></h6>
                                 </div>
-                                <div class="cart_bt_1"><a href="#">Add To Cart</a></div>
                             </div>
-                        </c:forEach>
-                    </div>
-                </div>
-            </div>
-        </div>
+                        </div>
+                    </c:if>
+                    <c:if test="${empty requestScope.RANDOMLIST}">
+                        <p>There is no service is recommend for you!!</p>
+                    </c:if>
+                </c:if>
+                <c:if test="${requestScope.RANDOMLIST == null}">
+                    <p>There is no service is recommend for you!!</p>
+                </c:if>
         </section>
         <!-- computers section end -->
         <!-- footer section start -->
@@ -201,11 +210,10 @@
                             <h4 class="adderss_text">Menu</h4>
                             <div class="footer_menu">
                                 <ul>
-                                    <li><a href="index.html">Home</a></li>
-                                    <!--                                    <li><a href="computers.html">Computers</a></li>
-                                                                        <li><a href="Mans_clothes.html">Mans Clothes</a></li>
-                                                                        <li><a href="womans_clothes.html">Womans Clothes</a></li>-->
-                                    <li><a href="contact.jsp">Contact Us</a></li>
+                                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                                    <a href="ShowHomeGeneralController">Home</a>
+                                    <a href="SearchController?index=1">Services List</a>
+                                    <a href="contact.jsp">Contact</a>
                                 </ul>
                             </div>
                         </div>
@@ -252,131 +260,131 @@
         <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>  
         <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
         <script>
-                        function openNav() {
-                            document.getElementById("mySidenav").style.width = "100%";
-                        }
+                                        function openNav() {
+                                            document.getElementById("mySidenav").style.width = "100%";
+                                        }
 
-                        function closeNav() {
-                            document.getElementById("mySidenav").style.width = "0";
-                        }
-                        /*!     
-                         jquery.picZoomer.js
-                         v 1.0
-                         David
-                         http://www.CodingSerf.com
-                         */
+                                        function closeNav() {
+                                            document.getElementById("mySidenav").style.width = "0";
+                                        }
+                                        /*!     
+                                         jquery.picZoomer.js
+                                         v 1.0
+                                         David
+                                         http://www.CodingSerf.com
+                                         */
 
-                        //?????
-                        ;
-                        (function ($) {
-                            $.fn.picZoomer = function (options) {
-                                var opts = $.extend({}, $.fn.picZoomer.defaults, options),
-                                        $this = this,
-                                        $picBD = $('<div class="picZoomer-pic-wp"></div>').css({'width': opts.picWidth + 'px', 'height': opts.picHeight + 'px'}).appendTo($this),
-                                        $pic = $this.children('img').addClass('picZoomer-pic').appendTo($picBD),
-                                        $cursor = $('<div class="picZoomer-cursor"><i class="f-is picZoomCursor-ico"></i></div>').appendTo($picBD),
-                                        cursorSizeHalf = {w: $cursor.width() / 2, h: $cursor.height() / 2},
-                                        $zoomWP = $('<div class="picZoomer-zoom-wp"><img src="" alt="" class="picZoomer-zoom-pic"></div>').appendTo($this),
-                                        $zoomPic = $zoomWP.find('.picZoomer-zoom-pic'),
-                                        picBDOffset = {x: $picBD.offset().left, y: $picBD.offset().top};
-
-
-                                opts.zoomWidth = opts.zoomWidth || opts.picWidth;
-                                opts.zoomHeight = opts.zoomHeight || opts.picHeight;
-                                var zoomWPSizeHalf = {w: opts.zoomWidth / 2, h: opts.zoomHeight / 2};
-
-                                //???zoom????
-                                $zoomWP.css({'width': opts.zoomWidth + 'px', 'height': opts.zoomHeight + 'px'});
-                                $zoomWP.css(opts.zoomerPosition || {top: 0, left: opts.picWidth + 30 + 'px'});
-                                //???zoom????
-                                $zoomPic.css({'width': opts.picWidth * opts.scale + 'px', 'height': opts.picHeight * opts.scale + 'px'});
-
-                                //?????
-                                $picBD.on('mouseenter', function (event) {
-                                    $cursor.show();
-                                    $zoomWP.show();
-                                    $zoomPic.attr('src', $pic.attr('src'))
-                                }).on('mouseleave', function (event) {
-                                    $cursor.hide();
-                                    $zoomWP.hide();
-                                }).on('mousemove', function (event) {
-                                    var x = event.pageX - picBDOffset.x,
-                                            y = event.pageY - picBDOffset.y;
-
-                                    $cursor.css({'left': x - cursorSizeHalf.w + 'px', 'top': y - cursorSizeHalf.h + 'px'});
-                                    $zoomPic.css({'left': -(x * opts.scale - zoomWPSizeHalf.w) + 'px', 'top': -(y * opts.scale - zoomWPSizeHalf.h) + 'px'});
-
-                                });
-                                return $this;
-
-                            };
-                            $.fn.picZoomer.defaults = {
-                                picHeight: 460,
-                                scale: 2.5,
-                                zoomerPosition: {top: '0', left: '380px'},
-
-                                zoomWidth: 400,
-                                zoomHeight: 460
-                            };
-                        })(jQuery);
+                                        //?????
+                                        ;
+                                        (function ($) {
+                                            $.fn.picZoomer = function (options) {
+                                                var opts = $.extend({}, $.fn.picZoomer.defaults, options),
+                                                        $this = this,
+                                                        $picBD = $('<div class="picZoomer-pic-wp"></div>').css({'width': opts.picWidth + 'px', 'height': opts.picHeight + 'px'}).appendTo($this),
+                                                        $pic = $this.children('img').addClass('picZoomer-pic').appendTo($picBD),
+                                                        $cursor = $('<div class="picZoomer-cursor"><i class="f-is picZoomCursor-ico"></i></div>').appendTo($picBD),
+                                                        cursorSizeHalf = {w: $cursor.width() / 2, h: $cursor.height() / 2},
+                                                        $zoomWP = $('<div class="picZoomer-zoom-wp"><img src="" alt="" class="picZoomer-zoom-pic"></div>').appendTo($this),
+                                                        $zoomPic = $zoomWP.find('.picZoomer-zoom-pic'),
+                                                        picBDOffset = {x: $picBD.offset().left, y: $picBD.offset().top};
 
 
+                                                opts.zoomWidth = opts.zoomWidth || opts.picWidth;
+                                                opts.zoomHeight = opts.zoomHeight || opts.picHeight;
+                                                var zoomWPSizeHalf = {w: opts.zoomWidth / 2, h: opts.zoomHeight / 2};
 
-                        $(document).ready(function () {
-                            $('.picZoomer').picZoomer();
-                            $('.piclist li').on('click', function (event) {
-                                var $pic = $(this).find('img');
-                                $('.picZoomer-pic').attr('src', $pic.attr('src'));
-                            });
+                                                //???zoom????
+                                                $zoomWP.css({'width': opts.zoomWidth + 'px', 'height': opts.zoomHeight + 'px'});
+                                                $zoomWP.css(opts.zoomerPosition || {top: 0, left: opts.picWidth + 30 + 'px'});
+                                                //???zoom????
+                                                $zoomPic.css({'width': opts.picWidth * opts.scale + 'px', 'height': opts.picHeight * opts.scale + 'px'});
 
-                            var owl = $('#recent_post');
-                            owl.owlCarousel({
-                                margin: 20,
-                                dots: false,
-                                nav: true,
-                                navText: [
-                                    "<i class='fa fa-chevron-left'></i>",
-                                    "<i class='fa fa-chevron-right'></i>"
-                                ],
-                                autoplay: true,
-                                autoplayHoverPause: true,
-                                responsive: {
-                                    0: {
-                                        items: 2
-                                    },
-                                    600: {
-                                        items: 3
-                                    },
-                                    1000: {
-                                        items: 5
-                                    },
-                                    1200: {
-                                        items: 4
-                                    }
-                                }
-                            });
+                                                //?????
+                                                $picBD.on('mouseenter', function (event) {
+                                                    $cursor.show();
+                                                    $zoomWP.show();
+                                                    $zoomPic.attr('src', $pic.attr('src'))
+                                                }).on('mouseleave', function (event) {
+                                                    $cursor.hide();
+                                                    $zoomWP.hide();
+                                                }).on('mousemove', function (event) {
+                                                    var x = event.pageX - picBDOffset.x,
+                                                            y = event.pageY - picBDOffset.y;
 
-                            $('.decrease_').click(function () {
-                                decreaseValue(this);
-                            });
-                            $('.increase_').click(function () {
-                                increaseValue(this);
-                            });
-                            function increaseValue(_this) {
-                                var value = parseInt($(_this).siblings('input#number').val(), 10);
-                                value = isNaN(value) ? 0 : value;
-                                value++;
-                                $(_this).siblings('input#number').val(value);
-                            }
+                                                    $cursor.css({'left': x - cursorSizeHalf.w + 'px', 'top': y - cursorSizeHalf.h + 'px'});
+                                                    $zoomPic.css({'left': -(x * opts.scale - zoomWPSizeHalf.w) + 'px', 'top': -(y * opts.scale - zoomWPSizeHalf.h) + 'px'});
 
-                            function decreaseValue(_this) {
-                                var value = parseInt($(_this).siblings('input#number').val(), 10);
-                                value = isNaN(value) ? 0 : value;
-                                value < 1 ? value = 1 : '';
-                                value--;
-                                $(_this).siblings('input#number').val(value);
-                            }
-                        });
+                                                });
+                                                return $this;
+
+                                            };
+                                            $.fn.picZoomer.defaults = {
+                                                picHeight: 460,
+                                                scale: 2.5,
+                                                zoomerPosition: {top: '0', left: '380px'},
+
+                                                zoomWidth: 400,
+                                                zoomHeight: 460
+                                            };
+                                        })(jQuery);
+
+
+
+                                        $(document).ready(function () {
+                                            $('.picZoomer').picZoomer();
+                                            $('.piclist li').on('click', function (event) {
+                                                var $pic = $(this).find('img');
+                                                $('.picZoomer-pic').attr('src', $pic.attr('src'));
+                                            });
+
+                                            var owl = $('#recent_post');
+                                            owl.owlCarousel({
+                                                margin: 20,
+                                                dots: false,
+                                                nav: true,
+                                                navText: [
+                                                    "<i class='fa fa-chevron-left'></i>",
+                                                    "<i class='fa fa-chevron-right'></i>"
+                                                ],
+                                                autoplay: true,
+                                                autoplayHoverPause: true,
+                                                responsive: {
+                                                    0: {
+                                                        items: 2
+                                                    },
+                                                    600: {
+                                                        items: 3
+                                                    },
+                                                    1000: {
+                                                        items: 5
+                                                    },
+                                                    1200: {
+                                                        items: 4
+                                                    }
+                                                }
+                                            });
+
+                                            $('.decrease_').click(function () {
+                                                decreaseValue(this);
+                                            });
+                                            $('.increase_').click(function () {
+                                                increaseValue(this);
+                                            });
+                                            function increaseValue(_this) {
+                                                var value = parseInt($(_this).siblings('input#number').val(), 10);
+                                                value = isNaN(value) ? 0 : value;
+                                                value++;
+                                                $(_this).siblings('input#number').val(value);
+                                            }
+
+                                            function decreaseValue(_this) {
+                                                var value = parseInt($(_this).siblings('input#number').val(), 10);
+                                                value = isNaN(value) ? 0 : value;
+                                                value < 1 ? value = 1 : '';
+                                                value--;
+                                                $(_this).siblings('input#number').val(value);
+                                            }
+                                        });
 
         </script> 
     </body>

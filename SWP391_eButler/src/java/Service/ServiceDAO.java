@@ -140,20 +140,12 @@ public class ServiceDAO {
         Connection cn = DBUtils.makeConnection();
         boolean flag = false;
         if (cn != null) {
-            String sql = "UPDATE DBO.Service\n"
-                    + "SET price=? \n"
-                    + "quantity=?"
-                    + "WHERE ID=?";
+            String sql = "UPDATE Service SET Price = ?, Quantity = ? WHERE ID = ?";
             PreparedStatement pst = cn.prepareStatement(sql);
             pst.setString(1, price);
             pst.setString(2, quantity);;
             pst.setString(3, serId);
-            int table = pst.executeUpdate();
-            if (table == 1) {
-                flag = true;
-            } else {
-                flag = false;
-            }
+            flag = pst.executeUpdate() > 0;
             cn.close();
         }
         return flag;

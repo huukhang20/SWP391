@@ -41,13 +41,13 @@
             </div>
             <ul class="nav-links">
                 <li>
-                    <a href="home_supp.jsp" class="active">
+                    <a href="home_supp.jsp">
                         <i class='bx bx-grid-alt' ></i>
                         <span class="links_name">Dashboard</span>
                     </a>
                 </li>
                 <li>
-                    <a href="ShowServiceSuppController">
+                    <a href="ShowServiceSuppController" class="active">
                         <i class='bx bx-box' ></i>
                         <span class="links_name">Service Management</span>
                     </a>
@@ -108,16 +108,15 @@
                         <thead>
                             <tr>
                                 <th class="text-center" scope="col">ID</th>
-                                <th scope="col">name</th>
-                                <th scope="col">info</th>
-                                <th scope="col">price</th>
-                                <th scope="col">quantity</th>
-                                <th scope="col">action</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Information</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <c:forEach items="${requestScope.SERVICELIST}" var="dto" varStatus="counter">
-
                                 <tr class="inner-box">
                                     <th scope="row">
                                         <span>${counter.count}</span>
@@ -130,37 +129,48 @@
                                             ${dto.serDescription}
                                         </div>
                                     </td>
-
                                     <td>
-                                        <input type="number" placeholder="${dto.price}" value="${param.price}">
+                                        <div class="event-wrap">
+                                            ${dto.price}
+                                        </div>
                                     </td>
                                     <td>
-                                        <input type="number" placeholder="${dto.quantity}" value="${param.quantity}">
+                                        <div class="event-wrap">
+                                            ${dto.quantity}
+                                        </div>
                                     </td>
                                     <td>
                                         <!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ChangeInfoModal${counter.count}">
                                             Change
                                         </button>
                                         <!-- Modal -->
-                                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="ChangeInfoModal${counter.count}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Change this Service ?</h5>
+                                                        <h5 class="modal-title" id="exampleModalLabel">Update this Service?</h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
-                                                    <div class="modal-body">
-                                                        Are you sure about that ?
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <a type="button" class="btn btn-primary" href="UpdateServiceController?price=${dto.price}&quantity=${dto.quantity}&serId=${dto.serID}">OK</a>
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                    </div>
+                                                    <form action="UpdateServiceController" method="POST">
+                                                        <div class="modal-body">
+
+                                                            <span>Change Price</span><br/>
+                                                            <input type="number" name="txtPrice" value="${dto.price}"/><hr/>
+                                                            <span>Change Quantity</span><br/>
+                                                            <input type="number" name="txtQuantity" value="${dto.quantity}"/>
+                                                            <input type="hidden" name="serId" value="${dto.serID}"/>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <input type="submit" name="action" class="btn btn-primary" value="Save"/>
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
-                                        </div>                                                     
-                                </tr>  
+                                        </div>
+                                    </td>
+                                </tr>
                             </c:forEach>
                         </tbody>
                     </table>

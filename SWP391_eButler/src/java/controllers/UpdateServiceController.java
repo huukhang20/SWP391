@@ -36,15 +36,16 @@ public class UpdateServiceController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try {
-            String quantity = request.getParameter("quantity");
-            String price = request.getParameter("price");
+            String quantity = request.getParameter("txtQuantity");
+            String price = request.getParameter("txtPrice");
             String serId = request.getParameter("serId");
             ServiceDAO sd = new ServiceDAO();
             sd.updateService(quantity, price, serId);
         } catch (Exception ex) {
             Logger.getLogger(UpdateServiceController.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            request.getRequestDispatcher("ShowServiceSuppController").forward(request, response);
         }
-        response.sendRedirect("ShowServiceSuppController");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

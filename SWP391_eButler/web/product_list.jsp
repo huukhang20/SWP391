@@ -44,6 +44,7 @@
                     <div id="mySidenav" class="sidenav">
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                         <a href="ShowHomeGeneralController">Home</a>
+                        <a href="SearchController?index=1">Services List</a>
                         <a href="contact.jsp">Contact</a>
                     </div>
                     <span style="font-size:30px;cursor:pointer; color: #fff;" onclick="openNav()"><img src="images/toggle-icon.png"></span>
@@ -51,18 +52,18 @@
                     <form class="form-inline ">
                         <div class="login_text">
                             <ul>
-<!--                                <li><a style="color: #000" href="SearchController?index=1">Normal</a></li>
-                                <li><a style="color: #000" href="SortServiceBySupp?index=1">Supp</a></li>
-                                <li><a style="color: #000" href="SortServiceAscByPrice?index=1">Price</a></li>-->
+                                <!--                                <li><a style="color: #000" href="SearchController?index=1">Normal</a></li>
+                                                                <li><a style="color: #000" href="SortServiceBySupp?index=1">Supp</a></li>
+                                                                <li><a style="color: #000" href="SortServiceAscByPrice?index=1">Price</a></li>-->
                                 <li><a href="login.jsp"><img src="images/user-icon.png"></a></li>
                                 <li><a href="#"><img src="images/trolly-icon.png"></a></li>
                                 <li><a href="#"><img src="images/search-icon.png"></a></li>
                                 <li><a href="#"><img src="images/logout.png" width = "21" height = "20"></a></li>
-                                
+
                             </ul>
                         </div>
                     </form>
-                
+
                 </nav>
             </div>
         </div>
@@ -79,17 +80,17 @@
                                     </c:forEach>
                         </ul>
                     </div>
-                    
-                     <div class="card bg-light mb-3">
+
+                    <div class="card bg-light mb-3">
                         <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Sort by</div>
                         <ul class="list-group category_block">
-                         <a href="SearchController?index=1"><li class="list-group-item">Normal</li></a>
-                         <a href="SortServiceBySupp?index=1"><li class="list-group-item">Supplier</li></a>
-                         <a href="SortServiceAscByPrice?index=1"><li class="list-group-item">Price</li></a>
+                            <a href="SearchController?index=1"><li class="list-group-item">Normal</li></a>
+                            <a href="SortServiceBySupp?index=1"><li class="list-group-item">Supplier</li></a>
+                            <a href="SortServiceAscByPrice?index=1"><li class="list-group-item">Price</li></a>
                         </ul>
                     </div>
-                    
-                    
+
+
                     <div class="card bg-light mb-3">
                         <div class="card-header bg-success text-white text-uppercase">Last Service</div>
                         <div class="card-body">
@@ -104,11 +105,9 @@
                             <p class="bloc_left_price">${last.price} VND</p>
                         </div>
                     </div>
-                        
+
                 </div>
 
-                        
-                        
                 <div class="col">
                     <c:if test="${requestScope.listP != null}">
                         <c:if test="${not empty requestScope.listP}" var="check" scope="page">
@@ -138,8 +137,8 @@
                                         </div>
                                     </div>
                                 </c:forEach>
-                                
-                                
+
+
                                 <div class="col-12">
                                     <nav aria-label="...">
                                         <ul class="pagination">
@@ -147,7 +146,7 @@
                                                                                             <a class="page-link" href="#" tabindex="-1">Previous</a>
                                                                                         </li>-->
                                             <li class="page-item ${markPage == 1 ? "active":""}"><a class="page-link" href="SearchController?index=1">1</a></li>
-                                            
+
                                             <li class="page-item ${markPage == 2 ? "active":""}"><a class="page-link" href="SearchController?index=2">2</a></li>
                                             <li class="page-item ${markPage == 3 ? "active":""}"><a class="page-link" href="SearchController?index=3">3</a></li>
                                             <!--                                            <li class="page-item">
@@ -164,9 +163,9 @@
                     </c:if>
                 </div>            
             </div>
-                        
-                        
-                       
+
+
+
         </div>
         <!-- computers section end -->
         <!-- footer section start -->

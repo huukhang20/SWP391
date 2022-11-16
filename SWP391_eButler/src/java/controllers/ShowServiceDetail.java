@@ -44,6 +44,8 @@ public class ShowServiceDetail extends HttpServlet {
             ServiceDAO dao = new ServiceDAO();
             Service detail = dao.find(serId);
             List<Service> serviceList = new ArrayList<Service>();
+            serviceList = dao.getRandom3Service();
+            
             request.setAttribute("RANDOMLIST", serviceList);
             request.setAttribute("detailP", detail);
             request.getRequestDispatcher("product.jsp").forward(request, response);
