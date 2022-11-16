@@ -35,17 +35,12 @@ public class UpdateServiceController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String serName = request.getParameter("serName");
-        String serDescription = request.getParameter("serDescription");
-        String quantity = request.getParameter("quantity");
-        String price = request.getParameter("price");
-        String workDate = request.getParameter("workDate");
-        String releaseDate = request.getParameter("releaseDate");
-        String serImage = request.getParameter("serImage");
-        String serId = request.getParameter("serId");
-        ServiceDAO sd = new ServiceDAO();
         try {
-            sd.updateService(serName, serDescription, quantity, price, workDate, releaseDate, serImage, serId);
+            String quantity = request.getParameter("quantity");
+            String price = request.getParameter("price");
+            String serId = request.getParameter("serId");
+            ServiceDAO sd = new ServiceDAO();
+            sd.updateService(quantity, price, serId);
         } catch (Exception ex) {
             Logger.getLogger(UpdateServiceController.class.getName()).log(Level.SEVERE, null, ex);
         }

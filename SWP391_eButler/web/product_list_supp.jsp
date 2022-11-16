@@ -132,10 +132,10 @@
                                     </td>
 
                                     <td>
-                                        <input type="text" placeholder="${dto.price}" value="${param.price}">
+                                        <input type="number" placeholder="${dto.price}" value="${param.price}">
                                     </td>
                                     <td>
-                                        <input type="text" placeholder="${dto.quantity}" value="${param.quantity}">
+                                        <input type="number" placeholder="${dto.quantity}" value="${param.quantity}">
                                     </td>
                                     <td>
                                         <!-- Button trigger modal -->

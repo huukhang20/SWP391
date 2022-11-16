@@ -58,6 +58,12 @@ public class Service {
         this.price = price;
         this.serImage = serImage;
     }
+
+    public Service(int serID, int quantity, int price) {
+        this.serID = serID;
+        this.quantity = quantity;
+        this.price = price;
+    }
     
     
 

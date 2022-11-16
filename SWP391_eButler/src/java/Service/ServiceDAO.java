@@ -136,28 +136,18 @@ public class ServiceDAO {
     }
 
     //update service 
-    public static boolean updateService(String serName, String serDescription, String quantity, String price, String workDate, String releaseDate, String serImage, String serId) throws Exception {
+    public static boolean updateService(String quantity, String price, String serId) throws Exception {
         Connection cn = DBUtils.makeConnection();
         boolean flag = false;
         if (cn != null) {
-            String sql = "UPDATE Service\n"
-                    + "SET Name=?,"
-                    + "Description=?,"
-                    + "quantity=?,"
-                    + "price=?,"
-                    + "Working_Time=?,"
-                    + "Release_Time=?,"
-                    + "Image=?\n"
+            String sql = "UPDATE DBO.Service\n"
+                    + "SET price=? \n"
+                    + "quantity=?"
                     + "WHERE ID=?";
             PreparedStatement pst = cn.prepareStatement(sql);
-            pst.setString(1, serName);
-            pst.setString(2, serDescription);
-            pst.setString(3, quantity);
-            pst.setString(4, price);
-            pst.setString(5, workDate);
-            pst.setString(6, releaseDate);
-            pst.setString(7, serImage);
-            pst.setString(8, serId);
+            pst.setString(1, price);
+            pst.setString(2, quantity);;
+            pst.setString(3, serId);
             int table = pst.executeUpdate();
             if (table == 1) {
                 flag = true;
