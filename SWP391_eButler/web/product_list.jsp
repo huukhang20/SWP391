@@ -105,7 +105,6 @@
                             <p class="bloc_left_price">${last.price} VND</p>
                         </div>
                     </div>
-
                 </div>
 
                 <div class="col">
