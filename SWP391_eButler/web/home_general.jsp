@@ -84,7 +84,7 @@
                                     </li>
                                 </c:if>
                                 <li><a href="#"><img src="images/trolly-icon.png"></a></li>
-                                <li><a href="#"><img src="images/search-icon.png"></a></li>
+<!--                                <li><a href="#"><img src="images/search-icon.png"></a></li>-->
                                         <c:if test="${sessionScope.USERLOGIN != null}">
                                             <c:if test="${not empty sessionScope.USERLOGIN}" var="check" scope="page">
                                         <li>
@@ -106,13 +106,14 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <div class="container">
+                            <img class="imageslide" src="">
                             <div class="row border_1">
                                 <div class="col-md-4">
-                                    <div class="image_1"><img src="" style="width:100%"></div>
+                                    <div class="image_1"><img src="images/vegetable.png" style="width:80%"></div>
                                 </div>
                                 <div class="col-md-4">
                                     <h1 class="banner_taital">Big Sale Offer</h1>
-                                    <div class="buynow_bt active"><a href="SearchController?index=1">Buy Now</a></div>
+                                    <div class="buynow_bt active"><a href="SearchController?index=1">Buy Now </a></div>
                                     <div class="contact_bt"><a href="contact.jsp">Contact Us</a></div>
                                 </div>
                                 <div class="col-md-4">
@@ -142,7 +143,7 @@
                         <div class="container">
                             <div class="row border_1">
                                 <div class="col-md-4">
-                                    <div class="image_1"><img src="" style="width:100%"></div>
+                                    <div class="image_1"><img src="images/fastdelivery.png" style="width:60%"></div>
                                 </div>
                                 <div class="col-md-4">
                                     <h1 class="banner_taital">Run Out of Gas?</h1>
@@ -150,7 +151,7 @@
                                     <div class="contact_bt"><a href="contact.jsp">Contact Us</a></div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="image_2"><img src="" style="width:100%"></div>
+                                    <div class="image_2"><img src="images/Delivery.png" style="width:80%"></div>
                                 </div>
                             </div>
                         </div>
@@ -256,12 +257,12 @@ window.onload = function () {
                     <div class="catagary_right">
                         <div class="catagary_menu">
                             <ul>
-                                <li><a href="ShowServiceByCategory?cateId=1">Gas</a></li>
-                                <li><a href="ShowServiceByCategory?cateId=2">Electric</a></li>
-                                <li><a href="ShowServiceByCategory?cateId=3">Rice</a></li>
-                                <li><a href="ShowServiceByCategory?cateId=4">Water</a></li>
-                                <li><a href="ShowServiceByCategory?cateId=5">Electronic Device</a></li>
-                                <li><a href="ShowServiceByCategory?cateId=6">Market</a></li>
+                                <li class="homecate"><a href="ShowServiceByCategory?cateId=1">Gas</a></li>
+                                <li class="homecate"><a href="ShowServiceByCategory?cateId=2">Electric</a></li>
+                                <li class="homecate"><a href="ShowServiceByCategory?cateId=3">Rice</a></li>
+                                <li class="homecate"><a href="ShowServiceByCategory?cateId=4">Water</a></li>
+                                <li class="homecate"><a href="ShowServiceByCategory?cateId=5">Electronic Device</a></li>
+                                <li class="homecate"><a href="ShowServiceByCategory?cateId=6">Market</a></li>
                             </ul>
                         </div>
                     </div>
@@ -295,7 +296,7 @@ window.onload = function () {
                                 <div class="cart_main">
 
                                     <a href="ShowServiceDetail?serId=${dto.serID}"><h4 class="samsung_text">${dto.serName}</h4></a>
-                                    <h6 class="rate_text">${dto.price} $</h6>
+                                    <h6 class="rate_text">${dto.price} VND</h6>
                                     <h6 class="rate_text_1"></h6>
                                 </div>
                                 <div class="row">
@@ -342,7 +343,7 @@ window.onload = function () {
                                 <a href="ShowServiceDetail?serId=${dto.serID}"><h4 class="computer_text">${dto.serName}</h4></a>
                                 <div class="computer_text_main">
                                     <h4 class="dell_text"></h4>
-                                    <h6 class="price_text mt-auto">${dto.price} $</h6>
+                                    <h6 class="price_text mt-auto">${dto.price} VND</h6>
                                     <h6 class="price_text_1"><a href="#"></a></h6>
                                 </div>
                                 <div class="cart_bt_1"><a href="#">Add To Cart</a></div>
@@ -357,7 +358,9 @@ window.onload = function () {
         <!-- footer section start -->
         <div class="footer_section layout_padding margin_top_90">
             <div class="container">
+              
                 <div class="footer_logo_main">
+                      <div class="adderss_text" style="font-size: 70px"><a href="index.html">Ebutler</a></div>
                     <div class="footer_logo"><a href="index.html"></a></div>
                     <div class="social_icon">
                         <ul>

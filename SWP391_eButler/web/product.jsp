@@ -186,10 +186,12 @@
         </section>
         <!-- computers section end -->
         <!-- footer section start -->
-        <div class="footer_section layout_padding margin_top_90">
+       <div class="footer_section layout_padding margin_top_90">
             <div class="container">
+              
                 <div class="footer_logo_main">
-                    <!--                    <div class="footer_logo"><a href="index.html"><img src="images/footer-logo.png"></a></div>-->
+                      <div class="adderss_text" style="font-size: 70px"><a href="index.html">Ebutler</a></div>
+                    <div class="footer_logo"><a href="index.html"></a></div>
                     <div class="social_icon">
                         <ul>
                             <li><a href="#"><img src="images/fb-icon.png"></a></li>
@@ -202,6 +204,7 @@
                 </div>
                 <div class="footer_section_2">
                     <div class="row">
+                        
                         <div class="col-lg-3 col-sm-6">
                             <h4 class="adderss_text">About</h4>
                             <p class="ipsum_text">EButler is a website that helps you with butler services such as: electrical repair, rice, gas supply, ...</p>
@@ -210,10 +213,11 @@
                             <h4 class="adderss_text">Menu</h4>
                             <div class="footer_menu">
                                 <ul>
-                                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                                    <a href="ShowHomeGeneralController">Home</a>
-                                    <a href="SearchController?index=1">Services List</a>
-                                    <a href="contact.jsp">Contact</a>
+                                    <li><a href="ShowHomeGeneralController">Home</a></li>
+                                    <li><a href="computers.html"></a></li>
+                                    <li><a href="Mans_clothes.html"></a></li>
+                                    <li><a href="womans_clothes.html"></a></li>
+                                    <li><a href="contact.html">Contact Us</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -232,7 +236,7 @@
                         <div class="col-lg-3 col-sm-6">
                             <h4 class="adderss_text">Contact</h4>
                             <div class="call_text"><img src="images/map-icon.png"><span class="paddlin_left_0"><a href="#">FPT University, TP.HCM</a></span></div>
-                            <div class="call_text"><img src="images/call-icon.png"><span class="paddlin_left_0"><a href="#">+09887766</a></span></div>
+                            <div class="call_text"><img src="images/call-icon.png"><span class="paddlin_left_0"><a href="#">+099887766</a></span></div>
                             <div class="call_text"><img src="images/mail-icon.png"><span class="paddlin_left_0"><a href="#">ebutler@gmail.com</a></span></div>
                         </div>
                     </div>

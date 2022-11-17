@@ -346,7 +346,7 @@ button {
 
 .image_1 {
     width: 100%;
-    position: absolute;
+    position: static;
     top: -60px;
     z-index: -1;
 }
@@ -980,4 +980,9 @@ button {
 
 .margin_top_90 {
     margin-top: 90px;
+}
+
+
+.homecate{
+    margin-left: 60px;
 }
