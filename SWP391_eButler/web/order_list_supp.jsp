@@ -39,7 +39,7 @@
             </div>
             <ul class="nav-links">
                 <li>
-                    <a href="home_supp.jsp" class="active">
+                    <a href="home_supp.jsp" >
                         <i class='bx bx-grid-alt' ></i>
                         <span class="links_name">Dashboard</span>
                     </a>
@@ -63,7 +63,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="ShowOrderListSuppController">
+                    <a href="ShowOrderListSuppController" class="active">
                         <i class='bx bx-coin-stack' ></i>
                         <span class="links_name">Order History</span>
                     </a>

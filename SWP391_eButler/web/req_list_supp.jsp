@@ -35,12 +35,11 @@
     <body>
         <div class="sidebar">
             <div class="logo-details">
-                <i class='bx bxl-c-plus-plus'></i>
-                <span class="logo_name">E-butlter</span>
+                <a href="ShowHomeGeneralController" class="logo_name">E-butlter</a>
             </div>
             <ul class="nav-links">
                 <li>
-                    <a href="home_supp.jsp" class="active">
+                    <a href="home_supp.jsp" >
                         <i class='bx bx-grid-alt' ></i>
                         <span class="links_name">Dashboard</span>
                     </a>
@@ -52,7 +51,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="ShowRequestListForSuppController">
+                    <a href="ShowRequestListForSuppController" class="active">
                         <i class='bx bx-list-ul' ></i>
                         <span class="links_name">Request Management</span>
                     </a>

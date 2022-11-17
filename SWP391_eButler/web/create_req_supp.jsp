@@ -39,7 +39,7 @@
             </div>
             <ul class="nav-links">
                 <li>
-                    <a href="home_supp.jsp" class="active">
+                    <a href="home_supp.jsp" >
                         <i class='bx bx-grid-alt' ></i>
                         <span class="links_name">Dashboard</span>
                     </a>
@@ -57,7 +57,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="create_req_supp.jsp">
+                    <a href="create_req_supp.jsp" class="active">
                         <i class='bx bx-list-ul' ></i>
                         <span class="links_name">Create New Request</span>
                     </a>

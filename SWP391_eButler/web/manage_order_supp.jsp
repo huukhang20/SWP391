@@ -40,7 +40,7 @@
             </div>
             <ul class="nav-links">
                 <li>
-                    <a href="home_supp.jsp" class="active">
+                    <a href="home_supp.jsp" >
                         <i class='bx bx-grid-alt' ></i>
                         <span class="links_name">Dashboard</span>
                     </a>
@@ -70,7 +70,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="ManageOrderSuppController">
+                    <a href="ManageOrderSuppController" class="active">
                         <i class='bx bx-book-alt' ></i>
                         <span class="links_name">Manage Order</span>
                     </a>
