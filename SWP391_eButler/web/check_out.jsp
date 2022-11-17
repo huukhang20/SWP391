@@ -102,14 +102,24 @@
                                 </span>
                             </li>
                         </c:forEach>
-
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>VAT: </span>
+                            <strong>
+                                <f:formatNumber var="vat" 
+                                                value="${orderTotal * 0.05}" 
+                                                minIntegerDigits="0" />
+                                <c:set var="Total" 
+                                       value="${orderTotal + orderTotal * 0.05}" />
+                                ${vat} VND
+                            </strong>
+                        </li>
                         <li class="list-group-item d-flex justify-content-between">
                             <span>Total (VND)</span>
                             <strong>
                                 <f:formatNumber var="strOrderTotal" 
-                                                value="${orderTotal}" 
+                                                value="${Total}" 
                                                 minIntegerDigits="0" />
-                                ${strOrderTotal}
+                                ${strOrderTotal} VND
                             </strong>
                         </li>
                     </ul>
@@ -243,13 +253,13 @@
                             if (name === null || name === "") {
                                 alert("Name can't be blank");
                                 return false;
-                            } else if (phone ===  null || phone === "") {
+                            } else if (phone === null || phone === "") {
                                 alert("Phone Number can't be blank");
                                 return false;
-                            } else if (email ===  null || email === "") {
+                            } else if (email === null || email === "") {
                                 alert("Email can't be blank");
                                 return false;
-                            } else if (address ===  null || address === "") {
+                            } else if (address === null || address === "") {
                                 alert("Address can't be blank");
                                 return false;
                             }
