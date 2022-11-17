@@ -55,9 +55,9 @@
                                                                 <li><a style="color: #000" href="SortServiceBySupp?index=1">Supp</a></li>
                                                                 <li><a style="color: #000" href="SortServiceAscByPrice?index=1">Price</a></li>-->
                                 <li><a href="login.jsp"><img src="images/user-icon.png"></a></li>
-                                <li><a href="#"><img src="images/trolly-icon.png"></a></li>
-                                <li><a href="#"><img src="images/search-icon.png"></a></li>
-                                <li><a href="#"><img src="images/logout.png" width = "21" height = "20"></a></li>
+                                <li><a href="cart.jsp"><img src="images/trolly-icon.png"></a></li>
+<!--                                <li><a href="#"><img src="images/search-icon.png"></a></li>-->
+                                <li><a href="LogoutController"><img src="images/logout.png" width = "21" height = "20"></a></li>
                             </ul>
                         </div>
                     </form>
@@ -159,7 +159,7 @@
         </div>
         <!-- computers section end -->
         <!-- footer section start -->
-        <div class="footer_section layout_padding margin_top_90">
+           <div class="footer_section layout_padding margin_top_90">
             <div class="container">
                 <div class="footer_logo_main">
                     <div class="adderss_text" style="font-size: 70px"><a href="index.html">Ebutler</a></div>

@@ -56,9 +56,9 @@
                   <div class="login_text">
                      <ul>
                         <li><a href="login.jsp"><img src="images/user-icon.png"></a></li>
-                        <li><a href="#"><img src="images/trolly-icon.png"></a></li>
-                        <li><a href="#"><img src="images/search-icon.png"></a></li>
-                        <li><a href="#"><img src="images/logout.png" width = "21" height = "20"></a></li>
+                        <li><a href="cart.jsp"><img src="images/trolly-icon.png"></a></li>
+<!--                        <li><a href="#"><img src="images/search-icon.png"></a></li>-->
+                        <li><a href="LogoutController"><img src="images/logout.png" width = "21" height = "20"></a></li>
                      </ul>
                   </div>
                </form>
@@ -85,10 +85,10 @@
         </div><!--login-form-wrap-->
         <!-- partial -->
         <!-- footer section start -->
-        <div class="footer_section layout_padding margin_top_90">
+           <div class="footer_section layout_padding margin_top_90">
             <div class="container">
                 <div class="footer_logo_main">
-<!--                    <div class="footer_logo"><a href="index.html"><img src="images/footer-logo.png"></a></div>-->
+                    <div class="adderss_text" style="font-size: 70px"><a href="index.html">Ebutler</a></div>
                     <div class="social_icon">
                         <ul>
                             <li><a href="#"><img src="images/fb-icon.png"></a></li>
@@ -109,10 +109,10 @@
                             <h4 class="adderss_text">Menu</h4>
                             <div class="footer_menu">
                                 <ul>
-                                    <li><a href="ShowHomeGeneralController">Home</a></li>
-                                    <li><a href="computers.html"></a></li>
-                                    <li><a href="Mans_clothes.html"></a></li>
-                                    <li><a href="womans_clothes.html"></a></li>
+                                    <li><a href="index.html">Home</a></li>
+                                    <!--                                    <li><a href="computers.html">Computers</a></li>
+                                                                        <li><a href="Mans_clothes.html">Mans Clothes</a></li>
+                                                                        <li><a href="womans_clothes.html">Womans Clothes</a></li>-->
                                     <li><a href="contact.jsp">Contact Us</a></li>
                                 </ul>
                             </div>

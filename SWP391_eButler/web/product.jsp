@@ -59,8 +59,8 @@
                         <div class="login_text">
                             <ul>
                                 <li><a href="login.jsp"><img src="images/user-icon.png"></a></li>
-                                <li><a href="#"><img src="images/trolly-icon.png"></a></li>
-                                <li><a href="#"><img src="images/search-icon.png"></a></li>
+                                <li><a href="cart.jsp"><img src="images/trolly-icon.png"></a></li>
+<!--                                <li><a href="#"><img src="images/search-icon.png"></a></li>-->
                                 <li><a href="LogOutController"><img src="images/logout.png" width = "21" height = "20"></a></li>
                             </ul>
                         </div>

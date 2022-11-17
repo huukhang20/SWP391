@@ -56,9 +56,9 @@
                                                                 <li><a style="color: #000" href="SortServiceBySupp?index=1">Supp</a></li>
                                                                 <li><a style="color: #000" href="SortServiceAscByPrice?index=1">Price</a></li>-->
                                 <li><a href="login.jsp"><img src="images/user-icon.png"></a></li>
-                                <li><a href="#"><img src="images/trolly-icon.png"></a></li>
-                                <li><a href="#"><img src="images/search-icon.png"></a></li>
-                                <li><a href="#"><img src="images/logout.png" width = "21" height = "20"></a></li>
+                                <li><a href="cart.jsp"><img src="images/trolly-icon.png"></a></li>
+<!--                                <li><a href="#"><img src="images/search-icon.png"></a></li>-->
+                                <li><a href="LogoutController"><img src="images/logout.png" width = "21" height = "20"></a></li>
 
                             </ul>
                         </div>
@@ -112,6 +112,7 @@
                         <c:if test="${not empty requestScope.listP}" var="check" scope="page">
                             <div class="row">
                                 <c:forEach items="${requestScope.listP}" var="o">
+                                    <c:if test="${o.quantity != 0}" var="check" scope="page">
                                     <div class="col-12 col-md-6 col-lg-4 ">
                                         <div class="card">
                                             <c:if test="${not empty o.serImage}" var="check" scope="page">
@@ -135,6 +136,32 @@
                                             </div> 
                                         </div>
                                     </div>
+                                    </c:if>
+                                    <c:if test="${o.quantity == 0}" var="check" scope="page">
+                                             <div class="col-12 col-md-6 col-lg-4 ">
+                                        <div class="card">
+                                            <c:if test="${not empty o.serImage}" var="check" scope="page">
+                                                <a href="ShowServiceDetail?serId=${o.serID}"><img class="card-img-top" src="${o.serImage}" alt="Card image cap" width = "600" height = "400"></a>
+                                                </c:if>
+                                                <c:if test="${empty o.serImage}" var="check" scope="page">
+                                                <img class="img-fluid" src="https://dummyimage.com/600x400/55595c/fff" width = "600" height = "400" />
+                                            </c:if>
+                                            <div class="card-body">
+                                                <h4 class="card-title show_txt">${o.serName}</h4>
+
+<!--                                                <p class="card-text show_txt">${o.serDescription}</p>-->
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <p class="btn btn-danger ">${o.price} VND</p>
+                                                    </div>
+                                                    <div class="col">
+                                                        <a href="" class="btn btn-danger btn-block">Out ot Stock</a>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                        </div>
+                                    </div>  
+                                    </c:if>
                                 </c:forEach>
 
 
