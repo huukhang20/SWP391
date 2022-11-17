@@ -95,13 +95,13 @@
                     <i class='bx bx-menu sidebarBtn'></i>
                     <span class="dashboard">Dashboard</span>
                 </div>
-                <div class="search-box">
+<!--                <div class="search-box">
                     <input type="text" placeholder="Search...">
                     <i class='bx bx-search' ></i>
-                </div>
+                </div>-->
                 <div class="profile-details">
-                    <img src="images/profile.jpg" alt="">
-                    <span class="admin_name">${sessionScope.USERROLE} ${sessionScope.USERLOGIN}</span>
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
+                    <span class="admin_name">Welcome ${sessionScope.USERROLE} ${sessionScope.USERLOGIN}</span>
 
                 </div>
             </nav>
