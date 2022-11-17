@@ -95,14 +95,14 @@ public class FeedbackDAO {
         Connection cn = DBUtils.makeConnection();
         boolean flag = false;
         if (cn != null) {
-            String sql = "INSERT INTO DBO.Feedback(Title,Description,Req_Time,Account_ID,Status)\n"
-                    + "VALUES(?,?,?,?,?)";
+            String sql = "INSERT INTO Feedback(Title,Description,Req_Time,Account_ID,Type,Status) VALUES(?,?,?,?,?,?)";
             PreparedStatement pst = cn.prepareStatement(sql);
             pst.setString(1, feedbackTitle);
             pst.setString(2, feedbackDescription);
             pst.setString(3, reqTime);
             pst.setInt(4, accID);
-            pst.setInt(5, status);
+            pst.setString(5, "Feedback");
+            pst.setInt(6, status);
             int table = pst.executeUpdate();
             if (table == 1) {
                 flag = true;

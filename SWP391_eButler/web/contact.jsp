@@ -77,10 +77,10 @@
                     <h1 class="contact_taital">Contact Us</h1>
                     <div class="contact_section_2">
                         <div class="mail_section_1">
-                            <form action="AddFeedbackController">
+                            <form action="AddFeedbackController" method="POST">
                                 <input type="text" class="mail_text" placeholder="Name" name="name" value="${account.getName()}" readonly="">
                             <input type="text" class="mail_text" placeholder="Title" name="title">
-                            <input type="date" class="mail_text" placeholder="" name="reqTime">
+                            <input type="date" class="mail_text" placeholder="" name="reqTime" required="true">
                             <textarea class="massage-bt" placeholder="Massage" rows="5" id="comment" name="Massage"></textarea>
                             <input type="hidden" name="accID" value="${account.getAccID()}">
                             <!--<div class="send_bt"><a href="#">Send</a></div>-->
@@ -96,7 +96,7 @@
             <div class="container">
               
                 <div class="footer_logo_main">
-                      <div class="adderss_text" style="font-size: 70px"><a href="index.html">Ebutler</a></div>
+                      <div class="adderss_text" style="font-size: 70px"><a href="ShowHomeGeneralController">E-Butler</a></div>
                     <div class="footer_logo"><a href="index.html"></a></div>
                     <div class="social_icon">
                         <ul>

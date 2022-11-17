@@ -41,7 +41,7 @@ public class AddFeedbackController extends HttpServlet {
         int accID = Integer.parseInt(request.getParameter("accID"));
         FeedbackDAO fd = new FeedbackDAO();
         try {
-            fd.createFeedbacks(title, description, reqTime, accID, 1);
+            fd.createFeedbacks(title, description, reqTime, accID, 0);
         } catch (Exception ex) {
             Logger.getLogger(AddFeedbackController.class.getName()).log(Level.SEVERE, null, ex);
         }
